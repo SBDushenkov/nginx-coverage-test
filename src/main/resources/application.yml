@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: grant-access-nginx
+
+nginx:
+  work-dir: ${WORK_DIR:/home/papa/Documents/work/nginx-bash-test-and-build}
+  port-prefix: ${PORT_PREFIX:13}
+  default-http-port: ${DEFAULT_HTTP_PORT:13080}
+  host: ${HOST:localhost}
+
