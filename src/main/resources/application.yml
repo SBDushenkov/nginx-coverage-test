@@ -1,10 +1,10 @@
 spring:
   application:
-    name: grant-access-nginx
+    name: nginx-tests
 
 nginx:
-  work-dir: ${WORK_DIR:/home/papa/Documents/work/nginx-bash-test-and-build}
+  work-dir: ${WORK_DIR:/home/papa/IdeaProjects/grant-access-nginx/nginx}
   port-prefix: ${PORT_PREFIX:13}
-  default-http-port: ${DEFAULT_HTTP_PORT:13080}
+  default-http-port: ${DEFAULT_HTTP_PORT:13081}
   host: ${HOST:localhost}
 

@@ -22,7 +22,7 @@ public class HttpUrlTest extends AbstractHttpTest {
                 events {}
                 http {
                     server {
-                        listen       127.0.0.1:%%default-port%%;
+                        listen       %%default-port%%;
                         server_name  localhost;
                         location / {
                             add_header  X-URI          "x $uri x";

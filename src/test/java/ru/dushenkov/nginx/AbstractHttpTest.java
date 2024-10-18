@@ -80,8 +80,12 @@ public abstract class AbstractHttpTest implements InitializingBean {
                 .inheritIO()
                 .start();
         process.waitFor(1000, TimeUnit.MILLISECONDS);
+
         int i = 1;
         log.info("Nginx reload result = {}", process.exitValue());
+
+        assertEquals(0, process.exitValue(), "Configuration reload failed");
+
         while (true) {
             log.info("Nginx checking new configuration applied. Attempt {}", i);
             ResponseDto responseDto = get("/test-info");
@@ -93,9 +97,8 @@ public abstract class AbstractHttpTest implements InitializingBean {
             }
             Thread.sleep(1000);
         }
-        log.info("Nginx new configuration applied successfully");
-        assertEquals(0, process.exitValue(), "Configuration reload failed");
 
+        log.info("Nginx new configuration applied successfully");
     }
 
 

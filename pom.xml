@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ru.dushenkov</groupId>
-    <artifactId>grant-access-nginx</artifactId>
+    <artifactId>nginx-tests</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>grant-access-nginx</name>
-    <description>grant-access-nginx</description>
+    <name>nginx-tests</name>
+    <description>nginx-tests</description>
     <url/>
     <licenses>
         <license/>
@@ -75,11 +75,6 @@
                 <artifactId>maven-surefire-report-plugin</artifactId>
                 <version>3.2.5</version>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-jxr-plugin</artifactId>-->
-<!--                <version>2.1</version>-->
-<!--            </plugin>-->
         </plugins>
     </reporting>
 </project>
