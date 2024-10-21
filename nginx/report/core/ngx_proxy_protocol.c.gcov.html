@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">238</td>
+            <td class="headerCovTableEntry">240</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -391,7 +391,7 @@
 <a name="329"><span class="lineNum">     329 </span>            :     size_t                              len;</a>
 <a name="330"><span class="lineNum">     330 </span>            :     socklen_t                           socklen;</a>
 <a name="331"><span class="lineNum">     331 </span>            :     ngx_uint_t                          version, command, family, transport;</a>
-<a name="332"><span class="lineNum">     332 </span>            :     ngx_sockaddr_t                      src_sockaddr, dst_sockaddr;</a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineNoCov">          0 :     ngx_sockaddr_t                      src_sockaddr, dst_sockaddr;</span></a>
 <a name="333"><span class="lineNum">     333 </span>            :     ngx_proxy_protocol_t               *pp;</a>
 <a name="334"><span class="lineNum">     334 </span>            :     ngx_proxy_protocol_header_t        *header;</a>
 <a name="335"><span class="lineNum">     335 </span>            :     ngx_proxy_protocol_inet_addrs_t    *in;</a>
@@ -552,7 +552,7 @@
 <a name="490"><span class="lineNum">     490 </span>            :     u_char                          *p;</a>
 <a name="491"><span class="lineNum">     491 </span>            :     size_t                           n;</a>
 <a name="492"><span class="lineNum">     492 </span>            :     uint32_t                         verify;</a>
-<a name="493"><span class="lineNum">     493 </span>            :     ngx_str_t                        ssl, *tlvs;</a>
+<a name="493"><span class="lineNum">     493 </span><span class="lineNoCov">          0 :     ngx_str_t                        ssl, *tlvs;</span></a>
 <a name="494"><span class="lineNum">     494 </span>            :     ngx_int_t                        rc, type;</a>
 <a name="495"><span class="lineNum">     495 </span>            :     ngx_proxy_protocol_tlv_ssl_t    *tlv_ssl;</a>
 <a name="496"><span class="lineNum">     496 </span>            :     ngx_proxy_protocol_tlv_entry_t  *te;</a>

@@ -31,13 +31,13 @@
             <td class="headerValue">report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">65</td>
-            <td class="headerCovTableEntry">435</td>
+            <td class="headerCovTableEntry">66</td>
+            <td class="headerCovTableEntry">443</td>
             <td class="headerCovTableEntryLo">14.9 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -363,12 +363,12 @@
 <a name="301"><span class="lineNum">     301 </span>            : </a>
 <a name="302"><span class="lineNum">     302 </span>            :     ngx_str_t                         *value;</a>
 <a name="303"><span class="lineNum">     303 </span>            :     ngx_uint_t                         last;</a>
-<a name="304"><span class="lineNum">     304 </span>            :     ngx_regex_compile_t                rc;</a>
+<a name="304"><span class="lineNum">     304 </span><span class="lineNoCov">          0 :     ngx_regex_compile_t                rc;</span></a>
 <a name="305"><span class="lineNum">     305 </span>            :     ngx_http_script_code_pt           *code;</a>
-<a name="306"><span class="lineNum">     306 </span>            :     ngx_http_script_compile_t          sc;</a>
-<a name="307"><span class="lineNum">     307 </span>            :     ngx_http_script_regex_code_t      *regex;</a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineNoCov">          0 :     ngx_http_script_compile_t          sc;</span></a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineNoCov">          0 :     ngx_http_script_regex_code_t      *regex;</span></a>
 <a name="308"><span class="lineNum">     308 </span>            :     ngx_http_script_regex_end_code_t  *regex_end;</a>
-<a name="309"><span class="lineNum">     309 </span>            :     u_char                             errstr[NGX_MAX_CONF_ERRSTR];</a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineNoCov">          0 :     u_char                             errstr[NGX_MAX_CONF_ERRSTR];</span></a>
 <a name="310"><span class="lineNum">     310 </span>            : </a>
 <a name="311"><span class="lineNum">     311 </span><span class="lineNoCov">          0 :     regex = ngx_http_script_start_code(cf-&gt;pool, &amp;lcf-&gt;codes,</span></a>
 <a name="312"><span class="lineNum">     312 </span>            :                                        sizeof(ngx_http_script_regex_code_t));</a>
@@ -508,7 +508,7 @@
 <a name="446"><span class="lineNum">     446 </span>            :     u_char                            *p;</a>
 <a name="447"><span class="lineNum">     447 </span>            :     ngx_str_t                         *value, *v;</a>
 <a name="448"><span class="lineNum">     448 </span>            :     ngx_http_script_return_code_t     *ret;</a>
-<a name="449"><span class="lineNum">     449 </span>            :     ngx_http_compile_complex_value_t   ccv;</a>
+<a name="449"><span class="lineNum">     449 </span><span class="lineCov">         35 :     ngx_http_compile_complex_value_t   ccv;</span></a>
 <a name="450"><span class="lineNum">     450 </span>            : </a>
 <a name="451"><span class="lineNum">     451 </span><span class="lineCov">         35 :     ret = ngx_http_script_start_code(cf-&gt;pool, &amp;lcf-&gt;codes,</span></a>
 <a name="452"><span class="lineNum">     452 </span>            :                                      sizeof(ngx_http_script_return_code_t));</a>
@@ -713,11 +713,11 @@
 <a name="651"><span class="lineNum">     651 </span>            :     size_t                         len;</a>
 <a name="652"><span class="lineNum">     652 </span>            :     ngx_str_t                     *value;</a>
 <a name="653"><span class="lineNum">     653 </span>            :     ngx_uint_t                     cur, last;</a>
-<a name="654"><span class="lineNum">     654 </span>            :     ngx_regex_compile_t            rc;</a>
+<a name="654"><span class="lineNum">     654 </span><span class="lineNoCov">          0 :     ngx_regex_compile_t            rc;</span></a>
 <a name="655"><span class="lineNum">     655 </span>            :     ngx_http_script_code_pt       *code;</a>
 <a name="656"><span class="lineNum">     656 </span>            :     ngx_http_script_file_code_t   *fop;</a>
 <a name="657"><span class="lineNum">     657 </span>            :     ngx_http_script_regex_code_t  *regex;</a>
-<a name="658"><span class="lineNum">     658 </span>            :     u_char                         errstr[NGX_MAX_CONF_ERRSTR];</a>
+<a name="658"><span class="lineNum">     658 </span><span class="lineNoCov">          0 :     u_char                         errstr[NGX_MAX_CONF_ERRSTR];</span></a>
 <a name="659"><span class="lineNum">     659 </span>            : </a>
 <a name="660"><span class="lineNum">     660 </span><span class="lineNoCov">          0 :     value = cf-&gt;args-&gt;elts;</span></a>
 <a name="661"><span class="lineNum">     661 </span><span class="lineNoCov">          0 :     last = cf-&gt;args-&gt;nelts - 1;</span></a>
@@ -1029,7 +1029,7 @@
 <a name="967"><span class="lineNum">     967 </span>            :     ngx_str_t *value)</a>
 <a name="968"><span class="lineNum">     968 </span>            : {</a>
 <a name="969"><span class="lineNum">     969 </span>            :     ngx_int_t                              n;</a>
-<a name="970"><span class="lineNum">     970 </span>            :     ngx_http_script_compile_t              sc;</a>
+<a name="970"><span class="lineNum">     970 </span><span class="lineNoCov">          0 :     ngx_http_script_compile_t              sc;</span></a>
 <a name="971"><span class="lineNum">     971 </span>            :     ngx_http_script_value_code_t          *val;</a>
 <a name="972"><span class="lineNum">     972 </span>            :     ngx_http_script_complex_value_code_t  *complex;</a>
 <a name="973"><span class="lineNum">     973 </span>            : </a>

@@ -31,13 +31,13 @@
             <td class="headerValue">report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">85</td>
-            <td class="headerCovTableEntry">321</td>
-            <td class="headerCovTableEntryLo">26.5 %</td>
+            <td class="headerCovTableEntry">88</td>
+            <td class="headerCovTableEntry">331</td>
+            <td class="headerCovTableEntryLo">26.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -227,7 +227,7 @@
 <a name="165"><span class="lineNum">     165 </span>            : static ngx_int_t</a>
 <a name="166"><span class="lineNum">     166 </span><span class="lineCov">         29 : ngx_http_headers_filter(ngx_http_request_t *r)</span></a>
 <a name="167"><span class="lineNum">     167 </span>            : {</a>
-<a name="168"><span class="lineNum">     168 </span>            :     ngx_str_t                 value;</a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">         29 :     ngx_str_t                 value;</span></a>
 <a name="169"><span class="lineNum">     169 </span>            :     ngx_uint_t                i, safe_status;</a>
 <a name="170"><span class="lineNum">     170 </span>            :     ngx_http_header_val_t    *h;</a>
 <a name="171"><span class="lineNum">     171 </span>            :     ngx_http_headers_conf_t  *conf;</a>
@@ -309,7 +309,7 @@
 <a name="247"><span class="lineNum">     247 </span>            : static ngx_int_t</a>
 <a name="248"><span class="lineNum">     248 </span><span class="lineCov">         22 : ngx_http_trailers_filter(ngx_http_request_t *r, ngx_chain_t *in)</span></a>
 <a name="249"><span class="lineNum">     249 </span>            : {</a>
-<a name="250"><span class="lineNum">     250 </span>            :     ngx_str_t                 value;</a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">         22 :     ngx_str_t                 value;</span></a>
 <a name="251"><span class="lineNum">     251 </span>            :     ngx_uint_t                i, safe_status;</a>
 <a name="252"><span class="lineNum">     252 </span>            :     ngx_chain_t              *cl;</a>
 <a name="253"><span class="lineNum">     253 </span>            :     ngx_table_elt_t          *t;</a>
@@ -386,13 +386,13 @@
 <a name="324"><span class="lineNum">     324 </span>            : static ngx_int_t</a>
 <a name="325"><span class="lineNum">     325 </span><span class="lineNoCov">          0 : ngx_http_set_expires(ngx_http_request_t *r, ngx_http_headers_conf_t *conf)</span></a>
 <a name="326"><span class="lineNum">     326 </span>            : {</a>
-<a name="327"><span class="lineNum">     327 </span>            :     char                *err;</a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineNoCov">          0 :     char                *err;</span></a>
 <a name="328"><span class="lineNum">     328 </span>            :     size_t               len;</a>
-<a name="329"><span class="lineNum">     329 </span>            :     time_t               now, expires_time, max_age;</a>
-<a name="330"><span class="lineNum">     330 </span>            :     ngx_str_t            value;</a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineNoCov">          0 :     time_t               now, expires_time, max_age;</span></a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineNoCov">          0 :     ngx_str_t            value;</span></a>
 <a name="331"><span class="lineNum">     331 </span>            :     ngx_int_t            rc;</a>
 <a name="332"><span class="lineNum">     332 </span>            :     ngx_table_elt_t     *e, *cc;</a>
-<a name="333"><span class="lineNum">     333 </span>            :     ngx_http_expires_t   expires;</a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineNoCov">          0 :     ngx_http_expires_t   expires;</span></a>
 <a name="334"><span class="lineNum">     334 </span>            : </a>
 <a name="335"><span class="lineNum">     335 </span><span class="lineNoCov">          0 :     expires = conf-&gt;expires;</span></a>
 <a name="336"><span class="lineNum">     336 </span><span class="lineNoCov">          0 :     expires_time = conf-&gt;expires_time;</span></a>
@@ -770,12 +770,12 @@
 <a name="708"><span class="lineNum">     708 </span>            : {</a>
 <a name="709"><span class="lineNum">     709 </span><span class="lineNoCov">          0 :     ngx_http_headers_conf_t *hcf = conf;</span></a>
 <a name="710"><span class="lineNum">     710 </span>            : </a>
-<a name="711"><span class="lineNum">     711 </span>            :     char                              *err;</a>
+<a name="711"><span class="lineNum">     711 </span><span class="lineNoCov">          0 :     char                              *err;</span></a>
 <a name="712"><span class="lineNum">     712 </span>            :     ngx_str_t                         *value;</a>
 <a name="713"><span class="lineNum">     713 </span>            :     ngx_int_t                          rc;</a>
 <a name="714"><span class="lineNum">     714 </span>            :     ngx_uint_t                         n;</a>
-<a name="715"><span class="lineNum">     715 </span>            :     ngx_http_complex_value_t           cv;</a>
-<a name="716"><span class="lineNum">     716 </span>            :     ngx_http_compile_complex_value_t   ccv;</a>
+<a name="715"><span class="lineNum">     715 </span><span class="lineNoCov">          0 :     ngx_http_complex_value_t           cv;</span></a>
+<a name="716"><span class="lineNum">     716 </span><span class="lineNoCov">          0 :     ngx_http_compile_complex_value_t   ccv;</span></a>
 <a name="717"><span class="lineNum">     717 </span>            : </a>
 <a name="718"><span class="lineNum">     718 </span><span class="lineNoCov">          0 :     if (hcf-&gt;expires != NGX_HTTP_EXPIRES_UNSET) {</span></a>
 <a name="719"><span class="lineNum">     719 </span><span class="lineNoCov">          0 :         return &quot;is duplicate&quot;;</span></a>
@@ -843,7 +843,7 @@
 <a name="781"><span class="lineNum">     781 </span>            :     ngx_array_t                       **headers;</a>
 <a name="782"><span class="lineNum">     782 </span>            :     ngx_http_header_val_t              *hv;</a>
 <a name="783"><span class="lineNum">     783 </span>            :     ngx_http_set_header_t              *set;</a>
-<a name="784"><span class="lineNum">     784 </span>            :     ngx_http_compile_complex_value_t    ccv;</a>
+<a name="784"><span class="lineNum">     784 </span><span class="lineCov">         63 :     ngx_http_compile_complex_value_t    ccv;</span></a>
 <a name="785"><span class="lineNum">     785 </span>            : </a>
 <a name="786"><span class="lineNum">     786 </span><span class="lineCov">         63 :     value = cf-&gt;args-&gt;elts;</span></a>
 <a name="787"><span class="lineNum">     787 </span>            : </a>

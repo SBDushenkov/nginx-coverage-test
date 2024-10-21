@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">367</td>
-            <td class="headerCovTableEntry">1346</td>
-            <td class="headerCovTableEntryLo">27.3 %</td>
+            <td class="headerCovTableEntry">1347</td>
+            <td class="headerCovTableEntryLo">27.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -1901,7 +1901,7 @@
 <a name="1839"><span class="lineNum">    1839 </span><span class="lineNoCov">          0 : ngx_http_parse_unsafe_uri(ngx_http_request_t *r, ngx_str_t *uri,</span></a>
 <a name="1840"><span class="lineNum">    1840 </span>            :     ngx_str_t *args, ngx_uint_t *flags)</a>
 <a name="1841"><span class="lineNum">    1841 </span>            : {</a>
-<a name="1842"><span class="lineNum">    1842 </span>            :     u_char      ch, *p, *src, *dst;</a>
+<a name="1842"><span class="lineNum">    1842 </span><span class="lineNoCov">          0 :     u_char      ch, *p, *src, *dst;</span></a>
 <a name="1843"><span class="lineNum">    1843 </span>            :     size_t      len;</a>
 <a name="1844"><span class="lineNum">    1844 </span>            :     ngx_uint_t  quoted;</a>
 <a name="1845"><span class="lineNum">    1845 </span>            : </a>
@@ -2201,7 +2201,7 @@
 <a name="2139"><span class="lineNum">    2139 </span>            : </a>
 <a name="2140"><span class="lineNum">    2140 </span>            : </a>
 <a name="2141"><span class="lineNum">    2141 </span>            : ngx_int_t</a>
-<a name="2142"><span class="lineNum">    2142 </span><span class="lineCov">          3 : ngx_http_parse_chunked(ngx_http_request_t *r, ngx_buf_t *b,</span></a>
+<a name="2142"><span class="lineNum">    2142 </span><span class="lineCov">          4 : ngx_http_parse_chunked(ngx_http_request_t *r, ngx_buf_t *b,</span></a>
 <a name="2143"><span class="lineNum">    2143 </span>            :     ngx_http_chunked_t *ctx, ngx_uint_t keep_trailers)</a>
 <a name="2144"><span class="lineNum">    2144 </span>            : {</a>
 <a name="2145"><span class="lineNum">    2145 </span>            :     u_char     *pos, ch, c;</a>
@@ -2222,15 +2222,15 @@
 <a name="2160"><span class="lineNum">    2160 </span>            :         sw_trailer_header_almost_done</a>
 <a name="2161"><span class="lineNum">    2161 </span>            :     } state;</a>
 <a name="2162"><span class="lineNum">    2162 </span>            : </a>
-<a name="2163"><span class="lineNum">    2163 </span><span class="lineCov">          3 :     state = ctx-&gt;state;</span></a>
+<a name="2163"><span class="lineNum">    2163 </span><span class="lineCov">          4 :     state = ctx-&gt;state;</span></a>
 <a name="2164"><span class="lineNum">    2164 </span>            : </a>
-<a name="2165"><span class="lineNum">    2165 </span><span class="lineCov">          3 :     if (state == sw_chunk_data &amp;&amp; ctx-&gt;size == 0) {</span></a>
+<a name="2165"><span class="lineNum">    2165 </span><span class="lineCov">          4 :     if (state == sw_chunk_data &amp;&amp; ctx-&gt;size == 0) {</span></a>
 <a name="2166"><span class="lineNum">    2166 </span><span class="lineNoCov">          0 :         state = sw_after_data;</span></a>
 <a name="2167"><span class="lineNum">    2167 </span>            :     }</a>
 <a name="2168"><span class="lineNum">    2168 </span>            : </a>
-<a name="2169"><span class="lineNum">    2169 </span><span class="lineCov">          3 :     rc = NGX_AGAIN;</span></a>
+<a name="2169"><span class="lineNum">    2169 </span><span class="lineCov">          4 :     rc = NGX_AGAIN;</span></a>
 <a name="2170"><span class="lineNum">    2170 </span>            : </a>
-<a name="2171"><span class="lineNum">    2171 </span><span class="lineCov">         11 :     for (pos = b-&gt;pos; pos &lt; b-&gt;last; pos++) {</span></a>
+<a name="2171"><span class="lineNum">    2171 </span><span class="lineCov">         12 :     for (pos = b-&gt;pos; pos &lt; b-&gt;last; pos++) {</span></a>
 <a name="2172"><span class="lineNum">    2172 </span>            : </a>
 <a name="2173"><span class="lineNum">    2173 </span><span class="lineCov">         10 :         ch = *pos;</span></a>
 <a name="2174"><span class="lineNum">    2174 </span>            : </a>
@@ -2417,20 +2417,20 @@
 <a name="2355"><span class="lineNum">    2355 </span>            :         }</a>
 <a name="2356"><span class="lineNum">    2356 </span>            :     }</a>
 <a name="2357"><span class="lineNum">    2357 </span>            : </a>
-<a name="2358"><span class="lineNum">    2358 </span><span class="lineCov">          1 : data:</span></a>
+<a name="2358"><span class="lineNum">    2358 </span><span class="lineCov">          2 : data:</span></a>
 <a name="2359"><span class="lineNum">    2359 </span>            : </a>
-<a name="2360"><span class="lineNum">    2360 </span><span class="lineCov">          1 :     ctx-&gt;state = state;</span></a>
-<a name="2361"><span class="lineNum">    2361 </span><span class="lineCov">          1 :     b-&gt;pos = pos;</span></a>
+<a name="2360"><span class="lineNum">    2360 </span><span class="lineCov">          2 :     ctx-&gt;state = state;</span></a>
+<a name="2361"><span class="lineNum">    2361 </span><span class="lineCov">          2 :     b-&gt;pos = pos;</span></a>
 <a name="2362"><span class="lineNum">    2362 </span>            : </a>
-<a name="2363"><span class="lineNum">    2363 </span><span class="lineCov">          1 :     if (ctx-&gt;size &gt; NGX_MAX_OFF_T_VALUE - 5) {</span></a>
+<a name="2363"><span class="lineNum">    2363 </span><span class="lineCov">          2 :     if (ctx-&gt;size &gt; NGX_MAX_OFF_T_VALUE - 5) {</span></a>
 <a name="2364"><span class="lineNum">    2364 </span><span class="lineNoCov">          0 :         goto invalid;</span></a>
 <a name="2365"><span class="lineNum">    2365 </span>            :     }</a>
 <a name="2366"><span class="lineNum">    2366 </span>            : </a>
-<a name="2367"><span class="lineNum">    2367 </span><span class="lineCov">          1 :     switch (state) {</span></a>
+<a name="2367"><span class="lineNum">    2367 </span><span class="lineCov">          2 :     switch (state) {</span></a>
 <a name="2368"><span class="lineNum">    2368 </span>            : </a>
-<a name="2369"><span class="lineNum">    2369 </span><span class="lineCov">          1 :     case sw_chunk_start:</span></a>
-<a name="2370"><span class="lineNum">    2370 </span><span class="lineCov">          1 :         ctx-&gt;length = 3 /* &quot;0&quot; LF LF */;</span></a>
-<a name="2371"><span class="lineNum">    2371 </span><span class="lineCov">          1 :         break;</span></a>
+<a name="2369"><span class="lineNum">    2369 </span><span class="lineCov">          2 :     case sw_chunk_start:</span></a>
+<a name="2370"><span class="lineNum">    2370 </span><span class="lineCov">          2 :         ctx-&gt;length = 3 /* &quot;0&quot; LF LF */;</span></a>
+<a name="2371"><span class="lineNum">    2371 </span><span class="lineCov">          2 :         break;</span></a>
 <a name="2372"><span class="lineNum">    2372 </span><span class="lineNoCov">          0 :     case sw_chunk_size:</span></a>
 <a name="2373"><span class="lineNum">    2373 </span><span class="lineNoCov">          0 :         ctx-&gt;length = 1 /* LF */</span></a>
 <a name="2374"><span class="lineNum">    2374 </span><span class="lineNoCov">          0 :                       + (ctx-&gt;size ? ctx-&gt;size + 4 /* LF &quot;0&quot; LF LF */</span></a>
@@ -2462,7 +2462,7 @@
 <a name="2400"><span class="lineNum">    2400 </span>            : </a>
 <a name="2401"><span class="lineNum">    2401 </span>            :     }</a>
 <a name="2402"><span class="lineNum">    2402 </span>            : </a>
-<a name="2403"><span class="lineNum">    2403 </span><span class="lineCov">          1 :     return rc;</span></a>
+<a name="2403"><span class="lineNum">    2403 </span><span class="lineCov">          2 :     return rc;</span></a>
 <a name="2404"><span class="lineNum">    2404 </span>            : </a>
 <a name="2405"><span class="lineNum">    2405 </span><span class="lineCov">          2 : done:</span></a>
 <a name="2406"><span class="lineNum">    2406 </span>            : </a>

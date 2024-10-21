@@ -31,13 +31,13 @@
             <td class="headerValue">report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">276</td>
-            <td class="headerCovTableEntry">641</td>
-            <td class="headerCovTableEntryLo">43.1 %</td>
+            <td class="headerCovTableEntry">283</td>
+            <td class="headerCovTableEntry">650</td>
+            <td class="headerCovTableEntryLo">43.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">11</td>
@@ -126,8 +126,8 @@
 <a name="64"><span class="lineNum">      64 </span>            : {</a>
 <a name="65"><span class="lineNum">      65 </span>            :     char             *rv;</a>
 <a name="66"><span class="lineNum">      66 </span>            :     ngx_str_t        *param;</a>
-<a name="67"><span class="lineNum">      67 </span>            :     ngx_buf_t         b;</a>
-<a name="68"><span class="lineNum">      68 </span>            :     ngx_conf_file_t   conf_file;</a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">         22 :     ngx_buf_t         b;</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">         22 :     ngx_conf_file_t   conf_file;</span></a>
 <a name="69"><span class="lineNum">      69 </span>            : </a>
 <a name="70"><span class="lineNum">      70 </span><span class="lineCov">         22 :     param = &amp;cf-&gt;cycle-&gt;conf_param;</span></a>
 <a name="71"><span class="lineNum">      71 </span>            : </a>
@@ -222,8 +222,8 @@
 <a name="160"><span class="lineNum">     160 </span>            :     char             *rv;</a>
 <a name="161"><span class="lineNum">     161 </span>            :     ngx_fd_t          fd;</a>
 <a name="162"><span class="lineNum">     162 </span>            :     ngx_int_t         rc;</a>
-<a name="163"><span class="lineNum">     163 </span>            :     ngx_buf_t         buf;</a>
-<a name="164"><span class="lineNum">     164 </span>            :     ngx_conf_file_t  *prev, conf_file;</a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">        134 :     ngx_buf_t         buf;</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">        134 :     ngx_conf_file_t  *prev, conf_file;</span></a>
 <a name="165"><span class="lineNum">     165 </span>            :     enum {</a>
 <a name="166"><span class="lineNum">     166 </span>            :         parse_file = 0,</a>
 <a name="167"><span class="lineNum">     167 </span>            :         parse_block,</a>
@@ -884,8 +884,8 @@
 <a name="822"><span class="lineNum">     822 </span>            : {</a>
 <a name="823"><span class="lineNum">     823 </span>            :     char        *rv;</a>
 <a name="824"><span class="lineNum">     824 </span>            :     ngx_int_t    n;</a>
-<a name="825"><span class="lineNum">     825 </span>            :     ngx_str_t   *value, file, name;</a>
-<a name="826"><span class="lineNum">     826 </span>            :     ngx_glob_t   gl;</a>
+<a name="825"><span class="lineNum">     825 </span><span class="lineCov">          1 :     ngx_str_t   *value, file, name;</span></a>
+<a name="826"><span class="lineNum">     826 </span><span class="lineCov">          1 :     ngx_glob_t   gl;</span></a>
 <a name="827"><span class="lineNum">     827 </span>            : </a>
 <a name="828"><span class="lineNum">     828 </span><span class="lineCov">          1 :     value = cf-&gt;args-&gt;elts;</span></a>
 <a name="829"><span class="lineNum">     829 </span><span class="lineCov">          1 :     file = value[1];</span></a>
@@ -959,7 +959,7 @@
 <a name="897"><span class="lineNum">     897 </span>            : ngx_open_file_t *</a>
 <a name="898"><span class="lineNum">     898 </span><span class="lineCov">         29 : ngx_conf_open_file(ngx_cycle_t *cycle, ngx_str_t *name)</span></a>
 <a name="899"><span class="lineNum">     899 </span>            : {</a>
-<a name="900"><span class="lineNum">     900 </span>            :     ngx_str_t         full;</a>
+<a name="900"><span class="lineNum">     900 </span><span class="lineCov">         29 :     ngx_str_t         full;</span></a>
 <a name="901"><span class="lineNum">     901 </span>            :     ngx_uint_t        i;</a>
 <a name="902"><span class="lineNum">     902 </span>            :     ngx_list_part_t  *part;</a>
 <a name="903"><span class="lineNum">     903 </span>            :     ngx_open_file_t  *file;</a>
@@ -1054,8 +1054,8 @@
 <a name="992"><span class="lineNum">     992 </span><span class="lineNoCov">          0 : ngx_conf_log_error(ngx_uint_t level, ngx_conf_t *cf, ngx_err_t err,</span></a>
 <a name="993"><span class="lineNum">     993 </span>            :     const char *fmt, ...)</a>
 <a name="994"><span class="lineNum">     994 </span>            : {</a>
-<a name="995"><span class="lineNum">     995 </span>            :     u_char   errstr[NGX_MAX_CONF_ERRSTR], *p, *last;</a>
-<a name="996"><span class="lineNum">     996 </span>            :     va_list  args;</a>
+<a name="995"><span class="lineNum">     995 </span><span class="lineNoCov">          0 :     u_char   errstr[NGX_MAX_CONF_ERRSTR], *p, *last;</span></a>
+<a name="996"><span class="lineNum">     996 </span><span class="lineNoCov">          0 :     va_list  args;</span></a>
 <a name="997"><span class="lineNum">     997 </span>            : </a>
 <a name="998"><span class="lineNum">     998 </span><span class="lineNoCov">          0 :     last = errstr + NGX_MAX_CONF_ERRSTR;</span></a>
 <a name="999"><span class="lineNum">     999 </span>            : </a>

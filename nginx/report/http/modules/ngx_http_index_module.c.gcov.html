@@ -31,13 +31,13 @@
             <td class="headerValue">report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">92</td>
-            <td class="headerCovTableEntry">201</td>
-            <td class="headerCovTableEntryLo">45.8 %</td>
+            <td class="headerCovTableEntry">97</td>
+            <td class="headerCovTableEntry">208</td>
+            <td class="headerCovTableEntryLo">46.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -159,14 +159,14 @@
 <a name="97"><span class="lineNum">      97 </span><span class="lineCov">          5 : ngx_http_index_handler(ngx_http_request_t *r)</span></a>
 <a name="98"><span class="lineNum">      98 </span>            : {</a>
 <a name="99"><span class="lineNum">      99 </span>            :     u_char                       *p, *name;</a>
-<a name="100"><span class="lineNum">     100 </span>            :     size_t                        len, root, reserve, allocated;</a>
+<a name="100"><span class="lineNum">     100 </span><span class="lineCov">          5 :     size_t                        len, root, reserve, allocated;</span></a>
 <a name="101"><span class="lineNum">     101 </span>            :     ngx_int_t                     rc;</a>
-<a name="102"><span class="lineNum">     102 </span>            :     ngx_str_t                     path, uri;</a>
+<a name="102"><span class="lineNum">     102 </span><span class="lineCov">          5 :     ngx_str_t                     path, uri;</span></a>
 <a name="103"><span class="lineNum">     103 </span>            :     ngx_uint_t                    i, dir_tested;</a>
 <a name="104"><span class="lineNum">     104 </span>            :     ngx_http_index_t             *index;</a>
-<a name="105"><span class="lineNum">     105 </span>            :     ngx_open_file_info_t          of;</a>
+<a name="105"><span class="lineNum">     105 </span><span class="lineCov">          5 :     ngx_open_file_info_t          of;</span></a>
 <a name="106"><span class="lineNum">     106 </span>            :     ngx_http_script_code_pt       code;</a>
-<a name="107"><span class="lineNum">     107 </span>            :     ngx_http_script_engine_t      e;</a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">          5 :     ngx_http_script_engine_t      e;</span></a>
 <a name="108"><span class="lineNum">     108 </span>            :     ngx_http_core_loc_conf_t     *clcf;</a>
 <a name="109"><span class="lineNum">     109 </span>            :     ngx_http_index_loc_conf_t    *ilcf;</a>
 <a name="110"><span class="lineNum">     110 </span>            :     ngx_http_script_len_code_pt   lcode;</a>
@@ -348,8 +348,8 @@
 <a name="286"><span class="lineNum">     286 </span>            :     u_char *path, u_char *last)</a>
 <a name="287"><span class="lineNum">     287 </span>            : {</a>
 <a name="288"><span class="lineNum">     288 </span>            :     u_char                c;</a>
-<a name="289"><span class="lineNum">     289 </span>            :     ngx_str_t             dir;</a>
-<a name="290"><span class="lineNum">     290 </span>            :     ngx_open_file_info_t  of;</a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineNoCov">          0 :     ngx_str_t             dir;</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineNoCov">          0 :     ngx_open_file_info_t  of;</span></a>
 <a name="291"><span class="lineNum">     291 </span>            : </a>
 <a name="292"><span class="lineNum">     292 </span><span class="lineNoCov">          0 :     c = *last;</span></a>
 <a name="293"><span class="lineNum">     293 </span><span class="lineNoCov">          0 :     if (c != '/' || path == last) {</span></a>
@@ -530,7 +530,7 @@
 <a name="468"><span class="lineNum">     468 </span>            :     ngx_str_t                  *value;</a>
 <a name="469"><span class="lineNum">     469 </span>            :     ngx_uint_t                  i, n;</a>
 <a name="470"><span class="lineNum">     470 </span>            :     ngx_http_index_t           *index;</a>
-<a name="471"><span class="lineNum">     471 </span>            :     ngx_http_script_compile_t   sc;</a>
+<a name="471"><span class="lineNum">     471 </span><span class="lineCov">          1 :     ngx_http_script_compile_t   sc;</span></a>
 <a name="472"><span class="lineNum">     472 </span>            : </a>
 <a name="473"><span class="lineNum">     473 </span><span class="lineCov">          1 :     if (ilcf-&gt;indices == NULL) {</span></a>
 <a name="474"><span class="lineNum">     474 </span><span class="lineCov">          1 :         ilcf-&gt;indices = ngx_array_create(cf-&gt;pool, 2, sizeof(ngx_http_index_t));</span></a>

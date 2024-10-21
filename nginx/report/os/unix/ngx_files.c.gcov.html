@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">15</td>
-            <td class="headerCovTableEntry">196</td>
-            <td class="headerCovTableEntryLo">7.7 %</td>
+            <td class="headerCovTableEntry">204</td>
+            <td class="headerCovTableEntryLo">7.4 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -358,8 +358,8 @@
 <a name="296"><span class="lineNum">     296 </span>            :     ngx_pool_t *pool)</a>
 <a name="297"><span class="lineNum">     297 </span>            : {</a>
 <a name="298"><span class="lineNum">     298 </span>            :     ssize_t        total, n;</a>
-<a name="299"><span class="lineNum">     299 </span>            :     ngx_iovec_t    vec;</a>
-<a name="300"><span class="lineNum">     300 </span>            :     struct iovec   iovs[NGX_IOVS_PREALLOCATE];</a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineNoCov">          0 :     ngx_iovec_t    vec;</span></a>
+<a name="300"><span class="lineNum">     300 </span><span class="lineNoCov">          0 :     struct iovec   iovs[NGX_IOVS_PREALLOCATE];</span></a>
 <a name="301"><span class="lineNum">     301 </span>            : </a>
 <a name="302"><span class="lineNum">     302 </span>            :     /* use pwrite() if there is the only buf in a chain */</a>
 <a name="303"><span class="lineNum">     303 </span>            : </a>
@@ -666,7 +666,7 @@
 <a name="604"><span class="lineNum">     604 </span>            : ngx_int_t</a>
 <a name="605"><span class="lineNum">     605 </span><span class="lineNoCov">          0 : ngx_set_file_time(u_char *name, ngx_fd_t fd, time_t s)</span></a>
 <a name="606"><span class="lineNum">     606 </span>            : {</a>
-<a name="607"><span class="lineNum">     607 </span>            :     struct timeval  tv[2];</a>
+<a name="607"><span class="lineNum">     607 </span><span class="lineNoCov">          0 :     struct timeval  tv[2];</span></a>
 <a name="608"><span class="lineNum">     608 </span>            : </a>
 <a name="609"><span class="lineNum">     609 </span><span class="lineNoCov">          0 :     tv[0].tv_sec = ngx_time();</span></a>
 <a name="610"><span class="lineNum">     610 </span><span class="lineNoCov">          0 :     tv[0].tv_usec = 0;</span></a>
@@ -824,7 +824,7 @@
 <a name="762"><span class="lineNum">     762 </span>            : ngx_err_t</a>
 <a name="763"><span class="lineNum">     763 </span><span class="lineNoCov">          0 : ngx_trylock_fd(ngx_fd_t fd)</span></a>
 <a name="764"><span class="lineNum">     764 </span>            : {</a>
-<a name="765"><span class="lineNum">     765 </span>            :     struct flock  fl;</a>
+<a name="765"><span class="lineNum">     765 </span><span class="lineNoCov">          0 :     struct flock  fl;</span></a>
 <a name="766"><span class="lineNum">     766 </span>            : </a>
 <a name="767"><span class="lineNum">     767 </span><span class="lineNoCov">          0 :     ngx_memzero(&amp;fl, sizeof(struct flock));</span></a>
 <a name="768"><span class="lineNum">     768 </span><span class="lineNoCov">          0 :     fl.l_type = F_WRLCK;</span></a>
@@ -841,7 +841,7 @@
 <a name="779"><span class="lineNum">     779 </span>            : ngx_err_t</a>
 <a name="780"><span class="lineNum">     780 </span><span class="lineNoCov">          0 : ngx_lock_fd(ngx_fd_t fd)</span></a>
 <a name="781"><span class="lineNum">     781 </span>            : {</a>
-<a name="782"><span class="lineNum">     782 </span>            :     struct flock  fl;</a>
+<a name="782"><span class="lineNum">     782 </span><span class="lineNoCov">          0 :     struct flock  fl;</span></a>
 <a name="783"><span class="lineNum">     783 </span>            : </a>
 <a name="784"><span class="lineNum">     784 </span><span class="lineNoCov">          0 :     ngx_memzero(&amp;fl, sizeof(struct flock));</span></a>
 <a name="785"><span class="lineNum">     785 </span><span class="lineNoCov">          0 :     fl.l_type = F_WRLCK;</span></a>
@@ -858,7 +858,7 @@
 <a name="796"><span class="lineNum">     796 </span>            : ngx_err_t</a>
 <a name="797"><span class="lineNum">     797 </span><span class="lineNoCov">          0 : ngx_unlock_fd(ngx_fd_t fd)</span></a>
 <a name="798"><span class="lineNum">     798 </span>            : {</a>
-<a name="799"><span class="lineNum">     799 </span>            :     struct flock  fl;</a>
+<a name="799"><span class="lineNum">     799 </span><span class="lineNoCov">          0 :     struct flock  fl;</span></a>
 <a name="800"><span class="lineNum">     800 </span>            : </a>
 <a name="801"><span class="lineNum">     801 </span><span class="lineNoCov">          0 :     ngx_memzero(&amp;fl, sizeof(struct flock));</span></a>
 <a name="802"><span class="lineNum">     802 </span><span class="lineNoCov">          0 :     fl.l_type = F_UNLCK;</span></a>
@@ -931,7 +931,7 @@
 <a name="869"><span class="lineNum">     869 </span>            : size_t</a>
 <a name="870"><span class="lineNum">     870 </span><span class="lineNoCov">          0 : ngx_fs_bsize(u_char *name)</span></a>
 <a name="871"><span class="lineNum">     871 </span>            : {</a>
-<a name="872"><span class="lineNum">     872 </span>            :     struct statfs  fs;</a>
+<a name="872"><span class="lineNum">     872 </span><span class="lineNoCov">          0 :     struct statfs  fs;</span></a>
 <a name="873"><span class="lineNum">     873 </span>            : </a>
 <a name="874"><span class="lineNum">     874 </span><span class="lineNoCov">          0 :     if (statfs((char *) name, &amp;fs) == -1) {</span></a>
 <a name="875"><span class="lineNum">     875 </span><span class="lineNoCov">          0 :         return 512;</span></a>
@@ -954,7 +954,7 @@
 <a name="892"><span class="lineNum">     892 </span>            : off_t</a>
 <a name="893"><span class="lineNum">     893 </span><span class="lineNoCov">          0 : ngx_fs_available(u_char *name)</span></a>
 <a name="894"><span class="lineNum">     894 </span>            : {</a>
-<a name="895"><span class="lineNum">     895 </span>            :     struct statfs  fs;</a>
+<a name="895"><span class="lineNum">     895 </span><span class="lineNoCov">          0 :     struct statfs  fs;</span></a>
 <a name="896"><span class="lineNum">     896 </span>            : </a>
 <a name="897"><span class="lineNum">     897 </span><span class="lineNoCov">          0 :     if (statfs((char *) name, &amp;fs) == -1) {</span></a>
 <a name="898"><span class="lineNum">     898 </span><span class="lineNoCov">          0 :         return NGX_MAX_OFF_T_VALUE;</span></a>

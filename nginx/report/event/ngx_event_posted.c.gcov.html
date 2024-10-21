@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -78,12 +78,12 @@
 <a name="16"><span class="lineNum">      16 </span>            : </a>
 <a name="17"><span class="lineNum">      17 </span>            : </a>
 <a name="18"><span class="lineNum">      18 </span>            : void</a>
-<a name="19"><span class="lineNum">      19 </span><span class="lineCov">        135 : ngx_event_process_posted(ngx_cycle_t *cycle, ngx_queue_t *posted)</span></a>
+<a name="19"><span class="lineNum">      19 </span><span class="lineCov">        133 : ngx_event_process_posted(ngx_cycle_t *cycle, ngx_queue_t *posted)</span></a>
 <a name="20"><span class="lineNum">      20 </span>            : {</a>
 <a name="21"><span class="lineNum">      21 </span>            :     ngx_queue_t  *q;</a>
 <a name="22"><span class="lineNum">      22 </span>            :     ngx_event_t  *ev;</a>
 <a name="23"><span class="lineNum">      23 </span>            : </a>
-<a name="24"><span class="lineNum">      24 </span><span class="lineCov">        135 :     while (!ngx_queue_empty(posted)) {</span></a>
+<a name="24"><span class="lineNum">      24 </span><span class="lineCov">        133 :     while (!ngx_queue_empty(posted)) {</span></a>
 <a name="25"><span class="lineNum">      25 </span>            : </a>
 <a name="26"><span class="lineNum">      26 </span><span class="lineNoCov">          0 :         q = ngx_queue_head(posted);</span></a>
 <a name="27"><span class="lineNum">      27 </span><span class="lineNoCov">          0 :         ev = ngx_queue_data(q, ngx_event_t, queue);</span></a>
@@ -95,7 +95,7 @@
 <a name="33"><span class="lineNum">      33 </span>            : </a>
 <a name="34"><span class="lineNum">      34 </span><span class="lineNoCov">          0 :         ev-&gt;handler(ev);</span></a>
 <a name="35"><span class="lineNum">      35 </span>            :     }</a>
-<a name="36"><span class="lineNum">      36 </span><span class="lineCov">        135 : }</span></a>
+<a name="36"><span class="lineNum">      36 </span><span class="lineCov">        133 : }</span></a>
 <a name="37"><span class="lineNum">      37 </span>            : </a>
 <a name="38"><span class="lineNum">      38 </span>            : </a>
 <a name="39"><span class="lineNum">      39 </span>            : void</a>

@@ -31,13 +31,13 @@
             <td class="headerValue">report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">24</td>
-            <td class="headerCovTableEntry">86</td>
-            <td class="headerCovTableEntryLo">27.9 %</td>
+            <td class="headerCovTableEntry">28</td>
+            <td class="headerCovTableEntry">91</td>
+            <td class="headerCovTableEntryLo">30.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -111,16 +111,16 @@
 <a name="49"><span class="lineNum">      49 </span>            : ngx_chain_t *</a>
 <a name="50"><span class="lineNum">      50 </span><span class="lineCov">         29 : ngx_linux_sendfile_chain(ngx_connection_t *c, ngx_chain_t *in, off_t limit)</span></a>
 <a name="51"><span class="lineNum">      51 </span>            : {</a>
-<a name="52"><span class="lineNum">      52 </span>            :     int            tcp_nodelay;</a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">         29 :     int            tcp_nodelay;</span></a>
 <a name="53"><span class="lineNum">      53 </span>            :     off_t          send, prev_send;</a>
 <a name="54"><span class="lineNum">      54 </span>            :     size_t         file_size, sent;</a>
 <a name="55"><span class="lineNum">      55 </span>            :     ssize_t        n;</a>
 <a name="56"><span class="lineNum">      56 </span>            :     ngx_err_t      err;</a>
 <a name="57"><span class="lineNum">      57 </span>            :     ngx_buf_t     *file;</a>
 <a name="58"><span class="lineNum">      58 </span>            :     ngx_event_t   *wev;</a>
-<a name="59"><span class="lineNum">      59 </span>            :     ngx_chain_t   *cl;</a>
-<a name="60"><span class="lineNum">      60 </span>            :     ngx_iovec_t    header;</a>
-<a name="61"><span class="lineNum">      61 </span>            :     struct iovec   headers[NGX_IOVS_PREALLOCATE];</a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">         29 :     ngx_chain_t   *cl;</span></a>
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">         29 :     ngx_iovec_t    header;</span></a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">         29 :     struct iovec   headers[NGX_IOVS_PREALLOCATE];</span></a>
 <a name="62"><span class="lineNum">      62 </span>            : </a>
 <a name="63"><span class="lineNum">      63 </span><span class="lineCov">         29 :     wev = c-&gt;write;</span></a>
 <a name="64"><span class="lineNum">      64 </span>            : </a>
@@ -294,7 +294,7 @@
 <a name="232"><span class="lineNum">     232 </span><span class="lineNoCov">          0 : ngx_linux_sendfile(ngx_connection_t *c, ngx_buf_t *file, size_t size)</span></a>
 <a name="233"><span class="lineNum">     233 </span>            : {</a>
 <a name="234"><span class="lineNum">     234 </span>            : #if (NGX_HAVE_SENDFILE64)</a>
-<a name="235"><span class="lineNum">     235 </span>            :     off_t      offset;</a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineNoCov">          0 :     off_t      offset;</span></a>
 <a name="236"><span class="lineNum">     236 </span>            : #else</a>
 <a name="237"><span class="lineNum">     237 </span>            :     int32_t    offset;</a>
 <a name="238"><span class="lineNum">     238 </span>            : #endif</a>

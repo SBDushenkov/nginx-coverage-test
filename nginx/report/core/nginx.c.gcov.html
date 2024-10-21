@@ -31,13 +31,13 @@
             <td class="headerValue">report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">200</td>
-            <td class="headerCovTableEntry">611</td>
-            <td class="headerCovTableEntryLo">32.7 %</td>
+            <td class="headerCovTableEntry">202</td>
+            <td class="headerCovTableEntry">616</td>
+            <td class="headerCovTableEntryLo">32.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">11</td>
@@ -261,7 +261,7 @@
 <a name="199"><span class="lineNum">     199 </span>            :     ngx_buf_t        *b;</a>
 <a name="200"><span class="lineNum">     200 </span>            :     ngx_log_t        *log;</a>
 <a name="201"><span class="lineNum">     201 </span>            :     ngx_uint_t        i;</a>
-<a name="202"><span class="lineNum">     202 </span>            :     ngx_cycle_t      *cycle, init_cycle;</a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">         16 :     ngx_cycle_t      *cycle, init_cycle;</span></a>
 <a name="203"><span class="lineNum">     203 </span>            :     ngx_conf_dump_t  *cd;</a>
 <a name="204"><span class="lineNum">     204 </span>            :     ngx_core_conf_t  *ccf;</a>
 <a name="205"><span class="lineNum">     205 </span>            : </a>
@@ -625,9 +625,9 @@
 <a name="563"><span class="lineNum">     563 </span><span class="lineNoCov">          0 :             continue;</span></a>
 <a name="564"><span class="lineNum">     564 </span>            :         }</a>
 <a name="565"><span class="lineNum">     565 </span>            : </a>
-<a name="566"><span class="lineNum">     566 </span><span class="lineCov">        434 :         for (p = ngx_os_environ; *p; p++) {</span></a>
+<a name="566"><span class="lineNum">     566 </span><span class="lineCov">        441 :         for (p = ngx_os_environ; *p; p++) {</span></a>
 <a name="567"><span class="lineNum">     567 </span>            : </a>
-<a name="568"><span class="lineNum">     568 </span><span class="lineCov">        427 :             if (ngx_strncmp(*p, var[i].data, var[i].len) == 0</span></a>
+<a name="568"><span class="lineNum">     568 </span><span class="lineCov">        434 :             if (ngx_strncmp(*p, var[i].data, var[i].len) == 0</span></a>
 <a name="569"><span class="lineNum">     569 </span><span class="lineNoCov">          0 :                 &amp;&amp; (*p)[var[i].len] == '=')</span></a>
 <a name="570"><span class="lineNum">     570 </span>            :             {</a>
 <a name="571"><span class="lineNum">     571 </span><span class="lineNoCov">          0 :                 n++;</span></a>
@@ -692,9 +692,9 @@
 <a name="630"><span class="lineNum">     630 </span><span class="lineNoCov">          0 :             continue;</span></a>
 <a name="631"><span class="lineNum">     631 </span>            :         }</a>
 <a name="632"><span class="lineNum">     632 </span>            : </a>
-<a name="633"><span class="lineNum">     633 </span><span class="lineCov">        434 :         for (p = ngx_os_environ; *p; p++) {</span></a>
+<a name="633"><span class="lineNum">     633 </span><span class="lineCov">        441 :         for (p = ngx_os_environ; *p; p++) {</span></a>
 <a name="634"><span class="lineNum">     634 </span>            : </a>
-<a name="635"><span class="lineNum">     635 </span><span class="lineCov">        427 :             if (ngx_strncmp(*p, var[i].data, var[i].len) == 0</span></a>
+<a name="635"><span class="lineNum">     635 </span><span class="lineCov">        434 :             if (ngx_strncmp(*p, var[i].data, var[i].len) == 0</span></a>
 <a name="636"><span class="lineNum">     636 </span><span class="lineNoCov">          0 :                 &amp;&amp; (*p)[var[i].len] == '=')</span></a>
 <a name="637"><span class="lineNum">     637 </span>            :             {</a>
 <a name="638"><span class="lineNum">     638 </span><span class="lineNoCov">          0 :                 env[n++] = *p;</span></a>
@@ -761,9 +761,9 @@
 <a name="699"><span class="lineNum">     699 </span>            : {</a>
 <a name="700"><span class="lineNum">     700 </span>            :     char             **env, *var;</a>
 <a name="701"><span class="lineNum">     701 </span>            :     u_char            *p;</a>
-<a name="702"><span class="lineNum">     702 </span>            :     ngx_uint_t         i, n;</a>
+<a name="702"><span class="lineNum">     702 </span><span class="lineNoCov">          0 :     ngx_uint_t         i, n;</span></a>
 <a name="703"><span class="lineNum">     703 </span>            :     ngx_pid_t          pid;</a>
-<a name="704"><span class="lineNum">     704 </span>            :     ngx_exec_ctx_t     ctx;</a>
+<a name="704"><span class="lineNum">     704 </span><span class="lineNoCov">          0 :     ngx_exec_ctx_t     ctx;</span></a>
 <a name="705"><span class="lineNum">     705 </span>            :     ngx_core_conf_t   *ccf;</a>
 <a name="706"><span class="lineNum">     706 </span>            :     ngx_listening_t   *ls;</a>
 <a name="707"><span class="lineNum">     707 </span>            : </a>
@@ -1283,7 +1283,7 @@
 <a name="1221"><span class="lineNum">    1221 </span>            :     }</a>
 <a name="1222"><span class="lineNum">    1222 </span>            : </a>
 <a name="1223"><span class="lineNum">    1223 </span>            :     {</a>
-<a name="1224"><span class="lineNum">    1224 </span>            :     ngx_str_t  lock_file;</a>
+<a name="1224"><span class="lineNum">    1224 </span><span class="lineCov">         22 :     ngx_str_t  lock_file;</span></a>
 <a name="1225"><span class="lineNum">    1225 </span>            : </a>
 <a name="1226"><span class="lineNum">    1226 </span><span class="lineCov">         22 :     lock_file = cycle-&gt;old_cycle-&gt;lock_file;</span></a>
 <a name="1227"><span class="lineNum">    1227 </span>            : </a>
@@ -1646,7 +1646,7 @@
 <a name="1584"><span class="lineNum">    1584 </span>            : #if (NGX_HAVE_DLOPEN)</a>
 <a name="1585"><span class="lineNum">    1585 </span>            :     void                *handle;</a>
 <a name="1586"><span class="lineNum">    1586 </span>            :     char               **names, **order;</a>
-<a name="1587"><span class="lineNum">    1587 </span>            :     ngx_str_t           *value, file;</a>
+<a name="1587"><span class="lineNum">    1587 </span><span class="lineNoCov">          0 :     ngx_str_t           *value, file;</span></a>
 <a name="1588"><span class="lineNum">    1588 </span>            :     ngx_uint_t           i;</a>
 <a name="1589"><span class="lineNum">    1589 </span>            :     ngx_module_t        *module, **modules;</a>
 <a name="1590"><span class="lineNum">    1590 </span>            :     ngx_pool_cleanup_t  *cln;</a>

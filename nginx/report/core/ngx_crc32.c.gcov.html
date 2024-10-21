@@ -31,13 +31,13 @@
             <td class="headerValue">report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntry">5</td>
             <td class="headerCovTableEntry">12</td>
-            <td class="headerCovTableEntryMed">83.3 %</td>
+            <td class="headerCovTableEntryLo">41.7 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -173,21 +173,21 @@
 <a name="111"><span class="lineNum">     111 </span><span class="lineCov">         16 :           &amp; ~((uintptr_t) ngx_cacheline_size - 1))</span></a>
 <a name="112"><span class="lineNum">     112 </span><span class="lineCov">         16 :         == (uintptr_t) ngx_crc32_table_short)</span></a>
 <a name="113"><span class="lineNum">     113 </span>            :     {</a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">         16 :         return NGX_OK;</span></a>
 <a name="115"><span class="lineNum">     115 </span>            :     }</a>
 <a name="116"><span class="lineNum">     116 </span>            : </a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">         16 :     p = ngx_alloc(16 * sizeof(uint32_t) + ngx_cacheline_size, ngx_cycle-&gt;log);</span></a>
-<a name="118"><span class="lineNum">     118 </span><span class="lineCov">         16 :     if (p == NULL) {</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineNoCov">          0 :     p = ngx_alloc(16 * sizeof(uint32_t) + ngx_cacheline_size, ngx_cycle-&gt;log);</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineNoCov">          0 :     if (p == NULL) {</span></a>
 <a name="119"><span class="lineNum">     119 </span><span class="lineNoCov">          0 :         return NGX_ERROR;</span></a>
 <a name="120"><span class="lineNum">     120 </span>            :     }</a>
 <a name="121"><span class="lineNum">     121 </span>            : </a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">         16 :     p = ngx_align_ptr(p, ngx_cacheline_size);</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineNoCov">          0 :     p = ngx_align_ptr(p, ngx_cacheline_size);</span></a>
 <a name="123"><span class="lineNum">     123 </span>            : </a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">         16 :     ngx_memcpy(p, ngx_crc32_table16, 16 * sizeof(uint32_t));</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineNoCov">          0 :     ngx_memcpy(p, ngx_crc32_table16, 16 * sizeof(uint32_t));</span></a>
 <a name="125"><span class="lineNum">     125 </span>            : </a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineCov">         16 :     ngx_crc32_table_short = p;</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineNoCov">          0 :     ngx_crc32_table_short = p;</span></a>
 <a name="127"><span class="lineNum">     127 </span>            : </a>
-<a name="128"><span class="lineNum">     128 </span><span class="lineCov">         16 :     return NGX_OK;</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineNoCov">          0 :     return NGX_OK;</span></a>
 <a name="129"><span class="lineNum">     129 </span>            : }</a>
 </pre>
       </td>

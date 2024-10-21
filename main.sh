@@ -33,11 +33,13 @@ fi
 
 coverage_dir="${WORK_DIR:?}"/coverage
 report_dir="${WORK_DIR:?}"/report
+sanitizer_log="${WORK_DIR:?}"/sanitizer-log
 test_result_dir="${WORK_DIR:?}"/test-result
 
 rm -rf "${coverage_dir:?}"
 rm -rf "${report_dir:?}"
 rm -rf "${test_result_dir:?}"
+rm -rf "${sanitizer_log:?}"
 
 mkdir "${report_dir:?}"
 mkdir "${test_result_dir:?}"
@@ -67,8 +69,10 @@ echo "configuring dbg with prefix=${prefix}"
 
 #--builddir=./target/ должно быть относительным и внутри. нужно разбираться
 
+#sudo apt-get install zlib1g-dev libpcre3 libpcre3-dev libbz2-dev libssl-dev build-essential
+
 ./auto/configure \
---with-cc-opt='-O0 --coverage' \
+--with-cc-opt='-O0 --coverage -fsanitize=address -static-libasan -g ' \
 --prefix="${prefix}" \
 --build=nginx-dbg \
 --builddir=./target/ \
@@ -118,8 +122,9 @@ echo "configuring dbg with prefix=${prefix}"
 
 echo "configuration dbg done"
 
+
 echo "patching makefile"
-sed -i 's/\t-Wl,-E/\t-Wl,-E --coverage/' ./target/Makefile
+sed -i 's/\t-Wl,-E/\t-Wl,-E --coverage -fsanitize=address -static-libasan -g/' ./target/Makefile
 
 echo "installing"
 make -f ./Makefile install
@@ -136,6 +141,21 @@ echo "starting nginx"
 pgrep -u "${USER}" nginx | while read -r pid ; do
   kill -9 "${pid}"
 done
+
+# 1. Чтобы отлаживались внешние библиотеки linux нужен su. Нам анализ printf не нужен
+# 2. https://forum.nginx.org/read.php?21,291313,291315#msg-291315
+# Практика есть, но конкретно leak sanitizer бесполезен примерно
+  #полностью: реальных утечек в nginx'е он не ловит, так как
+  #используются pool allocator'ы, но при этом ругается на любыые
+  #аллокации, не освобождённые явно перед выходом. Что делать всегда
+  #не обязательно (при выходе процесса вся выделенная память
+  #освобождается автоматически), а в некоторых случаях и вообще
+  #невозможно (скажем, память, выделенную под какой-нибудь environ,
+  #освобождать нельзя, она используется при выходе). Хорошее решение -
+  #выключить leak sanitizer и забыть.
+
+#export ASAN_OPTIONS="log_path=${sanitizer_log}/log "
+export ASAN_OPTIONS="log_path=${sanitizer_log}/log detect_leaks=0 "
 
 ./target/nginx || {
     echo "failed to start nginx. no result generated" 1>&2

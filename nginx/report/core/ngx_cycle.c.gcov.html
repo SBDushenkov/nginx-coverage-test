@@ -31,13 +31,13 @@
             <td class="headerValue">report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">216</td>
-            <td class="headerCovTableEntry">618</td>
-            <td class="headerCovTableEntryLo">35.0 %</td>
+            <td class="headerCovTableEntry">222</td>
+            <td class="headerCovTableEntry">625</td>
+            <td class="headerCovTableEntryLo">35.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">6</td>
@@ -105,7 +105,7 @@
 <a name="43"><span class="lineNum">      43 </span>            :     ngx_uint_t           i, n;</a>
 <a name="44"><span class="lineNum">      44 </span>            :     ngx_log_t           *log;</a>
 <a name="45"><span class="lineNum">      45 </span>            :     ngx_time_t          *tp;</a>
-<a name="46"><span class="lineNum">      46 </span>            :     ngx_conf_t           conf;</a>
+<a name="46"><span class="lineNum">      46 </span><span class="lineCov">         22 :     ngx_conf_t           conf;</span></a>
 <a name="47"><span class="lineNum">      47 </span>            :     ngx_pool_t          *pool;</a>
 <a name="48"><span class="lineNum">      48 </span>            :     ngx_cycle_t         *cycle, **old;</a>
 <a name="49"><span class="lineNum">      49 </span>            :     ngx_shm_zone_t      *shm_zone, *oshm_zone;</a>
@@ -114,7 +114,7 @@
 <a name="52"><span class="lineNum">      52 </span>            :     ngx_listening_t     *ls, *nls;</a>
 <a name="53"><span class="lineNum">      53 </span>            :     ngx_core_conf_t     *ccf, *old_ccf;</a>
 <a name="54"><span class="lineNum">      54 </span>            :     ngx_core_module_t   *module;</a>
-<a name="55"><span class="lineNum">      55 </span>            :     char                 hostname[NGX_MAXHOSTNAMELEN];</a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">         22 :     char                 hostname[NGX_MAXHOSTNAMELEN];</span></a>
 <a name="56"><span class="lineNum">      56 </span>            : </a>
 <a name="57"><span class="lineNum">      57 </span><span class="lineCov">         22 :     ngx_timezone_update();</span></a>
 <a name="58"><span class="lineNum">      58 </span>            : </a>
@@ -1082,8 +1082,8 @@
 <a name="1020"><span class="lineNum">    1020 </span>            :     size_t      len;</a>
 <a name="1021"><span class="lineNum">    1021 </span>            :     ngx_int_t   rc;</a>
 <a name="1022"><span class="lineNum">    1022 </span>            :     ngx_uint_t  create;</a>
-<a name="1023"><span class="lineNum">    1023 </span>            :     ngx_file_t  file;</a>
-<a name="1024"><span class="lineNum">    1024 </span>            :     u_char      pid[NGX_INT64_LEN + 2];</a>
+<a name="1023"><span class="lineNum">    1023 </span><span class="lineCov">          1 :     ngx_file_t  file;</span></a>
+<a name="1024"><span class="lineNum">    1024 </span><span class="lineCov">          1 :     u_char      pid[NGX_INT64_LEN + 2];</span></a>
 <a name="1025"><span class="lineNum">    1025 </span>            : </a>
 <a name="1026"><span class="lineNum">    1026 </span><span class="lineCov">          1 :     if (ngx_process &gt; NGX_PROCESS_MASTER) {</span></a>
 <a name="1027"><span class="lineNum">    1027 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
@@ -1146,9 +1146,9 @@
 <a name="1084"><span class="lineNum">    1084 </span>            : {</a>
 <a name="1085"><span class="lineNum">    1085 </span>            :     ssize_t           n;</a>
 <a name="1086"><span class="lineNum">    1086 </span>            :     ngx_pid_t         pid;</a>
-<a name="1087"><span class="lineNum">    1087 </span>            :     ngx_file_t        file;</a>
+<a name="1087"><span class="lineNum">    1087 </span><span class="lineCov">         15 :     ngx_file_t        file;</span></a>
 <a name="1088"><span class="lineNum">    1088 </span>            :     ngx_core_conf_t  *ccf;</a>
-<a name="1089"><span class="lineNum">    1089 </span>            :     u_char            buf[NGX_INT64_LEN + 2];</a>
+<a name="1089"><span class="lineNum">    1089 </span><span class="lineCov">         15 :     u_char            buf[NGX_INT64_LEN + 2];</span></a>
 <a name="1090"><span class="lineNum">    1090 </span>            : </a>
 <a name="1091"><span class="lineNum">    1091 </span><span class="lineCov">         15 :     ngx_log_error(NGX_LOG_NOTICE, cycle-&gt;log, 0, &quot;signal process started&quot;);</span></a>
 <a name="1092"><span class="lineNum">    1092 </span>            : </a>
@@ -1271,7 +1271,7 @@
 <a name="1209"><span class="lineNum">    1209 </span>            : </a>
 <a name="1210"><span class="lineNum">    1210 </span>            : #if !(NGX_WIN32)</a>
 <a name="1211"><span class="lineNum">    1211 </span><span class="lineNoCov">          0 :         if (user != (ngx_uid_t) NGX_CONF_UNSET_UINT) {</span></a>
-<a name="1212"><span class="lineNum">    1212 </span>            :             ngx_file_info_t  fi;</a>
+<a name="1212"><span class="lineNum">    1212 </span><span class="lineNoCov">          0 :             ngx_file_info_t  fi;</span></a>
 <a name="1213"><span class="lineNum">    1213 </span>            : </a>
 <a name="1214"><span class="lineNum">    1214 </span><span class="lineNoCov">          0 :             if (ngx_file_info(file[i].name.data, &amp;fi) == NGX_FILE_ERROR) {</span></a>
 <a name="1215"><span class="lineNum">    1215 </span><span class="lineNoCov">          0 :                 ngx_log_error(NGX_LOG_EMERG, cycle-&gt;log, ngx_errno,</span></a>

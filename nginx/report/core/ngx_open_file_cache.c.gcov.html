@@ -31,13 +31,13 @@
             <td class="headerValue">report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">61</td>
-            <td class="headerCovTableEntry">490</td>
-            <td class="headerCovTableEntryLo">12.4 %</td>
+            <td class="headerCovTableEntry">64</td>
+            <td class="headerCovTableEntry">494</td>
+            <td class="headerCovTableEntryLo">13.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -209,7 +209,7 @@
 <a name="147"><span class="lineNum">     147 </span>            :     time_t                          now;</a>
 <a name="148"><span class="lineNum">     148 </span>            :     uint32_t                        hash;</a>
 <a name="149"><span class="lineNum">     149 </span>            :     ngx_int_t                       rc;</a>
-<a name="150"><span class="lineNum">     150 </span>            :     ngx_file_info_t                 fi;</a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">          5 :     ngx_file_info_t                 fi;</span></a>
 <a name="151"><span class="lineNum">     151 </span>            :     ngx_pool_cleanup_t             *cln;</a>
 <a name="152"><span class="lineNum">     152 </span>            :     ngx_cached_open_file_t         *file;</a>
 <a name="153"><span class="lineNum">     153 </span>            :     ngx_pool_cleanup_file_t        *clnf;</a>
@@ -556,7 +556,7 @@
 <a name="494"><span class="lineNum">     494 </span>            : {</a>
 <a name="495"><span class="lineNum">     495 </span>            :     ngx_fd_t         fd;</a>
 <a name="496"><span class="lineNum">     496 </span>            :     ngx_err_t        err;</a>
-<a name="497"><span class="lineNum">     497 </span>            :     ngx_file_info_t  fi, atfi;</a>
+<a name="497"><span class="lineNum">     497 </span><span class="lineNoCov">          0 :     ngx_file_info_t  fi, atfi;</span></a>
 <a name="498"><span class="lineNum">     498 </span>            : </a>
 <a name="499"><span class="lineNum">     499 </span>            :     /*</a>
 <a name="500"><span class="lineNum">     500 </span>            :      * To allow symlinks with the same owner, use openat() (followed</a>
@@ -694,7 +694,7 @@
 <a name="632"><span class="lineNum">     632 </span>            : </a>
 <a name="633"><span class="lineNum">     633 </span>            :     u_char           *p, *cp, *end;</a>
 <a name="634"><span class="lineNum">     634 </span>            :     ngx_fd_t          at_fd;</a>
-<a name="635"><span class="lineNum">     635 </span>            :     ngx_str_t         at_name;</a>
+<a name="635"><span class="lineNum">     635 </span><span class="lineCov">          3 :     ngx_str_t         at_name;</span></a>
 <a name="636"><span class="lineNum">     636 </span>            : </a>
 <a name="637"><span class="lineNum">     637 </span><span class="lineCov">          3 :     if (of-&gt;disable_symlinks == NGX_DISABLE_SYMLINKS_OFF) {</span></a>
 <a name="638"><span class="lineNum">     638 </span><span class="lineCov">          3 :         fd = ngx_open_file(name-&gt;data, mode, create, access);</span></a>
@@ -903,7 +903,7 @@
 <a name="841"><span class="lineNum">     841 </span>            :     ngx_log_t *log)</a>
 <a name="842"><span class="lineNum">     842 </span>            : {</a>
 <a name="843"><span class="lineNum">     843 </span>            :     ngx_fd_t         fd;</a>
-<a name="844"><span class="lineNum">     844 </span>            :     ngx_file_info_t  fi;</a>
+<a name="844"><span class="lineNum">     844 </span><span class="lineCov">          3 :     ngx_file_info_t  fi;</span></a>
 <a name="845"><span class="lineNum">     845 </span>            : </a>
 <a name="846"><span class="lineNum">     846 </span><span class="lineCov">          3 :     if (of-&gt;fd != NGX_INVALID_FILE) {</span></a>
 <a name="847"><span class="lineNum">     847 </span>            : </a>

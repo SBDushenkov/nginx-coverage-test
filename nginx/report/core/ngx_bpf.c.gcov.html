@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">54</td>
+            <td class="headerCovTableEntry">60</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -100,9 +100,9 @@
 <a name="38"><span class="lineNum">      38 </span><span class="lineNoCov">          0 : ngx_bpf_load_program(ngx_log_t *log, ngx_bpf_program_t *program)</span></a>
 <a name="39"><span class="lineNum">      39 </span>            : {</a>
 <a name="40"><span class="lineNum">      40 </span>            :     int             fd;</a>
-<a name="41"><span class="lineNum">      41 </span>            :     union bpf_attr  attr;</a>
+<a name="41"><span class="lineNum">      41 </span><span class="lineNoCov">          0 :     union bpf_attr  attr;</span></a>
 <a name="42"><span class="lineNum">      42 </span>            : #if (NGX_DEBUG)</a>
-<a name="43"><span class="lineNum">      43 </span>            :     char            buf[NGX_BPF_LOGBUF_SIZE];</a>
+<a name="43"><span class="lineNum">      43 </span><span class="lineNoCov">          0 :     char            buf[NGX_BPF_LOGBUF_SIZE];</span></a>
 <a name="44"><span class="lineNum">      44 </span>            : #endif</a>
 <a name="45"><span class="lineNum">      45 </span>            : </a>
 <a name="46"><span class="lineNum">      46 </span><span class="lineNoCov">          0 :     ngx_memzero(&amp;attr, sizeof(union bpf_attr));</span></a>
@@ -139,7 +139,7 @@
 <a name="77"><span class="lineNum">      77 </span>            :     int value_size, int max_entries, uint32_t map_flags)</a>
 <a name="78"><span class="lineNum">      78 </span>            : {</a>
 <a name="79"><span class="lineNum">      79 </span>            :     int             fd;</a>
-<a name="80"><span class="lineNum">      80 </span>            :     union bpf_attr  attr;</a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineNoCov">          0 :     union bpf_attr  attr;</span></a>
 <a name="81"><span class="lineNum">      81 </span>            : </a>
 <a name="82"><span class="lineNum">      82 </span><span class="lineNoCov">          0 :     ngx_memzero(&amp;attr, sizeof(union bpf_attr));</span></a>
 <a name="83"><span class="lineNum">      83 </span>            : </a>
@@ -163,7 +163,7 @@
 <a name="101"><span class="lineNum">     101 </span>            : int</a>
 <a name="102"><span class="lineNum">     102 </span><span class="lineNoCov">          0 : ngx_bpf_map_update(int fd, const void *key, const void *value, uint64_t flags)</span></a>
 <a name="103"><span class="lineNum">     103 </span>            : {</a>
-<a name="104"><span class="lineNum">     104 </span>            :     union bpf_attr attr;</a>
+<a name="104"><span class="lineNum">     104 </span><span class="lineNoCov">          0 :     union bpf_attr attr;</span></a>
 <a name="105"><span class="lineNum">     105 </span>            : </a>
 <a name="106"><span class="lineNum">     106 </span><span class="lineNoCov">          0 :     ngx_memzero(&amp;attr, sizeof(union bpf_attr));</span></a>
 <a name="107"><span class="lineNum">     107 </span>            : </a>
@@ -179,7 +179,7 @@
 <a name="117"><span class="lineNum">     117 </span>            : int</a>
 <a name="118"><span class="lineNum">     118 </span><span class="lineNoCov">          0 : ngx_bpf_map_delete(int fd, const void *key)</span></a>
 <a name="119"><span class="lineNum">     119 </span>            : {</a>
-<a name="120"><span class="lineNum">     120 </span>            :     union bpf_attr attr;</a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineNoCov">          0 :     union bpf_attr attr;</span></a>
 <a name="121"><span class="lineNum">     121 </span>            : </a>
 <a name="122"><span class="lineNum">     122 </span><span class="lineNoCov">          0 :     ngx_memzero(&amp;attr, sizeof(union bpf_attr));</span></a>
 <a name="123"><span class="lineNum">     123 </span>            : </a>
@@ -193,7 +193,7 @@
 <a name="131"><span class="lineNum">     131 </span>            : int</a>
 <a name="132"><span class="lineNum">     132 </span><span class="lineNoCov">          0 : ngx_bpf_map_lookup(int fd, const void *key, void *value)</span></a>
 <a name="133"><span class="lineNum">     133 </span>            : {</a>
-<a name="134"><span class="lineNum">     134 </span>            :     union bpf_attr attr;</a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineNoCov">          0 :     union bpf_attr attr;</span></a>
 <a name="135"><span class="lineNum">     135 </span>            : </a>
 <a name="136"><span class="lineNum">     136 </span><span class="lineNoCov">          0 :     ngx_memzero(&amp;attr, sizeof(union bpf_attr));</span></a>
 <a name="137"><span class="lineNum">     137 </span>            : </a>

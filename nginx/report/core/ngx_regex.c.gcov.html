@@ -31,13 +31,13 @@
             <td class="headerValue">report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">52</td>
-            <td class="headerCovTableEntry">161</td>
-            <td class="headerCovTableEntryLo">32.3 %</td>
+            <td class="headerCovTableEntry">53</td>
+            <td class="headerCovTableEntry">166</td>
+            <td class="headerCovTableEntryLo">31.9 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -328,10 +328,10 @@
 <a name="266"><span class="lineNum">     266 </span>            : ngx_int_t</a>
 <a name="267"><span class="lineNum">     267 </span><span class="lineNoCov">          0 : ngx_regex_compile(ngx_regex_compile_t *rc)</span></a>
 <a name="268"><span class="lineNum">     268 </span>            : {</a>
-<a name="269"><span class="lineNum">     269 </span>            :     int               n, erroff;</a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineNoCov">          0 :     int               n, erroff;</span></a>
 <a name="270"><span class="lineNum">     270 </span>            :     char             *p;</a>
 <a name="271"><span class="lineNum">     271 </span>            :     pcre             *re;</a>
-<a name="272"><span class="lineNum">     272 </span>            :     const char       *errstr;</a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineNoCov">          0 :     const char       *errstr;</span></a>
 <a name="273"><span class="lineNum">     273 </span>            :     ngx_uint_t        options;</a>
 <a name="274"><span class="lineNum">     274 </span>            :     ngx_regex_elt_t  *elt;</a>
 <a name="275"><span class="lineNum">     275 </span>            : </a>
@@ -686,7 +686,7 @@
 <a name="624"><span class="lineNum">     624 </span>            : {</a>
 <a name="625"><span class="lineNum">     625 </span>            :     int                opt;</a>
 <a name="626"><span class="lineNum">     626 </span>            : #if !(NGX_PCRE2)</a>
-<a name="627"><span class="lineNum">     627 </span>            :     const char        *errstr;</a>
+<a name="627"><span class="lineNum">     627 </span><span class="lineCov">          7 :     const char        *errstr;</span></a>
 <a name="628"><span class="lineNum">     628 </span>            : #endif</a>
 <a name="629"><span class="lineNum">     629 </span>            :     ngx_uint_t         i;</a>
 <a name="630"><span class="lineNum">     630 </span>            :     ngx_list_part_t   *part;</a>
@@ -753,7 +753,7 @@
 <a name="691"><span class="lineNum">     691 </span>            : </a>
 <a name="692"><span class="lineNum">     692 </span>            : #if (NGX_HAVE_PCRE_JIT)</a>
 <a name="693"><span class="lineNum">     693 </span><span class="lineNoCov">          0 :         if (opt &amp; PCRE_STUDY_JIT_COMPILE) {</span></a>
-<a name="694"><span class="lineNum">     694 </span>            :             int jit, n;</a>
+<a name="694"><span class="lineNum">     694 </span><span class="lineNoCov">          0 :             int jit, n;</span></a>
 <a name="695"><span class="lineNum">     695 </span>            : </a>
 <a name="696"><span class="lineNum">     696 </span><span class="lineNoCov">          0 :             jit = 0;</span></a>
 <a name="697"><span class="lineNum">     697 </span><span class="lineNoCov">          0 :             n = pcre_fullinfo(elts[i].regex-&gt;code, elts[i].regex-&gt;extra,</span></a>
@@ -845,7 +845,7 @@
 <a name="783"><span class="lineNum">     783 </span>            :     }</a>
 <a name="784"><span class="lineNum">     784 </span>            : #elif (NGX_HAVE_PCRE_JIT)</a>
 <a name="785"><span class="lineNum">     785 </span>            :     {</a>
-<a name="786"><span class="lineNum">     786 </span>            :     int  jit, r;</a>
+<a name="786"><span class="lineNum">     786 </span><span class="lineNoCov">          0 :     int  jit, r;</span></a>
 <a name="787"><span class="lineNum">     787 </span>            : </a>
 <a name="788"><span class="lineNum">     788 </span><span class="lineNoCov">          0 :     jit = 0;</span></a>
 <a name="789"><span class="lineNum">     789 </span><span class="lineNoCov">          0 :     r = pcre_config(PCRE_CONFIG_JIT, &amp;jit);</span></a>

@@ -31,13 +31,13 @@
             <td class="headerValue">report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">66</td>
-            <td class="headerCovTableEntry">119</td>
-            <td class="headerCovTableEntryLo">55.5 %</td>
+            <td class="headerCovTableEntry">70</td>
+            <td class="headerCovTableEntry">123</td>
+            <td class="headerCovTableEntryLo">56.9 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -111,15 +111,15 @@
 <a name="49"><span class="lineNum">      49 </span><span class="lineCov">          3 : ngx_http_static_handler(ngx_http_request_t *r)</span></a>
 <a name="50"><span class="lineNum">      50 </span>            : {</a>
 <a name="51"><span class="lineNum">      51 </span>            :     u_char                    *last, *location;</a>
-<a name="52"><span class="lineNum">      52 </span>            :     size_t                     root, len;</a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">          3 :     size_t                     root, len;</span></a>
 <a name="53"><span class="lineNum">      53 </span>            :     uintptr_t                  escape;</a>
-<a name="54"><span class="lineNum">      54 </span>            :     ngx_str_t                  path;</a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">          3 :     ngx_str_t                  path;</span></a>
 <a name="55"><span class="lineNum">      55 </span>            :     ngx_int_t                  rc;</a>
 <a name="56"><span class="lineNum">      56 </span>            :     ngx_uint_t                 level;</a>
 <a name="57"><span class="lineNum">      57 </span>            :     ngx_log_t                 *log;</a>
 <a name="58"><span class="lineNum">      58 </span>            :     ngx_buf_t                 *b;</a>
-<a name="59"><span class="lineNum">      59 </span>            :     ngx_chain_t                out;</a>
-<a name="60"><span class="lineNum">      60 </span>            :     ngx_open_file_info_t       of;</a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">          3 :     ngx_chain_t                out;</span></a>
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">          3 :     ngx_open_file_info_t       of;</span></a>
 <a name="61"><span class="lineNum">      61 </span>            :     ngx_http_core_loc_conf_t  *clcf;</a>
 <a name="62"><span class="lineNum">      62 </span>            : </a>
 <a name="63"><span class="lineNum">      63 </span><span class="lineCov">          3 :     if (!(r-&gt;method &amp; (NGX_HTTP_GET|NGX_HTTP_HEAD|NGX_HTTP_POST))) {</span></a>

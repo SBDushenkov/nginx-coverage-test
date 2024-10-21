@@ -61,7 +61,6 @@ public abstract class AbstractHttpTest implements InitializingBean {
         String testInfo = ("location /test-info { " +
                 "add_header test-class \"%%class-name%%\"; " +
                 "return 200; }")
-//        String testInfo = "location /test-info/ { return 200; }"
                 .replace("%%class-name%%", getClass().getSimpleName());
 
         String conf = getConfigContent();
@@ -79,6 +78,7 @@ public abstract class AbstractHttpTest implements InitializingBean {
         Process process = new ProcessBuilder(nginx.toString(), "-s", "reload")
                 .inheritIO()
                 .start();
+
         process.waitFor(1000, TimeUnit.MILLISECONDS);
 
         int i = 1;

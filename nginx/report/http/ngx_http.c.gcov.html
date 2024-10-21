@@ -31,13 +31,13 @@
             <td class="headerValue">report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">444</td>
-            <td class="headerCovTableEntry">863</td>
-            <td class="headerCovTableEntryLo">51.4 %</td>
+            <td class="headerCovTableEntry">450</td>
+            <td class="headerCovTableEntry">871</td>
+            <td class="headerCovTableEntryLo">51.7 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">21</td>
@@ -474,9 +474,9 @@
 <a name="412"><span class="lineNum">     412 </span>            : static ngx_int_t</a>
 <a name="413"><span class="lineNum">     413 </span><span class="lineCov">         22 : ngx_http_init_headers_in_hash(ngx_conf_t *cf, ngx_http_core_main_conf_t *cmcf)</span></a>
 <a name="414"><span class="lineNum">     414 </span>            : {</a>
-<a name="415"><span class="lineNum">     415 </span>            :     ngx_array_t         headers_in;</a>
+<a name="415"><span class="lineNum">     415 </span><span class="lineCov">         22 :     ngx_array_t         headers_in;</span></a>
 <a name="416"><span class="lineNum">     416 </span>            :     ngx_hash_key_t     *hk;</a>
-<a name="417"><span class="lineNum">     417 </span>            :     ngx_hash_init_t     hash;</a>
+<a name="417"><span class="lineNum">     417 </span><span class="lineCov">         22 :     ngx_hash_init_t     hash;</span></a>
 <a name="418"><span class="lineNum">     418 </span>            :     ngx_http_header_t  *header;</a>
 <a name="419"><span class="lineNum">     419 </span>            : </a>
 <a name="420"><span class="lineNum">     420 </span><span class="lineCov">         22 :     if (ngx_array_init(&amp;headers_in, cf-&gt;temp_pool, 32, sizeof(ngx_hash_key_t))</span></a>
@@ -733,7 +733,7 @@
 <a name="671"><span class="lineNum">     671 </span>            :     ngx_http_core_loc_conf_t *pclcf)</a>
 <a name="672"><span class="lineNum">     672 </span>            : {</a>
 <a name="673"><span class="lineNum">     673 </span>            :     ngx_uint_t                   n;</a>
-<a name="674"><span class="lineNum">     674 </span>            :     ngx_queue_t                 *q, *locations, *named, tail;</a>
+<a name="674"><span class="lineNum">     674 </span><span class="lineCov">         66 :     ngx_queue_t                 *q, *locations, *named, tail;</span></a>
 <a name="675"><span class="lineNum">     675 </span>            :     ngx_http_core_loc_conf_t    *clcf;</a>
 <a name="676"><span class="lineNum">     676 </span>            :     ngx_http_location_queue_t   *lq;</a>
 <a name="677"><span class="lineNum">     677 </span>            :     ngx_http_core_loc_conf_t   **clcfp;</a>
@@ -1104,11 +1104,11 @@
 <a name="1042"><span class="lineNum">    1042 </span>            : {</a>
 <a name="1043"><span class="lineNum">    1043 </span>            :     u_char                     *name;</a>
 <a name="1044"><span class="lineNum">    1044 </span>            :     size_t                      len;</a>
-<a name="1045"><span class="lineNum">    1045 </span>            :     ngx_queue_t                *x, tail;</a>
+<a name="1045"><span class="lineNum">    1045 </span><span class="lineCov">         44 :     ngx_queue_t                *x, tail;</span></a>
 <a name="1046"><span class="lineNum">    1046 </span>            :     ngx_http_location_queue_t  *lq, *lx;</a>
 <a name="1047"><span class="lineNum">    1047 </span>            : </a>
 <a name="1048"><span class="lineNum">    1048 </span><span class="lineCov">         44 :     if (q == ngx_queue_last(locations)) {</span></a>
-<a name="1049"><span class="lineNum">    1049 </span><span class="lineCov">         44 :         return;</span></a>
+<a name="1049"><span class="lineNum">    1049 </span><span class="lineCov">         22 :         return;</span></a>
 <a name="1050"><span class="lineNum">    1050 </span>            :     }</a>
 <a name="1051"><span class="lineNum">    1051 </span>            : </a>
 <a name="1052"><span class="lineNum">    1052 </span><span class="lineCov">         22 :     lq = (ngx_http_location_queue_t *) q;</span></a>
@@ -1168,7 +1168,7 @@
 <a name="1106"><span class="lineNum">    1106 </span>            :     size_t prefix)</a>
 <a name="1107"><span class="lineNum">    1107 </span>            : {</a>
 <a name="1108"><span class="lineNum">    1108 </span>            :     size_t                          len;</a>
-<a name="1109"><span class="lineNum">    1109 </span>            :     ngx_queue_t                    *q, tail;</a>
+<a name="1109"><span class="lineNum">    1109 </span><span class="lineCov">         44 :     ngx_queue_t                    *q, tail;</span></a>
 <a name="1110"><span class="lineNum">    1110 </span>            :     ngx_http_location_queue_t      *lq;</a>
 <a name="1111"><span class="lineNum">    1111 </span>            :     ngx_http_location_tree_node_t  *node;</a>
 <a name="1112"><span class="lineNum">    1112 </span>            : </a>
@@ -1221,7 +1221,7 @@
 <a name="1159"><span class="lineNum">    1159 </span><span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="1160"><span class="lineNum">    1160 </span>            :     }</a>
 <a name="1161"><span class="lineNum">    1161 </span>            : </a>
-<a name="1162"><span class="lineNum">    1162 </span><span class="lineNoCov">          0 : inclusive:</span></a>
+<a name="1162"><span class="lineNum">    1162 </span><span class="lineCov">         44 : inclusive:</span></a>
 <a name="1163"><span class="lineNum">    1163 </span>            : </a>
 <a name="1164"><span class="lineNum">    1164 </span><span class="lineCov">         44 :     if (ngx_queue_empty(&amp;lq-&gt;list)) {</span></a>
 <a name="1165"><span class="lineNum">    1165 </span><span class="lineCov">         22 :         return node;</span></a>
@@ -1599,8 +1599,8 @@
 <a name="1537"><span class="lineNum">    1537 </span>            : {</a>
 <a name="1538"><span class="lineNum">    1538 </span>            :     ngx_int_t                   rc;</a>
 <a name="1539"><span class="lineNum">    1539 </span>            :     ngx_uint_t                  n, s;</a>
-<a name="1540"><span class="lineNum">    1540 </span>            :     ngx_hash_init_t             hash;</a>
-<a name="1541"><span class="lineNum">    1541 </span>            :     ngx_hash_keys_arrays_t      ha;</a>
+<a name="1540"><span class="lineNum">    1540 </span><span class="lineNoCov">          0 :     ngx_hash_init_t             hash;</span></a>
+<a name="1541"><span class="lineNum">    1541 </span><span class="lineNoCov">          0 :     ngx_hash_keys_arrays_t      ha;</span></a>
 <a name="1542"><span class="lineNum">    1542 </span>            :     ngx_http_server_name_t     *name;</a>
 <a name="1543"><span class="lineNum">    1543 </span>            :     ngx_http_core_srv_conf_t  **cscfp;</a>
 <a name="1544"><span class="lineNum">    1544 </span>            : #if (NGX_PCRE)</a>
@@ -2170,7 +2170,7 @@
 <a name="2108"><span class="lineNum">    2108 </span>            :     ngx_array_t **prev_keys, ngx_hash_t *prev_types_hash,</a>
 <a name="2109"><span class="lineNum">    2109 </span>            :     ngx_str_t *default_types)</a>
 <a name="2110"><span class="lineNum">    2110 </span>            : {</a>
-<a name="2111"><span class="lineNum">    2111 </span>            :     ngx_hash_init_t  hash;</a>
+<a name="2111"><span class="lineNum">    2111 </span><span class="lineNoCov">          0 :     ngx_hash_init_t  hash;</span></a>
 <a name="2112"><span class="lineNum">    2112 </span>            : </a>
 <a name="2113"><span class="lineNum">    2113 </span><span class="lineNoCov">          0 :     if (*keys) {</span></a>
 <a name="2114"><span class="lineNum">    2114 </span>            : </a>

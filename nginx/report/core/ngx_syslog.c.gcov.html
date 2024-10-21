@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">161</td>
+            <td class="headerCovTableEntry">163</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -157,7 +157,7 @@
 <a name="95"><span class="lineNum">      95 </span>            :     u_char      *p, *comma, c;</a>
 <a name="96"><span class="lineNum">      96 </span>            :     size_t       len;</a>
 <a name="97"><span class="lineNum">      97 </span>            :     ngx_str_t   *value;</a>
-<a name="98"><span class="lineNum">      98 </span>            :     ngx_url_t    u;</a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineNoCov">          0 :     ngx_url_t    u;</span></a>
 <a name="99"><span class="lineNum">      99 </span>            :     ngx_uint_t   i;</a>
 <a name="100"><span class="lineNum">     100 </span>            : </a>
 <a name="101"><span class="lineNum">     101 </span><span class="lineNoCov">          0 :     value = cf-&gt;args-&gt;elts;</span></a>
@@ -317,7 +317,7 @@
 <a name="255"><span class="lineNum">     255 </span><span class="lineNoCov">          0 : ngx_syslog_writer(ngx_log_t *log, ngx_uint_t level, u_char *buf,</span></a>
 <a name="256"><span class="lineNum">     256 </span>            :     size_t len)</a>
 <a name="257"><span class="lineNum">     257 </span>            : {</a>
-<a name="258"><span class="lineNum">     258 </span>            :     u_char             *p, msg[NGX_SYSLOG_MAX_STR];</a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineNoCov">          0 :     u_char             *p, msg[NGX_SYSLOG_MAX_STR];</span></a>
 <a name="259"><span class="lineNum">     259 </span>            :     ngx_uint_t          head_len;</a>
 <a name="260"><span class="lineNum">     260 </span>            :     ngx_syslog_peer_t  *peer;</a>
 <a name="261"><span class="lineNum">     261 </span>            : </a>

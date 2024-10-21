@@ -31,13 +31,13 @@
             <td class="headerValue">report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">177</td>
-            <td class="headerCovTableEntry">495</td>
+            <td class="headerCovTableEntry">181</td>
+            <td class="headerCovTableEntry">506</td>
             <td class="headerCovTableEntryLo">35.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">11</td>
@@ -85,7 +85,7 @@
 <a name="23"><span class="lineNum">      23 </span>            :     size_t            len;</a>
 <a name="24"><span class="lineNum">      24 </span>            :     ngx_listening_t  *ls;</a>
 <a name="25"><span class="lineNum">      25 </span>            :     struct sockaddr  *sa;</a>
-<a name="26"><span class="lineNum">      26 </span>            :     u_char            text[NGX_SOCKADDR_STRLEN];</a>
+<a name="26"><span class="lineNum">      26 </span><span class="lineCov">         22 :     u_char            text[NGX_SOCKADDR_STRLEN];</span></a>
 <a name="27"><span class="lineNum">      27 </span>            : </a>
 <a name="28"><span class="lineNum">      28 </span><span class="lineCov">         22 :     ls = ngx_array_push(&amp;cf-&gt;cycle-&gt;listening);</span></a>
 <a name="29"><span class="lineNum">      29 </span><span class="lineCov">         22 :     if (ls == NULL) {</span></a>
@@ -199,7 +199,7 @@
 <a name="137"><span class="lineNum">     137 </span>            :     size_t                     len;</a>
 <a name="138"><span class="lineNum">     138 </span>            :     ngx_uint_t                 i;</a>
 <a name="139"><span class="lineNum">     139 </span>            :     ngx_listening_t           *ls;</a>
-<a name="140"><span class="lineNum">     140 </span>            :     socklen_t                  olen;</a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineNoCov">          0 :     socklen_t                  olen;</span></a>
 <a name="141"><span class="lineNum">     141 </span>            : #if (NGX_HAVE_DEFERRED_ACCEPT || NGX_HAVE_TCP_FASTOPEN)</a>
 <a name="142"><span class="lineNum">     142 </span>            :     ngx_err_t                  err;</a>
 <a name="143"><span class="lineNum">     143 </span>            : #endif</a>
@@ -207,10 +207,10 @@
 <a name="145"><span class="lineNum">     145 </span>            :     struct accept_filter_arg   af;</a>
 <a name="146"><span class="lineNum">     146 </span>            : #endif</a>
 <a name="147"><span class="lineNum">     147 </span>            : #if (NGX_HAVE_DEFERRED_ACCEPT &amp;&amp; defined TCP_DEFER_ACCEPT)</a>
-<a name="148"><span class="lineNum">     148 </span>            :     int                        timeout;</a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineNoCov">          0 :     int                        timeout;</span></a>
 <a name="149"><span class="lineNum">     149 </span>            : #endif</a>
 <a name="150"><span class="lineNum">     150 </span>            : #if (NGX_HAVE_REUSEPORT)</a>
-<a name="151"><span class="lineNum">     151 </span>            :     int                        reuseport;</a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineNoCov">          0 :     int                        reuseport;</span></a>
 <a name="152"><span class="lineNum">     152 </span>            : #endif</a>
 <a name="153"><span class="lineNum">     153 </span>            : </a>
 <a name="154"><span class="lineNum">     154 </span><span class="lineNoCov">          0 :     ls = cycle-&gt;listening.elts;</span></a>
@@ -468,7 +468,7 @@
 <a name="406"><span class="lineNum">     406 </span>            : ngx_int_t</a>
 <a name="407"><span class="lineNum">     407 </span><span class="lineCov">          7 : ngx_open_listening_sockets(ngx_cycle_t *cycle)</span></a>
 <a name="408"><span class="lineNum">     408 </span>            : {</a>
-<a name="409"><span class="lineNum">     409 </span>            :     int               reuseaddr;</a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineCov">          7 :     int               reuseaddr;</span></a>
 <a name="410"><span class="lineNum">     410 </span>            :     ngx_uint_t        i, tries, failed;</a>
 <a name="411"><span class="lineNum">     411 </span>            :     ngx_err_t         err;</a>
 <a name="412"><span class="lineNum">     412 </span>            :     ngx_log_t        *log;</a>
@@ -580,7 +580,7 @@
 <a name="518"><span class="lineNum">     518 </span>            : #if (NGX_HAVE_REUSEPORT)</a>
 <a name="519"><span class="lineNum">     519 </span>            : </a>
 <a name="520"><span class="lineNum">     520 </span><span class="lineCov">          1 :             if (ls[i].reuseport &amp;&amp; !ngx_test_config) {</span></a>
-<a name="521"><span class="lineNum">     521 </span>            :                 int  reuseport;</a>
+<a name="521"><span class="lineNum">     521 </span><span class="lineNoCov">          0 :                 int  reuseport;</span></a>
 <a name="522"><span class="lineNum">     522 </span>            : </a>
 <a name="523"><span class="lineNum">     523 </span><span class="lineNoCov">          0 :                 reuseport = 1;</span></a>
 <a name="524"><span class="lineNum">     524 </span>            : </a>
@@ -628,7 +628,7 @@
 <a name="566"><span class="lineNum">     566 </span>            : #if (NGX_HAVE_INET6 &amp;&amp; defined IPV6_V6ONLY)</a>
 <a name="567"><span class="lineNum">     567 </span>            : </a>
 <a name="568"><span class="lineNum">     568 </span><span class="lineCov">          1 :             if (ls[i].sockaddr-&gt;sa_family == AF_INET6) {</span></a>
-<a name="569"><span class="lineNum">     569 </span>            :                 int  ipv6only;</a>
+<a name="569"><span class="lineNum">     569 </span><span class="lineNoCov">          0 :                 int  ipv6only;</span></a>
 <a name="570"><span class="lineNum">     570 </span>            : </a>
 <a name="571"><span class="lineNum">     571 </span><span class="lineNoCov">          0 :                 ipv6only = ls[i].ipv6only;</span></a>
 <a name="572"><span class="lineNum">     572 </span>            : </a>
@@ -777,7 +777,7 @@
 <a name="715"><span class="lineNum">     715 </span>            : void</a>
 <a name="716"><span class="lineNum">     716 </span><span class="lineCov">          7 : ngx_configure_listening_sockets(ngx_cycle_t *cycle)</span></a>
 <a name="717"><span class="lineNum">     717 </span>            : {</a>
-<a name="718"><span class="lineNum">     718 </span>            :     int                        value;</a>
+<a name="718"><span class="lineNum">     718 </span><span class="lineCov">          7 :     int                        value;</span></a>
 <a name="719"><span class="lineNum">     719 </span>            :     ngx_uint_t                 i;</a>
 <a name="720"><span class="lineNum">     720 </span>            :     ngx_listening_t           *ls;</a>
 <a name="721"><span class="lineNum">     721 </span>            : </a>
@@ -1512,9 +1512,9 @@
 <a name="1450"><span class="lineNum">    1450 </span><span class="lineNoCov">          0 : ngx_connection_local_sockaddr(ngx_connection_t *c, ngx_str_t *s,</span></a>
 <a name="1451"><span class="lineNum">    1451 </span>            :     ngx_uint_t port)</a>
 <a name="1452"><span class="lineNum">    1452 </span>            : {</a>
-<a name="1453"><span class="lineNum">    1453 </span>            :     socklen_t             len;</a>
+<a name="1453"><span class="lineNum">    1453 </span><span class="lineNoCov">          0 :     socklen_t             len;</span></a>
 <a name="1454"><span class="lineNum">    1454 </span>            :     ngx_uint_t            addr;</a>
-<a name="1455"><span class="lineNum">    1455 </span>            :     ngx_sockaddr_t        sa;</a>
+<a name="1455"><span class="lineNum">    1455 </span><span class="lineNoCov">          0 :     ngx_sockaddr_t        sa;</span></a>
 <a name="1456"><span class="lineNum">    1456 </span>            :     struct sockaddr_in   *sin;</a>
 <a name="1457"><span class="lineNum">    1457 </span>            : #if (NGX_HAVE_INET6)</a>
 <a name="1458"><span class="lineNum">    1458 </span>            :     ngx_uint_t            i;</a>
@@ -1583,7 +1583,7 @@
 <a name="1521"><span class="lineNum">    1521 </span>            : ngx_int_t</a>
 <a name="1522"><span class="lineNum">    1522 </span><span class="lineCov">         25 : ngx_tcp_nodelay(ngx_connection_t *c)</span></a>
 <a name="1523"><span class="lineNum">    1523 </span>            : {</a>
-<a name="1524"><span class="lineNum">    1524 </span>            :     int  tcp_nodelay;</a>
+<a name="1524"><span class="lineNum">    1524 </span><span class="lineCov">         25 :     int  tcp_nodelay;</span></a>
 <a name="1525"><span class="lineNum">    1525 </span>            : </a>
 <a name="1526"><span class="lineNum">    1526 </span><span class="lineCov">         25 :     if (c-&gt;tcp_nodelay != NGX_TCP_NODELAY_UNSET) {</span></a>
 <a name="1527"><span class="lineNum">    1527 </span><span class="lineCov">         22 :         return NGX_OK;</span></a>

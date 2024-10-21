@@ -31,13 +31,13 @@
             <td class="headerValue">report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">53</td>
-            <td class="headerCovTableEntry">2082</td>
-            <td class="headerCovTableEntryLo">2.5 %</td>
+            <td class="headerCovTableEntry">55</td>
+            <td class="headerCovTableEntry">2093</td>
+            <td class="headerCovTableEntryLo">2.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -194,8 +194,8 @@
 <a name="132"><span class="lineNum">     132 </span>            : ngx_resolver_t *</a>
 <a name="133"><span class="lineNum">     133 </span><span class="lineCov">         22 : ngx_resolver_create(ngx_conf_t *cf, ngx_str_t *names, ngx_uint_t n)</span></a>
 <a name="134"><span class="lineNum">     134 </span>            : {</a>
-<a name="135"><span class="lineNum">     135 </span>            :     ngx_str_t                   s;</a>
-<a name="136"><span class="lineNum">     136 </span>            :     ngx_url_t                   u;</a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">         22 :     ngx_str_t                   s;</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">         22 :     ngx_url_t                   u;</span></a>
 <a name="137"><span class="lineNum">     137 </span>            :     ngx_uint_t                  i, j;</a>
 <a name="138"><span class="lineNum">     138 </span>            :     ngx_resolver_t             *r;</a>
 <a name="139"><span class="lineNum">     139 </span>            :     ngx_pool_cleanup_t         *cln;</a>
@@ -496,7 +496,7 @@
 <a name="434"><span class="lineNum">     434 </span>            : {</a>
 <a name="435"><span class="lineNum">     435 </span>            :     size_t           slen;</a>
 <a name="436"><span class="lineNum">     436 </span>            :     ngx_int_t        rc;</a>
-<a name="437"><span class="lineNum">     437 </span>            :     ngx_str_t        name;</a>
+<a name="437"><span class="lineNum">     437 </span><span class="lineNoCov">          0 :     ngx_str_t        name;</span></a>
 <a name="438"><span class="lineNum">     438 </span>            :     ngx_resolver_t  *r;</a>
 <a name="439"><span class="lineNum">     439 </span>            : </a>
 <a name="440"><span class="lineNum">     440 </span><span class="lineNoCov">          0 :     r = ctx-&gt;resolver;</span></a>
@@ -670,7 +670,7 @@
 <a name="608"><span class="lineNum">     608 </span>            : {</a>
 <a name="609"><span class="lineNum">     609 </span>            :     uint32_t              hash;</a>
 <a name="610"><span class="lineNum">     610 </span>            :     ngx_int_t             rc;</a>
-<a name="611"><span class="lineNum">     611 </span>            :     ngx_str_t             cname;</a>
+<a name="611"><span class="lineNum">     611 </span><span class="lineNoCov">          0 :     ngx_str_t             cname;</span></a>
 <a name="612"><span class="lineNum">     612 </span>            :     ngx_uint_t            i, naddrs;</a>
 <a name="613"><span class="lineNum">     613 </span>            :     ngx_queue_t          *resend_queue, *expire_queue;</a>
 <a name="614"><span class="lineNum">     614 </span>            :     ngx_rbtree_t         *tree;</a>
@@ -1265,8 +1265,8 @@
 <a name="1203"><span class="lineNum">    1203 </span>            :         }</a>
 <a name="1204"><span class="lineNum">    1204 </span>            : </a>
 <a name="1205"><span class="lineNum">    1205 </span>            :         {</a>
-<a name="1206"><span class="lineNum">    1206 </span>            :             u_char     text[NGX_SOCKADDR_STRLEN];</a>
-<a name="1207"><span class="lineNum">    1207 </span>            :             ngx_str_t  addrtext;</a>
+<a name="1206"><span class="lineNum">    1206 </span><span class="lineNoCov">          0 :             u_char     text[NGX_SOCKADDR_STRLEN];</span></a>
+<a name="1207"><span class="lineNum">    1207 </span><span class="lineNoCov">          0 :             ngx_str_t  addrtext;</span></a>
 <a name="1208"><span class="lineNum">    1208 </span>            : </a>
 <a name="1209"><span class="lineNum">    1209 </span><span class="lineNoCov">          0 :             addrtext.data = text;</span></a>
 <a name="1210"><span class="lineNum">    1210 </span><span class="lineNoCov">          0 :             addrtext.len = ngx_sock_ntop(ctx-&gt;addr.sockaddr, ctx-&gt;addr.socklen,</span></a>
@@ -1643,7 +1643,7 @@
 <a name="1581"><span class="lineNum">    1581 </span>            :     ssize_t                     n;</a>
 <a name="1582"><span class="lineNum">    1582 </span>            :     ngx_connection_t           *c;</a>
 <a name="1583"><span class="lineNum">    1583 </span>            :     ngx_resolver_connection_t  *rec;</a>
-<a name="1584"><span class="lineNum">    1584 </span>            :     u_char                      buf[NGX_RESOLVER_UDP_SIZE];</a>
+<a name="1584"><span class="lineNum">    1584 </span><span class="lineNoCov">          0 :     u_char                      buf[NGX_RESOLVER_UDP_SIZE];</span></a>
 <a name="1585"><span class="lineNum">    1585 </span>            : </a>
 <a name="1586"><span class="lineNum">    1586 </span><span class="lineNoCov">          0 :     c = rev-&gt;data;</span></a>
 <a name="1587"><span class="lineNum">    1587 </span><span class="lineNoCov">          0 :     rec = c-&gt;data;</span></a>
@@ -2002,7 +2002,7 @@
 <a name="1940"><span class="lineNum">    1940 </span>            :     int32_t                     ttl;</a>
 <a name="1941"><span class="lineNum">    1941 </span>            :     uint32_t                    hash;</a>
 <a name="1942"><span class="lineNum">    1942 </span>            :     in_addr_t                  *addr;</a>
-<a name="1943"><span class="lineNum">    1943 </span>            :     ngx_str_t                   name;</a>
+<a name="1943"><span class="lineNum">    1943 </span><span class="lineNoCov">          0 :     ngx_str_t                   name;</span></a>
 <a name="1944"><span class="lineNum">    1944 </span>            :     ngx_uint_t                  type, class, qident, naddrs, a, i, j, start;</a>
 <a name="1945"><span class="lineNum">    1945 </span>            : #if (NGX_HAVE_INET6)</a>
 <a name="1946"><span class="lineNum">    1946 </span>            :     struct in6_addr            *addr6;</a>
@@ -2656,7 +2656,7 @@
 <a name="2594"><span class="lineNum">    2594 </span>            :     size_t                      len;</a>
 <a name="2595"><span class="lineNum">    2595 </span>            :     int32_t                     ttl;</a>
 <a name="2596"><span class="lineNum">    2596 </span>            :     uint32_t                    hash;</a>
-<a name="2597"><span class="lineNum">    2597 </span>            :     ngx_str_t                   name;</a>
+<a name="2597"><span class="lineNum">    2597 </span><span class="lineNoCov">          0 :     ngx_str_t                   name;</span></a>
 <a name="2598"><span class="lineNum">    2598 </span>            :     ngx_uint_t                  type, qident, class, start, nsrvs, a, i, j;</a>
 <a name="2599"><span class="lineNum">    2599 </span>            :     ngx_resolver_an_t          *an;</a>
 <a name="2600"><span class="lineNum">    2600 </span>            :     ngx_resolver_ctx_t         *ctx, *next;</a>
@@ -3169,7 +3169,7 @@
 <a name="3107"><span class="lineNum">    3107 </span>            :     in_addr_t             addr;</a>
 <a name="3108"><span class="lineNum">    3108 </span>            :     int32_t               ttl;</a>
 <a name="3109"><span class="lineNum">    3109 </span>            :     ngx_int_t             octet;</a>
-<a name="3110"><span class="lineNum">    3110 </span>            :     ngx_str_t             name;</a>
+<a name="3110"><span class="lineNum">    3110 </span><span class="lineNoCov">          0 :     ngx_str_t             name;</span></a>
 <a name="3111"><span class="lineNum">    3111 </span>            :     ngx_uint_t            mask, type, class, qident, a, i, start;</a>
 <a name="3112"><span class="lineNum">    3112 </span>            :     ngx_queue_t          *expire_queue;</a>
 <a name="3113"><span class="lineNum">    3113 </span>            :     ngx_rbtree_t         *tree;</a>
@@ -3179,7 +3179,7 @@
 <a name="3117"><span class="lineNum">    3117 </span>            : #if (NGX_HAVE_INET6)</a>
 <a name="3118"><span class="lineNum">    3118 </span>            :     uint32_t              hash;</a>
 <a name="3119"><span class="lineNum">    3119 </span>            :     ngx_int_t             digit;</a>
-<a name="3120"><span class="lineNum">    3120 </span>            :     struct in6_addr       addr6;</a>
+<a name="3120"><span class="lineNum">    3120 </span><span class="lineNoCov">          0 :     struct in6_addr       addr6;</span></a>
 <a name="3121"><span class="lineNum">    3121 </span>            : #endif</a>
 <a name="3122"><span class="lineNum">    3122 </span>            : </a>
 <a name="3123"><span class="lineNum">    3123 </span><span class="lineNoCov">          0 :     if (ngx_resolver_copy(r, &amp;name, buf,</span></a>

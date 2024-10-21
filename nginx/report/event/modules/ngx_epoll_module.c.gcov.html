@@ -31,13 +31,13 @@
             <td class="headerValue">report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">118</td>
-            <td class="headerCovTableEntry">230</td>
-            <td class="headerCovTableEntryLo">51.3 %</td>
+            <td class="headerCovTableEntry">124</td>
+            <td class="headerCovTableEntry">238</td>
+            <td class="headerCovTableEntryLo">52.1 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -447,7 +447,7 @@
 <a name="385"><span class="lineNum">     385 </span>            : static ngx_int_t</a>
 <a name="386"><span class="lineNum">     386 </span><span class="lineCov">          7 : ngx_epoll_notify_init(ngx_log_t *log)</span></a>
 <a name="387"><span class="lineNum">     387 </span>            : {</a>
-<a name="388"><span class="lineNum">     388 </span>            :     struct epoll_event  ee;</a>
+<a name="388"><span class="lineNum">     388 </span><span class="lineCov">          7 :     struct epoll_event  ee;</span></a>
 <a name="389"><span class="lineNum">     389 </span>            : </a>
 <a name="390"><span class="lineNum">     390 </span>            : #if (NGX_HAVE_SYS_EVENTFD_H)</a>
 <a name="391"><span class="lineNum">     391 </span><span class="lineCov">          7 :     notify_fd = eventfd(0, 0);</span></a>
@@ -494,7 +494,7 @@
 <a name="432"><span class="lineNum">     432 </span><span class="lineNoCov">          0 : ngx_epoll_notify_handler(ngx_event_t *ev)</span></a>
 <a name="433"><span class="lineNum">     433 </span>            : {</a>
 <a name="434"><span class="lineNum">     434 </span>            :     ssize_t               n;</a>
-<a name="435"><span class="lineNum">     435 </span>            :     uint64_t              count;</a>
+<a name="435"><span class="lineNum">     435 </span><span class="lineNoCov">          0 :     uint64_t              count;</span></a>
 <a name="436"><span class="lineNum">     436 </span>            :     ngx_err_t             err;</a>
 <a name="437"><span class="lineNum">     437 </span>            :     ngx_event_handler_pt  handler;</a>
 <a name="438"><span class="lineNum">     438 </span>            : </a>
@@ -526,8 +526,8 @@
 <a name="464"><span class="lineNum">     464 </span>            : static void</a>
 <a name="465"><span class="lineNum">     465 </span><span class="lineCov">          7 : ngx_epoll_test_rdhup(ngx_cycle_t *cycle)</span></a>
 <a name="466"><span class="lineNum">     466 </span>            : {</a>
-<a name="467"><span class="lineNum">     467 </span>            :     int                 s[2], events;</a>
-<a name="468"><span class="lineNum">     468 </span>            :     struct epoll_event  ee;</a>
+<a name="467"><span class="lineNum">     467 </span><span class="lineCov">          7 :     int                 s[2], events;</span></a>
+<a name="468"><span class="lineNum">     468 </span><span class="lineCov">          7 :     struct epoll_event  ee;</span></a>
 <a name="469"><span class="lineNum">     469 </span>            : </a>
 <a name="470"><span class="lineNum">     470 </span><span class="lineCov">          7 :     if (socketpair(AF_UNIX, SOCK_STREAM, 0, s) == -1) {</span></a>
 <a name="471"><span class="lineNum">     471 </span><span class="lineNoCov">          0 :         ngx_log_error(NGX_LOG_ALERT, cycle-&gt;log, ngx_errno,</span></a>
@@ -644,7 +644,7 @@
 <a name="582"><span class="lineNum">     582 </span>            :     uint32_t             events, prev;</a>
 <a name="583"><span class="lineNum">     583 </span>            :     ngx_event_t         *e;</a>
 <a name="584"><span class="lineNum">     584 </span>            :     ngx_connection_t    *c;</a>
-<a name="585"><span class="lineNum">     585 </span>            :     struct epoll_event   ee;</a>
+<a name="585"><span class="lineNum">     585 </span><span class="lineCov">         21 :     struct epoll_event   ee;</span></a>
 <a name="586"><span class="lineNum">     586 </span>            : </a>
 <a name="587"><span class="lineNum">     587 </span><span class="lineCov">         21 :     c = ev-&gt;data;</span></a>
 <a name="588"><span class="lineNum">     588 </span>            : </a>
@@ -708,7 +708,7 @@
 <a name="646"><span class="lineNum">     646 </span>            :     uint32_t             prev;</a>
 <a name="647"><span class="lineNum">     647 </span>            :     ngx_event_t         *e;</a>
 <a name="648"><span class="lineNum">     648 </span>            :     ngx_connection_t    *c;</a>
-<a name="649"><span class="lineNum">     649 </span>            :     struct epoll_event   ee;</a>
+<a name="649"><span class="lineNum">     649 </span><span class="lineCov">          7 :     struct epoll_event   ee;</span></a>
 <a name="650"><span class="lineNum">     650 </span>            : </a>
 <a name="651"><span class="lineNum">     651 </span>            :     /*</a>
 <a name="652"><span class="lineNum">     652 </span>            :      * when the file descriptor is closed, the epoll automatically deletes</a>
@@ -762,7 +762,7 @@
 <a name="700"><span class="lineNum">     700 </span>            : static ngx_int_t</a>
 <a name="701"><span class="lineNum">     701 </span><span class="lineNoCov">          0 : ngx_epoll_add_connection(ngx_connection_t *c)</span></a>
 <a name="702"><span class="lineNum">     702 </span>            : {</a>
-<a name="703"><span class="lineNum">     703 </span>            :     struct epoll_event  ee;</a>
+<a name="703"><span class="lineNum">     703 </span><span class="lineNoCov">          0 :     struct epoll_event  ee;</span></a>
 <a name="704"><span class="lineNum">     704 </span>            : </a>
 <a name="705"><span class="lineNum">     705 </span><span class="lineNoCov">          0 :     ee.events = EPOLLIN|EPOLLOUT|EPOLLET|EPOLLRDHUP;</span></a>
 <a name="706"><span class="lineNum">     706 </span><span class="lineNoCov">          0 :     ee.data.ptr = (void *) ((uintptr_t) c | c-&gt;read-&gt;instance);</span></a>
@@ -787,7 +787,7 @@
 <a name="725"><span class="lineNum">     725 </span><span class="lineCov">          7 : ngx_epoll_del_connection(ngx_connection_t *c, ngx_uint_t flags)</span></a>
 <a name="726"><span class="lineNum">     726 </span>            : {</a>
 <a name="727"><span class="lineNum">     727 </span>            :     int                 op;</a>
-<a name="728"><span class="lineNum">     728 </span>            :     struct epoll_event  ee;</a>
+<a name="728"><span class="lineNum">     728 </span><span class="lineCov">          7 :     struct epoll_event  ee;</span></a>
 <a name="729"><span class="lineNum">     729 </span>            : </a>
 <a name="730"><span class="lineNum">     730 </span>            :     /*</a>
 <a name="731"><span class="lineNum">     731 </span>            :      * when the file descriptor is closed the epoll automatically deletes</a>
@@ -843,7 +843,7 @@
 <a name="781"><span class="lineNum">     781 </span>            : </a>
 <a name="782"><span class="lineNum">     782 </span>            : </a>
 <a name="783"><span class="lineNum">     783 </span>            : static ngx_int_t</a>
-<a name="784"><span class="lineNum">     784 </span><span class="lineCov">         64 : ngx_epoll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer, ngx_uint_t flags)</span></a>
+<a name="784"><span class="lineNum">     784 </span><span class="lineCov">         63 : ngx_epoll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer, ngx_uint_t flags)</span></a>
 <a name="785"><span class="lineNum">     785 </span>            : {</a>
 <a name="786"><span class="lineNum">     786 </span>            :     int                events;</a>
 <a name="787"><span class="lineNum">     787 </span>            :     uint32_t           revents;</a>
@@ -856,18 +856,18 @@
 <a name="794"><span class="lineNum">     794 </span>            : </a>
 <a name="795"><span class="lineNum">     795 </span>            :     /* NGX_TIMER_INFINITE == INFTIM */</a>
 <a name="796"><span class="lineNum">     796 </span>            : </a>
-<a name="797"><span class="lineNum">     797 </span><span class="lineCov">         64 :     ngx_log_debug1(NGX_LOG_DEBUG_EVENT, cycle-&gt;log, 0,</span></a>
+<a name="797"><span class="lineNum">     797 </span><span class="lineCov">         63 :     ngx_log_debug1(NGX_LOG_DEBUG_EVENT, cycle-&gt;log, 0,</span></a>
 <a name="798"><span class="lineNum">     798 </span>            :                    &quot;epoll timer: %M&quot;, timer);</a>
 <a name="799"><span class="lineNum">     799 </span>            : </a>
-<a name="800"><span class="lineNum">     800 </span><span class="lineCov">         64 :     events = epoll_wait(ep, event_list, (int) nevents, timer);</span></a>
+<a name="800"><span class="lineNum">     800 </span><span class="lineCov">         63 :     events = epoll_wait(ep, event_list, (int) nevents, timer);</span></a>
 <a name="801"><span class="lineNum">     801 </span>            : </a>
-<a name="802"><span class="lineNum">     802 </span><span class="lineCov">         64 :     err = (events == -1) ? ngx_errno : 0;</span></a>
+<a name="802"><span class="lineNum">     802 </span><span class="lineCov">         63 :     err = (events == -1) ? ngx_errno : 0;</span></a>
 <a name="803"><span class="lineNum">     803 </span>            : </a>
-<a name="804"><span class="lineNum">     804 </span><span class="lineCov">         64 :     if (flags &amp; NGX_UPDATE_TIME || ngx_event_timer_alarm) {</span></a>
-<a name="805"><span class="lineNum">     805 </span><span class="lineCov">         64 :         ngx_time_update();</span></a>
+<a name="804"><span class="lineNum">     804 </span><span class="lineCov">         63 :     if (flags &amp; NGX_UPDATE_TIME || ngx_event_timer_alarm) {</span></a>
+<a name="805"><span class="lineNum">     805 </span><span class="lineCov">         63 :         ngx_time_update();</span></a>
 <a name="806"><span class="lineNum">     806 </span>            :     }</a>
 <a name="807"><span class="lineNum">     807 </span>            : </a>
-<a name="808"><span class="lineNum">     808 </span><span class="lineCov">         64 :     if (err) {</span></a>
+<a name="808"><span class="lineNum">     808 </span><span class="lineCov">         63 :     if (err) {</span></a>
 <a name="809"><span class="lineNum">     809 </span><span class="lineNoCov">          0 :         if (err == NGX_EINTR) {</span></a>
 <a name="810"><span class="lineNum">     810 </span>            : </a>
 <a name="811"><span class="lineNum">     811 </span><span class="lineNoCov">          0 :             if (ngx_event_timer_alarm) {</span></a>
@@ -885,7 +885,7 @@
 <a name="823"><span class="lineNum">     823 </span><span class="lineNoCov">          0 :         return NGX_ERROR;</span></a>
 <a name="824"><span class="lineNum">     824 </span>            :     }</a>
 <a name="825"><span class="lineNum">     825 </span>            : </a>
-<a name="826"><span class="lineNum">     826 </span><span class="lineCov">         64 :     if (events == 0) {</span></a>
+<a name="826"><span class="lineNum">     826 </span><span class="lineCov">         63 :     if (events == 0) {</span></a>
 <a name="827"><span class="lineNum">     827 </span><span class="lineNoCov">          0 :         if (timer != NGX_TIMER_INFINITE) {</span></a>
 <a name="828"><span class="lineNum">     828 </span><span class="lineNoCov">          0 :             return NGX_OK;</span></a>
 <a name="829"><span class="lineNum">     829 </span>            :         }</a>
@@ -895,15 +895,15 @@
 <a name="833"><span class="lineNum">     833 </span><span class="lineNoCov">          0 :         return NGX_ERROR;</span></a>
 <a name="834"><span class="lineNum">     834 </span>            :     }</a>
 <a name="835"><span class="lineNum">     835 </span>            : </a>
-<a name="836"><span class="lineNum">     836 </span><span class="lineCov">        128 :     for (i = 0; i &lt; events; i++) {</span></a>
-<a name="837"><span class="lineNum">     837 </span><span class="lineCov">         64 :         c = event_list[i].data.ptr;</span></a>
+<a name="836"><span class="lineNum">     836 </span><span class="lineCov">        126 :     for (i = 0; i &lt; events; i++) {</span></a>
+<a name="837"><span class="lineNum">     837 </span><span class="lineCov">         63 :         c = event_list[i].data.ptr;</span></a>
 <a name="838"><span class="lineNum">     838 </span>            : </a>
-<a name="839"><span class="lineNum">     839 </span><span class="lineCov">         64 :         instance = (uintptr_t) c &amp; 1;</span></a>
-<a name="840"><span class="lineNum">     840 </span><span class="lineCov">         64 :         c = (ngx_connection_t *) ((uintptr_t) c &amp; (uintptr_t) ~1);</span></a>
+<a name="839"><span class="lineNum">     839 </span><span class="lineCov">         63 :         instance = (uintptr_t) c &amp; 1;</span></a>
+<a name="840"><span class="lineNum">     840 </span><span class="lineCov">         63 :         c = (ngx_connection_t *) ((uintptr_t) c &amp; (uintptr_t) ~1);</span></a>
 <a name="841"><span class="lineNum">     841 </span>            : </a>
-<a name="842"><span class="lineNum">     842 </span><span class="lineCov">         64 :         rev = c-&gt;read;</span></a>
+<a name="842"><span class="lineNum">     842 </span><span class="lineCov">         63 :         rev = c-&gt;read;</span></a>
 <a name="843"><span class="lineNum">     843 </span>            : </a>
-<a name="844"><span class="lineNum">     844 </span><span class="lineCov">         64 :         if (c-&gt;fd == -1 || rev-&gt;instance != instance) {</span></a>
+<a name="844"><span class="lineNum">     844 </span><span class="lineCov">         63 :         if (c-&gt;fd == -1 || rev-&gt;instance != instance) {</span></a>
 <a name="845"><span class="lineNum">     845 </span>            : </a>
 <a name="846"><span class="lineNum">     846 </span>            :             /*</a>
 <a name="847"><span class="lineNum">     847 </span>            :              * the stale event from a file descriptor</a>
@@ -915,13 +915,13 @@
 <a name="853"><span class="lineNum">     853 </span><span class="lineNoCov">          0 :             continue;</span></a>
 <a name="854"><span class="lineNum">     854 </span>            :         }</a>
 <a name="855"><span class="lineNum">     855 </span>            : </a>
-<a name="856"><span class="lineNum">     856 </span><span class="lineCov">         64 :         revents = event_list[i].events;</span></a>
+<a name="856"><span class="lineNum">     856 </span><span class="lineCov">         63 :         revents = event_list[i].events;</span></a>
 <a name="857"><span class="lineNum">     857 </span>            : </a>
-<a name="858"><span class="lineNum">     858 </span><span class="lineCov">         64 :         ngx_log_debug3(NGX_LOG_DEBUG_EVENT, cycle-&gt;log, 0,</span></a>
+<a name="858"><span class="lineNum">     858 </span><span class="lineCov">         63 :         ngx_log_debug3(NGX_LOG_DEBUG_EVENT, cycle-&gt;log, 0,</span></a>
 <a name="859"><span class="lineNum">     859 </span>            :                        &quot;epoll: fd:%d ev:%04XD d:%p&quot;,</a>
 <a name="860"><span class="lineNum">     860 </span>            :                        c-&gt;fd, revents, event_list[i].data.ptr);</a>
 <a name="861"><span class="lineNum">     861 </span>            : </a>
-<a name="862"><span class="lineNum">     862 </span><span class="lineCov">         64 :         if (revents &amp; (EPOLLERR|EPOLLHUP)) {</span></a>
+<a name="862"><span class="lineNum">     862 </span><span class="lineCov">         63 :         if (revents &amp; (EPOLLERR|EPOLLHUP)) {</span></a>
 <a name="863"><span class="lineNum">     863 </span><span class="lineCov">          4 :             ngx_log_debug2(NGX_LOG_DEBUG_EVENT, cycle-&gt;log, 0,</span></a>
 <a name="864"><span class="lineNum">     864 </span>            :                            &quot;epoll_wait() error on fd:%d ev:%04XD&quot;,</a>
 <a name="865"><span class="lineNum">     865 </span>            :                            c-&gt;fd, revents);</a>
@@ -942,31 +942,31 @@
 <a name="880"><span class="lineNum">     880 </span>            :         }</a>
 <a name="881"><span class="lineNum">     881 </span>            : #endif</a>
 <a name="882"><span class="lineNum">     882 </span>            : </a>
-<a name="883"><span class="lineNum">     883 </span><span class="lineCov">         64 :         if ((revents &amp; EPOLLIN) &amp;&amp; rev-&gt;active) {</span></a>
+<a name="883"><span class="lineNum">     883 </span><span class="lineCov">         63 :         if ((revents &amp; EPOLLIN) &amp;&amp; rev-&gt;active) {</span></a>
 <a name="884"><span class="lineNum">     884 </span>            : </a>
 <a name="885"><span class="lineNum">     885 </span>            : #if (NGX_HAVE_EPOLLRDHUP)</a>
-<a name="886"><span class="lineNum">     886 </span><span class="lineCov">         64 :             if (revents &amp; EPOLLRDHUP) {</span></a>
+<a name="886"><span class="lineNum">     886 </span><span class="lineCov">         63 :             if (revents &amp; EPOLLRDHUP) {</span></a>
 <a name="887"><span class="lineNum">     887 </span><span class="lineCov">          4 :                 rev-&gt;pending_eof = 1;</span></a>
 <a name="888"><span class="lineNum">     888 </span>            :             }</a>
 <a name="889"><span class="lineNum">     889 </span>            : #endif</a>
 <a name="890"><span class="lineNum">     890 </span>            : </a>
-<a name="891"><span class="lineNum">     891 </span><span class="lineCov">         64 :             rev-&gt;ready = 1;</span></a>
-<a name="892"><span class="lineNum">     892 </span><span class="lineCov">         64 :             rev-&gt;available = -1;</span></a>
+<a name="891"><span class="lineNum">     891 </span><span class="lineCov">         63 :             rev-&gt;ready = 1;</span></a>
+<a name="892"><span class="lineNum">     892 </span><span class="lineCov">         63 :             rev-&gt;available = -1;</span></a>
 <a name="893"><span class="lineNum">     893 </span>            : </a>
-<a name="894"><span class="lineNum">     894 </span><span class="lineCov">         64 :             if (flags &amp; NGX_POST_EVENTS) {</span></a>
+<a name="894"><span class="lineNum">     894 </span><span class="lineCov">         63 :             if (flags &amp; NGX_POST_EVENTS) {</span></a>
 <a name="895"><span class="lineNum">     895 </span><span class="lineNoCov">          0 :                 queue = rev-&gt;accept ? &amp;ngx_posted_accept_events</span></a>
 <a name="896"><span class="lineNum">     896 </span><span class="lineNoCov">          0 :                                     : &amp;ngx_posted_events;</span></a>
 <a name="897"><span class="lineNum">     897 </span>            : </a>
 <a name="898"><span class="lineNum">     898 </span><span class="lineNoCov">          0 :                 ngx_post_event(rev, queue);</span></a>
 <a name="899"><span class="lineNum">     899 </span>            : </a>
 <a name="900"><span class="lineNum">     900 </span>            :             } else {</a>
-<a name="901"><span class="lineNum">     901 </span><span class="lineCov">         64 :                 rev-&gt;handler(rev);</span></a>
+<a name="901"><span class="lineNum">     901 </span><span class="lineCov">         63 :                 rev-&gt;handler(rev);</span></a>
 <a name="902"><span class="lineNum">     902 </span>            :             }</a>
 <a name="903"><span class="lineNum">     903 </span>            :         }</a>
 <a name="904"><span class="lineNum">     904 </span>            : </a>
-<a name="905"><span class="lineNum">     905 </span><span class="lineCov">         64 :         wev = c-&gt;write;</span></a>
+<a name="905"><span class="lineNum">     905 </span><span class="lineCov">         63 :         wev = c-&gt;write;</span></a>
 <a name="906"><span class="lineNum">     906 </span>            : </a>
-<a name="907"><span class="lineNum">     907 </span><span class="lineCov">         64 :         if ((revents &amp; EPOLLOUT) &amp;&amp; wev-&gt;active) {</span></a>
+<a name="907"><span class="lineNum">     907 </span><span class="lineCov">         63 :         if ((revents &amp; EPOLLOUT) &amp;&amp; wev-&gt;active) {</span></a>
 <a name="908"><span class="lineNum">     908 </span>            : </a>
 <a name="909"><span class="lineNum">     909 </span><span class="lineNoCov">          0 :             if (c-&gt;fd == -1 || wev-&gt;instance != instance) {</span></a>
 <a name="910"><span class="lineNum">     910 </span>            : </a>
@@ -994,7 +994,7 @@
 <a name="932"><span class="lineNum">     932 </span>            :         }</a>
 <a name="933"><span class="lineNum">     933 </span>            :     }</a>
 <a name="934"><span class="lineNum">     934 </span>            : </a>
-<a name="935"><span class="lineNum">     935 </span><span class="lineCov">         64 :     return NGX_OK;</span></a>
+<a name="935"><span class="lineNum">     935 </span><span class="lineCov">         63 :     return NGX_OK;</span></a>
 <a name="936"><span class="lineNum">     936 </span>            : }</a>
 <a name="937"><span class="lineNum">     937 </span>            : </a>
 <a name="938"><span class="lineNum">     938 </span>            : </a>

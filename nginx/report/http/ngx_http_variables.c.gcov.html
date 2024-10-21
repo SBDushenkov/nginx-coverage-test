@@ -31,13 +31,13 @@
             <td class="headerValue">report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">182</td>
-            <td class="headerCovTableEntry">1097</td>
-            <td class="headerCovTableEntryLo">16.6 %</td>
+            <td class="headerCovTableEntry">184</td>
+            <td class="headerCovTableEntry">1114</td>
+            <td class="headerCovTableEntryLo">16.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">12</td>
@@ -991,7 +991,7 @@
 <a name="929"><span class="lineNum">     929 </span>            :     u_char           *p, ch;</a>
 <a name="930"><span class="lineNum">     930 </span>            :     size_t            len;</a>
 <a name="931"><span class="lineNum">     931 </span>            :     ngx_uint_t        i, n;</a>
-<a name="932"><span class="lineNum">     932 </span>            :     ngx_table_elt_t  *header, *h, **ph;</a>
+<a name="932"><span class="lineNum">     932 </span><span class="lineNoCov">          0 :     ngx_table_elt_t  *header, *h, **ph;</span></a>
 <a name="933"><span class="lineNum">     933 </span>            : </a>
 <a name="934"><span class="lineNum">     934 </span><span class="lineNoCov">          0 :     ph = &amp;h;</span></a>
 <a name="935"><span class="lineNum">     935 </span>            : #if (NGX_SUPPRESS_WARN)</a>
@@ -1135,7 +1135,7 @@
 <a name="1073"><span class="lineNum">    1073 </span>            : {</a>
 <a name="1074"><span class="lineNum">    1074 </span><span class="lineNoCov">          0 :     ngx_str_t *name = (ngx_str_t *) data;</span></a>
 <a name="1075"><span class="lineNum">    1075 </span>            : </a>
-<a name="1076"><span class="lineNum">    1076 </span>            :     ngx_str_t  cookie, s;</a>
+<a name="1076"><span class="lineNum">    1076 </span><span class="lineNoCov">          0 :     ngx_str_t  cookie, s;</span></a>
 <a name="1077"><span class="lineNum">    1077 </span>            : </a>
 <a name="1078"><span class="lineNum">    1078 </span><span class="lineNoCov">          0 :     s.len = name-&gt;len - (sizeof(&quot;cookie_&quot;) - 1);</span></a>
 <a name="1079"><span class="lineNum">    1079 </span><span class="lineNoCov">          0 :     s.data = name-&gt;data + sizeof(&quot;cookie_&quot;) - 1;</span></a>
@@ -1165,7 +1165,7 @@
 <a name="1103"><span class="lineNum">    1103 </span>            : </a>
 <a name="1104"><span class="lineNum">    1104 </span>            :     u_char     *arg;</a>
 <a name="1105"><span class="lineNum">    1105 </span>            :     size_t      len;</a>
-<a name="1106"><span class="lineNum">    1106 </span>            :     ngx_str_t   value;</a>
+<a name="1106"><span class="lineNum">    1106 </span><span class="lineNoCov">          0 :     ngx_str_t   value;</span></a>
 <a name="1107"><span class="lineNum">    1107 </span>            : </a>
 <a name="1108"><span class="lineNum">    1108 </span><span class="lineNoCov">          0 :     len = name-&gt;len - (sizeof(&quot;arg_&quot;) - 1);</span></a>
 <a name="1109"><span class="lineNum">    1109 </span><span class="lineNoCov">          0 :     arg = name-&gt;data + sizeof(&quot;arg_&quot;) - 1;</span></a>
@@ -1191,8 +1191,8 @@
 <a name="1129"><span class="lineNum">    1129 </span><span class="lineNoCov">          0 : ngx_http_variable_tcpinfo(ngx_http_request_t *r, ngx_http_variable_value_t *v,</span></a>
 <a name="1130"><span class="lineNum">    1130 </span>            :     uintptr_t data)</a>
 <a name="1131"><span class="lineNum">    1131 </span>            : {</a>
-<a name="1132"><span class="lineNum">    1132 </span>            :     struct tcp_info  ti;</a>
-<a name="1133"><span class="lineNum">    1133 </span>            :     socklen_t        len;</a>
+<a name="1132"><span class="lineNum">    1132 </span><span class="lineNoCov">          0 :     struct tcp_info  ti;</span></a>
+<a name="1133"><span class="lineNum">    1133 </span><span class="lineNoCov">          0 :     socklen_t        len;</span></a>
 <a name="1134"><span class="lineNum">    1134 </span>            :     uint32_t         value;</a>
 <a name="1135"><span class="lineNum">    1135 </span>            : </a>
 <a name="1136"><span class="lineNum">    1136 </span><span class="lineNoCov">          0 :     len = sizeof(struct tcp_info);</span></a>
@@ -1463,7 +1463,7 @@
 <a name="1401"><span class="lineNum">    1401 </span><span class="lineNoCov">          0 :     ngx_str_t *name = (ngx_str_t *) data;</span></a>
 <a name="1402"><span class="lineNum">    1402 </span>            : </a>
 <a name="1403"><span class="lineNum">    1403 </span>            :     ngx_int_t  rc;</a>
-<a name="1404"><span class="lineNum">    1404 </span>            :     ngx_str_t  tlv, value;</a>
+<a name="1404"><span class="lineNum">    1404 </span><span class="lineNoCov">          0 :     ngx_str_t  tlv, value;</span></a>
 <a name="1405"><span class="lineNum">    1405 </span>            : </a>
 <a name="1406"><span class="lineNum">    1406 </span><span class="lineNoCov">          0 :     tlv.len = name-&gt;len - (sizeof(&quot;proxy_protocol_tlv_&quot;) - 1);</span></a>
 <a name="1407"><span class="lineNum">    1407 </span><span class="lineNoCov">          0 :     tlv.data = name-&gt;data + sizeof(&quot;proxy_protocol_tlv_&quot;) - 1;</span></a>
@@ -1493,8 +1493,8 @@
 <a name="1431"><span class="lineNum">    1431 </span><span class="lineNoCov">          0 : ngx_http_variable_server_addr(ngx_http_request_t *r,</span></a>
 <a name="1432"><span class="lineNum">    1432 </span>            :     ngx_http_variable_value_t *v, uintptr_t data)</a>
 <a name="1433"><span class="lineNum">    1433 </span>            : {</a>
-<a name="1434"><span class="lineNum">    1434 </span>            :     ngx_str_t  s;</a>
-<a name="1435"><span class="lineNum">    1435 </span>            :     u_char     addr[NGX_SOCKADDR_STRLEN];</a>
+<a name="1434"><span class="lineNum">    1434 </span><span class="lineNoCov">          0 :     ngx_str_t  s;</span></a>
+<a name="1435"><span class="lineNum">    1435 </span><span class="lineNoCov">          0 :     u_char     addr[NGX_SOCKADDR_STRLEN];</span></a>
 <a name="1436"><span class="lineNum">    1436 </span>            : </a>
 <a name="1437"><span class="lineNum">    1437 </span><span class="lineNoCov">          0 :     s.len = NGX_SOCKADDR_STRLEN;</span></a>
 <a name="1438"><span class="lineNum">    1438 </span><span class="lineNoCov">          0 :     s.data = addr;</span></a>
@@ -1635,7 +1635,7 @@
 <a name="1573"><span class="lineNum">    1573 </span><span class="lineNoCov">          0 : ngx_http_variable_document_root(ngx_http_request_t *r,</span></a>
 <a name="1574"><span class="lineNum">    1574 </span>            :     ngx_http_variable_value_t *v, uintptr_t data)</a>
 <a name="1575"><span class="lineNum">    1575 </span>            : {</a>
-<a name="1576"><span class="lineNum">    1576 </span>            :     ngx_str_t                  path;</a>
+<a name="1576"><span class="lineNum">    1576 </span><span class="lineNoCov">          0 :     ngx_str_t                  path;</span></a>
 <a name="1577"><span class="lineNum">    1577 </span>            :     ngx_http_core_loc_conf_t  *clcf;</a>
 <a name="1578"><span class="lineNum">    1578 </span>            : </a>
 <a name="1579"><span class="lineNum">    1579 </span><span class="lineNoCov">          0 :     clcf = ngx_http_get_module_loc_conf(r, ngx_http_core_module);</span></a>
@@ -1678,10 +1678,10 @@
 <a name="1616"><span class="lineNum">    1616 </span>            : {</a>
 <a name="1617"><span class="lineNum">    1617 </span>            :     u_char                    *real;</a>
 <a name="1618"><span class="lineNum">    1618 </span>            :     size_t                     len;</a>
-<a name="1619"><span class="lineNum">    1619 </span>            :     ngx_str_t                  path;</a>
+<a name="1619"><span class="lineNum">    1619 </span><span class="lineNoCov">          0 :     ngx_str_t                  path;</span></a>
 <a name="1620"><span class="lineNum">    1620 </span>            :     ngx_http_core_loc_conf_t  *clcf;</a>
 <a name="1621"><span class="lineNum">    1621 </span>            : #if (NGX_HAVE_MAX_PATH)</a>
-<a name="1622"><span class="lineNum">    1622 </span>            :     u_char                     buffer[NGX_MAX_PATH];</a>
+<a name="1622"><span class="lineNum">    1622 </span><span class="lineNoCov">          0 :     u_char                     buffer[NGX_MAX_PATH];</span></a>
 <a name="1623"><span class="lineNum">    1623 </span>            : #endif</a>
 <a name="1624"><span class="lineNum">    1624 </span>            : </a>
 <a name="1625"><span class="lineNum">    1625 </span><span class="lineNoCov">          0 :     clcf = ngx_http_get_module_loc_conf(r, ngx_http_core_module);</span></a>
@@ -1749,8 +1749,8 @@
 <a name="1687"><span class="lineNum">    1687 </span><span class="lineNoCov">          0 : ngx_http_variable_request_filename(ngx_http_request_t *r,</span></a>
 <a name="1688"><span class="lineNum">    1688 </span>            :     ngx_http_variable_value_t *v, uintptr_t data)</a>
 <a name="1689"><span class="lineNum">    1689 </span>            : {</a>
-<a name="1690"><span class="lineNum">    1690 </span>            :     size_t     root;</a>
-<a name="1691"><span class="lineNum">    1691 </span>            :     ngx_str_t  path;</a>
+<a name="1690"><span class="lineNum">    1690 </span><span class="lineNoCov">          0 :     size_t     root;</span></a>
+<a name="1691"><span class="lineNum">    1691 </span><span class="lineNoCov">          0 :     ngx_str_t  path;</span></a>
 <a name="1692"><span class="lineNum">    1692 </span>            : </a>
 <a name="1693"><span class="lineNum">    1693 </span><span class="lineNoCov">          0 :     if (ngx_http_map_uri_to_path(r, &amp;path, &amp;root, 0) == NULL) {</span></a>
 <a name="1694"><span class="lineNum">    1694 </span><span class="lineNoCov">          0 :         return NGX_ERROR;</span></a>
@@ -1988,7 +1988,7 @@
 <a name="1926"><span class="lineNum">    1926 </span><span class="lineNoCov">          0 : ngx_http_variable_sent_location(ngx_http_request_t *r,</span></a>
 <a name="1927"><span class="lineNum">    1927 </span>            :     ngx_http_variable_value_t *v, uintptr_t data)</a>
 <a name="1928"><span class="lineNum">    1928 </span>            : {</a>
-<a name="1929"><span class="lineNum">    1929 </span>            :     ngx_str_t  name;</a>
+<a name="1929"><span class="lineNum">    1929 </span><span class="lineNoCov">          0 :     ngx_str_t  name;</span></a>
 <a name="1930"><span class="lineNum">    1930 </span>            : </a>
 <a name="1931"><span class="lineNum">    1931 </span><span class="lineNoCov">          0 :     if (r-&gt;headers_out.location) {</span></a>
 <a name="1932"><span class="lineNum">    1932 </span><span class="lineNoCov">          0 :         v-&gt;len = r-&gt;headers_out.location-&gt;value.len;</span></a>
@@ -2132,7 +2132,7 @@
 <a name="2070"><span class="lineNum">    2070 </span>            :     ngx_http_variable_value_t *v, uintptr_t data)</a>
 <a name="2071"><span class="lineNum">    2071 </span>            : {</a>
 <a name="2072"><span class="lineNum">    2072 </span>            :     ssize_t    s;</a>
-<a name="2073"><span class="lineNum">    2073 </span>            :     ngx_str_t  val;</a>
+<a name="2073"><span class="lineNum">    2073 </span><span class="lineNoCov">          0 :     ngx_str_t  val;</span></a>
 <a name="2074"><span class="lineNum">    2074 </span>            : </a>
 <a name="2075"><span class="lineNum">    2075 </span><span class="lineNoCov">          0 :     val.len = v-&gt;len;</span></a>
 <a name="2076"><span class="lineNum">    2076 </span><span class="lineNoCov">          0 :     val.data = v-&gt;data;</span></a>
@@ -2605,7 +2605,7 @@
 <a name="2543"><span class="lineNum">    2543 </span>            : {</a>
 <a name="2544"><span class="lineNum">    2544 </span>            :     u_char                     *p;</a>
 <a name="2545"><span class="lineNum">    2545 </span>            :     size_t                      size;</a>
-<a name="2546"><span class="lineNum">    2546 </span>            :     ngx_str_t                   name;</a>
+<a name="2546"><span class="lineNum">    2546 </span><span class="lineNoCov">          0 :     ngx_str_t                   name;</span></a>
 <a name="2547"><span class="lineNum">    2547 </span>            :     ngx_uint_t                  i, n;</a>
 <a name="2548"><span class="lineNum">    2548 </span>            :     ngx_http_variable_t        *v;</a>
 <a name="2549"><span class="lineNum">    2549 </span>            :     ngx_http_regex_t           *re;</a>
@@ -2794,7 +2794,7 @@
 <a name="2732"><span class="lineNum">    2732 </span>            :     size_t                      len;</a>
 <a name="2733"><span class="lineNum">    2733 </span>            :     ngx_uint_t                  i, n;</a>
 <a name="2734"><span class="lineNum">    2734 </span>            :     ngx_hash_key_t             *key;</a>
-<a name="2735"><span class="lineNum">    2735 </span>            :     ngx_hash_init_t             hash;</a>
+<a name="2735"><span class="lineNum">    2735 </span><span class="lineCov">         22 :     ngx_hash_init_t             hash;</span></a>
 <a name="2736"><span class="lineNum">    2736 </span>            :     ngx_http_variable_t        *v, *av, *pv;</a>
 <a name="2737"><span class="lineNum">    2737 </span>            :     ngx_http_core_main_conf_t  *cmcf;</a>
 <a name="2738"><span class="lineNum">    2738 </span>            : </a>
@@ -2862,7 +2862,7 @@
 <a name="2800"><span class="lineNum">    2800 </span><span class="lineNoCov">          0 :             return NGX_ERROR;</span></a>
 <a name="2801"><span class="lineNum">    2801 </span>            :         }</a>
 <a name="2802"><span class="lineNum">    2802 </span>            : </a>
-<a name="2803"><span class="lineNum">    2803 </span><span class="lineNoCov">          0 :     next:</span></a>
+<a name="2803"><span class="lineNum">    2803 </span><span class="lineCov">        152 :     next:</span></a>
 <a name="2804"><span class="lineNum">    2804 </span><span class="lineCov">        152 :         continue;</span></a>
 <a name="2805"><span class="lineNum">    2805 </span>            :     }</a>
 <a name="2806"><span class="lineNum">    2806 </span>            : </a>

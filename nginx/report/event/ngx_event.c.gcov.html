@@ -31,13 +31,13 @@
             <td class="headerValue">report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">196</td>
-            <td class="headerCovTableEntry">421</td>
-            <td class="headerCovTableEntryLo">46.6 %</td>
+            <td class="headerCovTableEntry">198</td>
+            <td class="headerCovTableEntry">429</td>
+            <td class="headerCovTableEntryLo">46.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -254,18 +254,18 @@
 <a name="192"><span class="lineNum">     192 </span>            : </a>
 <a name="193"><span class="lineNum">     193 </span>            : </a>
 <a name="194"><span class="lineNum">     194 </span>            : void</a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">         64 : ngx_process_events_and_timers(ngx_cycle_t *cycle)</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">         63 : ngx_process_events_and_timers(ngx_cycle_t *cycle)</span></a>
 <a name="196"><span class="lineNum">     196 </span>            : {</a>
 <a name="197"><span class="lineNum">     197 </span>            :     ngx_uint_t  flags;</a>
 <a name="198"><span class="lineNum">     198 </span>            :     ngx_msec_t  timer, delta;</a>
 <a name="199"><span class="lineNum">     199 </span>            : </a>
-<a name="200"><span class="lineNum">     200 </span><span class="lineCov">         64 :     if (ngx_timer_resolution) {</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineCov">         63 :     if (ngx_timer_resolution) {</span></a>
 <a name="201"><span class="lineNum">     201 </span><span class="lineNoCov">          0 :         timer = NGX_TIMER_INFINITE;</span></a>
 <a name="202"><span class="lineNum">     202 </span><span class="lineNoCov">          0 :         flags = 0;</span></a>
 <a name="203"><span class="lineNum">     203 </span>            : </a>
 <a name="204"><span class="lineNum">     204 </span>            :     } else {</a>
-<a name="205"><span class="lineNum">     205 </span><span class="lineCov">         64 :         timer = ngx_event_find_timer();</span></a>
-<a name="206"><span class="lineNum">     206 </span><span class="lineCov">         64 :         flags = NGX_UPDATE_TIME;</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">         63 :         timer = ngx_event_find_timer();</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">         63 :         flags = NGX_UPDATE_TIME;</span></a>
 <a name="207"><span class="lineNum">     207 </span>            : </a>
 <a name="208"><span class="lineNum">     208 </span>            : #if (NGX_WIN32)</a>
 <a name="209"><span class="lineNum">     209 </span>            : </a>
@@ -278,7 +278,7 @@
 <a name="216"><span class="lineNum">     216 </span>            : #endif</a>
 <a name="217"><span class="lineNum">     217 </span>            :     }</a>
 <a name="218"><span class="lineNum">     218 </span>            : </a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">         64 :     if (ngx_use_accept_mutex) {</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineCov">         63 :     if (ngx_use_accept_mutex) {</span></a>
 <a name="220"><span class="lineNum">     220 </span><span class="lineNoCov">          0 :         if (ngx_accept_disabled &gt; 0) {</span></a>
 <a name="221"><span class="lineNum">     221 </span><span class="lineNoCov">          0 :             ngx_accept_disabled--;</span></a>
 <a name="222"><span class="lineNum">     222 </span>            : </a>
@@ -300,34 +300,34 @@
 <a name="238"><span class="lineNum">     238 </span>            :         }</a>
 <a name="239"><span class="lineNum">     239 </span>            :     }</a>
 <a name="240"><span class="lineNum">     240 </span>            : </a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">         64 :     if (!ngx_queue_empty(&amp;ngx_posted_next_events)) {</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">         63 :     if (!ngx_queue_empty(&amp;ngx_posted_next_events)) {</span></a>
 <a name="242"><span class="lineNum">     242 </span><span class="lineNoCov">          0 :         ngx_event_move_posted_next(cycle);</span></a>
 <a name="243"><span class="lineNum">     243 </span><span class="lineNoCov">          0 :         timer = 0;</span></a>
 <a name="244"><span class="lineNum">     244 </span>            :     }</a>
 <a name="245"><span class="lineNum">     245 </span>            : </a>
-<a name="246"><span class="lineNum">     246 </span><span class="lineCov">         64 :     delta = ngx_current_msec;</span></a>
+<a name="246"><span class="lineNum">     246 </span><span class="lineCov">         63 :     delta = ngx_current_msec;</span></a>
 <a name="247"><span class="lineNum">     247 </span>            : </a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineCov">         64 :     (void) ngx_process_events(cycle, timer, flags);</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineCov">         63 :     (void) ngx_process_events(cycle, timer, flags);</span></a>
 <a name="249"><span class="lineNum">     249 </span>            : </a>
-<a name="250"><span class="lineNum">     250 </span><span class="lineCov">         64 :     delta = ngx_current_msec - delta;</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">         63 :     delta = ngx_current_msec - delta;</span></a>
 <a name="251"><span class="lineNum">     251 </span>            : </a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">         64 :     ngx_log_debug1(NGX_LOG_DEBUG_EVENT, cycle-&gt;log, 0,</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineCov">         63 :     ngx_log_debug1(NGX_LOG_DEBUG_EVENT, cycle-&gt;log, 0,</span></a>
 <a name="253"><span class="lineNum">     253 </span>            :                    &quot;timer delta: %M&quot;, delta);</a>
 <a name="254"><span class="lineNum">     254 </span>            : </a>
-<a name="255"><span class="lineNum">     255 </span><span class="lineCov">         64 :     ngx_event_process_posted(cycle, &amp;ngx_posted_accept_events);</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">         63 :     ngx_event_process_posted(cycle, &amp;ngx_posted_accept_events);</span></a>
 <a name="256"><span class="lineNum">     256 </span>            : </a>
-<a name="257"><span class="lineNum">     257 </span><span class="lineCov">         64 :     if (ngx_accept_mutex_held) {</span></a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineCov">         63 :     if (ngx_accept_mutex_held) {</span></a>
 <a name="258"><span class="lineNum">     258 </span><span class="lineNoCov">          0 :         ngx_shmtx_unlock(&amp;ngx_accept_mutex);</span></a>
 <a name="259"><span class="lineNum">     259 </span>            :     }</a>
 <a name="260"><span class="lineNum">     260 </span>            : </a>
-<a name="261"><span class="lineNum">     261 </span><span class="lineCov">         64 :     ngx_event_expire_timers();</span></a>
+<a name="261"><span class="lineNum">     261 </span><span class="lineCov">         63 :     ngx_event_expire_timers();</span></a>
 <a name="262"><span class="lineNum">     262 </span>            : </a>
-<a name="263"><span class="lineNum">     263 </span><span class="lineCov">         64 :     ngx_event_process_posted(cycle, &amp;ngx_posted_events);</span></a>
+<a name="263"><span class="lineNum">     263 </span><span class="lineCov">         63 :     ngx_event_process_posted(cycle, &amp;ngx_posted_events);</span></a>
 <a name="264"><span class="lineNum">     264 </span>            : }</a>
 <a name="265"><span class="lineNum">     265 </span>            : </a>
 <a name="266"><span class="lineNum">     266 </span>            : </a>
 <a name="267"><span class="lineNum">     267 </span>            : ngx_int_t</a>
-<a name="268"><span class="lineNum">     268 </span><span class="lineCov">         37 : ngx_handle_read_event(ngx_event_t *rev, ngx_uint_t flags)</span></a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">         38 : ngx_handle_read_event(ngx_event_t *rev, ngx_uint_t flags)</span></a>
 <a name="269"><span class="lineNum">     269 </span>            : {</a>
 <a name="270"><span class="lineNum">     270 </span>            : #if (NGX_QUIC)</a>
 <a name="271"><span class="lineNum">     271 </span>            : </a>
@@ -341,11 +341,11 @@
 <a name="279"><span class="lineNum">     279 </span>            : </a>
 <a name="280"><span class="lineNum">     280 </span>            : #endif</a>
 <a name="281"><span class="lineNum">     281 </span>            : </a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineCov">         37 :     if (ngx_event_flags &amp; NGX_USE_CLEAR_EVENT) {</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">         38 :     if (ngx_event_flags &amp; NGX_USE_CLEAR_EVENT) {</span></a>
 <a name="283"><span class="lineNum">     283 </span>            : </a>
 <a name="284"><span class="lineNum">     284 </span>            :         /* kqueue, epoll */</a>
 <a name="285"><span class="lineNum">     285 </span>            : </a>
-<a name="286"><span class="lineNum">     286 </span><span class="lineCov">         37 :         if (!rev-&gt;active &amp;&amp; !rev-&gt;ready) {</span></a>
+<a name="286"><span class="lineNum">     286 </span><span class="lineCov">         38 :         if (!rev-&gt;active &amp;&amp; !rev-&gt;ready) {</span></a>
 <a name="287"><span class="lineNum">     287 </span><span class="lineCov">          7 :             if (ngx_add_event(rev, NGX_READ_EVENT, NGX_CLEAR_EVENT)</span></a>
 <a name="288"><span class="lineNum">     288 </span>            :                 == NGX_ERROR)</a>
 <a name="289"><span class="lineNum">     289 </span>            :             {</a>
@@ -353,7 +353,7 @@
 <a name="291"><span class="lineNum">     291 </span>            :             }</a>
 <a name="292"><span class="lineNum">     292 </span>            :         }</a>
 <a name="293"><span class="lineNum">     293 </span>            : </a>
-<a name="294"><span class="lineNum">     294 </span><span class="lineCov">         37 :         return NGX_OK;</span></a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineCov">         38 :         return NGX_OK;</span></a>
 <a name="295"><span class="lineNum">     295 </span>            : </a>
 <a name="296"><span class="lineNum">     296 </span><span class="lineNoCov">          0 :     } else if (ngx_event_flags &amp; NGX_USE_LEVEL_EVENT) {</span></a>
 <a name="297"><span class="lineNum">     297 </span>            : </a>
@@ -556,7 +556,7 @@
 <a name="494"><span class="lineNum">     494 </span>            :     void              ***cf;</a>
 <a name="495"><span class="lineNum">     495 </span>            :     u_char              *shared;</a>
 <a name="496"><span class="lineNum">     496 </span>            :     size_t               size, cl;</a>
-<a name="497"><span class="lineNum">     497 </span>            :     ngx_shm_t            shm;</a>
+<a name="497"><span class="lineNum">     497 </span><span class="lineCov">          7 :     ngx_shm_t            shm;</span></a>
 <a name="498"><span class="lineNum">     498 </span>            :     ngx_time_t          *tp;</a>
 <a name="499"><span class="lineNum">     499 </span>            :     ngx_core_conf_t     *ccf;</a>
 <a name="500"><span class="lineNum">     500 </span>            :     ngx_event_conf_t    *ecf;</a>
@@ -576,7 +576,7 @@
 <a name="514"><span class="lineNum">     514 </span>            : #if !(NGX_WIN32)</a>
 <a name="515"><span class="lineNum">     515 </span>            :     {</a>
 <a name="516"><span class="lineNum">     516 </span>            :     ngx_int_t      limit;</a>
-<a name="517"><span class="lineNum">     517 </span>            :     struct rlimit  rlmt;</a>
+<a name="517"><span class="lineNum">     517 </span><span class="lineCov">          7 :     struct rlimit  rlmt;</span></a>
 <a name="518"><span class="lineNum">     518 </span>            : </a>
 <a name="519"><span class="lineNum">     519 </span><span class="lineCov">          7 :     if (getrlimit(RLIMIT_NOFILE, &amp;rlmt) == -1) {</span></a>
 <a name="520"><span class="lineNum">     520 </span><span class="lineNoCov">          0 :         ngx_log_error(NGX_LOG_ALERT, cycle-&gt;log, ngx_errno,</span></a>
@@ -760,8 +760,8 @@
 <a name="698"><span class="lineNum">     698 </span>            : #if !(NGX_WIN32)</a>
 <a name="699"><span class="lineNum">     699 </span>            : </a>
 <a name="700"><span class="lineNum">     700 </span><span class="lineCov">          7 :     if (ngx_timer_resolution &amp;&amp; !(ngx_event_flags &amp; NGX_USE_TIMER_EVENT)) {</span></a>
-<a name="701"><span class="lineNum">     701 </span>            :         struct sigaction  sa;</a>
-<a name="702"><span class="lineNum">     702 </span>            :         struct itimerval  itv;</a>
+<a name="701"><span class="lineNum">     701 </span><span class="lineNoCov">          0 :         struct sigaction  sa;</span></a>
+<a name="702"><span class="lineNum">     702 </span><span class="lineNoCov">          0 :         struct itimerval  itv;</span></a>
 <a name="703"><span class="lineNum">     703 </span>            : </a>
 <a name="704"><span class="lineNum">     704 </span><span class="lineNoCov">          0 :         ngx_memzero(&amp;sa, sizeof(struct sigaction));</span></a>
 <a name="705"><span class="lineNum">     705 </span><span class="lineNoCov">          0 :         sa.sa_handler = ngx_timer_signal_handler;</span></a>
@@ -785,7 +785,7 @@
 <a name="723"><span class="lineNum">     723 </span>            :     }</a>
 <a name="724"><span class="lineNum">     724 </span>            : </a>
 <a name="725"><span class="lineNum">     725 </span><span class="lineCov">          7 :     if (ngx_event_flags &amp; NGX_USE_FD_EVENT) {</span></a>
-<a name="726"><span class="lineNum">     726 </span>            :         struct rlimit  rlmt;</a>
+<a name="726"><span class="lineNum">     726 </span><span class="lineNoCov">          0 :         struct rlimit  rlmt;</span></a>
 <a name="727"><span class="lineNum">     727 </span>            : </a>
 <a name="728"><span class="lineNum">     728 </span><span class="lineNoCov">          0 :         if (getrlimit(RLIMIT_NOFILE, &amp;rlmt) == -1) {</span></a>
 <a name="729"><span class="lineNum">     729 </span><span class="lineNoCov">          0 :             ngx_log_error(NGX_LOG_ALERT, cycle-&gt;log, ngx_errno,</span></a>
@@ -1013,7 +1013,7 @@
 <a name="951"><span class="lineNum">     951 </span>            : ngx_int_t</a>
 <a name="952"><span class="lineNum">     952 </span><span class="lineNoCov">          0 : ngx_send_lowat(ngx_connection_t *c, size_t lowat)</span></a>
 <a name="953"><span class="lineNum">     953 </span>            : {</a>
-<a name="954"><span class="lineNum">     954 </span>            :     int  sndlowat;</a>
+<a name="954"><span class="lineNum">     954 </span><span class="lineNoCov">          0 :     int  sndlowat;</span></a>
 <a name="955"><span class="lineNum">     955 </span>            : </a>
 <a name="956"><span class="lineNum">     956 </span>            : #if (NGX_HAVE_LOWAT_EVENT)</a>
 <a name="957"><span class="lineNum">     957 </span>            : </a>
@@ -1220,8 +1220,8 @@
 <a name="1158"><span class="lineNum">    1158 </span>            : </a>
 <a name="1159"><span class="lineNum">    1159 </span>            :     ngx_int_t             rc;</a>
 <a name="1160"><span class="lineNum">    1160 </span>            :     ngx_str_t            *value;</a>
-<a name="1161"><span class="lineNum">    1161 </span>            :     ngx_url_t             u;</a>
-<a name="1162"><span class="lineNum">    1162 </span>            :     ngx_cidr_t            c, *cidr;</a>
+<a name="1161"><span class="lineNum">    1161 </span><span class="lineNoCov">          0 :     ngx_url_t             u;</span></a>
+<a name="1162"><span class="lineNum">    1162 </span><span class="lineNoCov">          0 :     ngx_cidr_t            c, *cidr;</span></a>
 <a name="1163"><span class="lineNum">    1163 </span>            :     ngx_uint_t            i;</a>
 <a name="1164"><span class="lineNum">    1164 </span>            :     struct sockaddr_in   *sin;</a>
 <a name="1165"><span class="lineNum">    1165 </span>            : #if (NGX_HAVE_INET6)</a>

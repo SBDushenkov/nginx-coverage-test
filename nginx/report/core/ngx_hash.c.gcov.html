@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">147</td>
-            <td class="headerCovTableEntry">404</td>
-            <td class="headerCovTableEntryLo">36.4 %</td>
+            <td class="headerCovTableEntry">406</td>
+            <td class="headerCovTableEntryLo">36.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -554,9 +554,9 @@
 <a name="492"><span class="lineNum">     492 </span>            : {</a>
 <a name="493"><span class="lineNum">     493 </span>            :     size_t                len, dot_len;</a>
 <a name="494"><span class="lineNum">     494 </span>            :     ngx_uint_t            i, n, dot;</a>
-<a name="495"><span class="lineNum">     495 </span>            :     ngx_array_t           curr_names, next_names;</a>
+<a name="495"><span class="lineNum">     495 </span><span class="lineNoCov">          0 :     ngx_array_t           curr_names, next_names;</span></a>
 <a name="496"><span class="lineNum">     496 </span>            :     ngx_hash_key_t       *name, *next_name;</a>
-<a name="497"><span class="lineNum">     497 </span>            :     ngx_hash_init_t       h;</a>
+<a name="497"><span class="lineNum">     497 </span><span class="lineNoCov">          0 :     ngx_hash_init_t       h;</span></a>
 <a name="498"><span class="lineNum">     498 </span>            :     ngx_hash_wildcard_t  *wdc;</a>
 <a name="499"><span class="lineNum">     499 </span>            : </a>
 <a name="500"><span class="lineNum">     500 </span><span class="lineNoCov">          0 :     if (ngx_array_init(&amp;curr_names, hinit-&gt;temp_pool, nelts,</span></a>

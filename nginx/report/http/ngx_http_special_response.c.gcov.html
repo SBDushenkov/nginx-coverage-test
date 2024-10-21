@@ -31,13 +31,13 @@
             <td class="headerValue">report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">59</td>
-            <td class="headerCovTableEntry">210</td>
-            <td class="headerCovTableEntryLo">28.1 %</td>
+            <td class="headerCovTableEntry">60</td>
+            <td class="headerCovTableEntry">213</td>
+            <td class="headerCovTableEntryLo">28.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -650,7 +650,7 @@
 <a name="588"><span class="lineNum">     588 </span><span class="lineNoCov">          0 : ngx_http_send_error_page(ngx_http_request_t *r, ngx_http_err_page_t *err_page)</span></a>
 <a name="589"><span class="lineNum">     589 </span>            : {</a>
 <a name="590"><span class="lineNum">     590 </span>            :     ngx_int_t                  overwrite;</a>
-<a name="591"><span class="lineNum">     591 </span>            :     ngx_str_t                  uri, args;</a>
+<a name="591"><span class="lineNum">     591 </span><span class="lineNoCov">          0 :     ngx_str_t                  uri, args;</span></a>
 <a name="592"><span class="lineNum">     592 </span>            :     ngx_table_elt_t           *location;</a>
 <a name="593"><span class="lineNum">     593 </span>            :     ngx_http_core_loc_conf_t  *clcf;</a>
 <a name="594"><span class="lineNum">     594 </span>            : </a>
@@ -740,7 +740,7 @@
 <a name="678"><span class="lineNum">     678 </span>            :     ngx_int_t     rc;</a>
 <a name="679"><span class="lineNum">     679 </span>            :     ngx_buf_t    *b;</a>
 <a name="680"><span class="lineNum">     680 </span>            :     ngx_uint_t    msie_padding;</a>
-<a name="681"><span class="lineNum">     681 </span>            :     ngx_chain_t   out[3];</a>
+<a name="681"><span class="lineNum">     681 </span><span class="lineCov">          6 :     ngx_chain_t   out[3];</span></a>
 <a name="682"><span class="lineNum">     682 </span>            : </a>
 <a name="683"><span class="lineNum">     683 </span><span class="lineCov">          6 :     if (clcf-&gt;server_tokens == NGX_HTTP_SERVER_TOKENS_ON) {</span></a>
 <a name="684"><span class="lineNum">     684 </span><span class="lineCov">          6 :         len = sizeof(ngx_http_error_full_tail) - 1;</span></a>
@@ -854,7 +854,7 @@
 <a name="792"><span class="lineNum">     792 </span>            :     uintptr_t     escape;</a>
 <a name="793"><span class="lineNum">     793 </span>            :     ngx_int_t     rc;</a>
 <a name="794"><span class="lineNum">     794 </span>            :     ngx_buf_t    *b;</a>
-<a name="795"><span class="lineNum">     795 </span>            :     ngx_chain_t   out;</a>
+<a name="795"><span class="lineNum">     795 </span><span class="lineNoCov">          0 :     ngx_chain_t   out;</span></a>
 <a name="796"><span class="lineNum">     796 </span>            : </a>
 <a name="797"><span class="lineNum">     797 </span><span class="lineNoCov">          0 :     len = r-&gt;headers_out.location-&gt;value.len;</span></a>
 <a name="798"><span class="lineNum">     798 </span><span class="lineNoCov">          0 :     location = r-&gt;headers_out.location-&gt;value.data;</span></a>

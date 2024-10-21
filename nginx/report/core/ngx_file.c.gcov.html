@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">45</td>
-            <td class="headerCovTableEntry">449</td>
-            <td class="headerCovTableEntryLo">10.0 %</td>
+            <td class="headerCovTableEntry">454</td>
+            <td class="headerCovTableEntryLo">9.9 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 19:04:06</td>
+            <td class="headerValue">2024-10-21 14:56:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -682,7 +682,7 @@
 <a name="620"><span class="lineNum">     620 </span>            : </a>
 <a name="621"><span class="lineNum">     621 </span>            : #if !(NGX_WIN32)</a>
 <a name="622"><span class="lineNum">     622 </span>            :         {</a>
-<a name="623"><span class="lineNum">     623 </span>            :         ngx_file_info_t   fi;</a>
+<a name="623"><span class="lineNum">     623 </span><span class="lineNoCov">          0 :         ngx_file_info_t   fi;</span></a>
 <a name="624"><span class="lineNum">     624 </span>            : </a>
 <a name="625"><span class="lineNum">     625 </span><span class="lineNoCov">          0 :         if (ngx_file_info(path[i]-&gt;name.data, &amp;fi) == NGX_FILE_ERROR) {</span></a>
 <a name="626"><span class="lineNum">     626 </span><span class="lineNoCov">          0 :             ngx_log_error(NGX_LOG_EMERG, cycle-&gt;log, ngx_errno,</span></a>
@@ -723,7 +723,7 @@
 <a name="661"><span class="lineNum">     661 </span>            : {</a>
 <a name="662"><span class="lineNum">     662 </span>            :     u_char           *name;</a>
 <a name="663"><span class="lineNum">     663 </span>            :     ngx_err_t         err;</a>
-<a name="664"><span class="lineNum">     664 </span>            :     ngx_copy_file_t   cf;</a>
+<a name="664"><span class="lineNum">     664 </span><span class="lineNoCov">          0 :     ngx_copy_file_t   cf;</span></a>
 <a name="665"><span class="lineNum">     665 </span>            : </a>
 <a name="666"><span class="lineNum">     666 </span>            : #if !(NGX_WIN32)</a>
 <a name="667"><span class="lineNum">     667 </span>            : </a>
@@ -864,7 +864,7 @@
 <a name="802"><span class="lineNum">     802 </span>            :     ngx_fd_t          fd, nfd;</a>
 <a name="803"><span class="lineNum">     803 </span>            :     ngx_int_t         rc;</a>
 <a name="804"><span class="lineNum">     804 </span>            :     ngx_uint_t        access;</a>
-<a name="805"><span class="lineNum">     805 </span>            :     ngx_file_info_t   fi;</a>
+<a name="805"><span class="lineNum">     805 </span><span class="lineNoCov">          0 :     ngx_file_info_t   fi;</span></a>
 <a name="806"><span class="lineNum">     806 </span>            : </a>
 <a name="807"><span class="lineNum">     807 </span><span class="lineNoCov">          0 :     rc = NGX_ERROR;</span></a>
 <a name="808"><span class="lineNum">     808 </span><span class="lineNoCov">          0 :     buf = NULL;</span></a>
@@ -1012,8 +1012,8 @@
 <a name="950"><span class="lineNum">     950 </span>            :     size_t      len;</a>
 <a name="951"><span class="lineNum">     951 </span>            :     ngx_int_t   rc;</a>
 <a name="952"><span class="lineNum">     952 </span>            :     ngx_err_t   err;</a>
-<a name="953"><span class="lineNum">     953 </span>            :     ngx_str_t   file, buf;</a>
-<a name="954"><span class="lineNum">     954 </span>            :     ngx_dir_t   dir;</a>
+<a name="953"><span class="lineNum">     953 </span><span class="lineNoCov">          0 :     ngx_str_t   file, buf;</span></a>
+<a name="954"><span class="lineNum">     954 </span><span class="lineNoCov">          0 :     ngx_dir_t   dir;</span></a>
 <a name="955"><span class="lineNum">     955 </span>            : </a>
 <a name="956"><span class="lineNum">     956 </span><span class="lineNoCov">          0 :     ngx_str_null(&amp;buf);</span></a>
 <a name="957"><span class="lineNum">     957 </span>            : </a>
