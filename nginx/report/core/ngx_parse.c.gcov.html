@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-21 14:56:56</td>
+            <td class="headerValue">2024-10-22 11:54:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -171,7 +171,7 @@
 <a name="109"><span class="lineNum">     109 </span>            : </a>
 <a name="110"><span class="lineNum">     110 </span>            : </a>
 <a name="111"><span class="lineNum">     111 </span>            : ngx_int_t</a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineCov">          1 : ngx_parse_time(ngx_str_t *line, ngx_uint_t is_sec)</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">          2 : ngx_parse_time(ngx_str_t *line, ngx_uint_t is_sec)</span></a>
 <a name="113"><span class="lineNum">     113 </span>            : {</a>
 <a name="114"><span class="lineNum">     114 </span>            :     u_char      *p, *last;</a>
 <a name="115"><span class="lineNum">     115 </span>            :     ngx_int_t    value, total, scale;</a>
@@ -190,26 +190,26 @@
 <a name="128"><span class="lineNum">     128 </span>            :         st_last</a>
 <a name="129"><span class="lineNum">     129 </span>            :     } step;</a>
 <a name="130"><span class="lineNum">     130 </span>            : </a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">          1 :     valid = 0;</span></a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineCov">          1 :     value = 0;</span></a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineCov">          1 :     total = 0;</span></a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">          1 :     cutoff = NGX_MAX_INT_T_VALUE / 10;</span></a>
-<a name="135"><span class="lineNum">     135 </span><span class="lineCov">          1 :     cutlim = NGX_MAX_INT_T_VALUE % 10;</span></a>
-<a name="136"><span class="lineNum">     136 </span><span class="lineCov">          1 :     step = is_sec ? st_start : st_month;</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">          2 :     valid = 0;</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">          2 :     value = 0;</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">          2 :     total = 0;</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">          2 :     cutoff = NGX_MAX_INT_T_VALUE / 10;</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">          2 :     cutlim = NGX_MAX_INT_T_VALUE % 10;</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">          2 :     step = is_sec ? st_start : st_month;</span></a>
 <a name="137"><span class="lineNum">     137 </span>            : </a>
-<a name="138"><span class="lineNum">     138 </span><span class="lineCov">          1 :     p = line-&gt;data;</span></a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">          1 :     last = p + line-&gt;len;</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">          2 :     p = line-&gt;data;</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">          2 :     last = p + line-&gt;len;</span></a>
 <a name="140"><span class="lineNum">     140 </span>            : </a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">          3 :     while (p &lt; last) {</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">          6 :     while (p &lt; last) {</span></a>
 <a name="142"><span class="lineNum">     142 </span>            : </a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">          2 :         if (*p &gt;= '0' &amp;&amp; *p &lt;= '9') {</span></a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">          2 :             if (value &gt;= cutoff &amp;&amp; (value &gt; cutoff || *p - '0' &gt; cutlim)) {</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">          4 :         if (*p &gt;= '0' &amp;&amp; *p &lt;= '9') {</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">          4 :             if (value &gt;= cutoff &amp;&amp; (value &gt; cutoff || *p - '0' &gt; cutlim)) {</span></a>
 <a name="145"><span class="lineNum">     145 </span><span class="lineNoCov">          0 :                 return NGX_ERROR;</span></a>
 <a name="146"><span class="lineNum">     146 </span>            :             }</a>
 <a name="147"><span class="lineNum">     147 </span>            : </a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">          2 :             value = value * 10 + (*p++ - '0');</span></a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineCov">          2 :             valid = 1;</span></a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">          2 :             continue;</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">          4 :             value = value * 10 + (*p++ - '0');</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">          4 :             valid = 1;</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">          4 :             continue;</span></a>
 <a name="151"><span class="lineNum">     151 </span>            :         }</a>
 <a name="152"><span class="lineNum">     152 </span>            : </a>
 <a name="153"><span class="lineNum">     153 </span><span class="lineNoCov">          0 :         switch (*p++) {</span></a>
@@ -325,23 +325,23 @@
 <a name="263"><span class="lineNum">     263 </span>            :         }</a>
 <a name="264"><span class="lineNum">     264 </span>            :     }</a>
 <a name="265"><span class="lineNum">     265 </span>            : </a>
-<a name="266"><span class="lineNum">     266 </span><span class="lineCov">          1 :     if (!valid) {</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineCov">          2 :     if (!valid) {</span></a>
 <a name="267"><span class="lineNum">     267 </span><span class="lineNoCov">          0 :         return NGX_ERROR;</span></a>
 <a name="268"><span class="lineNum">     268 </span>            :     }</a>
 <a name="269"><span class="lineNum">     269 </span>            : </a>
-<a name="270"><span class="lineNum">     270 </span><span class="lineCov">          1 :     if (!is_sec) {</span></a>
-<a name="271"><span class="lineNum">     271 </span><span class="lineCov">          1 :         if (value &gt; NGX_MAX_INT_T_VALUE / 1000) {</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">          2 :     if (!is_sec) {</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">          2 :         if (value &gt; NGX_MAX_INT_T_VALUE / 1000) {</span></a>
 <a name="272"><span class="lineNum">     272 </span><span class="lineNoCov">          0 :             return NGX_ERROR;</span></a>
 <a name="273"><span class="lineNum">     273 </span>            :         }</a>
 <a name="274"><span class="lineNum">     274 </span>            : </a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineCov">          1 :         value *= 1000;</span></a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">          2 :         value *= 1000;</span></a>
 <a name="276"><span class="lineNum">     276 </span>            :     }</a>
 <a name="277"><span class="lineNum">     277 </span>            : </a>
-<a name="278"><span class="lineNum">     278 </span><span class="lineCov">          1 :     if (total &gt; NGX_MAX_INT_T_VALUE - value) {</span></a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineCov">          2 :     if (total &gt; NGX_MAX_INT_T_VALUE - value) {</span></a>
 <a name="279"><span class="lineNum">     279 </span><span class="lineNoCov">          0 :         return NGX_ERROR;</span></a>
 <a name="280"><span class="lineNum">     280 </span>            :     }</a>
 <a name="281"><span class="lineNum">     281 </span>            : </a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineCov">          1 :     return total + value;</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">          2 :     return total + value;</span></a>
 <a name="283"><span class="lineNum">     283 </span>            : }</a>
 </pre>
       </td>

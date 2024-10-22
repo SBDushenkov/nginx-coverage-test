@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-21 14:56:56</td>
+            <td class="headerValue">2024-10-22 11:54:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -73,13 +73,13 @@
 <a name="11"><span class="lineNum">      11 </span>            : </a>
 <a name="12"><span class="lineNum">      12 </span>            : </a>
 <a name="13"><span class="lineNum">      13 </span>            : ssize_t</a>
-<a name="14"><span class="lineNum">      14 </span><span class="lineCov">         35 : ngx_unix_recv(ngx_connection_t *c, u_char *buf, size_t size)</span></a>
+<a name="14"><span class="lineNum">      14 </span><span class="lineCov">         38 : ngx_unix_recv(ngx_connection_t *c, u_char *buf, size_t size)</span></a>
 <a name="15"><span class="lineNum">      15 </span>            : {</a>
 <a name="16"><span class="lineNum">      16 </span>            :     ssize_t       n;</a>
 <a name="17"><span class="lineNum">      17 </span>            :     ngx_err_t     err;</a>
 <a name="18"><span class="lineNum">      18 </span>            :     ngx_event_t  *rev;</a>
 <a name="19"><span class="lineNum">      19 </span>            : </a>
-<a name="20"><span class="lineNum">      20 </span><span class="lineCov">         35 :     rev = c-&gt;read;</span></a>
+<a name="20"><span class="lineNum">      20 </span><span class="lineCov">         38 :     rev = c-&gt;read;</span></a>
 <a name="21"><span class="lineNum">      21 </span>            : </a>
 <a name="22"><span class="lineNum">      22 </span>            : #if (NGX_HAVE_KQUEUE)</a>
 <a name="23"><span class="lineNum">      23 </span>            : </a>
@@ -114,14 +114,14 @@
 <a name="52"><span class="lineNum">      52 </span>            : </a>
 <a name="53"><span class="lineNum">      53 </span>            : #if (NGX_HAVE_EPOLLRDHUP)</a>
 <a name="54"><span class="lineNum">      54 </span>            : </a>
-<a name="55"><span class="lineNum">      55 </span><span class="lineCov">         35 :     if ((ngx_event_flags &amp; NGX_USE_EPOLL_EVENT)</span></a>
-<a name="56"><span class="lineNum">      56 </span><span class="lineCov">         35 :         &amp;&amp; ngx_use_epoll_rdhup)</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">         38 :     if ((ngx_event_flags &amp; NGX_USE_EPOLL_EVENT)</span></a>
+<a name="56"><span class="lineNum">      56 </span><span class="lineCov">         38 :         &amp;&amp; ngx_use_epoll_rdhup)</span></a>
 <a name="57"><span class="lineNum">      57 </span>            :     {</a>
-<a name="58"><span class="lineNum">      58 </span><span class="lineCov">         35 :         ngx_log_debug2(NGX_LOG_DEBUG_EVENT, c-&gt;log, 0,</span></a>
+<a name="58"><span class="lineNum">      58 </span><span class="lineCov">         38 :         ngx_log_debug2(NGX_LOG_DEBUG_EVENT, c-&gt;log, 0,</span></a>
 <a name="59"><span class="lineNum">      59 </span>            :                        &quot;recv: eof:%d, avail:%d&quot;,</a>
 <a name="60"><span class="lineNum">      60 </span>            :                        rev-&gt;pending_eof, rev-&gt;available);</a>
 <a name="61"><span class="lineNum">      61 </span>            : </a>
-<a name="62"><span class="lineNum">      62 </span><span class="lineCov">         35 :         if (rev-&gt;available == 0 &amp;&amp; !rev-&gt;pending_eof) {</span></a>
+<a name="62"><span class="lineNum">      62 </span><span class="lineCov">         38 :         if (rev-&gt;available == 0 &amp;&amp; !rev-&gt;pending_eof) {</span></a>
 <a name="63"><span class="lineNum">      63 </span><span class="lineNoCov">          0 :             rev-&gt;ready = 0;</span></a>
 <a name="64"><span class="lineNum">      64 </span><span class="lineNoCov">          0 :             return NGX_AGAIN;</span></a>
 <a name="65"><span class="lineNum">      65 </span>            :         }</a>
@@ -130,14 +130,14 @@
 <a name="68"><span class="lineNum">      68 </span>            : #endif</a>
 <a name="69"><span class="lineNum">      69 </span>            : </a>
 <a name="70"><span class="lineNum">      70 </span>            :     do {</a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">         35 :         n = recv(c-&gt;fd, buf, size, 0);</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">         38 :         n = recv(c-&gt;fd, buf, size, 0);</span></a>
 <a name="72"><span class="lineNum">      72 </span>            : </a>
-<a name="73"><span class="lineNum">      73 </span><span class="lineCov">         35 :         ngx_log_debug3(NGX_LOG_DEBUG_EVENT, c-&gt;log, 0,</span></a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">         38 :         ngx_log_debug3(NGX_LOG_DEBUG_EVENT, c-&gt;log, 0,</span></a>
 <a name="74"><span class="lineNum">      74 </span>            :                        &quot;recv: fd:%d %z of %uz&quot;, c-&gt;fd, n, size);</a>
 <a name="75"><span class="lineNum">      75 </span>            : </a>
-<a name="76"><span class="lineNum">      76 </span><span class="lineCov">         35 :         if (n == 0) {</span></a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">          4 :             rev-&gt;ready = 0;</span></a>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">          4 :             rev-&gt;eof = 1;</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">         38 :         if (n == 0) {</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">          6 :             rev-&gt;ready = 0;</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">          6 :             rev-&gt;eof = 1;</span></a>
 <a name="79"><span class="lineNum">      79 </span>            : </a>
 <a name="80"><span class="lineNum">      80 </span>            : #if (NGX_HAVE_KQUEUE)</a>
 <a name="81"><span class="lineNum">      81 </span>            : </a>
@@ -152,10 +152,10 @@
 <a name="90"><span class="lineNum">      90 </span>            : </a>
 <a name="91"><span class="lineNum">      91 </span>            : #endif</a>
 <a name="92"><span class="lineNum">      92 </span>            : </a>
-<a name="93"><span class="lineNum">      93 </span><span class="lineCov">          4 :             return 0;</span></a>
+<a name="93"><span class="lineNum">      93 </span><span class="lineCov">          6 :             return 0;</span></a>
 <a name="94"><span class="lineNum">      94 </span>            :         }</a>
 <a name="95"><span class="lineNum">      95 </span>            : </a>
-<a name="96"><span class="lineNum">      96 </span><span class="lineCov">         31 :         if (n &gt; 0) {</span></a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">         32 :         if (n &gt; 0) {</span></a>
 <a name="97"><span class="lineNum">      97 </span>            : </a>
 <a name="98"><span class="lineNum">      98 </span>            : #if (NGX_HAVE_KQUEUE)</a>
 <a name="99"><span class="lineNum">      99 </span>            : </a>
@@ -182,7 +182,7 @@
 <a name="120"><span class="lineNum">     120 </span>            : </a>
 <a name="121"><span class="lineNum">     121 </span>            : #if (NGX_HAVE_FIONREAD)</a>
 <a name="122"><span class="lineNum">     122 </span>            : </a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">         31 :             if (rev-&gt;available &gt;= 0) {</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">         32 :             if (rev-&gt;available &gt;= 0) {</span></a>
 <a name="124"><span class="lineNum">     124 </span><span class="lineNoCov">          0 :                 rev-&gt;available -= n;</span></a>
 <a name="125"><span class="lineNum">     125 </span>            : </a>
 <a name="126"><span class="lineNum">     126 </span>            :                 /*</a>
@@ -200,7 +200,7 @@
 <a name="138"><span class="lineNum">     138 </span><span class="lineNoCov">          0 :                 ngx_log_debug1(NGX_LOG_DEBUG_EVENT, c-&gt;log, 0,</span></a>
 <a name="139"><span class="lineNum">     139 </span>            :                                &quot;recv: avail:%d&quot;, rev-&gt;available);</a>
 <a name="140"><span class="lineNum">     140 </span>            : </a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">         31 :             } else if ((size_t) n == size) {</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">         32 :             } else if ((size_t) n == size) {</span></a>
 <a name="142"><span class="lineNum">     142 </span>            : </a>
 <a name="143"><span class="lineNum">     143 </span><span class="lineNoCov">          0 :                 if (ngx_socket_nread(c-&gt;fd, &amp;rev-&gt;available) == -1) {</span></a>
 <a name="144"><span class="lineNum">     144 </span><span class="lineNoCov">          0 :                     n = ngx_connection_error(c, ngx_socket_errno,</span></a>
@@ -216,18 +216,18 @@
 <a name="154"><span class="lineNum">     154 </span>            : </a>
 <a name="155"><span class="lineNum">     155 </span>            : #if (NGX_HAVE_EPOLLRDHUP)</a>
 <a name="156"><span class="lineNum">     156 </span>            : </a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">         31 :             if ((ngx_event_flags &amp; NGX_USE_EPOLL_EVENT)</span></a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">         31 :                 &amp;&amp; ngx_use_epoll_rdhup)</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">         32 :             if ((ngx_event_flags &amp; NGX_USE_EPOLL_EVENT)</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">         32 :                 &amp;&amp; ngx_use_epoll_rdhup)</span></a>
 <a name="159"><span class="lineNum">     159 </span>            :             {</a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">         31 :                 if ((size_t) n &lt; size) {</span></a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">         31 :                     if (!rev-&gt;pending_eof) {</span></a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineCov">         31 :                         rev-&gt;ready = 0;</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">         32 :                 if ((size_t) n &lt; size) {</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">         32 :                     if (!rev-&gt;pending_eof) {</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">         32 :                         rev-&gt;ready = 0;</span></a>
 <a name="163"><span class="lineNum">     163 </span>            :                     }</a>
 <a name="164"><span class="lineNum">     164 </span>            : </a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">         31 :                     rev-&gt;available = 0;</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">         32 :                     rev-&gt;available = 0;</span></a>
 <a name="166"><span class="lineNum">     166 </span>            :                 }</a>
 <a name="167"><span class="lineNum">     167 </span>            : </a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">         31 :                 return n;</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">         32 :                 return n;</span></a>
 <a name="169"><span class="lineNum">     169 </span>            :             }</a>
 <a name="170"><span class="lineNum">     170 </span>            : </a>
 <a name="171"><span class="lineNum">     171 </span>            : #endif</a>

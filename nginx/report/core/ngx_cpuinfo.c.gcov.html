@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-21 14:56:56</td>
+            <td class="headerValue">2024-10-22 11:54:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -109,21 +109,21 @@
 <a name="47"><span class="lineNum">      47 </span>            : </a>
 <a name="48"><span class="lineNum">      48 </span>            : </a>
 <a name="49"><span class="lineNum">      49 </span>            : static ngx_inline void</a>
-<a name="50"><span class="lineNum">      50 </span><span class="lineCov">         32 : ngx_cpuid(uint32_t i, uint32_t *buf)</span></a>
+<a name="50"><span class="lineNum">      50 </span><span class="lineCov">         66 : ngx_cpuid(uint32_t i, uint32_t *buf)</span></a>
 <a name="51"><span class="lineNum">      51 </span>            : {</a>
 <a name="52"><span class="lineNum">      52 </span>            :     uint32_t  eax, ebx, ecx, edx;</a>
 <a name="53"><span class="lineNum">      53 </span>            : </a>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">         32 :     __asm__ (</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">         66 :     __asm__ (</span></a>
 <a name="55"><span class="lineNum">      55 </span>            : </a>
 <a name="56"><span class="lineNum">      56 </span>            :         &quot;cpuid&quot;</a>
 <a name="57"><span class="lineNum">      57 </span>            : </a>
 <a name="58"><span class="lineNum">      58 </span>            :     : &quot;=a&quot; (eax), &quot;=b&quot; (ebx), &quot;=c&quot; (ecx), &quot;=d&quot; (edx) : &quot;a&quot; (i) );</a>
 <a name="59"><span class="lineNum">      59 </span>            : </a>
-<a name="60"><span class="lineNum">      60 </span><span class="lineCov">         32 :     buf[0] = eax;</span></a>
-<a name="61"><span class="lineNum">      61 </span><span class="lineCov">         32 :     buf[1] = ebx;</span></a>
-<a name="62"><span class="lineNum">      62 </span><span class="lineCov">         32 :     buf[2] = edx;</span></a>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">         32 :     buf[3] = ecx;</span></a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">         32 : }</span></a>
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">         66 :     buf[0] = eax;</span></a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">         66 :     buf[1] = ebx;</span></a>
+<a name="62"><span class="lineNum">      62 </span><span class="lineCov">         66 :     buf[2] = edx;</span></a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">         66 :     buf[3] = ecx;</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">         66 : }</span></a>
 <a name="65"><span class="lineNum">      65 </span>            : </a>
 <a name="66"><span class="lineNum">      66 </span>            : </a>
 <a name="67"><span class="lineNum">      67 </span>            : #endif</a>
@@ -132,30 +132,30 @@
 <a name="70"><span class="lineNum">      70 </span>            : /* auto detect the L2 cache line size of modern and widespread CPUs */</a>
 <a name="71"><span class="lineNum">      71 </span>            : </a>
 <a name="72"><span class="lineNum">      72 </span>            : void</a>
-<a name="73"><span class="lineNum">      73 </span><span class="lineCov">         16 : ngx_cpuinfo(void)</span></a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">         33 : ngx_cpuinfo(void)</span></a>
 <a name="74"><span class="lineNum">      74 </span>            : {</a>
 <a name="75"><span class="lineNum">      75 </span>            :     u_char    *vendor;</a>
-<a name="76"><span class="lineNum">      76 </span><span class="lineCov">         16 :     uint32_t   vbuf[5], cpu[4], model;</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">         33 :     uint32_t   vbuf[5], cpu[4], model;</span></a>
 <a name="77"><span class="lineNum">      77 </span>            : </a>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">         16 :     vbuf[0] = 0;</span></a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">         16 :     vbuf[1] = 0;</span></a>
-<a name="80"><span class="lineNum">      80 </span><span class="lineCov">         16 :     vbuf[2] = 0;</span></a>
-<a name="81"><span class="lineNum">      81 </span><span class="lineCov">         16 :     vbuf[3] = 0;</span></a>
-<a name="82"><span class="lineNum">      82 </span><span class="lineCov">         16 :     vbuf[4] = 0;</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">         33 :     vbuf[0] = 0;</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">         33 :     vbuf[1] = 0;</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">         33 :     vbuf[2] = 0;</span></a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">         33 :     vbuf[3] = 0;</span></a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineCov">         33 :     vbuf[4] = 0;</span></a>
 <a name="83"><span class="lineNum">      83 </span>            : </a>
-<a name="84"><span class="lineNum">      84 </span><span class="lineCov">         16 :     ngx_cpuid(0, vbuf);</span></a>
+<a name="84"><span class="lineNum">      84 </span><span class="lineCov">         33 :     ngx_cpuid(0, vbuf);</span></a>
 <a name="85"><span class="lineNum">      85 </span>            : </a>
-<a name="86"><span class="lineNum">      86 </span><span class="lineCov">         16 :     vendor = (u_char *) &amp;vbuf[1];</span></a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">         33 :     vendor = (u_char *) &amp;vbuf[1];</span></a>
 <a name="87"><span class="lineNum">      87 </span>            : </a>
-<a name="88"><span class="lineNum">      88 </span><span class="lineCov">         16 :     if (vbuf[0] == 0) {</span></a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">         33 :     if (vbuf[0] == 0) {</span></a>
 <a name="89"><span class="lineNum">      89 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="90"><span class="lineNum">      90 </span>            :     }</a>
 <a name="91"><span class="lineNum">      91 </span>            : </a>
-<a name="92"><span class="lineNum">      92 </span><span class="lineCov">         16 :     ngx_cpuid(1, cpu);</span></a>
+<a name="92"><span class="lineNum">      92 </span><span class="lineCov">         33 :     ngx_cpuid(1, cpu);</span></a>
 <a name="93"><span class="lineNum">      93 </span>            : </a>
-<a name="94"><span class="lineNum">      94 </span><span class="lineCov">         16 :     if (ngx_strcmp(vendor, &quot;GenuineIntel&quot;) == 0) {</span></a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">         33 :     if (ngx_strcmp(vendor, &quot;GenuineIntel&quot;) == 0) {</span></a>
 <a name="95"><span class="lineNum">      95 </span>            : </a>
-<a name="96"><span class="lineNum">      96 </span><span class="lineCov">         16 :         switch ((cpu[0] &amp; 0xf00) &gt;&gt; 8) {</span></a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">         33 :         switch ((cpu[0] &amp; 0xf00) &gt;&gt; 8) {</span></a>
 <a name="97"><span class="lineNum">      97 </span>            : </a>
 <a name="98"><span class="lineNum">      98 </span>            :         /* Pentium */</a>
 <a name="99"><span class="lineNum">      99 </span><span class="lineNoCov">          0 :         case 5:</span></a>
@@ -163,17 +163,17 @@
 <a name="101"><span class="lineNum">     101 </span><span class="lineNoCov">          0 :             break;</span></a>
 <a name="102"><span class="lineNum">     102 </span>            : </a>
 <a name="103"><span class="lineNum">     103 </span>            :         /* Pentium Pro, II, III */</a>
-<a name="104"><span class="lineNum">     104 </span><span class="lineCov">         16 :         case 6:</span></a>
-<a name="105"><span class="lineNum">     105 </span><span class="lineCov">         16 :             ngx_cacheline_size = 32;</span></a>
+<a name="104"><span class="lineNum">     104 </span><span class="lineCov">         33 :         case 6:</span></a>
+<a name="105"><span class="lineNum">     105 </span><span class="lineCov">         33 :             ngx_cacheline_size = 32;</span></a>
 <a name="106"><span class="lineNum">     106 </span>            : </a>
-<a name="107"><span class="lineNum">     107 </span><span class="lineCov">         16 :             model = ((cpu[0] &amp; 0xf0000) &gt;&gt; 8) | (cpu[0] &amp; 0xf0);</span></a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">         33 :             model = ((cpu[0] &amp; 0xf0000) &gt;&gt; 8) | (cpu[0] &amp; 0xf0);</span></a>
 <a name="108"><span class="lineNum">     108 </span>            : </a>
-<a name="109"><span class="lineNum">     109 </span><span class="lineCov">         16 :             if (model &gt;= 0xd0) {</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">         33 :             if (model &gt;= 0xd0) {</span></a>
 <a name="110"><span class="lineNum">     110 </span>            :                 /* Intel Core, Core 2, Atom */</a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineCov">         16 :                 ngx_cacheline_size = 64;</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">         33 :                 ngx_cacheline_size = 64;</span></a>
 <a name="112"><span class="lineNum">     112 </span>            :             }</a>
 <a name="113"><span class="lineNum">     113 </span>            : </a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineCov">         16 :             break;</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">         33 :             break;</span></a>
 <a name="115"><span class="lineNum">     115 </span>            : </a>
 <a name="116"><span class="lineNum">     116 </span>            :         /*</a>
 <a name="117"><span class="lineNum">     117 </span>            :          * Pentium 4, although its cache line size is 64 bytes,</a>

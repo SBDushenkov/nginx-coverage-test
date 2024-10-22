@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-21 14:56:56</td>
+            <td class="headerValue">2024-10-22 11:54:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -192,78 +192,78 @@
 <a name="130"><span class="lineNum">     130 </span>            : </a>
 <a name="131"><span class="lineNum">     131 </span>            : </a>
 <a name="132"><span class="lineNum">     132 </span>            : ngx_resolver_t *</a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineCov">         22 : ngx_resolver_create(ngx_conf_t *cf, ngx_str_t *names, ngx_uint_t n)</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">         48 : ngx_resolver_create(ngx_conf_t *cf, ngx_str_t *names, ngx_uint_t n)</span></a>
 <a name="134"><span class="lineNum">     134 </span>            : {</a>
-<a name="135"><span class="lineNum">     135 </span><span class="lineCov">         22 :     ngx_str_t                   s;</span></a>
-<a name="136"><span class="lineNum">     136 </span><span class="lineCov">         22 :     ngx_url_t                   u;</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">         48 :     ngx_str_t                   s;</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">         48 :     ngx_url_t                   u;</span></a>
 <a name="137"><span class="lineNum">     137 </span>            :     ngx_uint_t                  i, j;</a>
 <a name="138"><span class="lineNum">     138 </span>            :     ngx_resolver_t             *r;</a>
 <a name="139"><span class="lineNum">     139 </span>            :     ngx_pool_cleanup_t         *cln;</a>
 <a name="140"><span class="lineNum">     140 </span>            :     ngx_resolver_connection_t  *rec;</a>
 <a name="141"><span class="lineNum">     141 </span>            : </a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">         22 :     r = ngx_pcalloc(cf-&gt;pool, sizeof(ngx_resolver_t));</span></a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">         22 :     if (r == NULL) {</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">         48 :     r = ngx_pcalloc(cf-&gt;pool, sizeof(ngx_resolver_t));</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">         48 :     if (r == NULL) {</span></a>
 <a name="144"><span class="lineNum">     144 </span><span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="145"><span class="lineNum">     145 </span>            :     }</a>
 <a name="146"><span class="lineNum">     146 </span>            : </a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">         22 :     r-&gt;event = ngx_pcalloc(cf-&gt;pool, sizeof(ngx_event_t));</span></a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">         22 :     if (r-&gt;event == NULL) {</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">         48 :     r-&gt;event = ngx_pcalloc(cf-&gt;pool, sizeof(ngx_event_t));</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">         48 :     if (r-&gt;event == NULL) {</span></a>
 <a name="149"><span class="lineNum">     149 </span><span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="150"><span class="lineNum">     150 </span>            :     }</a>
 <a name="151"><span class="lineNum">     151 </span>            : </a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">         22 :     cln = ngx_pool_cleanup_add(cf-&gt;pool, 0);</span></a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">         22 :     if (cln == NULL) {</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">         48 :     cln = ngx_pool_cleanup_add(cf-&gt;pool, 0);</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">         48 :     if (cln == NULL) {</span></a>
 <a name="154"><span class="lineNum">     154 </span><span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="155"><span class="lineNum">     155 </span>            :     }</a>
 <a name="156"><span class="lineNum">     156 </span>            : </a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">         22 :     cln-&gt;handler = ngx_resolver_cleanup;</span></a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">         22 :     cln-&gt;data = r;</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">         48 :     cln-&gt;handler = ngx_resolver_cleanup;</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">         48 :     cln-&gt;data = r;</span></a>
 <a name="159"><span class="lineNum">     159 </span>            : </a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">         22 :     r-&gt;ipv4 = 1;</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">         48 :     r-&gt;ipv4 = 1;</span></a>
 <a name="161"><span class="lineNum">     161 </span>            : </a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineCov">         22 :     ngx_rbtree_init(&amp;r-&gt;name_rbtree, &amp;r-&gt;name_sentinel,</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">         48 :     ngx_rbtree_init(&amp;r-&gt;name_rbtree, &amp;r-&gt;name_sentinel,</span></a>
 <a name="163"><span class="lineNum">     163 </span>            :                     ngx_resolver_rbtree_insert_value);</a>
 <a name="164"><span class="lineNum">     164 </span>            : </a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">         22 :     ngx_rbtree_init(&amp;r-&gt;srv_rbtree, &amp;r-&gt;srv_sentinel,</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">         48 :     ngx_rbtree_init(&amp;r-&gt;srv_rbtree, &amp;r-&gt;srv_sentinel,</span></a>
 <a name="166"><span class="lineNum">     166 </span>            :                     ngx_resolver_rbtree_insert_value);</a>
 <a name="167"><span class="lineNum">     167 </span>            : </a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">         22 :     ngx_rbtree_init(&amp;r-&gt;addr_rbtree, &amp;r-&gt;addr_sentinel,</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">         48 :     ngx_rbtree_init(&amp;r-&gt;addr_rbtree, &amp;r-&gt;addr_sentinel,</span></a>
 <a name="169"><span class="lineNum">     169 </span>            :                     ngx_rbtree_insert_value);</a>
 <a name="170"><span class="lineNum">     170 </span>            : </a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">         22 :     ngx_queue_init(&amp;r-&gt;name_resend_queue);</span></a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">         22 :     ngx_queue_init(&amp;r-&gt;srv_resend_queue);</span></a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">         22 :     ngx_queue_init(&amp;r-&gt;addr_resend_queue);</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">         48 :     ngx_queue_init(&amp;r-&gt;name_resend_queue);</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">         48 :     ngx_queue_init(&amp;r-&gt;srv_resend_queue);</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">         48 :     ngx_queue_init(&amp;r-&gt;addr_resend_queue);</span></a>
 <a name="174"><span class="lineNum">     174 </span>            : </a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">         22 :     ngx_queue_init(&amp;r-&gt;name_expire_queue);</span></a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">         22 :     ngx_queue_init(&amp;r-&gt;srv_expire_queue);</span></a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineCov">         22 :     ngx_queue_init(&amp;r-&gt;addr_expire_queue);</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">         48 :     ngx_queue_init(&amp;r-&gt;name_expire_queue);</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">         48 :     ngx_queue_init(&amp;r-&gt;srv_expire_queue);</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">         48 :     ngx_queue_init(&amp;r-&gt;addr_expire_queue);</span></a>
 <a name="178"><span class="lineNum">     178 </span>            : </a>
 <a name="179"><span class="lineNum">     179 </span>            : #if (NGX_HAVE_INET6)</a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">         22 :     r-&gt;ipv6 = 1;</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">         48 :     r-&gt;ipv6 = 1;</span></a>
 <a name="181"><span class="lineNum">     181 </span>            : </a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">         22 :     ngx_rbtree_init(&amp;r-&gt;addr6_rbtree, &amp;r-&gt;addr6_sentinel,</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">         48 :     ngx_rbtree_init(&amp;r-&gt;addr6_rbtree, &amp;r-&gt;addr6_sentinel,</span></a>
 <a name="183"><span class="lineNum">     183 </span>            :                     ngx_resolver_rbtree_insert_addr6_value);</a>
 <a name="184"><span class="lineNum">     184 </span>            : </a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineCov">         22 :     ngx_queue_init(&amp;r-&gt;addr6_resend_queue);</span></a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">         48 :     ngx_queue_init(&amp;r-&gt;addr6_resend_queue);</span></a>
 <a name="186"><span class="lineNum">     186 </span>            : </a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">         22 :     ngx_queue_init(&amp;r-&gt;addr6_expire_queue);</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">         48 :     ngx_queue_init(&amp;r-&gt;addr6_expire_queue);</span></a>
 <a name="188"><span class="lineNum">     188 </span>            : #endif</a>
 <a name="189"><span class="lineNum">     189 </span>            : </a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">         22 :     r-&gt;event-&gt;handler = ngx_resolver_resend_handler;</span></a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">         22 :     r-&gt;event-&gt;data = r;</span></a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">         22 :     r-&gt;event-&gt;log = &amp;cf-&gt;cycle-&gt;new_log;</span></a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">         22 :     r-&gt;event-&gt;cancelable = 1;</span></a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">         22 :     r-&gt;ident = -1;</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">         48 :     r-&gt;event-&gt;handler = ngx_resolver_resend_handler;</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">         48 :     r-&gt;event-&gt;data = r;</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">         48 :     r-&gt;event-&gt;log = &amp;cf-&gt;cycle-&gt;new_log;</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">         48 :     r-&gt;event-&gt;cancelable = 1;</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">         48 :     r-&gt;ident = -1;</span></a>
 <a name="195"><span class="lineNum">     195 </span>            : </a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineCov">         22 :     r-&gt;resend_timeout = 5;</span></a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">         22 :     r-&gt;tcp_timeout = 5;</span></a>
-<a name="198"><span class="lineNum">     198 </span><span class="lineCov">         22 :     r-&gt;expire = 30;</span></a>
-<a name="199"><span class="lineNum">     199 </span><span class="lineCov">         22 :     r-&gt;valid = 0;</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineCov">         48 :     r-&gt;resend_timeout = 5;</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">         48 :     r-&gt;tcp_timeout = 5;</span></a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">         48 :     r-&gt;expire = 30;</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">         48 :     r-&gt;valid = 0;</span></a>
 <a name="200"><span class="lineNum">     200 </span>            : </a>
-<a name="201"><span class="lineNum">     201 </span><span class="lineCov">         22 :     r-&gt;log = &amp;cf-&gt;cycle-&gt;new_log;</span></a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">         22 :     r-&gt;log_level = NGX_LOG_ERR;</span></a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineCov">         48 :     r-&gt;log = &amp;cf-&gt;cycle-&gt;new_log;</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">         48 :     r-&gt;log_level = NGX_LOG_ERR;</span></a>
 <a name="203"><span class="lineNum">     203 </span>            : </a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">         22 :     if (n) {</span></a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">         48 :     if (n) {</span></a>
 <a name="205"><span class="lineNum">     205 </span><span class="lineNoCov">          0 :         if (ngx_array_init(&amp;r-&gt;connections, cf-&gt;pool, n,</span></a>
 <a name="206"><span class="lineNum">     206 </span>            :                            sizeof(ngx_resolver_connection_t))</a>
 <a name="207"><span class="lineNum">     207 </span>            :             != NGX_OK)</a>
@@ -272,7 +272,7 @@
 <a name="210"><span class="lineNum">     210 </span>            :         }</a>
 <a name="211"><span class="lineNum">     211 </span>            :     }</a>
 <a name="212"><span class="lineNum">     212 </span>            : </a>
-<a name="213"><span class="lineNum">     213 </span><span class="lineCov">         22 :     for (i = 0; i &lt; n; i++) {</span></a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineCov">         48 :     for (i = 0; i &lt; n; i++) {</span></a>
 <a name="214"><span class="lineNum">     214 </span><span class="lineNoCov">          0 :         if (ngx_strncmp(names[i].data, &quot;valid=&quot;, 6) == 0) {</span></a>
 <a name="215"><span class="lineNum">     215 </span><span class="lineNoCov">          0 :             s.len = names[i].len - 6;</span></a>
 <a name="216"><span class="lineNum">     216 </span><span class="lineNoCov">          0 :             s.data = names[i].data + 6;</span></a>
@@ -355,49 +355,49 @@
 <a name="293"><span class="lineNum">     293 </span>            :     }</a>
 <a name="294"><span class="lineNum">     294 </span>            : </a>
 <a name="295"><span class="lineNum">     295 </span>            : #if (NGX_HAVE_INET6)</a>
-<a name="296"><span class="lineNum">     296 </span><span class="lineCov">         22 :     if (r-&gt;ipv4 + r-&gt;ipv6 == 0) {</span></a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineCov">         48 :     if (r-&gt;ipv4 + r-&gt;ipv6 == 0) {</span></a>
 <a name="297"><span class="lineNum">     297 </span><span class="lineNoCov">          0 :         ngx_conf_log_error(NGX_LOG_EMERG, cf, 0,</span></a>
 <a name="298"><span class="lineNum">     298 </span>            :                            &quot;\&quot;ipv4\&quot; and \&quot;ipv6\&quot; cannot both be \&quot;off\&quot;&quot;);</a>
 <a name="299"><span class="lineNum">     299 </span><span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="300"><span class="lineNum">     300 </span>            :     }</a>
 <a name="301"><span class="lineNum">     301 </span>            : #endif</a>
 <a name="302"><span class="lineNum">     302 </span>            : </a>
-<a name="303"><span class="lineNum">     303 </span><span class="lineCov">         22 :     if (n &amp;&amp; r-&gt;connections.nelts == 0) {</span></a>
+<a name="303"><span class="lineNum">     303 </span><span class="lineCov">         48 :     if (n &amp;&amp; r-&gt;connections.nelts == 0) {</span></a>
 <a name="304"><span class="lineNum">     304 </span><span class="lineNoCov">          0 :         ngx_conf_log_error(NGX_LOG_EMERG, cf, 0, &quot;no name servers defined&quot;);</span></a>
 <a name="305"><span class="lineNum">     305 </span><span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="306"><span class="lineNum">     306 </span>            :     }</a>
 <a name="307"><span class="lineNum">     307 </span>            : </a>
-<a name="308"><span class="lineNum">     308 </span><span class="lineCov">         22 :     return r;</span></a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineCov">         48 :     return r;</span></a>
 <a name="309"><span class="lineNum">     309 </span>            : }</a>
 <a name="310"><span class="lineNum">     310 </span>            : </a>
 <a name="311"><span class="lineNum">     311 </span>            : </a>
 <a name="312"><span class="lineNum">     312 </span>            : static void</a>
-<a name="313"><span class="lineNum">     313 </span><span class="lineCov">         14 : ngx_resolver_cleanup(void *data)</span></a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">         32 : ngx_resolver_cleanup(void *data)</span></a>
 <a name="314"><span class="lineNum">     314 </span>            : {</a>
-<a name="315"><span class="lineNum">     315 </span><span class="lineCov">         14 :     ngx_resolver_t  *r = data;</span></a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">         32 :     ngx_resolver_t  *r = data;</span></a>
 <a name="316"><span class="lineNum">     316 </span>            : </a>
 <a name="317"><span class="lineNum">     317 </span>            :     ngx_uint_t                  i;</a>
 <a name="318"><span class="lineNum">     318 </span>            :     ngx_resolver_connection_t  *rec;</a>
 <a name="319"><span class="lineNum">     319 </span>            : </a>
-<a name="320"><span class="lineNum">     320 </span><span class="lineCov">         14 :     ngx_log_debug0(NGX_LOG_DEBUG_CORE, ngx_cycle-&gt;log, 0, &quot;cleanup resolver&quot;);</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">         32 :     ngx_log_debug0(NGX_LOG_DEBUG_CORE, ngx_cycle-&gt;log, 0, &quot;cleanup resolver&quot;);</span></a>
 <a name="321"><span class="lineNum">     321 </span>            : </a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineCov">         14 :     ngx_resolver_cleanup_tree(r, &amp;r-&gt;name_rbtree);</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">         32 :     ngx_resolver_cleanup_tree(r, &amp;r-&gt;name_rbtree);</span></a>
 <a name="323"><span class="lineNum">     323 </span>            : </a>
-<a name="324"><span class="lineNum">     324 </span><span class="lineCov">         14 :     ngx_resolver_cleanup_tree(r, &amp;r-&gt;srv_rbtree);</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineCov">         32 :     ngx_resolver_cleanup_tree(r, &amp;r-&gt;srv_rbtree);</span></a>
 <a name="325"><span class="lineNum">     325 </span>            : </a>
-<a name="326"><span class="lineNum">     326 </span><span class="lineCov">         14 :     ngx_resolver_cleanup_tree(r, &amp;r-&gt;addr_rbtree);</span></a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineCov">         32 :     ngx_resolver_cleanup_tree(r, &amp;r-&gt;addr_rbtree);</span></a>
 <a name="327"><span class="lineNum">     327 </span>            : </a>
 <a name="328"><span class="lineNum">     328 </span>            : #if (NGX_HAVE_INET6)</a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">         14 :     ngx_resolver_cleanup_tree(r, &amp;r-&gt;addr6_rbtree);</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">         32 :     ngx_resolver_cleanup_tree(r, &amp;r-&gt;addr6_rbtree);</span></a>
 <a name="330"><span class="lineNum">     330 </span>            : #endif</a>
 <a name="331"><span class="lineNum">     331 </span>            : </a>
-<a name="332"><span class="lineNum">     332 </span><span class="lineCov">         14 :     if (r-&gt;event-&gt;timer_set) {</span></a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineCov">         32 :     if (r-&gt;event-&gt;timer_set) {</span></a>
 <a name="333"><span class="lineNum">     333 </span><span class="lineNoCov">          0 :         ngx_del_timer(r-&gt;event);</span></a>
 <a name="334"><span class="lineNum">     334 </span>            :     }</a>
 <a name="335"><span class="lineNum">     335 </span>            : </a>
-<a name="336"><span class="lineNum">     336 </span><span class="lineCov">         14 :     rec = r-&gt;connections.elts;</span></a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineCov">         32 :     rec = r-&gt;connections.elts;</span></a>
 <a name="337"><span class="lineNum">     337 </span>            : </a>
-<a name="338"><span class="lineNum">     338 </span><span class="lineCov">         14 :     for (i = 0; i &lt; r-&gt;connections.nelts; i++) {</span></a>
+<a name="338"><span class="lineNum">     338 </span><span class="lineCov">         32 :     for (i = 0; i &lt; r-&gt;connections.nelts; i++) {</span></a>
 <a name="339"><span class="lineNum">     339 </span><span class="lineNoCov">          0 :         if (rec[i].udp) {</span></a>
 <a name="340"><span class="lineNum">     340 </span><span class="lineNoCov">          0 :             ngx_close_connection(rec[i].udp);</span></a>
 <a name="341"><span class="lineNum">     341 </span>            :         }</a>
@@ -416,16 +416,16 @@
 <a name="354"><span class="lineNum">     354 </span><span class="lineNoCov">          0 :             ngx_resolver_free(r, rec[i].write_buf);</span></a>
 <a name="355"><span class="lineNum">     355 </span>            :         }</a>
 <a name="356"><span class="lineNum">     356 </span>            :     }</a>
-<a name="357"><span class="lineNum">     357 </span><span class="lineCov">         14 : }</span></a>
+<a name="357"><span class="lineNum">     357 </span><span class="lineCov">         32 : }</span></a>
 <a name="358"><span class="lineNum">     358 </span>            : </a>
 <a name="359"><span class="lineNum">     359 </span>            : </a>
 <a name="360"><span class="lineNum">     360 </span>            : static void</a>
-<a name="361"><span class="lineNum">     361 </span><span class="lineCov">         56 : ngx_resolver_cleanup_tree(ngx_resolver_t *r, ngx_rbtree_t *tree)</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineCov">        128 : ngx_resolver_cleanup_tree(ngx_resolver_t *r, ngx_rbtree_t *tree)</span></a>
 <a name="362"><span class="lineNum">     362 </span>            : {</a>
 <a name="363"><span class="lineNum">     363 </span>            :     ngx_resolver_ctx_t   *ctx, *next;</a>
 <a name="364"><span class="lineNum">     364 </span>            :     ngx_resolver_node_t  *rn;</a>
 <a name="365"><span class="lineNum">     365 </span>            : </a>
-<a name="366"><span class="lineNum">     366 </span><span class="lineCov">         56 :     while (tree-&gt;root != tree-&gt;sentinel) {</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">        128 :     while (tree-&gt;root != tree-&gt;sentinel) {</span></a>
 <a name="367"><span class="lineNum">     367 </span>            : </a>
 <a name="368"><span class="lineNum">     368 </span><span class="lineNoCov">          0 :         rn = ngx_resolver_node(ngx_rbtree_min(tree-&gt;root, tree-&gt;sentinel));</span></a>
 <a name="369"><span class="lineNum">     369 </span>            : </a>
@@ -449,7 +449,7 @@
 <a name="387"><span class="lineNum">     387 </span>            : </a>
 <a name="388"><span class="lineNum">     388 </span><span class="lineNoCov">          0 :         ngx_resolver_free_node(r, rn);</span></a>
 <a name="389"><span class="lineNum">     389 </span>            :     }</a>
-<a name="390"><span class="lineNum">     390 </span><span class="lineCov">         56 : }</span></a>
+<a name="390"><span class="lineNum">     390 </span><span class="lineCov">        128 : }</span></a>
 <a name="391"><span class="lineNum">     391 </span>            : </a>
 <a name="392"><span class="lineNum">     392 </span>            : </a>
 <a name="393"><span class="lineNum">     393 </span>            : ngx_resolver_ctx_t *</a>

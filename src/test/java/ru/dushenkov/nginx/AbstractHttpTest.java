@@ -74,11 +74,18 @@ public abstract class AbstractHttpTest implements InitializingBean {
 
         Path nginx = nginxTargetDir.resolve("nginx");
 
-        log.info("Nginx reloading");
-        Process process = new ProcessBuilder(nginx.toString(), "-s", "reload")
-                .inheritIO()
-                .start();
+        ProcessBuilder pbTest = new ProcessBuilder(nginx.toString(), "-t").inheritIO();
+        pbTest.environment().put("ASAN_OPTIONS",
+                "detect_leaks=0:verbosity=1:log_path=" + nginxTargetDir.resolve("log"));
+        Process processTest = pbTest.start();
+        processTest.waitFor(1000, TimeUnit.MILLISECONDS);
+        assertEquals(0, processTest.exitValue(), "Configuration test failed");
 
+        log.info("Nginx reloading");
+        ProcessBuilder pb = new ProcessBuilder(nginx.toString(), "-s", "reload").inheritIO();
+        pb.environment().put("ASAN_OPTIONS",
+                "detect_leaks=0:verbosity=1:log_path=" + nginxTargetDir.resolve("log"));
+        Process process = pb.start();
         process.waitFor(1000, TimeUnit.MILLISECONDS);
 
         int i = 1;
@@ -87,15 +94,19 @@ public abstract class AbstractHttpTest implements InitializingBean {
         assertEquals(0, process.exitValue(), "Configuration reload failed");
 
         while (true) {
+            Thread.sleep(100);
             log.info("Nginx checking new configuration applied. Attempt {}", i);
-            ResponseDto responseDto = get("/test-info");
-            if (Objects.equals(getClass().getSimpleName(), getHeaderFirstRecord(responseDto, "test-class"))) {
-                break;
+            try {
+                ResponseDto responseDto = get("/test-info");
+                if (Objects.equals(getClass().getSimpleName(), getHeaderFirstRecord(responseDto, "test-class"))) {
+                    break;
+                }
+            } catch (Exception ignored) {
             }
-            if (i++ >= 10) {
+
+            if (i++ >= 100) {
                 fail("Nginx configuration reload failed takes too long");
             }
-            Thread.sleep(1000);
         }
 
         log.info("Nginx new configuration applied successfully");
@@ -141,19 +152,24 @@ public abstract class AbstractHttpTest implements InitializingBean {
                 content,
                 headersRef.get()
         );
-
     }
 
-    protected String getWithRawUri(String raw) throws IOException {
+    protected String getWithRawUri(String url) throws IOException {
+
+        String request = MessageFormat.format("""
+                GET {0} HTTP/1.1
+                Host: localhost:{1}
+                \n\r\n
+                """, url, defaultHttpPort);
+
+        return raw(request);
+    }
+
+    protected String raw(String content) throws IOException {
 
         try (Socket s = new Socket(InetAddress.getByName("localhost"), Integer.parseInt(defaultHttpPort))) {
 
-            String request = MessageFormat.format("""
-                    GET {0} HTTP/1.1
-                    Host: localhost:{1}
-                    \n\r\n
-                    """, raw, defaultHttpPort);
-            s.getOutputStream().write(request.getBytes());
+            s.getOutputStream().write(content.getBytes());
 
             InputStream is = s.getInputStream();
 

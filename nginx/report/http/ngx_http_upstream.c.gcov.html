@@ -32,17 +32,17 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">34</td>
-            <td class="headerCovTableEntry">2609</td>
-            <td class="headerCovTableEntryLo">1.3 %</td>
+            <td class="headerCovTableEntry">2108</td>
+            <td class="headerCovTableEntryLo">1.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-21 14:56:56</td>
+            <td class="headerValue">2024-10-22 11:54:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntry">89</td>
-            <td class="headerCovTableEntryLo">3.4 %</td>
+            <td class="headerCovTableEntry">81</td>
+            <td class="headerCovTableEntryLo">3.7 %</td>
           </tr>
           <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -556,7 +556,7 @@
 <a name="494"><span class="lineNum">     494 </span><span class="lineNoCov">          0 :     u-&gt;peer.log_error = NGX_ERROR_ERR;</span></a>
 <a name="495"><span class="lineNum">     495 </span>            : </a>
 <a name="496"><span class="lineNum">     496 </span>            : #if (NGX_HTTP_CACHE)</a>
-<a name="497"><span class="lineNum">     497 </span><span class="lineNoCov">          0 :     r-&gt;cache = NULL;</span></a>
+<a name="497"><span class="lineNum">     497 </span>            :     r-&gt;cache = NULL;</a>
 <a name="498"><span class="lineNum">     498 </span>            : #endif</a>
 <a name="499"><span class="lineNum">     499 </span>            : </a>
 <a name="500"><span class="lineNum">     500 </span><span class="lineNoCov">          0 :     u-&gt;headers_in.content_length_n = -1;</span></a>
@@ -577,9 +577,9 @@
 <a name="515"><span class="lineNum">     515 </span>            :                    &quot;http init upstream, client timer: %d&quot;, c-&gt;read-&gt;timer_set);</a>
 <a name="516"><span class="lineNum">     516 </span>            : </a>
 <a name="517"><span class="lineNum">     517 </span>            : #if (NGX_HTTP_V2)</a>
-<a name="518"><span class="lineNum">     518 </span>            :     if (r-&gt;stream) {</a>
-<a name="519"><span class="lineNum">     519 </span>            :         ngx_http_upstream_init_request(r);</a>
-<a name="520"><span class="lineNum">     520 </span>            :         return;</a>
+<a name="518"><span class="lineNum">     518 </span><span class="lineNoCov">          0 :     if (r-&gt;stream) {</span></a>
+<a name="519"><span class="lineNum">     519 </span><span class="lineNoCov">          0 :         ngx_http_upstream_init_request(r);</span></a>
+<a name="520"><span class="lineNum">     520 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="521"><span class="lineNum">     521 </span>            :     }</a>
 <a name="522"><span class="lineNum">     522 </span>            : #endif</a>
 <a name="523"><span class="lineNum">     523 </span>            : </a>
@@ -630,42 +630,42 @@
 <a name="568"><span class="lineNum">     568 </span>            : </a>
 <a name="569"><span class="lineNum">     569 </span>            : #if (NGX_HTTP_CACHE)</a>
 <a name="570"><span class="lineNum">     570 </span>            : </a>
-<a name="571"><span class="lineNum">     571 </span><span class="lineNoCov">          0 :     if (u-&gt;conf-&gt;cache) {</span></a>
+<a name="571"><span class="lineNum">     571 </span>            :     if (u-&gt;conf-&gt;cache) {</a>
 <a name="572"><span class="lineNum">     572 </span>            :         ngx_int_t  rc;</a>
 <a name="573"><span class="lineNum">     573 </span>            : </a>
-<a name="574"><span class="lineNum">     574 </span><span class="lineNoCov">          0 :         rc = ngx_http_upstream_cache(r, u);</span></a>
+<a name="574"><span class="lineNum">     574 </span>            :         rc = ngx_http_upstream_cache(r, u);</a>
 <a name="575"><span class="lineNum">     575 </span>            : </a>
-<a name="576"><span class="lineNum">     576 </span><span class="lineNoCov">          0 :         if (rc == NGX_BUSY) {</span></a>
-<a name="577"><span class="lineNum">     577 </span><span class="lineNoCov">          0 :             r-&gt;write_event_handler = ngx_http_upstream_init_request;</span></a>
-<a name="578"><span class="lineNum">     578 </span><span class="lineNoCov">          0 :             return;</span></a>
+<a name="576"><span class="lineNum">     576 </span>            :         if (rc == NGX_BUSY) {</a>
+<a name="577"><span class="lineNum">     577 </span>            :             r-&gt;write_event_handler = ngx_http_upstream_init_request;</a>
+<a name="578"><span class="lineNum">     578 </span>            :             return;</a>
 <a name="579"><span class="lineNum">     579 </span>            :         }</a>
 <a name="580"><span class="lineNum">     580 </span>            : </a>
-<a name="581"><span class="lineNum">     581 </span><span class="lineNoCov">          0 :         r-&gt;write_event_handler = ngx_http_request_empty_handler;</span></a>
+<a name="581"><span class="lineNum">     581 </span>            :         r-&gt;write_event_handler = ngx_http_request_empty_handler;</a>
 <a name="582"><span class="lineNum">     582 </span>            : </a>
-<a name="583"><span class="lineNum">     583 </span><span class="lineNoCov">          0 :         if (rc == NGX_ERROR) {</span></a>
-<a name="584"><span class="lineNum">     584 </span><span class="lineNoCov">          0 :             ngx_http_finalize_request(r, NGX_HTTP_INTERNAL_SERVER_ERROR);</span></a>
-<a name="585"><span class="lineNum">     585 </span><span class="lineNoCov">          0 :             return;</span></a>
+<a name="583"><span class="lineNum">     583 </span>            :         if (rc == NGX_ERROR) {</a>
+<a name="584"><span class="lineNum">     584 </span>            :             ngx_http_finalize_request(r, NGX_HTTP_INTERNAL_SERVER_ERROR);</a>
+<a name="585"><span class="lineNum">     585 </span>            :             return;</a>
 <a name="586"><span class="lineNum">     586 </span>            :         }</a>
 <a name="587"><span class="lineNum">     587 </span>            : </a>
-<a name="588"><span class="lineNum">     588 </span><span class="lineNoCov">          0 :         if (rc == NGX_OK) {</span></a>
-<a name="589"><span class="lineNum">     589 </span><span class="lineNoCov">          0 :             rc = ngx_http_upstream_cache_send(r, u);</span></a>
+<a name="588"><span class="lineNum">     588 </span>            :         if (rc == NGX_OK) {</a>
+<a name="589"><span class="lineNum">     589 </span>            :             rc = ngx_http_upstream_cache_send(r, u);</a>
 <a name="590"><span class="lineNum">     590 </span>            : </a>
-<a name="591"><span class="lineNum">     591 </span><span class="lineNoCov">          0 :             if (rc == NGX_DONE) {</span></a>
-<a name="592"><span class="lineNum">     592 </span><span class="lineNoCov">          0 :                 return;</span></a>
+<a name="591"><span class="lineNum">     591 </span>            :             if (rc == NGX_DONE) {</a>
+<a name="592"><span class="lineNum">     592 </span>            :                 return;</a>
 <a name="593"><span class="lineNum">     593 </span>            :             }</a>
 <a name="594"><span class="lineNum">     594 </span>            : </a>
-<a name="595"><span class="lineNum">     595 </span><span class="lineNoCov">          0 :             if (rc == NGX_HTTP_UPSTREAM_INVALID_HEADER) {</span></a>
-<a name="596"><span class="lineNum">     596 </span><span class="lineNoCov">          0 :                 rc = NGX_DECLINED;</span></a>
-<a name="597"><span class="lineNum">     597 </span><span class="lineNoCov">          0 :                 r-&gt;cached = 0;</span></a>
-<a name="598"><span class="lineNum">     598 </span><span class="lineNoCov">          0 :                 u-&gt;buffer.start = NULL;</span></a>
-<a name="599"><span class="lineNum">     599 </span><span class="lineNoCov">          0 :                 u-&gt;cache_status = NGX_HTTP_CACHE_MISS;</span></a>
-<a name="600"><span class="lineNum">     600 </span><span class="lineNoCov">          0 :                 u-&gt;request_sent = 1;</span></a>
+<a name="595"><span class="lineNum">     595 </span>            :             if (rc == NGX_HTTP_UPSTREAM_INVALID_HEADER) {</a>
+<a name="596"><span class="lineNum">     596 </span>            :                 rc = NGX_DECLINED;</a>
+<a name="597"><span class="lineNum">     597 </span>            :                 r-&gt;cached = 0;</a>
+<a name="598"><span class="lineNum">     598 </span>            :                 u-&gt;buffer.start = NULL;</a>
+<a name="599"><span class="lineNum">     599 </span>            :                 u-&gt;cache_status = NGX_HTTP_CACHE_MISS;</a>
+<a name="600"><span class="lineNum">     600 </span>            :                 u-&gt;request_sent = 1;</a>
 <a name="601"><span class="lineNum">     601 </span>            :             }</a>
 <a name="602"><span class="lineNum">     602 </span>            :         }</a>
 <a name="603"><span class="lineNum">     603 </span>            : </a>
-<a name="604"><span class="lineNum">     604 </span><span class="lineNoCov">          0 :         if (rc != NGX_DECLINED) {</span></a>
-<a name="605"><span class="lineNum">     605 </span><span class="lineNoCov">          0 :             ngx_http_finalize_request(r, rc);</span></a>
-<a name="606"><span class="lineNum">     606 </span><span class="lineNoCov">          0 :             return;</span></a>
+<a name="604"><span class="lineNum">     604 </span>            :         if (rc != NGX_DECLINED) {</a>
+<a name="605"><span class="lineNum">     605 </span>            :             ngx_http_finalize_request(r, rc);</a>
+<a name="606"><span class="lineNum">     606 </span>            :             return;</a>
 <a name="607"><span class="lineNum">     607 </span>            :         }</a>
 <a name="608"><span class="lineNum">     608 </span>            :     }</a>
 <a name="609"><span class="lineNum">     609 </span>            : </a>
@@ -885,367 +885,367 @@
 <a name="823"><span class="lineNum">     823 </span>            : #if (NGX_HTTP_CACHE)</a>
 <a name="824"><span class="lineNum">     824 </span>            : </a>
 <a name="825"><span class="lineNum">     825 </span>            : static ngx_int_t</a>
-<a name="826"><span class="lineNum">     826 </span><span class="lineNoCov">          0 : ngx_http_upstream_cache(ngx_http_request_t *r, ngx_http_upstream_t *u)</span></a>
+<a name="826"><span class="lineNum">     826 </span>            : ngx_http_upstream_cache(ngx_http_request_t *r, ngx_http_upstream_t *u)</a>
 <a name="827"><span class="lineNum">     827 </span>            : {</a>
 <a name="828"><span class="lineNum">     828 </span>            :     ngx_int_t               rc;</a>
 <a name="829"><span class="lineNum">     829 </span>            :     ngx_http_cache_t       *c;</a>
-<a name="830"><span class="lineNum">     830 </span><span class="lineNoCov">          0 :     ngx_http_file_cache_t  *cache;</span></a>
+<a name="830"><span class="lineNum">     830 </span>            :     ngx_http_file_cache_t  *cache;</a>
 <a name="831"><span class="lineNum">     831 </span>            : </a>
-<a name="832"><span class="lineNum">     832 </span><span class="lineNoCov">          0 :     c = r-&gt;cache;</span></a>
+<a name="832"><span class="lineNum">     832 </span>            :     c = r-&gt;cache;</a>
 <a name="833"><span class="lineNum">     833 </span>            : </a>
-<a name="834"><span class="lineNum">     834 </span><span class="lineNoCov">          0 :     if (c == NULL) {</span></a>
+<a name="834"><span class="lineNum">     834 </span>            :     if (c == NULL) {</a>
 <a name="835"><span class="lineNum">     835 </span>            : </a>
-<a name="836"><span class="lineNum">     836 </span><span class="lineNoCov">          0 :         if (!(r-&gt;method &amp; u-&gt;conf-&gt;cache_methods)) {</span></a>
-<a name="837"><span class="lineNum">     837 </span><span class="lineNoCov">          0 :             return NGX_DECLINED;</span></a>
+<a name="836"><span class="lineNum">     836 </span>            :         if (!(r-&gt;method &amp; u-&gt;conf-&gt;cache_methods)) {</a>
+<a name="837"><span class="lineNum">     837 </span>            :             return NGX_DECLINED;</a>
 <a name="838"><span class="lineNum">     838 </span>            :         }</a>
 <a name="839"><span class="lineNum">     839 </span>            : </a>
-<a name="840"><span class="lineNum">     840 </span><span class="lineNoCov">          0 :         rc = ngx_http_upstream_cache_get(r, u, &amp;cache);</span></a>
+<a name="840"><span class="lineNum">     840 </span>            :         rc = ngx_http_upstream_cache_get(r, u, &amp;cache);</a>
 <a name="841"><span class="lineNum">     841 </span>            : </a>
-<a name="842"><span class="lineNum">     842 </span><span class="lineNoCov">          0 :         if (rc != NGX_OK) {</span></a>
-<a name="843"><span class="lineNum">     843 </span><span class="lineNoCov">          0 :             return rc;</span></a>
+<a name="842"><span class="lineNum">     842 </span>            :         if (rc != NGX_OK) {</a>
+<a name="843"><span class="lineNum">     843 </span>            :             return rc;</a>
 <a name="844"><span class="lineNum">     844 </span>            :         }</a>
 <a name="845"><span class="lineNum">     845 </span>            : </a>
-<a name="846"><span class="lineNum">     846 </span><span class="lineNoCov">          0 :         if (r-&gt;method == NGX_HTTP_HEAD &amp;&amp; u-&gt;conf-&gt;cache_convert_head) {</span></a>
-<a name="847"><span class="lineNum">     847 </span><span class="lineNoCov">          0 :             u-&gt;method = ngx_http_core_get_method;</span></a>
+<a name="846"><span class="lineNum">     846 </span>            :         if (r-&gt;method == NGX_HTTP_HEAD &amp;&amp; u-&gt;conf-&gt;cache_convert_head) {</a>
+<a name="847"><span class="lineNum">     847 </span>            :             u-&gt;method = ngx_http_core_get_method;</a>
 <a name="848"><span class="lineNum">     848 </span>            :         }</a>
 <a name="849"><span class="lineNum">     849 </span>            : </a>
-<a name="850"><span class="lineNum">     850 </span><span class="lineNoCov">          0 :         if (ngx_http_file_cache_new(r) != NGX_OK) {</span></a>
-<a name="851"><span class="lineNum">     851 </span><span class="lineNoCov">          0 :             return NGX_ERROR;</span></a>
+<a name="850"><span class="lineNum">     850 </span>            :         if (ngx_http_file_cache_new(r) != NGX_OK) {</a>
+<a name="851"><span class="lineNum">     851 </span>            :             return NGX_ERROR;</a>
 <a name="852"><span class="lineNum">     852 </span>            :         }</a>
 <a name="853"><span class="lineNum">     853 </span>            : </a>
-<a name="854"><span class="lineNum">     854 </span><span class="lineNoCov">          0 :         if (u-&gt;create_key(r) != NGX_OK) {</span></a>
-<a name="855"><span class="lineNum">     855 </span><span class="lineNoCov">          0 :             return NGX_ERROR;</span></a>
+<a name="854"><span class="lineNum">     854 </span>            :         if (u-&gt;create_key(r) != NGX_OK) {</a>
+<a name="855"><span class="lineNum">     855 </span>            :             return NGX_ERROR;</a>
 <a name="856"><span class="lineNum">     856 </span>            :         }</a>
 <a name="857"><span class="lineNum">     857 </span>            : </a>
 <a name="858"><span class="lineNum">     858 </span>            :         /* TODO: add keys */</a>
 <a name="859"><span class="lineNum">     859 </span>            : </a>
-<a name="860"><span class="lineNum">     860 </span><span class="lineNoCov">          0 :         ngx_http_file_cache_create_key(r);</span></a>
+<a name="860"><span class="lineNum">     860 </span>            :         ngx_http_file_cache_create_key(r);</a>
 <a name="861"><span class="lineNum">     861 </span>            : </a>
-<a name="862"><span class="lineNum">     862 </span><span class="lineNoCov">          0 :         if (r-&gt;cache-&gt;header_start + 256 &gt; u-&gt;conf-&gt;buffer_size) {</span></a>
-<a name="863"><span class="lineNum">     863 </span><span class="lineNoCov">          0 :             ngx_log_error(NGX_LOG_ERR, r-&gt;connection-&gt;log, 0,</span></a>
+<a name="862"><span class="lineNum">     862 </span>            :         if (r-&gt;cache-&gt;header_start + 256 &gt; u-&gt;conf-&gt;buffer_size) {</a>
+<a name="863"><span class="lineNum">     863 </span>            :             ngx_log_error(NGX_LOG_ERR, r-&gt;connection-&gt;log, 0,</a>
 <a name="864"><span class="lineNum">     864 </span>            :                           &quot;%V_buffer_size %uz is not enough for cache key, &quot;</a>
 <a name="865"><span class="lineNum">     865 </span>            :                           &quot;it should be increased to at least %uz&quot;,</a>
 <a name="866"><span class="lineNum">     866 </span>            :                           &amp;u-&gt;conf-&gt;module, u-&gt;conf-&gt;buffer_size,</a>
 <a name="867"><span class="lineNum">     867 </span>            :                           ngx_align(r-&gt;cache-&gt;header_start + 256, 1024));</a>
 <a name="868"><span class="lineNum">     868 </span>            : </a>
-<a name="869"><span class="lineNum">     869 </span><span class="lineNoCov">          0 :             r-&gt;cache = NULL;</span></a>
-<a name="870"><span class="lineNum">     870 </span><span class="lineNoCov">          0 :             return NGX_DECLINED;</span></a>
+<a name="869"><span class="lineNum">     869 </span>            :             r-&gt;cache = NULL;</a>
+<a name="870"><span class="lineNum">     870 </span>            :             return NGX_DECLINED;</a>
 <a name="871"><span class="lineNum">     871 </span>            :         }</a>
 <a name="872"><span class="lineNum">     872 </span>            : </a>
-<a name="873"><span class="lineNum">     873 </span><span class="lineNoCov">          0 :         u-&gt;cacheable = 1;</span></a>
+<a name="873"><span class="lineNum">     873 </span>            :         u-&gt;cacheable = 1;</a>
 <a name="874"><span class="lineNum">     874 </span>            : </a>
-<a name="875"><span class="lineNum">     875 </span><span class="lineNoCov">          0 :         c = r-&gt;cache;</span></a>
+<a name="875"><span class="lineNum">     875 </span>            :         c = r-&gt;cache;</a>
 <a name="876"><span class="lineNum">     876 </span>            : </a>
-<a name="877"><span class="lineNum">     877 </span><span class="lineNoCov">          0 :         c-&gt;body_start = u-&gt;conf-&gt;buffer_size;</span></a>
-<a name="878"><span class="lineNum">     878 </span><span class="lineNoCov">          0 :         c-&gt;min_uses = u-&gt;conf-&gt;cache_min_uses;</span></a>
-<a name="879"><span class="lineNum">     879 </span><span class="lineNoCov">          0 :         c-&gt;file_cache = cache;</span></a>
+<a name="877"><span class="lineNum">     877 </span>            :         c-&gt;body_start = u-&gt;conf-&gt;buffer_size;</a>
+<a name="878"><span class="lineNum">     878 </span>            :         c-&gt;min_uses = u-&gt;conf-&gt;cache_min_uses;</a>
+<a name="879"><span class="lineNum">     879 </span>            :         c-&gt;file_cache = cache;</a>
 <a name="880"><span class="lineNum">     880 </span>            : </a>
-<a name="881"><span class="lineNum">     881 </span><span class="lineNoCov">          0 :         switch (ngx_http_test_predicates(r, u-&gt;conf-&gt;cache_bypass)) {</span></a>
+<a name="881"><span class="lineNum">     881 </span>            :         switch (ngx_http_test_predicates(r, u-&gt;conf-&gt;cache_bypass)) {</a>
 <a name="882"><span class="lineNum">     882 </span>            : </a>
-<a name="883"><span class="lineNum">     883 </span><span class="lineNoCov">          0 :         case NGX_ERROR:</span></a>
-<a name="884"><span class="lineNum">     884 </span><span class="lineNoCov">          0 :             return NGX_ERROR;</span></a>
+<a name="883"><span class="lineNum">     883 </span>            :         case NGX_ERROR:</a>
+<a name="884"><span class="lineNum">     884 </span>            :             return NGX_ERROR;</a>
 <a name="885"><span class="lineNum">     885 </span>            : </a>
-<a name="886"><span class="lineNum">     886 </span><span class="lineNoCov">          0 :         case NGX_DECLINED:</span></a>
-<a name="887"><span class="lineNum">     887 </span><span class="lineNoCov">          0 :             u-&gt;cache_status = NGX_HTTP_CACHE_BYPASS;</span></a>
-<a name="888"><span class="lineNum">     888 </span><span class="lineNoCov">          0 :             return NGX_DECLINED;</span></a>
+<a name="886"><span class="lineNum">     886 </span>            :         case NGX_DECLINED:</a>
+<a name="887"><span class="lineNum">     887 </span>            :             u-&gt;cache_status = NGX_HTTP_CACHE_BYPASS;</a>
+<a name="888"><span class="lineNum">     888 </span>            :             return NGX_DECLINED;</a>
 <a name="889"><span class="lineNum">     889 </span>            : </a>
-<a name="890"><span class="lineNum">     890 </span><span class="lineNoCov">          0 :         default: /* NGX_OK */</span></a>
-<a name="891"><span class="lineNum">     891 </span><span class="lineNoCov">          0 :             break;</span></a>
+<a name="890"><span class="lineNum">     890 </span>            :         default: /* NGX_OK */</a>
+<a name="891"><span class="lineNum">     891 </span>            :             break;</a>
 <a name="892"><span class="lineNum">     892 </span>            :         }</a>
 <a name="893"><span class="lineNum">     893 </span>            : </a>
-<a name="894"><span class="lineNum">     894 </span><span class="lineNoCov">          0 :         c-&gt;lock = u-&gt;conf-&gt;cache_lock;</span></a>
-<a name="895"><span class="lineNum">     895 </span><span class="lineNoCov">          0 :         c-&gt;lock_timeout = u-&gt;conf-&gt;cache_lock_timeout;</span></a>
-<a name="896"><span class="lineNum">     896 </span><span class="lineNoCov">          0 :         c-&gt;lock_age = u-&gt;conf-&gt;cache_lock_age;</span></a>
+<a name="894"><span class="lineNum">     894 </span>            :         c-&gt;lock = u-&gt;conf-&gt;cache_lock;</a>
+<a name="895"><span class="lineNum">     895 </span>            :         c-&gt;lock_timeout = u-&gt;conf-&gt;cache_lock_timeout;</a>
+<a name="896"><span class="lineNum">     896 </span>            :         c-&gt;lock_age = u-&gt;conf-&gt;cache_lock_age;</a>
 <a name="897"><span class="lineNum">     897 </span>            : </a>
-<a name="898"><span class="lineNum">     898 </span><span class="lineNoCov">          0 :         u-&gt;cache_status = NGX_HTTP_CACHE_MISS;</span></a>
+<a name="898"><span class="lineNum">     898 </span>            :         u-&gt;cache_status = NGX_HTTP_CACHE_MISS;</a>
 <a name="899"><span class="lineNum">     899 </span>            :     }</a>
 <a name="900"><span class="lineNum">     900 </span>            : </a>
-<a name="901"><span class="lineNum">     901 </span><span class="lineNoCov">          0 :     rc = ngx_http_file_cache_open(r);</span></a>
+<a name="901"><span class="lineNum">     901 </span>            :     rc = ngx_http_file_cache_open(r);</a>
 <a name="902"><span class="lineNum">     902 </span>            : </a>
-<a name="903"><span class="lineNum">     903 </span><span class="lineNoCov">          0 :     ngx_log_debug1(NGX_LOG_DEBUG_HTTP, r-&gt;connection-&gt;log, 0,</span></a>
+<a name="903"><span class="lineNum">     903 </span>            :     ngx_log_debug1(NGX_LOG_DEBUG_HTTP, r-&gt;connection-&gt;log, 0,</a>
 <a name="904"><span class="lineNum">     904 </span>            :                    &quot;http upstream cache: %i&quot;, rc);</a>
 <a name="905"><span class="lineNum">     905 </span>            : </a>
-<a name="906"><span class="lineNum">     906 </span><span class="lineNoCov">          0 :     switch (rc) {</span></a>
+<a name="906"><span class="lineNum">     906 </span>            :     switch (rc) {</a>
 <a name="907"><span class="lineNum">     907 </span>            : </a>
-<a name="908"><span class="lineNum">     908 </span><span class="lineNoCov">          0 :     case NGX_HTTP_CACHE_STALE:</span></a>
+<a name="908"><span class="lineNum">     908 </span>            :     case NGX_HTTP_CACHE_STALE:</a>
 <a name="909"><span class="lineNum">     909 </span>            : </a>
-<a name="910"><span class="lineNum">     910 </span><span class="lineNoCov">          0 :         if (((u-&gt;conf-&gt;cache_use_stale &amp; NGX_HTTP_UPSTREAM_FT_UPDATING)</span></a>
-<a name="911"><span class="lineNum">     911 </span><span class="lineNoCov">          0 :              || c-&gt;stale_updating) &amp;&amp; !r-&gt;background</span></a>
-<a name="912"><span class="lineNum">     912 </span><span class="lineNoCov">          0 :             &amp;&amp; u-&gt;conf-&gt;cache_background_update)</span></a>
+<a name="910"><span class="lineNum">     910 </span>            :         if (((u-&gt;conf-&gt;cache_use_stale &amp; NGX_HTTP_UPSTREAM_FT_UPDATING)</a>
+<a name="911"><span class="lineNum">     911 </span>            :              || c-&gt;stale_updating) &amp;&amp; !r-&gt;background</a>
+<a name="912"><span class="lineNum">     912 </span>            :             &amp;&amp; u-&gt;conf-&gt;cache_background_update)</a>
 <a name="913"><span class="lineNum">     913 </span>            :         {</a>
-<a name="914"><span class="lineNum">     914 </span><span class="lineNoCov">          0 :             if (ngx_http_upstream_cache_background_update(r, u) == NGX_OK) {</span></a>
-<a name="915"><span class="lineNum">     915 </span><span class="lineNoCov">          0 :                 r-&gt;cache-&gt;background = 1;</span></a>
-<a name="916"><span class="lineNum">     916 </span><span class="lineNoCov">          0 :                 u-&gt;cache_status = rc;</span></a>
-<a name="917"><span class="lineNum">     917 </span><span class="lineNoCov">          0 :                 rc = NGX_OK;</span></a>
+<a name="914"><span class="lineNum">     914 </span>            :             if (ngx_http_upstream_cache_background_update(r, u) == NGX_OK) {</a>
+<a name="915"><span class="lineNum">     915 </span>            :                 r-&gt;cache-&gt;background = 1;</a>
+<a name="916"><span class="lineNum">     916 </span>            :                 u-&gt;cache_status = rc;</a>
+<a name="917"><span class="lineNum">     917 </span>            :                 rc = NGX_OK;</a>
 <a name="918"><span class="lineNum">     918 </span>            : </a>
 <a name="919"><span class="lineNum">     919 </span>            :             } else {</a>
-<a name="920"><span class="lineNum">     920 </span><span class="lineNoCov">          0 :                 rc = NGX_ERROR;</span></a>
+<a name="920"><span class="lineNum">     920 </span>            :                 rc = NGX_ERROR;</a>
 <a name="921"><span class="lineNum">     921 </span>            :             }</a>
 <a name="922"><span class="lineNum">     922 </span>            :         }</a>
 <a name="923"><span class="lineNum">     923 </span>            : </a>
-<a name="924"><span class="lineNum">     924 </span><span class="lineNoCov">          0 :         break;</span></a>
+<a name="924"><span class="lineNum">     924 </span>            :         break;</a>
 <a name="925"><span class="lineNum">     925 </span>            : </a>
-<a name="926"><span class="lineNum">     926 </span><span class="lineNoCov">          0 :     case NGX_HTTP_CACHE_UPDATING:</span></a>
+<a name="926"><span class="lineNum">     926 </span>            :     case NGX_HTTP_CACHE_UPDATING:</a>
 <a name="927"><span class="lineNum">     927 </span>            : </a>
-<a name="928"><span class="lineNum">     928 </span><span class="lineNoCov">          0 :         if (((u-&gt;conf-&gt;cache_use_stale &amp; NGX_HTTP_UPSTREAM_FT_UPDATING)</span></a>
-<a name="929"><span class="lineNum">     929 </span><span class="lineNoCov">          0 :              || c-&gt;stale_updating) &amp;&amp; !r-&gt;background)</span></a>
+<a name="928"><span class="lineNum">     928 </span>            :         if (((u-&gt;conf-&gt;cache_use_stale &amp; NGX_HTTP_UPSTREAM_FT_UPDATING)</a>
+<a name="929"><span class="lineNum">     929 </span>            :              || c-&gt;stale_updating) &amp;&amp; !r-&gt;background)</a>
 <a name="930"><span class="lineNum">     930 </span>            :         {</a>
-<a name="931"><span class="lineNum">     931 </span><span class="lineNoCov">          0 :             u-&gt;cache_status = rc;</span></a>
-<a name="932"><span class="lineNum">     932 </span><span class="lineNoCov">          0 :             rc = NGX_OK;</span></a>
+<a name="931"><span class="lineNum">     931 </span>            :             u-&gt;cache_status = rc;</a>
+<a name="932"><span class="lineNum">     932 </span>            :             rc = NGX_OK;</a>
 <a name="933"><span class="lineNum">     933 </span>            : </a>
 <a name="934"><span class="lineNum">     934 </span>            :         } else {</a>
-<a name="935"><span class="lineNum">     935 </span><span class="lineNoCov">          0 :             rc = NGX_HTTP_CACHE_STALE;</span></a>
+<a name="935"><span class="lineNum">     935 </span>            :             rc = NGX_HTTP_CACHE_STALE;</a>
 <a name="936"><span class="lineNum">     936 </span>            :         }</a>
 <a name="937"><span class="lineNum">     937 </span>            : </a>
-<a name="938"><span class="lineNum">     938 </span><span class="lineNoCov">          0 :         break;</span></a>
+<a name="938"><span class="lineNum">     938 </span>            :         break;</a>
 <a name="939"><span class="lineNum">     939 </span>            : </a>
-<a name="940"><span class="lineNum">     940 </span><span class="lineNoCov">          0 :     case NGX_OK:</span></a>
-<a name="941"><span class="lineNum">     941 </span><span class="lineNoCov">          0 :         u-&gt;cache_status = NGX_HTTP_CACHE_HIT;</span></a>
+<a name="940"><span class="lineNum">     940 </span>            :     case NGX_OK:</a>
+<a name="941"><span class="lineNum">     941 </span>            :         u-&gt;cache_status = NGX_HTTP_CACHE_HIT;</a>
 <a name="942"><span class="lineNum">     942 </span>            :     }</a>
 <a name="943"><span class="lineNum">     943 </span>            : </a>
-<a name="944"><span class="lineNum">     944 </span><span class="lineNoCov">          0 :     switch (rc) {</span></a>
+<a name="944"><span class="lineNum">     944 </span>            :     switch (rc) {</a>
 <a name="945"><span class="lineNum">     945 </span>            : </a>
-<a name="946"><span class="lineNum">     946 </span><span class="lineNoCov">          0 :     case NGX_OK:</span></a>
+<a name="946"><span class="lineNum">     946 </span>            :     case NGX_OK:</a>
 <a name="947"><span class="lineNum">     947 </span>            : </a>
-<a name="948"><span class="lineNum">     948 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
+<a name="948"><span class="lineNum">     948 </span>            :         return NGX_OK;</a>
 <a name="949"><span class="lineNum">     949 </span>            : </a>
-<a name="950"><span class="lineNum">     950 </span><span class="lineNoCov">          0 :     case NGX_HTTP_CACHE_STALE:</span></a>
+<a name="950"><span class="lineNum">     950 </span>            :     case NGX_HTTP_CACHE_STALE:</a>
 <a name="951"><span class="lineNum">     951 </span>            : </a>
-<a name="952"><span class="lineNum">     952 </span><span class="lineNoCov">          0 :         c-&gt;valid_sec = 0;</span></a>
-<a name="953"><span class="lineNum">     953 </span><span class="lineNoCov">          0 :         c-&gt;updating_sec = 0;</span></a>
-<a name="954"><span class="lineNum">     954 </span><span class="lineNoCov">          0 :         c-&gt;error_sec = 0;</span></a>
+<a name="952"><span class="lineNum">     952 </span>            :         c-&gt;valid_sec = 0;</a>
+<a name="953"><span class="lineNum">     953 </span>            :         c-&gt;updating_sec = 0;</a>
+<a name="954"><span class="lineNum">     954 </span>            :         c-&gt;error_sec = 0;</a>
 <a name="955"><span class="lineNum">     955 </span>            : </a>
-<a name="956"><span class="lineNum">     956 </span><span class="lineNoCov">          0 :         u-&gt;buffer.start = NULL;</span></a>
-<a name="957"><span class="lineNum">     957 </span><span class="lineNoCov">          0 :         u-&gt;cache_status = NGX_HTTP_CACHE_EXPIRED;</span></a>
+<a name="956"><span class="lineNum">     956 </span>            :         u-&gt;buffer.start = NULL;</a>
+<a name="957"><span class="lineNum">     957 </span>            :         u-&gt;cache_status = NGX_HTTP_CACHE_EXPIRED;</a>
 <a name="958"><span class="lineNum">     958 </span>            : </a>
-<a name="959"><span class="lineNum">     959 </span><span class="lineNoCov">          0 :         break;</span></a>
+<a name="959"><span class="lineNum">     959 </span>            :         break;</a>
 <a name="960"><span class="lineNum">     960 </span>            : </a>
-<a name="961"><span class="lineNum">     961 </span><span class="lineNoCov">          0 :     case NGX_DECLINED:</span></a>
+<a name="961"><span class="lineNum">     961 </span>            :     case NGX_DECLINED:</a>
 <a name="962"><span class="lineNum">     962 </span>            : </a>
-<a name="963"><span class="lineNum">     963 </span><span class="lineNoCov">          0 :         if ((size_t) (u-&gt;buffer.end - u-&gt;buffer.start) &lt; u-&gt;conf-&gt;buffer_size) {</span></a>
-<a name="964"><span class="lineNum">     964 </span><span class="lineNoCov">          0 :             u-&gt;buffer.start = NULL;</span></a>
+<a name="963"><span class="lineNum">     963 </span>            :         if ((size_t) (u-&gt;buffer.end - u-&gt;buffer.start) &lt; u-&gt;conf-&gt;buffer_size) {</a>
+<a name="964"><span class="lineNum">     964 </span>            :             u-&gt;buffer.start = NULL;</a>
 <a name="965"><span class="lineNum">     965 </span>            : </a>
 <a name="966"><span class="lineNum">     966 </span>            :         } else {</a>
-<a name="967"><span class="lineNum">     967 </span><span class="lineNoCov">          0 :             u-&gt;buffer.pos = u-&gt;buffer.start + c-&gt;header_start;</span></a>
-<a name="968"><span class="lineNum">     968 </span><span class="lineNoCov">          0 :             u-&gt;buffer.last = u-&gt;buffer.pos;</span></a>
+<a name="967"><span class="lineNum">     967 </span>            :             u-&gt;buffer.pos = u-&gt;buffer.start + c-&gt;header_start;</a>
+<a name="968"><span class="lineNum">     968 </span>            :             u-&gt;buffer.last = u-&gt;buffer.pos;</a>
 <a name="969"><span class="lineNum">     969 </span>            :         }</a>
 <a name="970"><span class="lineNum">     970 </span>            : </a>
-<a name="971"><span class="lineNum">     971 </span><span class="lineNoCov">          0 :         break;</span></a>
+<a name="971"><span class="lineNum">     971 </span>            :         break;</a>
 <a name="972"><span class="lineNum">     972 </span>            : </a>
-<a name="973"><span class="lineNum">     973 </span><span class="lineNoCov">          0 :     case NGX_HTTP_CACHE_SCARCE:</span></a>
+<a name="973"><span class="lineNum">     973 </span>            :     case NGX_HTTP_CACHE_SCARCE:</a>
 <a name="974"><span class="lineNum">     974 </span>            : </a>
-<a name="975"><span class="lineNum">     975 </span><span class="lineNoCov">          0 :         u-&gt;cacheable = 0;</span></a>
+<a name="975"><span class="lineNum">     975 </span>            :         u-&gt;cacheable = 0;</a>
 <a name="976"><span class="lineNum">     976 </span>            : </a>
-<a name="977"><span class="lineNum">     977 </span><span class="lineNoCov">          0 :         break;</span></a>
+<a name="977"><span class="lineNum">     977 </span>            :         break;</a>
 <a name="978"><span class="lineNum">     978 </span>            : </a>
-<a name="979"><span class="lineNum">     979 </span><span class="lineNoCov">          0 :     case NGX_AGAIN:</span></a>
+<a name="979"><span class="lineNum">     979 </span>            :     case NGX_AGAIN:</a>
 <a name="980"><span class="lineNum">     980 </span>            : </a>
-<a name="981"><span class="lineNum">     981 </span><span class="lineNoCov">          0 :         return NGX_BUSY;</span></a>
+<a name="981"><span class="lineNum">     981 </span>            :         return NGX_BUSY;</a>
 <a name="982"><span class="lineNum">     982 </span>            : </a>
-<a name="983"><span class="lineNum">     983 </span><span class="lineNoCov">          0 :     case NGX_ERROR:</span></a>
+<a name="983"><span class="lineNum">     983 </span>            :     case NGX_ERROR:</a>
 <a name="984"><span class="lineNum">     984 </span>            : </a>
-<a name="985"><span class="lineNum">     985 </span><span class="lineNoCov">          0 :         return NGX_ERROR;</span></a>
+<a name="985"><span class="lineNum">     985 </span>            :         return NGX_ERROR;</a>
 <a name="986"><span class="lineNum">     986 </span>            : </a>
-<a name="987"><span class="lineNum">     987 </span><span class="lineNoCov">          0 :     default:</span></a>
+<a name="987"><span class="lineNum">     987 </span>            :     default:</a>
 <a name="988"><span class="lineNum">     988 </span>            : </a>
 <a name="989"><span class="lineNum">     989 </span>            :         /* cached NGX_HTTP_BAD_GATEWAY, NGX_HTTP_GATEWAY_TIME_OUT, etc. */</a>
 <a name="990"><span class="lineNum">     990 </span>            : </a>
-<a name="991"><span class="lineNum">     991 </span><span class="lineNoCov">          0 :         u-&gt;cache_status = NGX_HTTP_CACHE_HIT;</span></a>
+<a name="991"><span class="lineNum">     991 </span>            :         u-&gt;cache_status = NGX_HTTP_CACHE_HIT;</a>
 <a name="992"><span class="lineNum">     992 </span>            : </a>
-<a name="993"><span class="lineNum">     993 </span><span class="lineNoCov">          0 :         return rc;</span></a>
+<a name="993"><span class="lineNum">     993 </span>            :         return rc;</a>
 <a name="994"><span class="lineNum">     994 </span>            :     }</a>
 <a name="995"><span class="lineNum">     995 </span>            : </a>
-<a name="996"><span class="lineNum">     996 </span><span class="lineNoCov">          0 :     if (ngx_http_upstream_cache_check_range(r, u) == NGX_DECLINED) {</span></a>
-<a name="997"><span class="lineNum">     997 </span><span class="lineNoCov">          0 :         u-&gt;cacheable = 0;</span></a>
+<a name="996"><span class="lineNum">     996 </span>            :     if (ngx_http_upstream_cache_check_range(r, u) == NGX_DECLINED) {</a>
+<a name="997"><span class="lineNum">     997 </span>            :         u-&gt;cacheable = 0;</a>
 <a name="998"><span class="lineNum">     998 </span>            :     }</a>
 <a name="999"><span class="lineNum">     999 </span>            : </a>
-<a name="1000"><span class="lineNum">    1000 </span><span class="lineNoCov">          0 :     r-&gt;cached = 0;</span></a>
+<a name="1000"><span class="lineNum">    1000 </span>            :     r-&gt;cached = 0;</a>
 <a name="1001"><span class="lineNum">    1001 </span>            : </a>
-<a name="1002"><span class="lineNum">    1002 </span><span class="lineNoCov">          0 :     return NGX_DECLINED;</span></a>
+<a name="1002"><span class="lineNum">    1002 </span>            :     return NGX_DECLINED;</a>
 <a name="1003"><span class="lineNum">    1003 </span>            : }</a>
 <a name="1004"><span class="lineNum">    1004 </span>            : </a>
 <a name="1005"><span class="lineNum">    1005 </span>            : </a>
 <a name="1006"><span class="lineNum">    1006 </span>            : static ngx_int_t</a>
-<a name="1007"><span class="lineNum">    1007 </span><span class="lineNoCov">          0 : ngx_http_upstream_cache_get(ngx_http_request_t *r, ngx_http_upstream_t *u,</span></a>
+<a name="1007"><span class="lineNum">    1007 </span>            : ngx_http_upstream_cache_get(ngx_http_request_t *r, ngx_http_upstream_t *u,</a>
 <a name="1008"><span class="lineNum">    1008 </span>            :     ngx_http_file_cache_t **cache)</a>
 <a name="1009"><span class="lineNum">    1009 </span>            : {</a>
-<a name="1010"><span class="lineNum">    1010 </span><span class="lineNoCov">          0 :     ngx_str_t               *name, val;</span></a>
+<a name="1010"><span class="lineNum">    1010 </span>            :     ngx_str_t               *name, val;</a>
 <a name="1011"><span class="lineNum">    1011 </span>            :     ngx_uint_t               i;</a>
 <a name="1012"><span class="lineNum">    1012 </span>            :     ngx_http_file_cache_t  **caches;</a>
 <a name="1013"><span class="lineNum">    1013 </span>            : </a>
-<a name="1014"><span class="lineNum">    1014 </span><span class="lineNoCov">          0 :     if (u-&gt;conf-&gt;cache_zone) {</span></a>
-<a name="1015"><span class="lineNum">    1015 </span><span class="lineNoCov">          0 :         *cache = u-&gt;conf-&gt;cache_zone-&gt;data;</span></a>
-<a name="1016"><span class="lineNum">    1016 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
+<a name="1014"><span class="lineNum">    1014 </span>            :     if (u-&gt;conf-&gt;cache_zone) {</a>
+<a name="1015"><span class="lineNum">    1015 </span>            :         *cache = u-&gt;conf-&gt;cache_zone-&gt;data;</a>
+<a name="1016"><span class="lineNum">    1016 </span>            :         return NGX_OK;</a>
 <a name="1017"><span class="lineNum">    1017 </span>            :     }</a>
 <a name="1018"><span class="lineNum">    1018 </span>            : </a>
-<a name="1019"><span class="lineNum">    1019 </span><span class="lineNoCov">          0 :     if (ngx_http_complex_value(r, u-&gt;conf-&gt;cache_value, &amp;val) != NGX_OK) {</span></a>
-<a name="1020"><span class="lineNum">    1020 </span><span class="lineNoCov">          0 :         return NGX_ERROR;</span></a>
+<a name="1019"><span class="lineNum">    1019 </span>            :     if (ngx_http_complex_value(r, u-&gt;conf-&gt;cache_value, &amp;val) != NGX_OK) {</a>
+<a name="1020"><span class="lineNum">    1020 </span>            :         return NGX_ERROR;</a>
 <a name="1021"><span class="lineNum">    1021 </span>            :     }</a>
 <a name="1022"><span class="lineNum">    1022 </span>            : </a>
-<a name="1023"><span class="lineNum">    1023 </span><span class="lineNoCov">          0 :     if (val.len == 0</span></a>
-<a name="1024"><span class="lineNum">    1024 </span><span class="lineNoCov">          0 :         || (val.len == 3 &amp;&amp; ngx_strncmp(val.data, &quot;off&quot;, 3) == 0))</span></a>
+<a name="1023"><span class="lineNum">    1023 </span>            :     if (val.len == 0</a>
+<a name="1024"><span class="lineNum">    1024 </span>            :         || (val.len == 3 &amp;&amp; ngx_strncmp(val.data, &quot;off&quot;, 3) == 0))</a>
 <a name="1025"><span class="lineNum">    1025 </span>            :     {</a>
-<a name="1026"><span class="lineNum">    1026 </span><span class="lineNoCov">          0 :         return NGX_DECLINED;</span></a>
+<a name="1026"><span class="lineNum">    1026 </span>            :         return NGX_DECLINED;</a>
 <a name="1027"><span class="lineNum">    1027 </span>            :     }</a>
 <a name="1028"><span class="lineNum">    1028 </span>            : </a>
-<a name="1029"><span class="lineNum">    1029 </span><span class="lineNoCov">          0 :     caches = u-&gt;caches-&gt;elts;</span></a>
+<a name="1029"><span class="lineNum">    1029 </span>            :     caches = u-&gt;caches-&gt;elts;</a>
 <a name="1030"><span class="lineNum">    1030 </span>            : </a>
-<a name="1031"><span class="lineNum">    1031 </span><span class="lineNoCov">          0 :     for (i = 0; i &lt; u-&gt;caches-&gt;nelts; i++) {</span></a>
-<a name="1032"><span class="lineNum">    1032 </span><span class="lineNoCov">          0 :         name = &amp;caches[i]-&gt;shm_zone-&gt;shm.name;</span></a>
+<a name="1031"><span class="lineNum">    1031 </span>            :     for (i = 0; i &lt; u-&gt;caches-&gt;nelts; i++) {</a>
+<a name="1032"><span class="lineNum">    1032 </span>            :         name = &amp;caches[i]-&gt;shm_zone-&gt;shm.name;</a>
 <a name="1033"><span class="lineNum">    1033 </span>            : </a>
-<a name="1034"><span class="lineNum">    1034 </span><span class="lineNoCov">          0 :         if (name-&gt;len == val.len</span></a>
-<a name="1035"><span class="lineNum">    1035 </span><span class="lineNoCov">          0 :             &amp;&amp; ngx_strncmp(name-&gt;data, val.data, val.len) == 0)</span></a>
+<a name="1034"><span class="lineNum">    1034 </span>            :         if (name-&gt;len == val.len</a>
+<a name="1035"><span class="lineNum">    1035 </span>            :             &amp;&amp; ngx_strncmp(name-&gt;data, val.data, val.len) == 0)</a>
 <a name="1036"><span class="lineNum">    1036 </span>            :         {</a>
-<a name="1037"><span class="lineNum">    1037 </span><span class="lineNoCov">          0 :             *cache = caches[i];</span></a>
-<a name="1038"><span class="lineNum">    1038 </span><span class="lineNoCov">          0 :             return NGX_OK;</span></a>
+<a name="1037"><span class="lineNum">    1037 </span>            :             *cache = caches[i];</a>
+<a name="1038"><span class="lineNum">    1038 </span>            :             return NGX_OK;</a>
 <a name="1039"><span class="lineNum">    1039 </span>            :         }</a>
 <a name="1040"><span class="lineNum">    1040 </span>            :     }</a>
 <a name="1041"><span class="lineNum">    1041 </span>            : </a>
-<a name="1042"><span class="lineNum">    1042 </span><span class="lineNoCov">          0 :     ngx_log_error(NGX_LOG_ERR, r-&gt;connection-&gt;log, 0,</span></a>
+<a name="1042"><span class="lineNum">    1042 </span>            :     ngx_log_error(NGX_LOG_ERR, r-&gt;connection-&gt;log, 0,</a>
 <a name="1043"><span class="lineNum">    1043 </span>            :                   &quot;cache \&quot;%V\&quot; not found&quot;, &amp;val);</a>
 <a name="1044"><span class="lineNum">    1044 </span>            : </a>
-<a name="1045"><span class="lineNum">    1045 </span><span class="lineNoCov">          0 :     return NGX_ERROR;</span></a>
+<a name="1045"><span class="lineNum">    1045 </span>            :     return NGX_ERROR;</a>
 <a name="1046"><span class="lineNum">    1046 </span>            : }</a>
 <a name="1047"><span class="lineNum">    1047 </span>            : </a>
 <a name="1048"><span class="lineNum">    1048 </span>            : </a>
 <a name="1049"><span class="lineNum">    1049 </span>            : static ngx_int_t</a>
-<a name="1050"><span class="lineNum">    1050 </span><span class="lineNoCov">          0 : ngx_http_upstream_cache_send(ngx_http_request_t *r, ngx_http_upstream_t *u)</span></a>
+<a name="1050"><span class="lineNum">    1050 </span>            : ngx_http_upstream_cache_send(ngx_http_request_t *r, ngx_http_upstream_t *u)</a>
 <a name="1051"><span class="lineNum">    1051 </span>            : {</a>
 <a name="1052"><span class="lineNum">    1052 </span>            :     ngx_int_t          rc;</a>
 <a name="1053"><span class="lineNum">    1053 </span>            :     ngx_http_cache_t  *c;</a>
 <a name="1054"><span class="lineNum">    1054 </span>            : </a>
-<a name="1055"><span class="lineNum">    1055 </span><span class="lineNoCov">          0 :     r-&gt;cached = 1;</span></a>
-<a name="1056"><span class="lineNum">    1056 </span><span class="lineNoCov">          0 :     c = r-&gt;cache;</span></a>
+<a name="1055"><span class="lineNum">    1055 </span>            :     r-&gt;cached = 1;</a>
+<a name="1056"><span class="lineNum">    1056 </span>            :     c = r-&gt;cache;</a>
 <a name="1057"><span class="lineNum">    1057 </span>            : </a>
-<a name="1058"><span class="lineNum">    1058 </span><span class="lineNoCov">          0 :     if (c-&gt;header_start == c-&gt;body_start) {</span></a>
-<a name="1059"><span class="lineNum">    1059 </span><span class="lineNoCov">          0 :         r-&gt;http_version = NGX_HTTP_VERSION_9;</span></a>
-<a name="1060"><span class="lineNum">    1060 </span><span class="lineNoCov">          0 :         return ngx_http_cache_send(r);</span></a>
+<a name="1058"><span class="lineNum">    1058 </span>            :     if (c-&gt;header_start == c-&gt;body_start) {</a>
+<a name="1059"><span class="lineNum">    1059 </span>            :         r-&gt;http_version = NGX_HTTP_VERSION_9;</a>
+<a name="1060"><span class="lineNum">    1060 </span>            :         return ngx_http_cache_send(r);</a>
 <a name="1061"><span class="lineNum">    1061 </span>            :     }</a>
 <a name="1062"><span class="lineNum">    1062 </span>            : </a>
 <a name="1063"><span class="lineNum">    1063 </span>            :     /* TODO: cache stack */</a>
 <a name="1064"><span class="lineNum">    1064 </span>            : </a>
-<a name="1065"><span class="lineNum">    1065 </span><span class="lineNoCov">          0 :     u-&gt;buffer = *c-&gt;buf;</span></a>
-<a name="1066"><span class="lineNum">    1066 </span><span class="lineNoCov">          0 :     u-&gt;buffer.pos += c-&gt;header_start;</span></a>
+<a name="1065"><span class="lineNum">    1065 </span>            :     u-&gt;buffer = *c-&gt;buf;</a>
+<a name="1066"><span class="lineNum">    1066 </span>            :     u-&gt;buffer.pos += c-&gt;header_start;</a>
 <a name="1067"><span class="lineNum">    1067 </span>            : </a>
-<a name="1068"><span class="lineNum">    1068 </span><span class="lineNoCov">          0 :     ngx_memzero(&amp;u-&gt;headers_in, sizeof(ngx_http_upstream_headers_in_t));</span></a>
-<a name="1069"><span class="lineNum">    1069 </span><span class="lineNoCov">          0 :     u-&gt;headers_in.content_length_n = -1;</span></a>
-<a name="1070"><span class="lineNum">    1070 </span><span class="lineNoCov">          0 :     u-&gt;headers_in.last_modified_time = -1;</span></a>
+<a name="1068"><span class="lineNum">    1068 </span>            :     ngx_memzero(&amp;u-&gt;headers_in, sizeof(ngx_http_upstream_headers_in_t));</a>
+<a name="1069"><span class="lineNum">    1069 </span>            :     u-&gt;headers_in.content_length_n = -1;</a>
+<a name="1070"><span class="lineNum">    1070 </span>            :     u-&gt;headers_in.last_modified_time = -1;</a>
 <a name="1071"><span class="lineNum">    1071 </span>            : </a>
-<a name="1072"><span class="lineNum">    1072 </span><span class="lineNoCov">          0 :     if (ngx_list_init(&amp;u-&gt;headers_in.headers, r-&gt;pool, 8,</span></a>
+<a name="1072"><span class="lineNum">    1072 </span>            :     if (ngx_list_init(&amp;u-&gt;headers_in.headers, r-&gt;pool, 8,</a>
 <a name="1073"><span class="lineNum">    1073 </span>            :                       sizeof(ngx_table_elt_t))</a>
 <a name="1074"><span class="lineNum">    1074 </span>            :         != NGX_OK)</a>
 <a name="1075"><span class="lineNum">    1075 </span>            :     {</a>
-<a name="1076"><span class="lineNum">    1076 </span><span class="lineNoCov">          0 :         return NGX_ERROR;</span></a>
+<a name="1076"><span class="lineNum">    1076 </span>            :         return NGX_ERROR;</a>
 <a name="1077"><span class="lineNum">    1077 </span>            :     }</a>
 <a name="1078"><span class="lineNum">    1078 </span>            : </a>
-<a name="1079"><span class="lineNum">    1079 </span><span class="lineNoCov">          0 :     if (ngx_list_init(&amp;u-&gt;headers_in.trailers, r-&gt;pool, 2,</span></a>
+<a name="1079"><span class="lineNum">    1079 </span>            :     if (ngx_list_init(&amp;u-&gt;headers_in.trailers, r-&gt;pool, 2,</a>
 <a name="1080"><span class="lineNum">    1080 </span>            :                       sizeof(ngx_table_elt_t))</a>
 <a name="1081"><span class="lineNum">    1081 </span>            :         != NGX_OK)</a>
 <a name="1082"><span class="lineNum">    1082 </span>            :     {</a>
-<a name="1083"><span class="lineNum">    1083 </span><span class="lineNoCov">          0 :         return NGX_ERROR;</span></a>
+<a name="1083"><span class="lineNum">    1083 </span>            :         return NGX_ERROR;</a>
 <a name="1084"><span class="lineNum">    1084 </span>            :     }</a>
 <a name="1085"><span class="lineNum">    1085 </span>            : </a>
-<a name="1086"><span class="lineNum">    1086 </span><span class="lineNoCov">          0 :     rc = u-&gt;process_header(r);</span></a>
+<a name="1086"><span class="lineNum">    1086 </span>            :     rc = u-&gt;process_header(r);</a>
 <a name="1087"><span class="lineNum">    1087 </span>            : </a>
-<a name="1088"><span class="lineNum">    1088 </span><span class="lineNoCov">          0 :     if (rc == NGX_OK) {</span></a>
+<a name="1088"><span class="lineNum">    1088 </span>            :     if (rc == NGX_OK) {</a>
 <a name="1089"><span class="lineNum">    1089 </span>            : </a>
-<a name="1090"><span class="lineNum">    1090 </span><span class="lineNoCov">          0 :         if (ngx_http_upstream_process_headers(r, u) != NGX_OK) {</span></a>
-<a name="1091"><span class="lineNum">    1091 </span><span class="lineNoCov">          0 :             return NGX_DONE;</span></a>
+<a name="1090"><span class="lineNum">    1090 </span>            :         if (ngx_http_upstream_process_headers(r, u) != NGX_OK) {</a>
+<a name="1091"><span class="lineNum">    1091 </span>            :             return NGX_DONE;</a>
 <a name="1092"><span class="lineNum">    1092 </span>            :         }</a>
 <a name="1093"><span class="lineNum">    1093 </span>            : </a>
-<a name="1094"><span class="lineNum">    1094 </span><span class="lineNoCov">          0 :         return ngx_http_cache_send(r);</span></a>
+<a name="1094"><span class="lineNum">    1094 </span>            :         return ngx_http_cache_send(r);</a>
 <a name="1095"><span class="lineNum">    1095 </span>            :     }</a>
 <a name="1096"><span class="lineNum">    1096 </span>            : </a>
-<a name="1097"><span class="lineNum">    1097 </span><span class="lineNoCov">          0 :     if (rc == NGX_ERROR) {</span></a>
-<a name="1098"><span class="lineNum">    1098 </span><span class="lineNoCov">          0 :         return NGX_ERROR;</span></a>
+<a name="1097"><span class="lineNum">    1097 </span>            :     if (rc == NGX_ERROR) {</a>
+<a name="1098"><span class="lineNum">    1098 </span>            :         return NGX_ERROR;</a>
 <a name="1099"><span class="lineNum">    1099 </span>            :     }</a>
 <a name="1100"><span class="lineNum">    1100 </span>            : </a>
-<a name="1101"><span class="lineNum">    1101 </span><span class="lineNoCov">          0 :     if (rc == NGX_AGAIN) {</span></a>
-<a name="1102"><span class="lineNum">    1102 </span><span class="lineNoCov">          0 :         rc = NGX_HTTP_UPSTREAM_INVALID_HEADER;</span></a>
+<a name="1101"><span class="lineNum">    1101 </span>            :     if (rc == NGX_AGAIN) {</a>
+<a name="1102"><span class="lineNum">    1102 </span>            :         rc = NGX_HTTP_UPSTREAM_INVALID_HEADER;</a>
 <a name="1103"><span class="lineNum">    1103 </span>            :     }</a>
 <a name="1104"><span class="lineNum">    1104 </span>            : </a>
 <a name="1105"><span class="lineNum">    1105 </span>            :     /* rc == NGX_HTTP_UPSTREAM_INVALID_HEADER */</a>
 <a name="1106"><span class="lineNum">    1106 </span>            : </a>
-<a name="1107"><span class="lineNum">    1107 </span><span class="lineNoCov">          0 :     ngx_log_error(NGX_LOG_CRIT, r-&gt;connection-&gt;log, 0,</span></a>
+<a name="1107"><span class="lineNum">    1107 </span>            :     ngx_log_error(NGX_LOG_CRIT, r-&gt;connection-&gt;log, 0,</a>
 <a name="1108"><span class="lineNum">    1108 </span>            :                   &quot;cache file \&quot;%s\&quot; contains invalid header&quot;,</a>
 <a name="1109"><span class="lineNum">    1109 </span>            :                   c-&gt;file.name.data);</a>
 <a name="1110"><span class="lineNum">    1110 </span>            : </a>
 <a name="1111"><span class="lineNum">    1111 </span>            :     /* TODO: delete file */</a>
 <a name="1112"><span class="lineNum">    1112 </span>            : </a>
-<a name="1113"><span class="lineNum">    1113 </span><span class="lineNoCov">          0 :     return rc;</span></a>
+<a name="1113"><span class="lineNum">    1113 </span>            :     return rc;</a>
 <a name="1114"><span class="lineNum">    1114 </span>            : }</a>
 <a name="1115"><span class="lineNum">    1115 </span>            : </a>
 <a name="1116"><span class="lineNum">    1116 </span>            : </a>
 <a name="1117"><span class="lineNum">    1117 </span>            : static ngx_int_t</a>
-<a name="1118"><span class="lineNum">    1118 </span><span class="lineNoCov">          0 : ngx_http_upstream_cache_background_update(ngx_http_request_t *r,</span></a>
+<a name="1118"><span class="lineNum">    1118 </span>            : ngx_http_upstream_cache_background_update(ngx_http_request_t *r,</a>
 <a name="1119"><span class="lineNum">    1119 </span>            :     ngx_http_upstream_t *u)</a>
 <a name="1120"><span class="lineNum">    1120 </span>            : {</a>
-<a name="1121"><span class="lineNum">    1121 </span><span class="lineNoCov">          0 :     ngx_http_request_t  *sr;</span></a>
+<a name="1121"><span class="lineNum">    1121 </span>            :     ngx_http_request_t  *sr;</a>
 <a name="1122"><span class="lineNum">    1122 </span>            : </a>
-<a name="1123"><span class="lineNum">    1123 </span><span class="lineNoCov">          0 :     if (r == r-&gt;main) {</span></a>
-<a name="1124"><span class="lineNum">    1124 </span><span class="lineNoCov">          0 :         r-&gt;preserve_body = 1;</span></a>
+<a name="1123"><span class="lineNum">    1123 </span>            :     if (r == r-&gt;main) {</a>
+<a name="1124"><span class="lineNum">    1124 </span>            :         r-&gt;preserve_body = 1;</a>
 <a name="1125"><span class="lineNum">    1125 </span>            :     }</a>
 <a name="1126"><span class="lineNum">    1126 </span>            : </a>
-<a name="1127"><span class="lineNum">    1127 </span><span class="lineNoCov">          0 :     if (ngx_http_subrequest(r, &amp;r-&gt;uri, &amp;r-&gt;args, &amp;sr, NULL,</span></a>
+<a name="1127"><span class="lineNum">    1127 </span>            :     if (ngx_http_subrequest(r, &amp;r-&gt;uri, &amp;r-&gt;args, &amp;sr, NULL,</a>
 <a name="1128"><span class="lineNum">    1128 </span>            :                             NGX_HTTP_SUBREQUEST_CLONE</a>
 <a name="1129"><span class="lineNum">    1129 </span>            :                             |NGX_HTTP_SUBREQUEST_BACKGROUND)</a>
 <a name="1130"><span class="lineNum">    1130 </span>            :         != NGX_OK)</a>
 <a name="1131"><span class="lineNum">    1131 </span>            :     {</a>
-<a name="1132"><span class="lineNum">    1132 </span><span class="lineNoCov">          0 :         return NGX_ERROR;</span></a>
+<a name="1132"><span class="lineNum">    1132 </span>            :         return NGX_ERROR;</a>
 <a name="1133"><span class="lineNum">    1133 </span>            :     }</a>
 <a name="1134"><span class="lineNum">    1134 </span>            : </a>
-<a name="1135"><span class="lineNum">    1135 </span><span class="lineNoCov">          0 :     sr-&gt;header_only = 1;</span></a>
+<a name="1135"><span class="lineNum">    1135 </span>            :     sr-&gt;header_only = 1;</a>
 <a name="1136"><span class="lineNum">    1136 </span>            : </a>
-<a name="1137"><span class="lineNum">    1137 </span><span class="lineNoCov">          0 :     return NGX_OK;</span></a>
+<a name="1137"><span class="lineNum">    1137 </span>            :     return NGX_OK;</a>
 <a name="1138"><span class="lineNum">    1138 </span>            : }</a>
 <a name="1139"><span class="lineNum">    1139 </span>            : </a>
 <a name="1140"><span class="lineNum">    1140 </span>            : </a>
 <a name="1141"><span class="lineNum">    1141 </span>            : static ngx_int_t</a>
-<a name="1142"><span class="lineNum">    1142 </span><span class="lineNoCov">          0 : ngx_http_upstream_cache_check_range(ngx_http_request_t *r,</span></a>
+<a name="1142"><span class="lineNum">    1142 </span>            : ngx_http_upstream_cache_check_range(ngx_http_request_t *r,</a>
 <a name="1143"><span class="lineNum">    1143 </span>            :     ngx_http_upstream_t *u)</a>
 <a name="1144"><span class="lineNum">    1144 </span>            : {</a>
 <a name="1145"><span class="lineNum">    1145 </span>            :     off_t             offset;</a>
 <a name="1146"><span class="lineNum">    1146 </span>            :     u_char           *p, *start;</a>
 <a name="1147"><span class="lineNum">    1147 </span>            :     ngx_table_elt_t  *h;</a>
 <a name="1148"><span class="lineNum">    1148 </span>            : </a>
-<a name="1149"><span class="lineNum">    1149 </span><span class="lineNoCov">          0 :     h = r-&gt;headers_in.range;</span></a>
+<a name="1149"><span class="lineNum">    1149 </span>            :     h = r-&gt;headers_in.range;</a>
 <a name="1150"><span class="lineNum">    1150 </span>            : </a>
-<a name="1151"><span class="lineNum">    1151 </span><span class="lineNoCov">          0 :     if (h == NULL</span></a>
-<a name="1152"><span class="lineNum">    1152 </span><span class="lineNoCov">          0 :         || !u-&gt;cacheable</span></a>
-<a name="1153"><span class="lineNum">    1153 </span><span class="lineNoCov">          0 :         || u-&gt;conf-&gt;cache_max_range_offset == NGX_MAX_OFF_T_VALUE)</span></a>
+<a name="1151"><span class="lineNum">    1151 </span>            :     if (h == NULL</a>
+<a name="1152"><span class="lineNum">    1152 </span>            :         || !u-&gt;cacheable</a>
+<a name="1153"><span class="lineNum">    1153 </span>            :         || u-&gt;conf-&gt;cache_max_range_offset == NGX_MAX_OFF_T_VALUE)</a>
 <a name="1154"><span class="lineNum">    1154 </span>            :     {</a>
-<a name="1155"><span class="lineNum">    1155 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
+<a name="1155"><span class="lineNum">    1155 </span>            :         return NGX_OK;</a>
 <a name="1156"><span class="lineNum">    1156 </span>            :     }</a>
 <a name="1157"><span class="lineNum">    1157 </span>            : </a>
-<a name="1158"><span class="lineNum">    1158 </span><span class="lineNoCov">          0 :     if (u-&gt;conf-&gt;cache_max_range_offset == 0) {</span></a>
-<a name="1159"><span class="lineNum">    1159 </span><span class="lineNoCov">          0 :         return NGX_DECLINED;</span></a>
+<a name="1158"><span class="lineNum">    1158 </span>            :     if (u-&gt;conf-&gt;cache_max_range_offset == 0) {</a>
+<a name="1159"><span class="lineNum">    1159 </span>            :         return NGX_DECLINED;</a>
 <a name="1160"><span class="lineNum">    1160 </span>            :     }</a>
 <a name="1161"><span class="lineNum">    1161 </span>            : </a>
-<a name="1162"><span class="lineNum">    1162 </span><span class="lineNoCov">          0 :     if (h-&gt;value.len &lt; 7</span></a>
-<a name="1163"><span class="lineNum">    1163 </span><span class="lineNoCov">          0 :         || ngx_strncasecmp(h-&gt;value.data, (u_char *) &quot;bytes=&quot;, 6) != 0)</span></a>
+<a name="1162"><span class="lineNum">    1162 </span>            :     if (h-&gt;value.len &lt; 7</a>
+<a name="1163"><span class="lineNum">    1163 </span>            :         || ngx_strncasecmp(h-&gt;value.data, (u_char *) &quot;bytes=&quot;, 6) != 0)</a>
 <a name="1164"><span class="lineNum">    1164 </span>            :     {</a>
-<a name="1165"><span class="lineNum">    1165 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
+<a name="1165"><span class="lineNum">    1165 </span>            :         return NGX_OK;</a>
 <a name="1166"><span class="lineNum">    1166 </span>            :     }</a>
 <a name="1167"><span class="lineNum">    1167 </span>            : </a>
-<a name="1168"><span class="lineNum">    1168 </span><span class="lineNoCov">          0 :     p = h-&gt;value.data + 6;</span></a>
+<a name="1168"><span class="lineNum">    1168 </span>            :     p = h-&gt;value.data + 6;</a>
 <a name="1169"><span class="lineNum">    1169 </span>            : </a>
-<a name="1170"><span class="lineNum">    1170 </span><span class="lineNoCov">          0 :     while (*p == ' ') { p++; }</span></a>
+<a name="1170"><span class="lineNum">    1170 </span>            :     while (*p == ' ') { p++; }</a>
 <a name="1171"><span class="lineNum">    1171 </span>            : </a>
-<a name="1172"><span class="lineNum">    1172 </span><span class="lineNoCov">          0 :     if (*p == '-') {</span></a>
-<a name="1173"><span class="lineNum">    1173 </span><span class="lineNoCov">          0 :         return NGX_DECLINED;</span></a>
+<a name="1172"><span class="lineNum">    1172 </span>            :     if (*p == '-') {</a>
+<a name="1173"><span class="lineNum">    1173 </span>            :         return NGX_DECLINED;</a>
 <a name="1174"><span class="lineNum">    1174 </span>            :     }</a>
 <a name="1175"><span class="lineNum">    1175 </span>            : </a>
-<a name="1176"><span class="lineNum">    1176 </span><span class="lineNoCov">          0 :     start = p;</span></a>
+<a name="1176"><span class="lineNum">    1176 </span>            :     start = p;</a>
 <a name="1177"><span class="lineNum">    1177 </span>            : </a>
-<a name="1178"><span class="lineNum">    1178 </span><span class="lineNoCov">          0 :     while (*p &gt;= '0' &amp;&amp; *p &lt;= '9') { p++; }</span></a>
+<a name="1178"><span class="lineNum">    1178 </span>            :     while (*p &gt;= '0' &amp;&amp; *p &lt;= '9') { p++; }</a>
 <a name="1179"><span class="lineNum">    1179 </span>            : </a>
-<a name="1180"><span class="lineNum">    1180 </span><span class="lineNoCov">          0 :     offset = ngx_atoof(start, p - start);</span></a>
+<a name="1180"><span class="lineNum">    1180 </span>            :     offset = ngx_atoof(start, p - start);</a>
 <a name="1181"><span class="lineNum">    1181 </span>            : </a>
-<a name="1182"><span class="lineNum">    1182 </span><span class="lineNoCov">          0 :     if (offset &gt;= u-&gt;conf-&gt;cache_max_range_offset) {</span></a>
-<a name="1183"><span class="lineNum">    1183 </span><span class="lineNoCov">          0 :         return NGX_DECLINED;</span></a>
+<a name="1182"><span class="lineNum">    1182 </span>            :     if (offset &gt;= u-&gt;conf-&gt;cache_max_range_offset) {</a>
+<a name="1183"><span class="lineNum">    1183 </span>            :         return NGX_DECLINED;</a>
 <a name="1184"><span class="lineNum">    1184 </span>            :     }</a>
 <a name="1185"><span class="lineNum">    1185 </span>            : </a>
-<a name="1186"><span class="lineNum">    1186 </span><span class="lineNoCov">          0 :     return NGX_OK;</span></a>
+<a name="1186"><span class="lineNum">    1186 </span>            :     return NGX_OK;</a>
 <a name="1187"><span class="lineNum">    1187 </span>            : }</a>
 <a name="1188"><span class="lineNum">    1188 </span>            : </a>
 <a name="1189"><span class="lineNum">    1189 </span>            : #endif</a>
@@ -1418,8 +1418,8 @@
 <a name="1356"><span class="lineNum">    1356 </span>            :     }</a>
 <a name="1357"><span class="lineNum">    1357 </span>            : </a>
 <a name="1358"><span class="lineNum">    1358 </span>            : #if (NGX_HTTP_V2)</a>
-<a name="1359"><span class="lineNum">    1359 </span>            :     if (r-&gt;stream) {</a>
-<a name="1360"><span class="lineNum">    1360 </span>            :         return;</a>
+<a name="1359"><span class="lineNum">    1359 </span><span class="lineNoCov">          0 :     if (r-&gt;stream) {</span></a>
+<a name="1360"><span class="lineNum">    1360 </span><span class="lineNoCov">          0 :         return;</span></a>
 <a name="1361"><span class="lineNum">    1361 </span>            :     }</a>
 <a name="1362"><span class="lineNum">    1362 </span>            : #endif</a>
 <a name="1363"><span class="lineNum">    1363 </span>            : </a>
@@ -2125,8 +2125,8 @@
 <a name="2063"><span class="lineNum">    2063 </span>            : </a>
 <a name="2064"><span class="lineNum">    2064 </span>            : #if (NGX_HTTP_CACHE)</a>
 <a name="2065"><span class="lineNum">    2065 </span>            : </a>
-<a name="2066"><span class="lineNum">    2066 </span><span class="lineNoCov">          0 :     if (r-&gt;cache) {</span></a>
-<a name="2067"><span class="lineNum">    2067 </span><span class="lineNoCov">          0 :         u-&gt;buffer.pos += r-&gt;cache-&gt;header_start;</span></a>
+<a name="2066"><span class="lineNum">    2066 </span>            :     if (r-&gt;cache) {</a>
+<a name="2067"><span class="lineNum">    2067 </span>            :         u-&gt;buffer.pos += r-&gt;cache-&gt;header_start;</a>
 <a name="2068"><span class="lineNum">    2068 </span>            :     }</a>
 <a name="2069"><span class="lineNum">    2069 </span>            : </a>
 <a name="2070"><span class="lineNum">    2070 </span>            : #endif</a>
@@ -2488,9 +2488,9 @@
 <a name="2426"><span class="lineNum">    2426 </span>            : </a>
 <a name="2427"><span class="lineNum">    2427 </span>            : #if (NGX_HTTP_CACHE)</a>
 <a name="2428"><span class="lineNum">    2428 </span>            : </a>
-<a name="2429"><span class="lineNum">    2429 </span><span class="lineNoCov">          0 :         if (r-&gt;cache) {</span></a>
-<a name="2430"><span class="lineNum">    2430 </span><span class="lineNoCov">          0 :             u-&gt;buffer.pos += r-&gt;cache-&gt;header_start;</span></a>
-<a name="2431"><span class="lineNum">    2431 </span><span class="lineNoCov">          0 :             u-&gt;buffer.last = u-&gt;buffer.pos;</span></a>
+<a name="2429"><span class="lineNum">    2429 </span>            :         if (r-&gt;cache) {</a>
+<a name="2430"><span class="lineNum">    2430 </span>            :             u-&gt;buffer.pos += r-&gt;cache-&gt;header_start;</a>
+<a name="2431"><span class="lineNum">    2431 </span>            :             u-&gt;buffer.last = u-&gt;buffer.pos;</a>
 <a name="2432"><span class="lineNum">    2432 </span>            :         }</a>
 <a name="2433"><span class="lineNum">    2433 </span>            : #endif</a>
 <a name="2434"><span class="lineNum">    2434 </span>            :     }</a>
@@ -2623,31 +2623,31 @@
 <a name="2561"><span class="lineNum">    2561 </span>            : </a>
 <a name="2562"><span class="lineNum">    2562 </span>            : #if (NGX_HTTP_CACHE)</a>
 <a name="2563"><span class="lineNum">    2563 </span>            : </a>
-<a name="2564"><span class="lineNum">    2564 </span><span class="lineNoCov">          0 :         if (u-&gt;cache_status == NGX_HTTP_CACHE_EXPIRED</span></a>
-<a name="2565"><span class="lineNum">    2565 </span><span class="lineNoCov">          0 :             &amp;&amp; (u-&gt;conf-&gt;cache_use_stale &amp; un-&gt;mask))</span></a>
+<a name="2564"><span class="lineNum">    2564 </span>            :         if (u-&gt;cache_status == NGX_HTTP_CACHE_EXPIRED</a>
+<a name="2565"><span class="lineNum">    2565 </span>            :             &amp;&amp; (u-&gt;conf-&gt;cache_use_stale &amp; un-&gt;mask))</a>
 <a name="2566"><span class="lineNum">    2566 </span>            :         {</a>
 <a name="2567"><span class="lineNum">    2567 </span>            :             ngx_int_t  rc;</a>
 <a name="2568"><span class="lineNum">    2568 </span>            : </a>
-<a name="2569"><span class="lineNum">    2569 </span><span class="lineNoCov">          0 :             rc = u-&gt;reinit_request(r);</span></a>
+<a name="2569"><span class="lineNum">    2569 </span>            :             rc = u-&gt;reinit_request(r);</a>
 <a name="2570"><span class="lineNum">    2570 </span>            : </a>
-<a name="2571"><span class="lineNum">    2571 </span><span class="lineNoCov">          0 :             if (rc != NGX_OK) {</span></a>
-<a name="2572"><span class="lineNum">    2572 </span><span class="lineNoCov">          0 :                 ngx_http_upstream_finalize_request(r, u, rc);</span></a>
-<a name="2573"><span class="lineNum">    2573 </span><span class="lineNoCov">          0 :                 return NGX_OK;</span></a>
+<a name="2571"><span class="lineNum">    2571 </span>            :             if (rc != NGX_OK) {</a>
+<a name="2572"><span class="lineNum">    2572 </span>            :                 ngx_http_upstream_finalize_request(r, u, rc);</a>
+<a name="2573"><span class="lineNum">    2573 </span>            :                 return NGX_OK;</a>
 <a name="2574"><span class="lineNum">    2574 </span>            :             }</a>
 <a name="2575"><span class="lineNum">    2575 </span>            : </a>
-<a name="2576"><span class="lineNum">    2576 </span><span class="lineNoCov">          0 :             u-&gt;cache_status = NGX_HTTP_CACHE_STALE;</span></a>
-<a name="2577"><span class="lineNum">    2577 </span><span class="lineNoCov">          0 :             rc = ngx_http_upstream_cache_send(r, u);</span></a>
+<a name="2576"><span class="lineNum">    2576 </span>            :             u-&gt;cache_status = NGX_HTTP_CACHE_STALE;</a>
+<a name="2577"><span class="lineNum">    2577 </span>            :             rc = ngx_http_upstream_cache_send(r, u);</a>
 <a name="2578"><span class="lineNum">    2578 </span>            : </a>
-<a name="2579"><span class="lineNum">    2579 </span><span class="lineNoCov">          0 :             if (rc == NGX_DONE) {</span></a>
-<a name="2580"><span class="lineNum">    2580 </span><span class="lineNoCov">          0 :                 return NGX_OK;</span></a>
+<a name="2579"><span class="lineNum">    2579 </span>            :             if (rc == NGX_DONE) {</a>
+<a name="2580"><span class="lineNum">    2580 </span>            :                 return NGX_OK;</a>
 <a name="2581"><span class="lineNum">    2581 </span>            :             }</a>
 <a name="2582"><span class="lineNum">    2582 </span>            : </a>
-<a name="2583"><span class="lineNum">    2583 </span><span class="lineNoCov">          0 :             if (rc == NGX_HTTP_UPSTREAM_INVALID_HEADER) {</span></a>
-<a name="2584"><span class="lineNum">    2584 </span><span class="lineNoCov">          0 :                 rc = NGX_HTTP_INTERNAL_SERVER_ERROR;</span></a>
+<a name="2583"><span class="lineNum">    2583 </span>            :             if (rc == NGX_HTTP_UPSTREAM_INVALID_HEADER) {</a>
+<a name="2584"><span class="lineNum">    2584 </span>            :                 rc = NGX_HTTP_INTERNAL_SERVER_ERROR;</a>
 <a name="2585"><span class="lineNum">    2585 </span>            :             }</a>
 <a name="2586"><span class="lineNum">    2586 </span>            : </a>
-<a name="2587"><span class="lineNum">    2587 </span><span class="lineNoCov">          0 :             ngx_http_upstream_finalize_request(r, u, rc);</span></a>
-<a name="2588"><span class="lineNum">    2588 </span><span class="lineNoCov">          0 :             return NGX_OK;</span></a>
+<a name="2587"><span class="lineNum">    2587 </span>            :             ngx_http_upstream_finalize_request(r, u, rc);</a>
+<a name="2588"><span class="lineNum">    2588 </span>            :             return NGX_OK;</a>
 <a name="2589"><span class="lineNum">    2589 </span>            :         }</a>
 <a name="2590"><span class="lineNum">    2590 </span>            : </a>
 <a name="2591"><span class="lineNum">    2591 </span>            : #endif</a>
@@ -2657,66 +2657,66 @@
 <a name="2595"><span class="lineNum">    2595 </span>            : </a>
 <a name="2596"><span class="lineNum">    2596 </span>            : #if (NGX_HTTP_CACHE)</a>
 <a name="2597"><span class="lineNum">    2597 </span>            : </a>
-<a name="2598"><span class="lineNum">    2598 </span><span class="lineNoCov">          0 :     if (status == NGX_HTTP_NOT_MODIFIED</span></a>
-<a name="2599"><span class="lineNum">    2599 </span><span class="lineNoCov">          0 :         &amp;&amp; u-&gt;cache_status == NGX_HTTP_CACHE_EXPIRED</span></a>
-<a name="2600"><span class="lineNum">    2600 </span><span class="lineNoCov">          0 :         &amp;&amp; u-&gt;conf-&gt;cache_revalidate)</span></a>
+<a name="2598"><span class="lineNum">    2598 </span>            :     if (status == NGX_HTTP_NOT_MODIFIED</a>
+<a name="2599"><span class="lineNum">    2599 </span>            :         &amp;&amp; u-&gt;cache_status == NGX_HTTP_CACHE_EXPIRED</a>
+<a name="2600"><span class="lineNum">    2600 </span>            :         &amp;&amp; u-&gt;conf-&gt;cache_revalidate)</a>
 <a name="2601"><span class="lineNum">    2601 </span>            :     {</a>
 <a name="2602"><span class="lineNum">    2602 </span>            :         time_t     now, valid, updating, error;</a>
 <a name="2603"><span class="lineNum">    2603 </span>            :         ngx_int_t  rc;</a>
 <a name="2604"><span class="lineNum">    2604 </span>            : </a>
-<a name="2605"><span class="lineNum">    2605 </span><span class="lineNoCov">          0 :         ngx_log_debug0(NGX_LOG_DEBUG_HTTP, r-&gt;connection-&gt;log, 0,</span></a>
+<a name="2605"><span class="lineNum">    2605 </span>            :         ngx_log_debug0(NGX_LOG_DEBUG_HTTP, r-&gt;connection-&gt;log, 0,</a>
 <a name="2606"><span class="lineNum">    2606 </span>            :                        &quot;http upstream not modified&quot;);</a>
 <a name="2607"><span class="lineNum">    2607 </span>            : </a>
-<a name="2608"><span class="lineNum">    2608 </span><span class="lineNoCov">          0 :         now = ngx_time();</span></a>
+<a name="2608"><span class="lineNum">    2608 </span>            :         now = ngx_time();</a>
 <a name="2609"><span class="lineNum">    2609 </span>            : </a>
-<a name="2610"><span class="lineNum">    2610 </span><span class="lineNoCov">          0 :         valid = r-&gt;cache-&gt;valid_sec;</span></a>
-<a name="2611"><span class="lineNum">    2611 </span><span class="lineNoCov">          0 :         updating = r-&gt;cache-&gt;updating_sec;</span></a>
-<a name="2612"><span class="lineNum">    2612 </span><span class="lineNoCov">          0 :         error = r-&gt;cache-&gt;error_sec;</span></a>
+<a name="2610"><span class="lineNum">    2610 </span>            :         valid = r-&gt;cache-&gt;valid_sec;</a>
+<a name="2611"><span class="lineNum">    2611 </span>            :         updating = r-&gt;cache-&gt;updating_sec;</a>
+<a name="2612"><span class="lineNum">    2612 </span>            :         error = r-&gt;cache-&gt;error_sec;</a>
 <a name="2613"><span class="lineNum">    2613 </span>            : </a>
-<a name="2614"><span class="lineNum">    2614 </span><span class="lineNoCov">          0 :         rc = u-&gt;reinit_request(r);</span></a>
+<a name="2614"><span class="lineNum">    2614 </span>            :         rc = u-&gt;reinit_request(r);</a>
 <a name="2615"><span class="lineNum">    2615 </span>            : </a>
-<a name="2616"><span class="lineNum">    2616 </span><span class="lineNoCov">          0 :         if (rc != NGX_OK) {</span></a>
-<a name="2617"><span class="lineNum">    2617 </span><span class="lineNoCov">          0 :             ngx_http_upstream_finalize_request(r, u, rc);</span></a>
-<a name="2618"><span class="lineNum">    2618 </span><span class="lineNoCov">          0 :             return NGX_OK;</span></a>
+<a name="2616"><span class="lineNum">    2616 </span>            :         if (rc != NGX_OK) {</a>
+<a name="2617"><span class="lineNum">    2617 </span>            :             ngx_http_upstream_finalize_request(r, u, rc);</a>
+<a name="2618"><span class="lineNum">    2618 </span>            :             return NGX_OK;</a>
 <a name="2619"><span class="lineNum">    2619 </span>            :         }</a>
 <a name="2620"><span class="lineNum">    2620 </span>            : </a>
-<a name="2621"><span class="lineNum">    2621 </span><span class="lineNoCov">          0 :         u-&gt;cache_status = NGX_HTTP_CACHE_REVALIDATED;</span></a>
-<a name="2622"><span class="lineNum">    2622 </span><span class="lineNoCov">          0 :         rc = ngx_http_upstream_cache_send(r, u);</span></a>
+<a name="2621"><span class="lineNum">    2621 </span>            :         u-&gt;cache_status = NGX_HTTP_CACHE_REVALIDATED;</a>
+<a name="2622"><span class="lineNum">    2622 </span>            :         rc = ngx_http_upstream_cache_send(r, u);</a>
 <a name="2623"><span class="lineNum">    2623 </span>            : </a>
-<a name="2624"><span class="lineNum">    2624 </span><span class="lineNoCov">          0 :         if (rc == NGX_DONE) {</span></a>
-<a name="2625"><span class="lineNum">    2625 </span><span class="lineNoCov">          0 :             return NGX_OK;</span></a>
+<a name="2624"><span class="lineNum">    2624 </span>            :         if (rc == NGX_DONE) {</a>
+<a name="2625"><span class="lineNum">    2625 </span>            :             return NGX_OK;</a>
 <a name="2626"><span class="lineNum">    2626 </span>            :         }</a>
 <a name="2627"><span class="lineNum">    2627 </span>            : </a>
-<a name="2628"><span class="lineNum">    2628 </span><span class="lineNoCov">          0 :         if (rc == NGX_HTTP_UPSTREAM_INVALID_HEADER) {</span></a>
-<a name="2629"><span class="lineNum">    2629 </span><span class="lineNoCov">          0 :             rc = NGX_HTTP_INTERNAL_SERVER_ERROR;</span></a>
+<a name="2628"><span class="lineNum">    2628 </span>            :         if (rc == NGX_HTTP_UPSTREAM_INVALID_HEADER) {</a>
+<a name="2629"><span class="lineNum">    2629 </span>            :             rc = NGX_HTTP_INTERNAL_SERVER_ERROR;</a>
 <a name="2630"><span class="lineNum">    2630 </span>            :         }</a>
 <a name="2631"><span class="lineNum">    2631 </span>            : </a>
-<a name="2632"><span class="lineNum">    2632 </span><span class="lineNoCov">          0 :         if (valid == 0) {</span></a>
-<a name="2633"><span class="lineNum">    2633 </span><span class="lineNoCov">          0 :             valid = r-&gt;cache-&gt;valid_sec;</span></a>
-<a name="2634"><span class="lineNum">    2634 </span><span class="lineNoCov">          0 :             updating = r-&gt;cache-&gt;updating_sec;</span></a>
-<a name="2635"><span class="lineNum">    2635 </span><span class="lineNoCov">          0 :             error = r-&gt;cache-&gt;error_sec;</span></a>
+<a name="2632"><span class="lineNum">    2632 </span>            :         if (valid == 0) {</a>
+<a name="2633"><span class="lineNum">    2633 </span>            :             valid = r-&gt;cache-&gt;valid_sec;</a>
+<a name="2634"><span class="lineNum">    2634 </span>            :             updating = r-&gt;cache-&gt;updating_sec;</a>
+<a name="2635"><span class="lineNum">    2635 </span>            :             error = r-&gt;cache-&gt;error_sec;</a>
 <a name="2636"><span class="lineNum">    2636 </span>            :         }</a>
 <a name="2637"><span class="lineNum">    2637 </span>            : </a>
-<a name="2638"><span class="lineNum">    2638 </span><span class="lineNoCov">          0 :         if (valid == 0) {</span></a>
-<a name="2639"><span class="lineNum">    2639 </span><span class="lineNoCov">          0 :             valid = ngx_http_file_cache_valid(u-&gt;conf-&gt;cache_valid,</span></a>
+<a name="2638"><span class="lineNum">    2638 </span>            :         if (valid == 0) {</a>
+<a name="2639"><span class="lineNum">    2639 </span>            :             valid = ngx_http_file_cache_valid(u-&gt;conf-&gt;cache_valid,</a>
 <a name="2640"><span class="lineNum">    2640 </span>            :                                               u-&gt;headers_in.status_n);</a>
-<a name="2641"><span class="lineNum">    2641 </span><span class="lineNoCov">          0 :             if (valid) {</span></a>
-<a name="2642"><span class="lineNum">    2642 </span><span class="lineNoCov">          0 :                 valid = now + valid;</span></a>
+<a name="2641"><span class="lineNum">    2641 </span>            :             if (valid) {</a>
+<a name="2642"><span class="lineNum">    2642 </span>            :                 valid = now + valid;</a>
 <a name="2643"><span class="lineNum">    2643 </span>            :             }</a>
 <a name="2644"><span class="lineNum">    2644 </span>            :         }</a>
 <a name="2645"><span class="lineNum">    2645 </span>            : </a>
-<a name="2646"><span class="lineNum">    2646 </span><span class="lineNoCov">          0 :         if (valid) {</span></a>
-<a name="2647"><span class="lineNum">    2647 </span><span class="lineNoCov">          0 :             r-&gt;cache-&gt;valid_sec = valid;</span></a>
-<a name="2648"><span class="lineNum">    2648 </span><span class="lineNoCov">          0 :             r-&gt;cache-&gt;updating_sec = updating;</span></a>
-<a name="2649"><span class="lineNum">    2649 </span><span class="lineNoCov">          0 :             r-&gt;cache-&gt;error_sec = error;</span></a>
+<a name="2646"><span class="lineNum">    2646 </span>            :         if (valid) {</a>
+<a name="2647"><span class="lineNum">    2647 </span>            :             r-&gt;cache-&gt;valid_sec = valid;</a>
+<a name="2648"><span class="lineNum">    2648 </span>            :             r-&gt;cache-&gt;updating_sec = updating;</a>
+<a name="2649"><span class="lineNum">    2649 </span>            :             r-&gt;cache-&gt;error_sec = error;</a>
 <a name="2650"><span class="lineNum">    2650 </span>            : </a>
-<a name="2651"><span class="lineNum">    2651 </span><span class="lineNoCov">          0 :             r-&gt;cache-&gt;date = now;</span></a>
+<a name="2651"><span class="lineNum">    2651 </span>            :             r-&gt;cache-&gt;date = now;</a>
 <a name="2652"><span class="lineNum">    2652 </span>            : </a>
-<a name="2653"><span class="lineNum">    2653 </span><span class="lineNoCov">          0 :             ngx_http_file_cache_update_header(r);</span></a>
+<a name="2653"><span class="lineNum">    2653 </span>            :             ngx_http_file_cache_update_header(r);</a>
 <a name="2654"><span class="lineNum">    2654 </span>            :         }</a>
 <a name="2655"><span class="lineNum">    2655 </span>            : </a>
-<a name="2656"><span class="lineNum">    2656 </span><span class="lineNoCov">          0 :         ngx_http_upstream_finalize_request(r, u, rc);</span></a>
-<a name="2657"><span class="lineNum">    2657 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
+<a name="2656"><span class="lineNum">    2656 </span>            :         ngx_http_upstream_finalize_request(r, u, rc);</a>
+<a name="2657"><span class="lineNum">    2657 </span>            :         return NGX_OK;</a>
 <a name="2658"><span class="lineNum">    2658 </span>            :     }</a>
 <a name="2659"><span class="lineNum">    2659 </span>            : </a>
 <a name="2660"><span class="lineNum">    2660 </span>            : #endif</a>
@@ -2784,31 +2784,31 @@
 <a name="2722"><span class="lineNum">    2722 </span>            : </a>
 <a name="2723"><span class="lineNum">    2723 </span>            : #if (NGX_HTTP_CACHE)</a>
 <a name="2724"><span class="lineNum">    2724 </span>            : </a>
-<a name="2725"><span class="lineNum">    2725 </span><span class="lineNoCov">          0 :             if (r-&gt;cache) {</span></a>
+<a name="2725"><span class="lineNum">    2725 </span>            :             if (r-&gt;cache) {</a>
 <a name="2726"><span class="lineNum">    2726 </span>            : </a>
-<a name="2727"><span class="lineNum">    2727 </span><span class="lineNoCov">          0 :                 if (u-&gt;headers_in.no_cache || u-&gt;headers_in.expired) {</span></a>
-<a name="2728"><span class="lineNum">    2728 </span><span class="lineNoCov">          0 :                     u-&gt;cacheable = 0;</span></a>
+<a name="2727"><span class="lineNum">    2727 </span>            :                 if (u-&gt;headers_in.no_cache || u-&gt;headers_in.expired) {</a>
+<a name="2728"><span class="lineNum">    2728 </span>            :                     u-&gt;cacheable = 0;</a>
 <a name="2729"><span class="lineNum">    2729 </span>            :                 }</a>
 <a name="2730"><span class="lineNum">    2730 </span>            : </a>
-<a name="2731"><span class="lineNum">    2731 </span><span class="lineNoCov">          0 :                 if (u-&gt;cacheable) {</span></a>
+<a name="2731"><span class="lineNum">    2731 </span>            :                 if (u-&gt;cacheable) {</a>
 <a name="2732"><span class="lineNum">    2732 </span>            :                     time_t  valid;</a>
 <a name="2733"><span class="lineNum">    2733 </span>            : </a>
-<a name="2734"><span class="lineNum">    2734 </span><span class="lineNoCov">          0 :                     valid = r-&gt;cache-&gt;valid_sec;</span></a>
+<a name="2734"><span class="lineNum">    2734 </span>            :                     valid = r-&gt;cache-&gt;valid_sec;</a>
 <a name="2735"><span class="lineNum">    2735 </span>            : </a>
-<a name="2736"><span class="lineNum">    2736 </span><span class="lineNoCov">          0 :                     if (valid == 0) {</span></a>
-<a name="2737"><span class="lineNum">    2737 </span><span class="lineNoCov">          0 :                         valid = ngx_http_file_cache_valid(u-&gt;conf-&gt;cache_valid,</span></a>
+<a name="2736"><span class="lineNum">    2736 </span>            :                     if (valid == 0) {</a>
+<a name="2737"><span class="lineNum">    2737 </span>            :                         valid = ngx_http_file_cache_valid(u-&gt;conf-&gt;cache_valid,</a>
 <a name="2738"><span class="lineNum">    2738 </span>            :                                                           status);</a>
-<a name="2739"><span class="lineNum">    2739 </span><span class="lineNoCov">          0 :                         if (valid) {</span></a>
-<a name="2740"><span class="lineNum">    2740 </span><span class="lineNoCov">          0 :                             r-&gt;cache-&gt;valid_sec = ngx_time() + valid;</span></a>
+<a name="2739"><span class="lineNum">    2739 </span>            :                         if (valid) {</a>
+<a name="2740"><span class="lineNum">    2740 </span>            :                             r-&gt;cache-&gt;valid_sec = ngx_time() + valid;</a>
 <a name="2741"><span class="lineNum">    2741 </span>            :                         }</a>
 <a name="2742"><span class="lineNum">    2742 </span>            :                     }</a>
 <a name="2743"><span class="lineNum">    2743 </span>            : </a>
-<a name="2744"><span class="lineNum">    2744 </span><span class="lineNoCov">          0 :                     if (valid) {</span></a>
-<a name="2745"><span class="lineNum">    2745 </span><span class="lineNoCov">          0 :                         r-&gt;cache-&gt;error = status;</span></a>
+<a name="2744"><span class="lineNum">    2744 </span>            :                     if (valid) {</a>
+<a name="2745"><span class="lineNum">    2745 </span>            :                         r-&gt;cache-&gt;error = status;</a>
 <a name="2746"><span class="lineNum">    2746 </span>            :                     }</a>
 <a name="2747"><span class="lineNum">    2747 </span>            :                 }</a>
 <a name="2748"><span class="lineNum">    2748 </span>            : </a>
-<a name="2749"><span class="lineNum">    2749 </span><span class="lineNoCov">          0 :                 ngx_http_file_cache_free(r-&gt;cache, u-&gt;pipe-&gt;temp_file);</span></a>
+<a name="2749"><span class="lineNum">    2749 </span>            :                 ngx_http_file_cache_free(r-&gt;cache, u-&gt;pipe-&gt;temp_file);</a>
 <a name="2750"><span class="lineNum">    2750 </span>            :             }</a>
 <a name="2751"><span class="lineNum">    2751 </span>            : #endif</a>
 <a name="2752"><span class="lineNum">    2752 </span><span class="lineNoCov">          0 :             ngx_http_upstream_finalize_request(r, u, status);</span></a>
@@ -3015,8 +3015,8 @@
 <a name="2953"><span class="lineNum">    2953 </span><span class="lineNoCov">          0 :         r-&gt;single_range = 1;</span></a>
 <a name="2954"><span class="lineNum">    2954 </span>            : </a>
 <a name="2955"><span class="lineNum">    2955 </span>            : #if (NGX_HTTP_CACHE)</a>
-<a name="2956"><span class="lineNum">    2956 </span><span class="lineNoCov">          0 :         if (r-&gt;cached) {</span></a>
-<a name="2957"><span class="lineNum">    2957 </span><span class="lineNoCov">          0 :             r-&gt;single_range = 0;</span></a>
+<a name="2956"><span class="lineNum">    2956 </span>            :         if (r-&gt;cached) {</a>
+<a name="2957"><span class="lineNum">    2957 </span>            :             r-&gt;single_range = 0;</a>
 <a name="2958"><span class="lineNum">    2958 </span>            :         }</a>
 <a name="2959"><span class="lineNum">    2959 </span>            : #endif</a>
 <a name="2960"><span class="lineNum">    2960 </span>            :     }</a>
@@ -3094,8 +3094,8 @@
 <a name="3032"><span class="lineNum">    3032 </span>            : </a>
 <a name="3033"><span class="lineNum">    3033 </span>            : #if (NGX_HTTP_CACHE)</a>
 <a name="3034"><span class="lineNum">    3034 </span>            : </a>
-<a name="3035"><span class="lineNum">    3035 </span><span class="lineNoCov">          0 :         if (r-&gt;cache) {</span></a>
-<a name="3036"><span class="lineNum">    3036 </span><span class="lineNoCov">          0 :             ngx_http_file_cache_free(r-&gt;cache, u-&gt;pipe-&gt;temp_file);</span></a>
+<a name="3035"><span class="lineNum">    3035 </span>            :         if (r-&gt;cache) {</a>
+<a name="3036"><span class="lineNum">    3036 </span>            :             ngx_http_file_cache_free(r-&gt;cache, u-&gt;pipe-&gt;temp_file);</a>
 <a name="3037"><span class="lineNum">    3037 </span>            :         }</a>
 <a name="3038"><span class="lineNum">    3038 </span>            : </a>
 <a name="3039"><span class="lineNum">    3039 </span>            : #endif</a>
@@ -3135,8 +3135,8 @@
 <a name="3073"><span class="lineNum">    3073 </span>            : </a>
 <a name="3074"><span class="lineNum">    3074 </span>            : #if (NGX_HTTP_CACHE)</a>
 <a name="3075"><span class="lineNum">    3075 </span>            : </a>
-<a name="3076"><span class="lineNum">    3076 </span><span class="lineNoCov">          0 :         if (r-&gt;cache) {</span></a>
-<a name="3077"><span class="lineNum">    3077 </span><span class="lineNoCov">          0 :             ngx_http_file_cache_free(r-&gt;cache, u-&gt;pipe-&gt;temp_file);</span></a>
+<a name="3076"><span class="lineNum">    3076 </span>            :         if (r-&gt;cache) {</a>
+<a name="3077"><span class="lineNum">    3077 </span>            :             ngx_http_file_cache_free(r-&gt;cache, u-&gt;pipe-&gt;temp_file);</a>
 <a name="3078"><span class="lineNum">    3078 </span>            :         }</a>
 <a name="3079"><span class="lineNum">    3079 </span>            : </a>
 <a name="3080"><span class="lineNum">    3080 </span>            : #endif</a>
@@ -3197,92 +3197,92 @@
 <a name="3135"><span class="lineNum">    3135 </span>            : </a>
 <a name="3136"><span class="lineNum">    3136 </span>            : #if (NGX_HTTP_CACHE)</a>
 <a name="3137"><span class="lineNum">    3137 </span>            : </a>
-<a name="3138"><span class="lineNum">    3138 </span><span class="lineNoCov">          0 :     if (r-&gt;cache &amp;&amp; r-&gt;cache-&gt;file.fd != NGX_INVALID_FILE) {</span></a>
-<a name="3139"><span class="lineNum">    3139 </span><span class="lineNoCov">          0 :         ngx_pool_run_cleanup_file(r-&gt;pool, r-&gt;cache-&gt;file.fd);</span></a>
-<a name="3140"><span class="lineNum">    3140 </span><span class="lineNoCov">          0 :         r-&gt;cache-&gt;file.fd = NGX_INVALID_FILE;</span></a>
+<a name="3138"><span class="lineNum">    3138 </span>            :     if (r-&gt;cache &amp;&amp; r-&gt;cache-&gt;file.fd != NGX_INVALID_FILE) {</a>
+<a name="3139"><span class="lineNum">    3139 </span>            :         ngx_pool_run_cleanup_file(r-&gt;pool, r-&gt;cache-&gt;file.fd);</a>
+<a name="3140"><span class="lineNum">    3140 </span>            :         r-&gt;cache-&gt;file.fd = NGX_INVALID_FILE;</a>
 <a name="3141"><span class="lineNum">    3141 </span>            :     }</a>
 <a name="3142"><span class="lineNum">    3142 </span>            : </a>
-<a name="3143"><span class="lineNum">    3143 </span><span class="lineNoCov">          0 :     switch (ngx_http_test_predicates(r, u-&gt;conf-&gt;no_cache)) {</span></a>
+<a name="3143"><span class="lineNum">    3143 </span>            :     switch (ngx_http_test_predicates(r, u-&gt;conf-&gt;no_cache)) {</a>
 <a name="3144"><span class="lineNum">    3144 </span>            : </a>
-<a name="3145"><span class="lineNum">    3145 </span><span class="lineNoCov">          0 :     case NGX_ERROR:</span></a>
-<a name="3146"><span class="lineNum">    3146 </span><span class="lineNoCov">          0 :         ngx_http_upstream_finalize_request(r, u, NGX_ERROR);</span></a>
-<a name="3147"><span class="lineNum">    3147 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="3145"><span class="lineNum">    3145 </span>            :     case NGX_ERROR:</a>
+<a name="3146"><span class="lineNum">    3146 </span>            :         ngx_http_upstream_finalize_request(r, u, NGX_ERROR);</a>
+<a name="3147"><span class="lineNum">    3147 </span>            :         return;</a>
 <a name="3148"><span class="lineNum">    3148 </span>            : </a>
-<a name="3149"><span class="lineNum">    3149 </span><span class="lineNoCov">          0 :     case NGX_DECLINED:</span></a>
-<a name="3150"><span class="lineNum">    3150 </span><span class="lineNoCov">          0 :         u-&gt;cacheable = 0;</span></a>
-<a name="3151"><span class="lineNum">    3151 </span><span class="lineNoCov">          0 :         break;</span></a>
+<a name="3149"><span class="lineNum">    3149 </span>            :     case NGX_DECLINED:</a>
+<a name="3150"><span class="lineNum">    3150 </span>            :         u-&gt;cacheable = 0;</a>
+<a name="3151"><span class="lineNum">    3151 </span>            :         break;</a>
 <a name="3152"><span class="lineNum">    3152 </span>            : </a>
-<a name="3153"><span class="lineNum">    3153 </span><span class="lineNoCov">          0 :     default: /* NGX_OK */</span></a>
+<a name="3153"><span class="lineNum">    3153 </span>            :     default: /* NGX_OK */</a>
 <a name="3154"><span class="lineNum">    3154 </span>            : </a>
-<a name="3155"><span class="lineNum">    3155 </span><span class="lineNoCov">          0 :         if (u-&gt;cache_status == NGX_HTTP_CACHE_BYPASS) {</span></a>
+<a name="3155"><span class="lineNum">    3155 </span>            :         if (u-&gt;cache_status == NGX_HTTP_CACHE_BYPASS) {</a>
 <a name="3156"><span class="lineNum">    3156 </span>            : </a>
 <a name="3157"><span class="lineNum">    3157 </span>            :             /* create cache if previously bypassed */</a>
 <a name="3158"><span class="lineNum">    3158 </span>            : </a>
-<a name="3159"><span class="lineNum">    3159 </span><span class="lineNoCov">          0 :             if (ngx_http_file_cache_create(r) != NGX_OK) {</span></a>
-<a name="3160"><span class="lineNum">    3160 </span><span class="lineNoCov">          0 :                 ngx_http_upstream_finalize_request(r, u, NGX_ERROR);</span></a>
-<a name="3161"><span class="lineNum">    3161 </span><span class="lineNoCov">          0 :                 return;</span></a>
+<a name="3159"><span class="lineNum">    3159 </span>            :             if (ngx_http_file_cache_create(r) != NGX_OK) {</a>
+<a name="3160"><span class="lineNum">    3160 </span>            :                 ngx_http_upstream_finalize_request(r, u, NGX_ERROR);</a>
+<a name="3161"><span class="lineNum">    3161 </span>            :                 return;</a>
 <a name="3162"><span class="lineNum">    3162 </span>            :             }</a>
 <a name="3163"><span class="lineNum">    3163 </span>            :         }</a>
 <a name="3164"><span class="lineNum">    3164 </span>            : </a>
-<a name="3165"><span class="lineNum">    3165 </span><span class="lineNoCov">          0 :         break;</span></a>
+<a name="3165"><span class="lineNum">    3165 </span>            :         break;</a>
 <a name="3166"><span class="lineNum">    3166 </span>            :     }</a>
 <a name="3167"><span class="lineNum">    3167 </span>            : </a>
-<a name="3168"><span class="lineNum">    3168 </span><span class="lineNoCov">          0 :     if (u-&gt;cacheable) {</span></a>
+<a name="3168"><span class="lineNum">    3168 </span>            :     if (u-&gt;cacheable) {</a>
 <a name="3169"><span class="lineNum">    3169 </span>            :         time_t  now, valid;</a>
 <a name="3170"><span class="lineNum">    3170 </span>            : </a>
-<a name="3171"><span class="lineNum">    3171 </span><span class="lineNoCov">          0 :         now = ngx_time();</span></a>
+<a name="3171"><span class="lineNum">    3171 </span>            :         now = ngx_time();</a>
 <a name="3172"><span class="lineNum">    3172 </span>            : </a>
-<a name="3173"><span class="lineNum">    3173 </span><span class="lineNoCov">          0 :         valid = r-&gt;cache-&gt;valid_sec;</span></a>
+<a name="3173"><span class="lineNum">    3173 </span>            :         valid = r-&gt;cache-&gt;valid_sec;</a>
 <a name="3174"><span class="lineNum">    3174 </span>            : </a>
-<a name="3175"><span class="lineNum">    3175 </span><span class="lineNoCov">          0 :         if (valid == 0) {</span></a>
-<a name="3176"><span class="lineNum">    3176 </span><span class="lineNoCov">          0 :             valid = ngx_http_file_cache_valid(u-&gt;conf-&gt;cache_valid,</span></a>
+<a name="3175"><span class="lineNum">    3175 </span>            :         if (valid == 0) {</a>
+<a name="3176"><span class="lineNum">    3176 </span>            :             valid = ngx_http_file_cache_valid(u-&gt;conf-&gt;cache_valid,</a>
 <a name="3177"><span class="lineNum">    3177 </span>            :                                               u-&gt;headers_in.status_n);</a>
-<a name="3178"><span class="lineNum">    3178 </span><span class="lineNoCov">          0 :             if (valid) {</span></a>
-<a name="3179"><span class="lineNum">    3179 </span><span class="lineNoCov">          0 :                 r-&gt;cache-&gt;valid_sec = now + valid;</span></a>
+<a name="3178"><span class="lineNum">    3178 </span>            :             if (valid) {</a>
+<a name="3179"><span class="lineNum">    3179 </span>            :                 r-&gt;cache-&gt;valid_sec = now + valid;</a>
 <a name="3180"><span class="lineNum">    3180 </span>            :             }</a>
 <a name="3181"><span class="lineNum">    3181 </span>            :         }</a>
 <a name="3182"><span class="lineNum">    3182 </span>            : </a>
-<a name="3183"><span class="lineNum">    3183 </span><span class="lineNoCov">          0 :         if (valid) {</span></a>
-<a name="3184"><span class="lineNum">    3184 </span><span class="lineNoCov">          0 :             r-&gt;cache-&gt;date = now;</span></a>
-<a name="3185"><span class="lineNum">    3185 </span><span class="lineNoCov">          0 :             r-&gt;cache-&gt;body_start = (u_short) (u-&gt;buffer.pos - u-&gt;buffer.start);</span></a>
+<a name="3183"><span class="lineNum">    3183 </span>            :         if (valid) {</a>
+<a name="3184"><span class="lineNum">    3184 </span>            :             r-&gt;cache-&gt;date = now;</a>
+<a name="3185"><span class="lineNum">    3185 </span>            :             r-&gt;cache-&gt;body_start = (u_short) (u-&gt;buffer.pos - u-&gt;buffer.start);</a>
 <a name="3186"><span class="lineNum">    3186 </span>            : </a>
-<a name="3187"><span class="lineNum">    3187 </span><span class="lineNoCov">          0 :             if (u-&gt;headers_in.status_n == NGX_HTTP_OK</span></a>
-<a name="3188"><span class="lineNum">    3188 </span><span class="lineNoCov">          0 :                 || u-&gt;headers_in.status_n == NGX_HTTP_PARTIAL_CONTENT)</span></a>
+<a name="3187"><span class="lineNum">    3187 </span>            :             if (u-&gt;headers_in.status_n == NGX_HTTP_OK</a>
+<a name="3188"><span class="lineNum">    3188 </span>            :                 || u-&gt;headers_in.status_n == NGX_HTTP_PARTIAL_CONTENT)</a>
 <a name="3189"><span class="lineNum">    3189 </span>            :             {</a>
-<a name="3190"><span class="lineNum">    3190 </span><span class="lineNoCov">          0 :                 r-&gt;cache-&gt;last_modified = u-&gt;headers_in.last_modified_time;</span></a>
+<a name="3190"><span class="lineNum">    3190 </span>            :                 r-&gt;cache-&gt;last_modified = u-&gt;headers_in.last_modified_time;</a>
 <a name="3191"><span class="lineNum">    3191 </span>            : </a>
-<a name="3192"><span class="lineNum">    3192 </span><span class="lineNoCov">          0 :                 if (u-&gt;headers_in.etag) {</span></a>
-<a name="3193"><span class="lineNum">    3193 </span><span class="lineNoCov">          0 :                     r-&gt;cache-&gt;etag = u-&gt;headers_in.etag-&gt;value;</span></a>
+<a name="3192"><span class="lineNum">    3192 </span>            :                 if (u-&gt;headers_in.etag) {</a>
+<a name="3193"><span class="lineNum">    3193 </span>            :                     r-&gt;cache-&gt;etag = u-&gt;headers_in.etag-&gt;value;</a>
 <a name="3194"><span class="lineNum">    3194 </span>            : </a>
 <a name="3195"><span class="lineNum">    3195 </span>            :                 } else {</a>
-<a name="3196"><span class="lineNum">    3196 </span><span class="lineNoCov">          0 :                     ngx_str_null(&amp;r-&gt;cache-&gt;etag);</span></a>
+<a name="3196"><span class="lineNum">    3196 </span>            :                     ngx_str_null(&amp;r-&gt;cache-&gt;etag);</a>
 <a name="3197"><span class="lineNum">    3197 </span>            :                 }</a>
 <a name="3198"><span class="lineNum">    3198 </span>            : </a>
 <a name="3199"><span class="lineNum">    3199 </span>            :             } else {</a>
-<a name="3200"><span class="lineNum">    3200 </span><span class="lineNoCov">          0 :                 r-&gt;cache-&gt;last_modified = -1;</span></a>
-<a name="3201"><span class="lineNum">    3201 </span><span class="lineNoCov">          0 :                 ngx_str_null(&amp;r-&gt;cache-&gt;etag);</span></a>
+<a name="3200"><span class="lineNum">    3200 </span>            :                 r-&gt;cache-&gt;last_modified = -1;</a>
+<a name="3201"><span class="lineNum">    3201 </span>            :                 ngx_str_null(&amp;r-&gt;cache-&gt;etag);</a>
 <a name="3202"><span class="lineNum">    3202 </span>            :             }</a>
 <a name="3203"><span class="lineNum">    3203 </span>            : </a>
-<a name="3204"><span class="lineNum">    3204 </span><span class="lineNoCov">          0 :             if (ngx_http_file_cache_set_header(r, u-&gt;buffer.start) != NGX_OK) {</span></a>
-<a name="3205"><span class="lineNum">    3205 </span><span class="lineNoCov">          0 :                 ngx_http_upstream_finalize_request(r, u, NGX_ERROR);</span></a>
-<a name="3206"><span class="lineNum">    3206 </span><span class="lineNoCov">          0 :                 return;</span></a>
+<a name="3204"><span class="lineNum">    3204 </span>            :             if (ngx_http_file_cache_set_header(r, u-&gt;buffer.start) != NGX_OK) {</a>
+<a name="3205"><span class="lineNum">    3205 </span>            :                 ngx_http_upstream_finalize_request(r, u, NGX_ERROR);</a>
+<a name="3206"><span class="lineNum">    3206 </span>            :                 return;</a>
 <a name="3207"><span class="lineNum">    3207 </span>            :             }</a>
 <a name="3208"><span class="lineNum">    3208 </span>            : </a>
 <a name="3209"><span class="lineNum">    3209 </span>            :         } else {</a>
-<a name="3210"><span class="lineNum">    3210 </span><span class="lineNoCov">          0 :             u-&gt;cacheable = 0;</span></a>
+<a name="3210"><span class="lineNum">    3210 </span>            :             u-&gt;cacheable = 0;</a>
 <a name="3211"><span class="lineNum">    3211 </span>            :         }</a>
 <a name="3212"><span class="lineNum">    3212 </span>            :     }</a>
 <a name="3213"><span class="lineNum">    3213 </span>            : </a>
-<a name="3214"><span class="lineNum">    3214 </span><span class="lineNoCov">          0 :     ngx_log_debug1(NGX_LOG_DEBUG_HTTP, c-&gt;log, 0,</span></a>
+<a name="3214"><span class="lineNum">    3214 </span>            :     ngx_log_debug1(NGX_LOG_DEBUG_HTTP, c-&gt;log, 0,</a>
 <a name="3215"><span class="lineNum">    3215 </span>            :                    &quot;http cacheable: %d&quot;, u-&gt;cacheable);</a>
 <a name="3216"><span class="lineNum">    3216 </span>            : </a>
-<a name="3217"><span class="lineNum">    3217 </span><span class="lineNoCov">          0 :     if (u-&gt;cacheable == 0 &amp;&amp; r-&gt;cache) {</span></a>
-<a name="3218"><span class="lineNum">    3218 </span><span class="lineNoCov">          0 :         ngx_http_file_cache_free(r-&gt;cache, u-&gt;pipe-&gt;temp_file);</span></a>
+<a name="3217"><span class="lineNum">    3217 </span>            :     if (u-&gt;cacheable == 0 &amp;&amp; r-&gt;cache) {</a>
+<a name="3218"><span class="lineNum">    3218 </span>            :         ngx_http_file_cache_free(r-&gt;cache, u-&gt;pipe-&gt;temp_file);</a>
 <a name="3219"><span class="lineNum">    3219 </span>            :     }</a>
 <a name="3220"><span class="lineNum">    3220 </span>            : </a>
-<a name="3221"><span class="lineNum">    3221 </span><span class="lineNoCov">          0 :     if (r-&gt;header_only &amp;&amp; !u-&gt;cacheable &amp;&amp; !u-&gt;store) {</span></a>
-<a name="3222"><span class="lineNum">    3222 </span><span class="lineNoCov">          0 :         ngx_http_upstream_finalize_request(r, u, 0);</span></a>
-<a name="3223"><span class="lineNum">    3223 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="3221"><span class="lineNum">    3221 </span>            :     if (r-&gt;header_only &amp;&amp; !u-&gt;cacheable &amp;&amp; !u-&gt;store) {</a>
+<a name="3222"><span class="lineNum">    3222 </span>            :         ngx_http_upstream_finalize_request(r, u, 0);</a>
+<a name="3223"><span class="lineNum">    3223 </span>            :         return;</a>
 <a name="3224"><span class="lineNum">    3224 </span>            :     }</a>
 <a name="3225"><span class="lineNum">    3225 </span>            : </a>
 <a name="3226"><span class="lineNum">    3226 </span>            : #endif</a>
@@ -3318,9 +3318,9 @@
 <a name="3256"><span class="lineNum">    3256 </span><span class="lineNoCov">          0 :         p-&gt;temp_file-&gt;persistent = 1;</span></a>
 <a name="3257"><span class="lineNum">    3257 </span>            : </a>
 <a name="3258"><span class="lineNum">    3258 </span>            : #if (NGX_HTTP_CACHE)</a>
-<a name="3259"><span class="lineNum">    3259 </span><span class="lineNoCov">          0 :         if (r-&gt;cache &amp;&amp; !r-&gt;cache-&gt;file_cache-&gt;use_temp_path) {</span></a>
-<a name="3260"><span class="lineNum">    3260 </span><span class="lineNoCov">          0 :             p-&gt;temp_file-&gt;path = r-&gt;cache-&gt;file_cache-&gt;path;</span></a>
-<a name="3261"><span class="lineNum">    3261 </span><span class="lineNoCov">          0 :             p-&gt;temp_file-&gt;file.name = r-&gt;cache-&gt;file.name;</span></a>
+<a name="3259"><span class="lineNum">    3259 </span>            :         if (r-&gt;cache &amp;&amp; !r-&gt;cache-&gt;file_cache-&gt;use_temp_path) {</a>
+<a name="3260"><span class="lineNum">    3260 </span>            :             p-&gt;temp_file-&gt;path = r-&gt;cache-&gt;file_cache-&gt;path;</a>
+<a name="3261"><span class="lineNum">    3261 </span>            :             p-&gt;temp_file-&gt;file.name = r-&gt;cache-&gt;file.name;</a>
 <a name="3262"><span class="lineNum">    3262 </span>            :         }</a>
 <a name="3263"><span class="lineNum">    3263 </span>            : #endif</a>
 <a name="3264"><span class="lineNum">    3264 </span>            : </a>
@@ -4243,28 +4243,28 @@
 <a name="4181"><span class="lineNum">    4181 </span>            : </a>
 <a name="4182"><span class="lineNum">    4182 </span>            : #if (NGX_HTTP_CACHE)</a>
 <a name="4183"><span class="lineNum">    4183 </span>            : </a>
-<a name="4184"><span class="lineNum">    4184 </span><span class="lineNoCov">          0 :         if (u-&gt;cacheable) {</span></a>
+<a name="4184"><span class="lineNum">    4184 </span>            :         if (u-&gt;cacheable) {</a>
 <a name="4185"><span class="lineNum">    4185 </span>            : </a>
-<a name="4186"><span class="lineNum">    4186 </span><span class="lineNoCov">          0 :             if (p-&gt;upstream_done) {</span></a>
-<a name="4187"><span class="lineNum">    4187 </span><span class="lineNoCov">          0 :                 ngx_http_file_cache_update(r, p-&gt;temp_file);</span></a>
+<a name="4186"><span class="lineNum">    4186 </span>            :             if (p-&gt;upstream_done) {</a>
+<a name="4187"><span class="lineNum">    4187 </span>            :                 ngx_http_file_cache_update(r, p-&gt;temp_file);</a>
 <a name="4188"><span class="lineNum">    4188 </span>            : </a>
-<a name="4189"><span class="lineNum">    4189 </span><span class="lineNoCov">          0 :             } else if (p-&gt;upstream_eof) {</span></a>
+<a name="4189"><span class="lineNum">    4189 </span>            :             } else if (p-&gt;upstream_eof) {</a>
 <a name="4190"><span class="lineNum">    4190 </span>            : </a>
-<a name="4191"><span class="lineNum">    4191 </span><span class="lineNoCov">          0 :                 tf = p-&gt;temp_file;</span></a>
+<a name="4191"><span class="lineNum">    4191 </span>            :                 tf = p-&gt;temp_file;</a>
 <a name="4192"><span class="lineNum">    4192 </span>            : </a>
-<a name="4193"><span class="lineNum">    4193 </span><span class="lineNoCov">          0 :                 if (p-&gt;length == -1</span></a>
-<a name="4194"><span class="lineNum">    4194 </span><span class="lineNoCov">          0 :                     &amp;&amp; (u-&gt;headers_in.content_length_n == -1</span></a>
-<a name="4195"><span class="lineNum">    4195 </span><span class="lineNoCov">          0 :                         || u-&gt;headers_in.content_length_n</span></a>
-<a name="4196"><span class="lineNum">    4196 </span><span class="lineNoCov">          0 :                            == tf-&gt;offset - (off_t) r-&gt;cache-&gt;body_start))</span></a>
+<a name="4193"><span class="lineNum">    4193 </span>            :                 if (p-&gt;length == -1</a>
+<a name="4194"><span class="lineNum">    4194 </span>            :                     &amp;&amp; (u-&gt;headers_in.content_length_n == -1</a>
+<a name="4195"><span class="lineNum">    4195 </span>            :                         || u-&gt;headers_in.content_length_n</a>
+<a name="4196"><span class="lineNum">    4196 </span>            :                            == tf-&gt;offset - (off_t) r-&gt;cache-&gt;body_start))</a>
 <a name="4197"><span class="lineNum">    4197 </span>            :                 {</a>
-<a name="4198"><span class="lineNum">    4198 </span><span class="lineNoCov">          0 :                     ngx_http_file_cache_update(r, tf);</span></a>
+<a name="4198"><span class="lineNum">    4198 </span>            :                     ngx_http_file_cache_update(r, tf);</a>
 <a name="4199"><span class="lineNum">    4199 </span>            : </a>
 <a name="4200"><span class="lineNum">    4200 </span>            :                 } else {</a>
-<a name="4201"><span class="lineNum">    4201 </span><span class="lineNoCov">          0 :                     ngx_http_file_cache_free(r-&gt;cache, tf);</span></a>
+<a name="4201"><span class="lineNum">    4201 </span>            :                     ngx_http_file_cache_free(r-&gt;cache, tf);</a>
 <a name="4202"><span class="lineNum">    4202 </span>            :                 }</a>
 <a name="4203"><span class="lineNum">    4203 </span>            : </a>
-<a name="4204"><span class="lineNum">    4204 </span><span class="lineNoCov">          0 :             } else if (p-&gt;upstream_error) {</span></a>
-<a name="4205"><span class="lineNum">    4205 </span><span class="lineNoCov">          0 :                 ngx_http_file_cache_free(r-&gt;cache, p-&gt;temp_file);</span></a>
+<a name="4204"><span class="lineNum">    4204 </span>            :             } else if (p-&gt;upstream_error) {</a>
+<a name="4205"><span class="lineNum">    4205 </span>            :                 ngx_http_file_cache_free(r-&gt;cache, p-&gt;temp_file);</a>
 <a name="4206"><span class="lineNum">    4206 </span>            :             }</a>
 <a name="4207"><span class="lineNum">    4207 </span>            :         }</a>
 <a name="4208"><span class="lineNum">    4208 </span>            : </a>
@@ -4489,31 +4489,31 @@
 <a name="4427"><span class="lineNum">    4427 </span>            :     {</a>
 <a name="4428"><span class="lineNum">    4428 </span>            : #if (NGX_HTTP_CACHE)</a>
 <a name="4429"><span class="lineNum">    4429 </span>            : </a>
-<a name="4430"><span class="lineNum">    4430 </span><span class="lineNoCov">          0 :         if (u-&gt;cache_status == NGX_HTTP_CACHE_EXPIRED</span></a>
-<a name="4431"><span class="lineNum">    4431 </span><span class="lineNoCov">          0 :             &amp;&amp; ((u-&gt;conf-&gt;cache_use_stale &amp; ft_type) || r-&gt;cache-&gt;stale_error))</span></a>
+<a name="4430"><span class="lineNum">    4430 </span>            :         if (u-&gt;cache_status == NGX_HTTP_CACHE_EXPIRED</a>
+<a name="4431"><span class="lineNum">    4431 </span>            :             &amp;&amp; ((u-&gt;conf-&gt;cache_use_stale &amp; ft_type) || r-&gt;cache-&gt;stale_error))</a>
 <a name="4432"><span class="lineNum">    4432 </span>            :         {</a>
 <a name="4433"><span class="lineNum">    4433 </span>            :             ngx_int_t  rc;</a>
 <a name="4434"><span class="lineNum">    4434 </span>            : </a>
-<a name="4435"><span class="lineNum">    4435 </span><span class="lineNoCov">          0 :             rc = u-&gt;reinit_request(r);</span></a>
+<a name="4435"><span class="lineNum">    4435 </span>            :             rc = u-&gt;reinit_request(r);</a>
 <a name="4436"><span class="lineNum">    4436 </span>            : </a>
-<a name="4437"><span class="lineNum">    4437 </span><span class="lineNoCov">          0 :             if (rc != NGX_OK) {</span></a>
-<a name="4438"><span class="lineNum">    4438 </span><span class="lineNoCov">          0 :                 ngx_http_upstream_finalize_request(r, u, rc);</span></a>
-<a name="4439"><span class="lineNum">    4439 </span><span class="lineNoCov">          0 :                 return;</span></a>
+<a name="4437"><span class="lineNum">    4437 </span>            :             if (rc != NGX_OK) {</a>
+<a name="4438"><span class="lineNum">    4438 </span>            :                 ngx_http_upstream_finalize_request(r, u, rc);</a>
+<a name="4439"><span class="lineNum">    4439 </span>            :                 return;</a>
 <a name="4440"><span class="lineNum">    4440 </span>            :             }</a>
 <a name="4441"><span class="lineNum">    4441 </span>            : </a>
-<a name="4442"><span class="lineNum">    4442 </span><span class="lineNoCov">          0 :             u-&gt;cache_status = NGX_HTTP_CACHE_STALE;</span></a>
-<a name="4443"><span class="lineNum">    4443 </span><span class="lineNoCov">          0 :             rc = ngx_http_upstream_cache_send(r, u);</span></a>
+<a name="4442"><span class="lineNum">    4442 </span>            :             u-&gt;cache_status = NGX_HTTP_CACHE_STALE;</a>
+<a name="4443"><span class="lineNum">    4443 </span>            :             rc = ngx_http_upstream_cache_send(r, u);</a>
 <a name="4444"><span class="lineNum">    4444 </span>            : </a>
-<a name="4445"><span class="lineNum">    4445 </span><span class="lineNoCov">          0 :             if (rc == NGX_DONE) {</span></a>
-<a name="4446"><span class="lineNum">    4446 </span><span class="lineNoCov">          0 :                 return;</span></a>
+<a name="4445"><span class="lineNum">    4445 </span>            :             if (rc == NGX_DONE) {</a>
+<a name="4446"><span class="lineNum">    4446 </span>            :                 return;</a>
 <a name="4447"><span class="lineNum">    4447 </span>            :             }</a>
 <a name="4448"><span class="lineNum">    4448 </span>            : </a>
-<a name="4449"><span class="lineNum">    4449 </span><span class="lineNoCov">          0 :             if (rc == NGX_HTTP_UPSTREAM_INVALID_HEADER) {</span></a>
-<a name="4450"><span class="lineNum">    4450 </span><span class="lineNoCov">          0 :                 rc = NGX_HTTP_INTERNAL_SERVER_ERROR;</span></a>
+<a name="4449"><span class="lineNum">    4449 </span>            :             if (rc == NGX_HTTP_UPSTREAM_INVALID_HEADER) {</a>
+<a name="4450"><span class="lineNum">    4450 </span>            :                 rc = NGX_HTTP_INTERNAL_SERVER_ERROR;</a>
 <a name="4451"><span class="lineNum">    4451 </span>            :             }</a>
 <a name="4452"><span class="lineNum">    4452 </span>            : </a>
-<a name="4453"><span class="lineNum">    4453 </span><span class="lineNoCov">          0 :             ngx_http_upstream_finalize_request(r, u, rc);</span></a>
-<a name="4454"><span class="lineNum">    4454 </span><span class="lineNoCov">          0 :             return;</span></a>
+<a name="4453"><span class="lineNum">    4453 </span>            :             ngx_http_upstream_finalize_request(r, u, rc);</a>
+<a name="4454"><span class="lineNum">    4454 </span>            :             return;</a>
 <a name="4455"><span class="lineNum">    4455 </span>            :         }</a>
 <a name="4456"><span class="lineNum">    4456 </span>            : #endif</a>
 <a name="4457"><span class="lineNum">    4457 </span>            : </a>
@@ -4660,23 +4660,23 @@
 <a name="4598"><span class="lineNum">    4598 </span>            : </a>
 <a name="4599"><span class="lineNum">    4599 </span>            : #if (NGX_HTTP_CACHE)</a>
 <a name="4600"><span class="lineNum">    4600 </span>            : </a>
-<a name="4601"><span class="lineNum">    4601 </span><span class="lineNoCov">          0 :     if (r-&gt;cache) {</span></a>
+<a name="4601"><span class="lineNum">    4601 </span>            :     if (r-&gt;cache) {</a>
 <a name="4602"><span class="lineNum">    4602 </span>            : </a>
-<a name="4603"><span class="lineNum">    4603 </span><span class="lineNoCov">          0 :         if (u-&gt;cacheable) {</span></a>
+<a name="4603"><span class="lineNum">    4603 </span>            :         if (u-&gt;cacheable) {</a>
 <a name="4604"><span class="lineNum">    4604 </span>            : </a>
-<a name="4605"><span class="lineNum">    4605 </span><span class="lineNoCov">          0 :             if (rc == NGX_HTTP_BAD_GATEWAY || rc == NGX_HTTP_GATEWAY_TIME_OUT) {</span></a>
+<a name="4605"><span class="lineNum">    4605 </span>            :             if (rc == NGX_HTTP_BAD_GATEWAY || rc == NGX_HTTP_GATEWAY_TIME_OUT) {</a>
 <a name="4606"><span class="lineNum">    4606 </span>            :                 time_t  valid;</a>
 <a name="4607"><span class="lineNum">    4607 </span>            : </a>
-<a name="4608"><span class="lineNum">    4608 </span><span class="lineNoCov">          0 :                 valid = ngx_http_file_cache_valid(u-&gt;conf-&gt;cache_valid, rc);</span></a>
+<a name="4608"><span class="lineNum">    4608 </span>            :                 valid = ngx_http_file_cache_valid(u-&gt;conf-&gt;cache_valid, rc);</a>
 <a name="4609"><span class="lineNum">    4609 </span>            : </a>
-<a name="4610"><span class="lineNum">    4610 </span><span class="lineNoCov">          0 :                 if (valid) {</span></a>
-<a name="4611"><span class="lineNum">    4611 </span><span class="lineNoCov">          0 :                     r-&gt;cache-&gt;valid_sec = ngx_time() + valid;</span></a>
-<a name="4612"><span class="lineNum">    4612 </span><span class="lineNoCov">          0 :                     r-&gt;cache-&gt;error = rc;</span></a>
+<a name="4610"><span class="lineNum">    4610 </span>            :                 if (valid) {</a>
+<a name="4611"><span class="lineNum">    4611 </span>            :                     r-&gt;cache-&gt;valid_sec = ngx_time() + valid;</a>
+<a name="4612"><span class="lineNum">    4612 </span>            :                     r-&gt;cache-&gt;error = rc;</a>
 <a name="4613"><span class="lineNum">    4613 </span>            :                 }</a>
 <a name="4614"><span class="lineNum">    4614 </span>            :             }</a>
 <a name="4615"><span class="lineNum">    4615 </span>            :         }</a>
 <a name="4616"><span class="lineNum">    4616 </span>            : </a>
-<a name="4617"><span class="lineNum">    4617 </span><span class="lineNoCov">          0 :         ngx_http_file_cache_free(r-&gt;cache, u-&gt;pipe-&gt;temp_file);</span></a>
+<a name="4617"><span class="lineNum">    4617 </span>            :         ngx_http_file_cache_free(r-&gt;cache, u-&gt;pipe-&gt;temp_file);</a>
 <a name="4618"><span class="lineNum">    4618 </span>            :     }</a>
 <a name="4619"><span class="lineNum">    4619 </span>            : </a>
 <a name="4620"><span class="lineNum">    4620 </span>            : #endif</a>
@@ -4863,8 +4863,8 @@
 <a name="4801"><span class="lineNum">    4801 </span><span class="lineNoCov">          0 :     h-&gt;next = NULL;</span></a>
 <a name="4802"><span class="lineNum">    4802 </span>            : </a>
 <a name="4803"><span class="lineNum">    4803 </span>            : #if (NGX_HTTP_CACHE)</a>
-<a name="4804"><span class="lineNum">    4804 </span><span class="lineNoCov">          0 :     if (!(u-&gt;conf-&gt;ignore_headers &amp; NGX_HTTP_UPSTREAM_IGN_SET_COOKIE)) {</span></a>
-<a name="4805"><span class="lineNum">    4805 </span><span class="lineNoCov">          0 :         u-&gt;cacheable = 0;</span></a>
+<a name="4804"><span class="lineNum">    4804 </span>            :     if (!(u-&gt;conf-&gt;ignore_headers &amp; NGX_HTTP_UPSTREAM_IGN_SET_COOKIE)) {</a>
+<a name="4805"><span class="lineNum">    4805 </span>            :         u-&gt;cacheable = 0;</a>
 <a name="4806"><span class="lineNum">    4806 </span>            :     }</a>
 <a name="4807"><span class="lineNum">    4807 </span>            : #endif</a>
 <a name="4808"><span class="lineNum">    4808 </span>            : </a>
@@ -4892,109 +4892,109 @@
 <a name="4830"><span class="lineNum">    4830 </span>            :     u_char     *p, *start, *last;</a>
 <a name="4831"><span class="lineNum">    4831 </span>            :     ngx_int_t   n;</a>
 <a name="4832"><span class="lineNum">    4832 </span>            : </a>
-<a name="4833"><span class="lineNum">    4833 </span><span class="lineNoCov">          0 :     if (u-&gt;conf-&gt;ignore_headers &amp; NGX_HTTP_UPSTREAM_IGN_CACHE_CONTROL) {</span></a>
-<a name="4834"><span class="lineNum">    4834 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
+<a name="4833"><span class="lineNum">    4833 </span>            :     if (u-&gt;conf-&gt;ignore_headers &amp; NGX_HTTP_UPSTREAM_IGN_CACHE_CONTROL) {</a>
+<a name="4834"><span class="lineNum">    4834 </span>            :         return NGX_OK;</a>
 <a name="4835"><span class="lineNum">    4835 </span>            :     }</a>
 <a name="4836"><span class="lineNum">    4836 </span>            : </a>
-<a name="4837"><span class="lineNum">    4837 </span><span class="lineNoCov">          0 :     if (r-&gt;cache == NULL) {</span></a>
-<a name="4838"><span class="lineNum">    4838 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
+<a name="4837"><span class="lineNum">    4837 </span>            :     if (r-&gt;cache == NULL) {</a>
+<a name="4838"><span class="lineNum">    4838 </span>            :         return NGX_OK;</a>
 <a name="4839"><span class="lineNum">    4839 </span>            :     }</a>
 <a name="4840"><span class="lineNum">    4840 </span>            : </a>
-<a name="4841"><span class="lineNum">    4841 </span><span class="lineNoCov">          0 :     start = h-&gt;value.data;</span></a>
-<a name="4842"><span class="lineNum">    4842 </span><span class="lineNoCov">          0 :     last = start + h-&gt;value.len;</span></a>
+<a name="4841"><span class="lineNum">    4841 </span>            :     start = h-&gt;value.data;</a>
+<a name="4842"><span class="lineNum">    4842 </span>            :     last = start + h-&gt;value.len;</a>
 <a name="4843"><span class="lineNum">    4843 </span>            : </a>
-<a name="4844"><span class="lineNum">    4844 </span><span class="lineNoCov">          0 :     if (r-&gt;cache-&gt;valid_sec != 0 &amp;&amp; u-&gt;headers_in.x_accel_expires != NULL) {</span></a>
-<a name="4845"><span class="lineNum">    4845 </span><span class="lineNoCov">          0 :         goto extensions;</span></a>
+<a name="4844"><span class="lineNum">    4844 </span>            :     if (r-&gt;cache-&gt;valid_sec != 0 &amp;&amp; u-&gt;headers_in.x_accel_expires != NULL) {</a>
+<a name="4845"><span class="lineNum">    4845 </span>            :         goto extensions;</a>
 <a name="4846"><span class="lineNum">    4846 </span>            :     }</a>
 <a name="4847"><span class="lineNum">    4847 </span>            : </a>
-<a name="4848"><span class="lineNum">    4848 </span><span class="lineNoCov">          0 :     if (ngx_strlcasestrn(start, last, (u_char *) &quot;no-cache&quot;, 8 - 1) != NULL</span></a>
-<a name="4849"><span class="lineNum">    4849 </span><span class="lineNoCov">          0 :         || ngx_strlcasestrn(start, last, (u_char *) &quot;no-store&quot;, 8 - 1) != NULL</span></a>
-<a name="4850"><span class="lineNum">    4850 </span><span class="lineNoCov">          0 :         || ngx_strlcasestrn(start, last, (u_char *) &quot;private&quot;, 7 - 1) != NULL)</span></a>
+<a name="4848"><span class="lineNum">    4848 </span>            :     if (ngx_strlcasestrn(start, last, (u_char *) &quot;no-cache&quot;, 8 - 1) != NULL</a>
+<a name="4849"><span class="lineNum">    4849 </span>            :         || ngx_strlcasestrn(start, last, (u_char *) &quot;no-store&quot;, 8 - 1) != NULL</a>
+<a name="4850"><span class="lineNum">    4850 </span>            :         || ngx_strlcasestrn(start, last, (u_char *) &quot;private&quot;, 7 - 1) != NULL)</a>
 <a name="4851"><span class="lineNum">    4851 </span>            :     {</a>
-<a name="4852"><span class="lineNum">    4852 </span><span class="lineNoCov">          0 :         u-&gt;headers_in.no_cache = 1;</span></a>
-<a name="4853"><span class="lineNum">    4853 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
+<a name="4852"><span class="lineNum">    4852 </span>            :         u-&gt;headers_in.no_cache = 1;</a>
+<a name="4853"><span class="lineNum">    4853 </span>            :         return NGX_OK;</a>
 <a name="4854"><span class="lineNum">    4854 </span>            :     }</a>
 <a name="4855"><span class="lineNum">    4855 </span>            : </a>
-<a name="4856"><span class="lineNum">    4856 </span><span class="lineNoCov">          0 :     p = ngx_strlcasestrn(start, last, (u_char *) &quot;s-maxage=&quot;, 9 - 1);</span></a>
-<a name="4857"><span class="lineNum">    4857 </span><span class="lineNoCov">          0 :     offset = 9;</span></a>
+<a name="4856"><span class="lineNum">    4856 </span>            :     p = ngx_strlcasestrn(start, last, (u_char *) &quot;s-maxage=&quot;, 9 - 1);</a>
+<a name="4857"><span class="lineNum">    4857 </span>            :     offset = 9;</a>
 <a name="4858"><span class="lineNum">    4858 </span>            : </a>
-<a name="4859"><span class="lineNum">    4859 </span><span class="lineNoCov">          0 :     if (p == NULL) {</span></a>
-<a name="4860"><span class="lineNum">    4860 </span><span class="lineNoCov">          0 :         p = ngx_strlcasestrn(start, last, (u_char *) &quot;max-age=&quot;, 8 - 1);</span></a>
-<a name="4861"><span class="lineNum">    4861 </span><span class="lineNoCov">          0 :         offset = 8;</span></a>
+<a name="4859"><span class="lineNum">    4859 </span>            :     if (p == NULL) {</a>
+<a name="4860"><span class="lineNum">    4860 </span>            :         p = ngx_strlcasestrn(start, last, (u_char *) &quot;max-age=&quot;, 8 - 1);</a>
+<a name="4861"><span class="lineNum">    4861 </span>            :         offset = 8;</a>
 <a name="4862"><span class="lineNum">    4862 </span>            :     }</a>
 <a name="4863"><span class="lineNum">    4863 </span>            : </a>
-<a name="4864"><span class="lineNum">    4864 </span><span class="lineNoCov">          0 :     if (p) {</span></a>
-<a name="4865"><span class="lineNum">    4865 </span><span class="lineNoCov">          0 :         n = 0;</span></a>
+<a name="4864"><span class="lineNum">    4864 </span>            :     if (p) {</a>
+<a name="4865"><span class="lineNum">    4865 </span>            :         n = 0;</a>
 <a name="4866"><span class="lineNum">    4866 </span>            : </a>
-<a name="4867"><span class="lineNum">    4867 </span><span class="lineNoCov">          0 :         for (p += offset; p &lt; last; p++) {</span></a>
-<a name="4868"><span class="lineNum">    4868 </span><span class="lineNoCov">          0 :             if (*p == ',' || *p == ';' || *p == ' ') {</span></a>
+<a name="4867"><span class="lineNum">    4867 </span>            :         for (p += offset; p &lt; last; p++) {</a>
+<a name="4868"><span class="lineNum">    4868 </span>            :             if (*p == ',' || *p == ';' || *p == ' ') {</a>
 <a name="4869"><span class="lineNum">    4869 </span>            :                 break;</a>
 <a name="4870"><span class="lineNum">    4870 </span>            :             }</a>
 <a name="4871"><span class="lineNum">    4871 </span>            : </a>
-<a name="4872"><span class="lineNum">    4872 </span><span class="lineNoCov">          0 :             if (*p &gt;= '0' &amp;&amp; *p &lt;= '9') {</span></a>
-<a name="4873"><span class="lineNum">    4873 </span><span class="lineNoCov">          0 :                 n = n * 10 + (*p - '0');</span></a>
-<a name="4874"><span class="lineNum">    4874 </span><span class="lineNoCov">          0 :                 continue;</span></a>
+<a name="4872"><span class="lineNum">    4872 </span>            :             if (*p &gt;= '0' &amp;&amp; *p &lt;= '9') {</a>
+<a name="4873"><span class="lineNum">    4873 </span>            :                 n = n * 10 + (*p - '0');</a>
+<a name="4874"><span class="lineNum">    4874 </span>            :                 continue;</a>
 <a name="4875"><span class="lineNum">    4875 </span>            :             }</a>
 <a name="4876"><span class="lineNum">    4876 </span>            : </a>
-<a name="4877"><span class="lineNum">    4877 </span><span class="lineNoCov">          0 :             u-&gt;cacheable = 0;</span></a>
-<a name="4878"><span class="lineNum">    4878 </span><span class="lineNoCov">          0 :             return NGX_OK;</span></a>
+<a name="4877"><span class="lineNum">    4877 </span>            :             u-&gt;cacheable = 0;</a>
+<a name="4878"><span class="lineNum">    4878 </span>            :             return NGX_OK;</a>
 <a name="4879"><span class="lineNum">    4879 </span>            :         }</a>
 <a name="4880"><span class="lineNum">    4880 </span>            : </a>
-<a name="4881"><span class="lineNum">    4881 </span><span class="lineNoCov">          0 :         if (n == 0) {</span></a>
-<a name="4882"><span class="lineNum">    4882 </span><span class="lineNoCov">          0 :             u-&gt;headers_in.no_cache = 1;</span></a>
-<a name="4883"><span class="lineNum">    4883 </span><span class="lineNoCov">          0 :             return NGX_OK;</span></a>
+<a name="4881"><span class="lineNum">    4881 </span>            :         if (n == 0) {</a>
+<a name="4882"><span class="lineNum">    4882 </span>            :             u-&gt;headers_in.no_cache = 1;</a>
+<a name="4883"><span class="lineNum">    4883 </span>            :             return NGX_OK;</a>
 <a name="4884"><span class="lineNum">    4884 </span>            :         }</a>
 <a name="4885"><span class="lineNum">    4885 </span>            : </a>
-<a name="4886"><span class="lineNum">    4886 </span><span class="lineNoCov">          0 :         r-&gt;cache-&gt;valid_sec = ngx_time() + n;</span></a>
-<a name="4887"><span class="lineNum">    4887 </span><span class="lineNoCov">          0 :         u-&gt;headers_in.expired = 0;</span></a>
+<a name="4886"><span class="lineNum">    4886 </span>            :         r-&gt;cache-&gt;valid_sec = ngx_time() + n;</a>
+<a name="4887"><span class="lineNum">    4887 </span>            :         u-&gt;headers_in.expired = 0;</a>
 <a name="4888"><span class="lineNum">    4888 </span>            :     }</a>
 <a name="4889"><span class="lineNum">    4889 </span>            : </a>
-<a name="4890"><span class="lineNum">    4890 </span><span class="lineNoCov">          0 : extensions:</span></a>
+<a name="4890"><span class="lineNum">    4890 </span>            : extensions:</a>
 <a name="4891"><span class="lineNum">    4891 </span>            : </a>
-<a name="4892"><span class="lineNum">    4892 </span><span class="lineNoCov">          0 :     p = ngx_strlcasestrn(start, last, (u_char *) &quot;stale-while-revalidate=&quot;,</span></a>
+<a name="4892"><span class="lineNum">    4892 </span>            :     p = ngx_strlcasestrn(start, last, (u_char *) &quot;stale-while-revalidate=&quot;,</a>
 <a name="4893"><span class="lineNum">    4893 </span>            :                          23 - 1);</a>
 <a name="4894"><span class="lineNum">    4894 </span>            : </a>
-<a name="4895"><span class="lineNum">    4895 </span><span class="lineNoCov">          0 :     if (p) {</span></a>
-<a name="4896"><span class="lineNum">    4896 </span><span class="lineNoCov">          0 :         n = 0;</span></a>
+<a name="4895"><span class="lineNum">    4895 </span>            :     if (p) {</a>
+<a name="4896"><span class="lineNum">    4896 </span>            :         n = 0;</a>
 <a name="4897"><span class="lineNum">    4897 </span>            : </a>
-<a name="4898"><span class="lineNum">    4898 </span><span class="lineNoCov">          0 :         for (p += 23; p &lt; last; p++) {</span></a>
-<a name="4899"><span class="lineNum">    4899 </span><span class="lineNoCov">          0 :             if (*p == ',' || *p == ';' || *p == ' ') {</span></a>
+<a name="4898"><span class="lineNum">    4898 </span>            :         for (p += 23; p &lt; last; p++) {</a>
+<a name="4899"><span class="lineNum">    4899 </span>            :             if (*p == ',' || *p == ';' || *p == ' ') {</a>
 <a name="4900"><span class="lineNum">    4900 </span>            :                 break;</a>
 <a name="4901"><span class="lineNum">    4901 </span>            :             }</a>
 <a name="4902"><span class="lineNum">    4902 </span>            : </a>
-<a name="4903"><span class="lineNum">    4903 </span><span class="lineNoCov">          0 :             if (*p &gt;= '0' &amp;&amp; *p &lt;= '9') {</span></a>
-<a name="4904"><span class="lineNum">    4904 </span><span class="lineNoCov">          0 :                 n = n * 10 + (*p - '0');</span></a>
-<a name="4905"><span class="lineNum">    4905 </span><span class="lineNoCov">          0 :                 continue;</span></a>
+<a name="4903"><span class="lineNum">    4903 </span>            :             if (*p &gt;= '0' &amp;&amp; *p &lt;= '9') {</a>
+<a name="4904"><span class="lineNum">    4904 </span>            :                 n = n * 10 + (*p - '0');</a>
+<a name="4905"><span class="lineNum">    4905 </span>            :                 continue;</a>
 <a name="4906"><span class="lineNum">    4906 </span>            :             }</a>
 <a name="4907"><span class="lineNum">    4907 </span>            : </a>
-<a name="4908"><span class="lineNum">    4908 </span><span class="lineNoCov">          0 :             u-&gt;cacheable = 0;</span></a>
-<a name="4909"><span class="lineNum">    4909 </span><span class="lineNoCov">          0 :             return NGX_OK;</span></a>
+<a name="4908"><span class="lineNum">    4908 </span>            :             u-&gt;cacheable = 0;</a>
+<a name="4909"><span class="lineNum">    4909 </span>            :             return NGX_OK;</a>
 <a name="4910"><span class="lineNum">    4910 </span>            :         }</a>
 <a name="4911"><span class="lineNum">    4911 </span>            : </a>
-<a name="4912"><span class="lineNum">    4912 </span><span class="lineNoCov">          0 :         r-&gt;cache-&gt;updating_sec = n;</span></a>
-<a name="4913"><span class="lineNum">    4913 </span><span class="lineNoCov">          0 :         r-&gt;cache-&gt;error_sec = n;</span></a>
+<a name="4912"><span class="lineNum">    4912 </span>            :         r-&gt;cache-&gt;updating_sec = n;</a>
+<a name="4913"><span class="lineNum">    4913 </span>            :         r-&gt;cache-&gt;error_sec = n;</a>
 <a name="4914"><span class="lineNum">    4914 </span>            :     }</a>
 <a name="4915"><span class="lineNum">    4915 </span>            : </a>
-<a name="4916"><span class="lineNum">    4916 </span><span class="lineNoCov">          0 :     p = ngx_strlcasestrn(start, last, (u_char *) &quot;stale-if-error=&quot;, 15 - 1);</span></a>
+<a name="4916"><span class="lineNum">    4916 </span>            :     p = ngx_strlcasestrn(start, last, (u_char *) &quot;stale-if-error=&quot;, 15 - 1);</a>
 <a name="4917"><span class="lineNum">    4917 </span>            : </a>
-<a name="4918"><span class="lineNum">    4918 </span><span class="lineNoCov">          0 :     if (p) {</span></a>
-<a name="4919"><span class="lineNum">    4919 </span><span class="lineNoCov">          0 :         n = 0;</span></a>
+<a name="4918"><span class="lineNum">    4918 </span>            :     if (p) {</a>
+<a name="4919"><span class="lineNum">    4919 </span>            :         n = 0;</a>
 <a name="4920"><span class="lineNum">    4920 </span>            : </a>
-<a name="4921"><span class="lineNum">    4921 </span><span class="lineNoCov">          0 :         for (p += 15; p &lt; last; p++) {</span></a>
-<a name="4922"><span class="lineNum">    4922 </span><span class="lineNoCov">          0 :             if (*p == ',' || *p == ';' || *p == ' ') {</span></a>
+<a name="4921"><span class="lineNum">    4921 </span>            :         for (p += 15; p &lt; last; p++) {</a>
+<a name="4922"><span class="lineNum">    4922 </span>            :             if (*p == ',' || *p == ';' || *p == ' ') {</a>
 <a name="4923"><span class="lineNum">    4923 </span>            :                 break;</a>
 <a name="4924"><span class="lineNum">    4924 </span>            :             }</a>
 <a name="4925"><span class="lineNum">    4925 </span>            : </a>
-<a name="4926"><span class="lineNum">    4926 </span><span class="lineNoCov">          0 :             if (*p &gt;= '0' &amp;&amp; *p &lt;= '9') {</span></a>
-<a name="4927"><span class="lineNum">    4927 </span><span class="lineNoCov">          0 :                 n = n * 10 + (*p - '0');</span></a>
-<a name="4928"><span class="lineNum">    4928 </span><span class="lineNoCov">          0 :                 continue;</span></a>
+<a name="4926"><span class="lineNum">    4926 </span>            :             if (*p &gt;= '0' &amp;&amp; *p &lt;= '9') {</a>
+<a name="4927"><span class="lineNum">    4927 </span>            :                 n = n * 10 + (*p - '0');</a>
+<a name="4928"><span class="lineNum">    4928 </span>            :                 continue;</a>
 <a name="4929"><span class="lineNum">    4929 </span>            :             }</a>
 <a name="4930"><span class="lineNum">    4930 </span>            : </a>
-<a name="4931"><span class="lineNum">    4931 </span><span class="lineNoCov">          0 :             u-&gt;cacheable = 0;</span></a>
-<a name="4932"><span class="lineNum">    4932 </span><span class="lineNoCov">          0 :             return NGX_OK;</span></a>
+<a name="4931"><span class="lineNum">    4931 </span>            :             u-&gt;cacheable = 0;</a>
+<a name="4932"><span class="lineNum">    4932 </span>            :             return NGX_OK;</a>
 <a name="4933"><span class="lineNum">    4933 </span>            :         }</a>
 <a name="4934"><span class="lineNum">    4934 </span>            : </a>
-<a name="4935"><span class="lineNum">    4935 </span><span class="lineNoCov">          0 :         r-&gt;cache-&gt;error_sec = n;</span></a>
+<a name="4935"><span class="lineNum">    4935 </span>            :         r-&gt;cache-&gt;error_sec = n;</a>
 <a name="4936"><span class="lineNum">    4936 </span>            :     }</a>
 <a name="4937"><span class="lineNum">    4937 </span>            :     }</a>
 <a name="4938"><span class="lineNum">    4938 </span>            : #endif</a>
@@ -5029,26 +5029,26 @@
 <a name="4967"><span class="lineNum">    4967 </span>            :     {</a>
 <a name="4968"><span class="lineNum">    4968 </span>            :     time_t  expires;</a>
 <a name="4969"><span class="lineNum">    4969 </span>            : </a>
-<a name="4970"><span class="lineNum">    4970 </span><span class="lineNoCov">          0 :     if (u-&gt;conf-&gt;ignore_headers &amp; NGX_HTTP_UPSTREAM_IGN_EXPIRES) {</span></a>
-<a name="4971"><span class="lineNum">    4971 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
+<a name="4970"><span class="lineNum">    4970 </span>            :     if (u-&gt;conf-&gt;ignore_headers &amp; NGX_HTTP_UPSTREAM_IGN_EXPIRES) {</a>
+<a name="4971"><span class="lineNum">    4971 </span>            :         return NGX_OK;</a>
 <a name="4972"><span class="lineNum">    4972 </span>            :     }</a>
 <a name="4973"><span class="lineNum">    4973 </span>            : </a>
-<a name="4974"><span class="lineNum">    4974 </span><span class="lineNoCov">          0 :     if (r-&gt;cache == NULL) {</span></a>
-<a name="4975"><span class="lineNum">    4975 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
+<a name="4974"><span class="lineNum">    4974 </span>            :     if (r-&gt;cache == NULL) {</a>
+<a name="4975"><span class="lineNum">    4975 </span>            :         return NGX_OK;</a>
 <a name="4976"><span class="lineNum">    4976 </span>            :     }</a>
 <a name="4977"><span class="lineNum">    4977 </span>            : </a>
-<a name="4978"><span class="lineNum">    4978 </span><span class="lineNoCov">          0 :     if (r-&gt;cache-&gt;valid_sec != 0) {</span></a>
-<a name="4979"><span class="lineNum">    4979 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
+<a name="4978"><span class="lineNum">    4978 </span>            :     if (r-&gt;cache-&gt;valid_sec != 0) {</a>
+<a name="4979"><span class="lineNum">    4979 </span>            :         return NGX_OK;</a>
 <a name="4980"><span class="lineNum">    4980 </span>            :     }</a>
 <a name="4981"><span class="lineNum">    4981 </span>            : </a>
-<a name="4982"><span class="lineNum">    4982 </span><span class="lineNoCov">          0 :     expires = ngx_parse_http_time(h-&gt;value.data, h-&gt;value.len);</span></a>
+<a name="4982"><span class="lineNum">    4982 </span>            :     expires = ngx_parse_http_time(h-&gt;value.data, h-&gt;value.len);</a>
 <a name="4983"><span class="lineNum">    4983 </span>            : </a>
-<a name="4984"><span class="lineNum">    4984 </span><span class="lineNoCov">          0 :     if (expires == NGX_ERROR || expires &lt; ngx_time()) {</span></a>
-<a name="4985"><span class="lineNum">    4985 </span><span class="lineNoCov">          0 :         u-&gt;headers_in.expired = 1;</span></a>
-<a name="4986"><span class="lineNum">    4986 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
+<a name="4984"><span class="lineNum">    4984 </span>            :     if (expires == NGX_ERROR || expires &lt; ngx_time()) {</a>
+<a name="4985"><span class="lineNum">    4985 </span>            :         u-&gt;headers_in.expired = 1;</a>
+<a name="4986"><span class="lineNum">    4986 </span>            :         return NGX_OK;</a>
 <a name="4987"><span class="lineNum">    4987 </span>            :     }</a>
 <a name="4988"><span class="lineNum">    4988 </span>            : </a>
-<a name="4989"><span class="lineNum">    4989 </span><span class="lineNoCov">          0 :     r-&gt;cache-&gt;valid_sec = expires;</span></a>
+<a name="4989"><span class="lineNum">    4989 </span>            :     r-&gt;cache-&gt;valid_sec = expires;</a>
 <a name="4990"><span class="lineNum">    4990 </span>            :     }</a>
 <a name="4991"><span class="lineNum">    4991 </span>            : #endif</a>
 <a name="4992"><span class="lineNum">    4992 </span>            : </a>
@@ -5084,45 +5084,45 @@
 <a name="5022"><span class="lineNum">    5022 </span>            :     size_t      len;</a>
 <a name="5023"><span class="lineNum">    5023 </span>            :     ngx_int_t   n;</a>
 <a name="5024"><span class="lineNum">    5024 </span>            : </a>
-<a name="5025"><span class="lineNum">    5025 </span><span class="lineNoCov">          0 :     if (u-&gt;conf-&gt;ignore_headers &amp; NGX_HTTP_UPSTREAM_IGN_XA_EXPIRES) {</span></a>
-<a name="5026"><span class="lineNum">    5026 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
+<a name="5025"><span class="lineNum">    5025 </span>            :     if (u-&gt;conf-&gt;ignore_headers &amp; NGX_HTTP_UPSTREAM_IGN_XA_EXPIRES) {</a>
+<a name="5026"><span class="lineNum">    5026 </span>            :         return NGX_OK;</a>
 <a name="5027"><span class="lineNum">    5027 </span>            :     }</a>
 <a name="5028"><span class="lineNum">    5028 </span>            : </a>
-<a name="5029"><span class="lineNum">    5029 </span><span class="lineNoCov">          0 :     if (r-&gt;cache == NULL) {</span></a>
-<a name="5030"><span class="lineNum">    5030 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
+<a name="5029"><span class="lineNum">    5029 </span>            :     if (r-&gt;cache == NULL) {</a>
+<a name="5030"><span class="lineNum">    5030 </span>            :         return NGX_OK;</a>
 <a name="5031"><span class="lineNum">    5031 </span>            :     }</a>
 <a name="5032"><span class="lineNum">    5032 </span>            : </a>
-<a name="5033"><span class="lineNum">    5033 </span><span class="lineNoCov">          0 :     len = h-&gt;value.len;</span></a>
-<a name="5034"><span class="lineNum">    5034 </span><span class="lineNoCov">          0 :     p = h-&gt;value.data;</span></a>
+<a name="5033"><span class="lineNum">    5033 </span>            :     len = h-&gt;value.len;</a>
+<a name="5034"><span class="lineNum">    5034 </span>            :     p = h-&gt;value.data;</a>
 <a name="5035"><span class="lineNum">    5035 </span>            : </a>
-<a name="5036"><span class="lineNum">    5036 </span><span class="lineNoCov">          0 :     if (p[0] != '@') {</span></a>
-<a name="5037"><span class="lineNum">    5037 </span><span class="lineNoCov">          0 :         n = ngx_atoi(p, len);</span></a>
+<a name="5036"><span class="lineNum">    5036 </span>            :     if (p[0] != '@') {</a>
+<a name="5037"><span class="lineNum">    5037 </span>            :         n = ngx_atoi(p, len);</a>
 <a name="5038"><span class="lineNum">    5038 </span>            : </a>
-<a name="5039"><span class="lineNum">    5039 </span><span class="lineNoCov">          0 :         switch (n) {</span></a>
-<a name="5040"><span class="lineNum">    5040 </span><span class="lineNoCov">          0 :         case 0:</span></a>
-<a name="5041"><span class="lineNum">    5041 </span><span class="lineNoCov">          0 :             u-&gt;cacheable = 0;</span></a>
+<a name="5039"><span class="lineNum">    5039 </span>            :         switch (n) {</a>
+<a name="5040"><span class="lineNum">    5040 </span>            :         case 0:</a>
+<a name="5041"><span class="lineNum">    5041 </span>            :             u-&gt;cacheable = 0;</a>
 <a name="5042"><span class="lineNum">    5042 </span>            :             /* fall through */</a>
 <a name="5043"><span class="lineNum">    5043 </span>            : </a>
-<a name="5044"><span class="lineNum">    5044 </span><span class="lineNoCov">          0 :         case NGX_ERROR:</span></a>
-<a name="5045"><span class="lineNum">    5045 </span><span class="lineNoCov">          0 :             return NGX_OK;</span></a>
+<a name="5044"><span class="lineNum">    5044 </span>            :         case NGX_ERROR:</a>
+<a name="5045"><span class="lineNum">    5045 </span>            :             return NGX_OK;</a>
 <a name="5046"><span class="lineNum">    5046 </span>            : </a>
-<a name="5047"><span class="lineNum">    5047 </span><span class="lineNoCov">          0 :         default:</span></a>
-<a name="5048"><span class="lineNum">    5048 </span><span class="lineNoCov">          0 :             r-&gt;cache-&gt;valid_sec = ngx_time() + n;</span></a>
-<a name="5049"><span class="lineNum">    5049 </span><span class="lineNoCov">          0 :             u-&gt;headers_in.no_cache = 0;</span></a>
-<a name="5050"><span class="lineNum">    5050 </span><span class="lineNoCov">          0 :             u-&gt;headers_in.expired = 0;</span></a>
-<a name="5051"><span class="lineNum">    5051 </span><span class="lineNoCov">          0 :             return NGX_OK;</span></a>
+<a name="5047"><span class="lineNum">    5047 </span>            :         default:</a>
+<a name="5048"><span class="lineNum">    5048 </span>            :             r-&gt;cache-&gt;valid_sec = ngx_time() + n;</a>
+<a name="5049"><span class="lineNum">    5049 </span>            :             u-&gt;headers_in.no_cache = 0;</a>
+<a name="5050"><span class="lineNum">    5050 </span>            :             u-&gt;headers_in.expired = 0;</a>
+<a name="5051"><span class="lineNum">    5051 </span>            :             return NGX_OK;</a>
 <a name="5052"><span class="lineNum">    5052 </span>            :         }</a>
 <a name="5053"><span class="lineNum">    5053 </span>            :     }</a>
 <a name="5054"><span class="lineNum">    5054 </span>            : </a>
-<a name="5055"><span class="lineNum">    5055 </span><span class="lineNoCov">          0 :     p++;</span></a>
-<a name="5056"><span class="lineNum">    5056 </span><span class="lineNoCov">          0 :     len--;</span></a>
+<a name="5055"><span class="lineNum">    5055 </span>            :     p++;</a>
+<a name="5056"><span class="lineNum">    5056 </span>            :     len--;</a>
 <a name="5057"><span class="lineNum">    5057 </span>            : </a>
-<a name="5058"><span class="lineNum">    5058 </span><span class="lineNoCov">          0 :     n = ngx_atoi(p, len);</span></a>
+<a name="5058"><span class="lineNum">    5058 </span>            :     n = ngx_atoi(p, len);</a>
 <a name="5059"><span class="lineNum">    5059 </span>            : </a>
-<a name="5060"><span class="lineNum">    5060 </span><span class="lineNoCov">          0 :     if (n != NGX_ERROR) {</span></a>
-<a name="5061"><span class="lineNum">    5061 </span><span class="lineNoCov">          0 :         r-&gt;cache-&gt;valid_sec = n;</span></a>
-<a name="5062"><span class="lineNum">    5062 </span><span class="lineNoCov">          0 :         u-&gt;headers_in.no_cache = 0;</span></a>
-<a name="5063"><span class="lineNum">    5063 </span><span class="lineNoCov">          0 :         u-&gt;headers_in.expired = 0;</span></a>
+<a name="5060"><span class="lineNum">    5060 </span>            :     if (n != NGX_ERROR) {</a>
+<a name="5061"><span class="lineNum">    5061 </span>            :         r-&gt;cache-&gt;valid_sec = n;</a>
+<a name="5062"><span class="lineNum">    5062 </span>            :         u-&gt;headers_in.no_cache = 0;</a>
+<a name="5063"><span class="lineNum">    5063 </span>            :         u-&gt;headers_in.expired = 0;</a>
 <a name="5064"><span class="lineNum">    5064 </span>            :     }</a>
 <a name="5065"><span class="lineNum">    5065 </span>            :     }</a>
 <a name="5066"><span class="lineNum">    5066 </span>            : #endif</a>
@@ -5316,56 +5316,56 @@
 <a name="5254"><span class="lineNum">    5254 </span>            :     size_t      len;</a>
 <a name="5255"><span class="lineNum">    5255 </span>            :     ngx_str_t   vary;</a>
 <a name="5256"><span class="lineNum">    5256 </span>            : </a>
-<a name="5257"><span class="lineNum">    5257 </span><span class="lineNoCov">          0 :     if (u-&gt;conf-&gt;ignore_headers &amp; NGX_HTTP_UPSTREAM_IGN_VARY) {</span></a>
-<a name="5258"><span class="lineNum">    5258 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
+<a name="5257"><span class="lineNum">    5257 </span>            :     if (u-&gt;conf-&gt;ignore_headers &amp; NGX_HTTP_UPSTREAM_IGN_VARY) {</a>
+<a name="5258"><span class="lineNum">    5258 </span>            :         return NGX_OK;</a>
 <a name="5259"><span class="lineNum">    5259 </span>            :     }</a>
 <a name="5260"><span class="lineNum">    5260 </span>            : </a>
-<a name="5261"><span class="lineNum">    5261 </span><span class="lineNoCov">          0 :     if (r-&gt;cache == NULL || !u-&gt;cacheable) {</span></a>
-<a name="5262"><span class="lineNum">    5262 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
+<a name="5261"><span class="lineNum">    5261 </span>            :     if (r-&gt;cache == NULL || !u-&gt;cacheable) {</a>
+<a name="5262"><span class="lineNum">    5262 </span>            :         return NGX_OK;</a>
 <a name="5263"><span class="lineNum">    5263 </span>            :     }</a>
 <a name="5264"><span class="lineNum">    5264 </span>            : </a>
-<a name="5265"><span class="lineNum">    5265 </span><span class="lineNoCov">          0 :     if (h-&gt;value.len == 1 &amp;&amp; h-&gt;value.data[0] == '*') {</span></a>
-<a name="5266"><span class="lineNum">    5266 </span><span class="lineNoCov">          0 :         u-&gt;cacheable = 0;</span></a>
-<a name="5267"><span class="lineNum">    5267 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
+<a name="5265"><span class="lineNum">    5265 </span>            :     if (h-&gt;value.len == 1 &amp;&amp; h-&gt;value.data[0] == '*') {</a>
+<a name="5266"><span class="lineNum">    5266 </span>            :         u-&gt;cacheable = 0;</a>
+<a name="5267"><span class="lineNum">    5267 </span>            :         return NGX_OK;</a>
 <a name="5268"><span class="lineNum">    5268 </span>            :     }</a>
 <a name="5269"><span class="lineNum">    5269 </span>            : </a>
-<a name="5270"><span class="lineNum">    5270 </span><span class="lineNoCov">          0 :     if (u-&gt;headers_in.vary-&gt;next) {</span></a>
+<a name="5270"><span class="lineNum">    5270 </span>            :     if (u-&gt;headers_in.vary-&gt;next) {</a>
 <a name="5271"><span class="lineNum">    5271 </span>            : </a>
-<a name="5272"><span class="lineNum">    5272 </span><span class="lineNoCov">          0 :         len = 0;</span></a>
+<a name="5272"><span class="lineNum">    5272 </span>            :         len = 0;</a>
 <a name="5273"><span class="lineNum">    5273 </span>            : </a>
-<a name="5274"><span class="lineNum">    5274 </span><span class="lineNoCov">          0 :         for (h = u-&gt;headers_in.vary; h; h = h-&gt;next) {</span></a>
-<a name="5275"><span class="lineNum">    5275 </span><span class="lineNoCov">          0 :             len += h-&gt;value.len + 2;</span></a>
+<a name="5274"><span class="lineNum">    5274 </span>            :         for (h = u-&gt;headers_in.vary; h; h = h-&gt;next) {</a>
+<a name="5275"><span class="lineNum">    5275 </span>            :             len += h-&gt;value.len + 2;</a>
 <a name="5276"><span class="lineNum">    5276 </span>            :         }</a>
 <a name="5277"><span class="lineNum">    5277 </span>            : </a>
-<a name="5278"><span class="lineNum">    5278 </span><span class="lineNoCov">          0 :         len -= 2;</span></a>
+<a name="5278"><span class="lineNum">    5278 </span>            :         len -= 2;</a>
 <a name="5279"><span class="lineNum">    5279 </span>            : </a>
-<a name="5280"><span class="lineNum">    5280 </span><span class="lineNoCov">          0 :         p = ngx_pnalloc(r-&gt;pool, len);</span></a>
-<a name="5281"><span class="lineNum">    5281 </span><span class="lineNoCov">          0 :         if (p == NULL) {</span></a>
-<a name="5282"><span class="lineNum">    5282 </span><span class="lineNoCov">          0 :             return NGX_ERROR;</span></a>
+<a name="5280"><span class="lineNum">    5280 </span>            :         p = ngx_pnalloc(r-&gt;pool, len);</a>
+<a name="5281"><span class="lineNum">    5281 </span>            :         if (p == NULL) {</a>
+<a name="5282"><span class="lineNum">    5282 </span>            :             return NGX_ERROR;</a>
 <a name="5283"><span class="lineNum">    5283 </span>            :         }</a>
 <a name="5284"><span class="lineNum">    5284 </span>            : </a>
-<a name="5285"><span class="lineNum">    5285 </span><span class="lineNoCov">          0 :         vary.len = len;</span></a>
-<a name="5286"><span class="lineNum">    5286 </span><span class="lineNoCov">          0 :         vary.data = p;</span></a>
+<a name="5285"><span class="lineNum">    5285 </span>            :         vary.len = len;</a>
+<a name="5286"><span class="lineNum">    5286 </span>            :         vary.data = p;</a>
 <a name="5287"><span class="lineNum">    5287 </span>            : </a>
-<a name="5288"><span class="lineNum">    5288 </span><span class="lineNoCov">          0 :         for (h = u-&gt;headers_in.vary; h; h = h-&gt;next) {</span></a>
-<a name="5289"><span class="lineNum">    5289 </span><span class="lineNoCov">          0 :             p = ngx_copy(p, h-&gt;value.data, h-&gt;value.len);</span></a>
+<a name="5288"><span class="lineNum">    5288 </span>            :         for (h = u-&gt;headers_in.vary; h; h = h-&gt;next) {</a>
+<a name="5289"><span class="lineNum">    5289 </span>            :             p = ngx_copy(p, h-&gt;value.data, h-&gt;value.len);</a>
 <a name="5290"><span class="lineNum">    5290 </span>            : </a>
-<a name="5291"><span class="lineNum">    5291 </span><span class="lineNoCov">          0 :             if (h-&gt;next == NULL) {</span></a>
-<a name="5292"><span class="lineNum">    5292 </span><span class="lineNoCov">          0 :                 break;</span></a>
+<a name="5291"><span class="lineNum">    5291 </span>            :             if (h-&gt;next == NULL) {</a>
+<a name="5292"><span class="lineNum">    5292 </span>            :                 break;</a>
 <a name="5293"><span class="lineNum">    5293 </span>            :             }</a>
 <a name="5294"><span class="lineNum">    5294 </span>            : </a>
-<a name="5295"><span class="lineNum">    5295 </span><span class="lineNoCov">          0 :             *p++ = ','; *p++ = ' ';</span></a>
+<a name="5295"><span class="lineNum">    5295 </span>            :             *p++ = ','; *p++ = ' ';</a>
 <a name="5296"><span class="lineNum">    5296 </span>            :         }</a>
 <a name="5297"><span class="lineNum">    5297 </span>            : </a>
 <a name="5298"><span class="lineNum">    5298 </span>            :     } else {</a>
-<a name="5299"><span class="lineNum">    5299 </span><span class="lineNoCov">          0 :         vary = h-&gt;value;</span></a>
+<a name="5299"><span class="lineNum">    5299 </span>            :         vary = h-&gt;value;</a>
 <a name="5300"><span class="lineNum">    5300 </span>            :     }</a>
 <a name="5301"><span class="lineNum">    5301 </span>            : </a>
-<a name="5302"><span class="lineNum">    5302 </span><span class="lineNoCov">          0 :     if (vary.len &gt; NGX_HTTP_CACHE_VARY_LEN) {</span></a>
-<a name="5303"><span class="lineNum">    5303 </span><span class="lineNoCov">          0 :         u-&gt;cacheable = 0;</span></a>
+<a name="5302"><span class="lineNum">    5302 </span>            :     if (vary.len &gt; NGX_HTTP_CACHE_VARY_LEN) {</a>
+<a name="5303"><span class="lineNum">    5303 </span>            :         u-&gt;cacheable = 0;</a>
 <a name="5304"><span class="lineNum">    5304 </span>            :     }</a>
 <a name="5305"><span class="lineNum">    5305 </span>            : </a>
-<a name="5306"><span class="lineNum">    5306 </span><span class="lineNoCov">          0 :     r-&gt;cache-&gt;vary = vary;</span></a>
+<a name="5306"><span class="lineNum">    5306 </span>            :     r-&gt;cache-&gt;vary = vary;</a>
 <a name="5307"><span class="lineNum">    5307 </span>            :     }</a>
 <a name="5308"><span class="lineNum">    5308 </span>            : #endif</a>
 <a name="5309"><span class="lineNum">    5309 </span>            : </a>
@@ -5634,15 +5634,15 @@
 <a name="5572"><span class="lineNum">    5572 </span>            : </a>
 <a name="5573"><span class="lineNum">    5573 </span>            : #if (NGX_HTTP_CACHE)</a>
 <a name="5574"><span class="lineNum">    5574 </span>            : </a>
-<a name="5575"><span class="lineNum">    5575 </span><span class="lineNoCov">          0 :     if (r-&gt;cached) {</span></a>
-<a name="5576"><span class="lineNum">    5576 </span><span class="lineNoCov">          0 :         r-&gt;allow_ranges = 1;</span></a>
-<a name="5577"><span class="lineNum">    5577 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
+<a name="5575"><span class="lineNum">    5575 </span>            :     if (r-&gt;cached) {</a>
+<a name="5576"><span class="lineNum">    5576 </span>            :         r-&gt;allow_ranges = 1;</a>
+<a name="5577"><span class="lineNum">    5577 </span>            :         return NGX_OK;</a>
 <a name="5578"><span class="lineNum">    5578 </span>            :     }</a>
 <a name="5579"><span class="lineNum">    5579 </span>            : </a>
-<a name="5580"><span class="lineNum">    5580 </span><span class="lineNoCov">          0 :     if (r-&gt;upstream-&gt;cacheable) {</span></a>
-<a name="5581"><span class="lineNum">    5581 </span><span class="lineNoCov">          0 :         r-&gt;allow_ranges = 1;</span></a>
-<a name="5582"><span class="lineNum">    5582 </span><span class="lineNoCov">          0 :         r-&gt;single_range = 1;</span></a>
-<a name="5583"><span class="lineNum">    5583 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
+<a name="5580"><span class="lineNum">    5580 </span>            :     if (r-&gt;upstream-&gt;cacheable) {</a>
+<a name="5581"><span class="lineNum">    5581 </span>            :         r-&gt;allow_ranges = 1;</a>
+<a name="5582"><span class="lineNum">    5582 </span>            :         r-&gt;single_range = 1;</a>
+<a name="5583"><span class="lineNum">    5583 </span>            :         return NGX_OK;</a>
 <a name="5584"><span class="lineNum">    5584 </span>            :     }</a>
 <a name="5585"><span class="lineNum">    5585 </span>            : </a>
 <a name="5586"><span class="lineNum">    5586 </span>            : #endif</a>
@@ -5662,21 +5662,21 @@
 <a name="5600"><span class="lineNum">    5600 </span>            : </a>
 <a name="5601"><span class="lineNum">    5601 </span>            : </a>
 <a name="5602"><span class="lineNum">    5602 </span>            : static ngx_int_t</a>
-<a name="5603"><span class="lineNum">    5603 </span><span class="lineCov">         22 : ngx_http_upstream_add_variables(ngx_conf_t *cf)</span></a>
+<a name="5603"><span class="lineNum">    5603 </span><span class="lineCov">         48 : ngx_http_upstream_add_variables(ngx_conf_t *cf)</span></a>
 <a name="5604"><span class="lineNum">    5604 </span>            : {</a>
 <a name="5605"><span class="lineNum">    5605 </span>            :     ngx_http_variable_t  *var, *v;</a>
 <a name="5606"><span class="lineNum">    5606 </span>            : </a>
-<a name="5607"><span class="lineNum">    5607 </span><span class="lineCov">        330 :     for (v = ngx_http_upstream_vars; v-&gt;name.len; v++) {</span></a>
-<a name="5608"><span class="lineNum">    5608 </span><span class="lineCov">        308 :         var = ngx_http_add_variable(cf, &amp;v-&gt;name, v-&gt;flags);</span></a>
-<a name="5609"><span class="lineNum">    5609 </span><span class="lineCov">        308 :         if (var == NULL) {</span></a>
+<a name="5607"><span class="lineNum">    5607 </span><span class="lineCov">        576 :     for (v = ngx_http_upstream_vars; v-&gt;name.len; v++) {</span></a>
+<a name="5608"><span class="lineNum">    5608 </span><span class="lineCov">        528 :         var = ngx_http_add_variable(cf, &amp;v-&gt;name, v-&gt;flags);</span></a>
+<a name="5609"><span class="lineNum">    5609 </span><span class="lineCov">        528 :         if (var == NULL) {</span></a>
 <a name="5610"><span class="lineNum">    5610 </span><span class="lineNoCov">          0 :             return NGX_ERROR;</span></a>
 <a name="5611"><span class="lineNum">    5611 </span>            :         }</a>
 <a name="5612"><span class="lineNum">    5612 </span>            : </a>
-<a name="5613"><span class="lineNum">    5613 </span><span class="lineCov">        308 :         var-&gt;get_handler = v-&gt;get_handler;</span></a>
-<a name="5614"><span class="lineNum">    5614 </span><span class="lineCov">        308 :         var-&gt;data = v-&gt;data;</span></a>
+<a name="5613"><span class="lineNum">    5613 </span><span class="lineCov">        528 :         var-&gt;get_handler = v-&gt;get_handler;</span></a>
+<a name="5614"><span class="lineNum">    5614 </span><span class="lineCov">        528 :         var-&gt;data = v-&gt;data;</span></a>
 <a name="5615"><span class="lineNum">    5615 </span>            :     }</a>
 <a name="5616"><span class="lineNum">    5616 </span>            : </a>
-<a name="5617"><span class="lineNum">    5617 </span><span class="lineCov">         22 :     return NGX_OK;</span></a>
+<a name="5617"><span class="lineNum">    5617 </span><span class="lineCov">         48 :     return NGX_OK;</span></a>
 <a name="5618"><span class="lineNum">    5618 </span>            : }</a>
 <a name="5619"><span class="lineNum">    5619 </span>            : </a>
 <a name="5620"><span class="lineNum">    5620 </span>            : </a>
@@ -6030,78 +6030,78 @@
 <a name="5968"><span class="lineNum">    5968 </span>            : #if (NGX_HTTP_CACHE)</a>
 <a name="5969"><span class="lineNum">    5969 </span>            : </a>
 <a name="5970"><span class="lineNum">    5970 </span>            : static ngx_int_t</a>
-<a name="5971"><span class="lineNum">    5971 </span><span class="lineNoCov">          0 : ngx_http_upstream_cache_status(ngx_http_request_t *r,</span></a>
+<a name="5971"><span class="lineNum">    5971 </span>            : ngx_http_upstream_cache_status(ngx_http_request_t *r,</a>
 <a name="5972"><span class="lineNum">    5972 </span>            :     ngx_http_variable_value_t *v, uintptr_t data)</a>
 <a name="5973"><span class="lineNum">    5973 </span>            : {</a>
 <a name="5974"><span class="lineNum">    5974 </span>            :     ngx_uint_t  n;</a>
 <a name="5975"><span class="lineNum">    5975 </span>            : </a>
-<a name="5976"><span class="lineNum">    5976 </span><span class="lineNoCov">          0 :     if (r-&gt;upstream == NULL || r-&gt;upstream-&gt;cache_status == 0) {</span></a>
-<a name="5977"><span class="lineNum">    5977 </span><span class="lineNoCov">          0 :         v-&gt;not_found = 1;</span></a>
-<a name="5978"><span class="lineNum">    5978 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
+<a name="5976"><span class="lineNum">    5976 </span>            :     if (r-&gt;upstream == NULL || r-&gt;upstream-&gt;cache_status == 0) {</a>
+<a name="5977"><span class="lineNum">    5977 </span>            :         v-&gt;not_found = 1;</a>
+<a name="5978"><span class="lineNum">    5978 </span>            :         return NGX_OK;</a>
 <a name="5979"><span class="lineNum">    5979 </span>            :     }</a>
 <a name="5980"><span class="lineNum">    5980 </span>            : </a>
-<a name="5981"><span class="lineNum">    5981 </span><span class="lineNoCov">          0 :     n = r-&gt;upstream-&gt;cache_status - 1;</span></a>
+<a name="5981"><span class="lineNum">    5981 </span>            :     n = r-&gt;upstream-&gt;cache_status - 1;</a>
 <a name="5982"><span class="lineNum">    5982 </span>            : </a>
-<a name="5983"><span class="lineNum">    5983 </span><span class="lineNoCov">          0 :     v-&gt;valid = 1;</span></a>
-<a name="5984"><span class="lineNum">    5984 </span><span class="lineNoCov">          0 :     v-&gt;no_cacheable = 0;</span></a>
-<a name="5985"><span class="lineNum">    5985 </span><span class="lineNoCov">          0 :     v-&gt;not_found = 0;</span></a>
-<a name="5986"><span class="lineNum">    5986 </span><span class="lineNoCov">          0 :     v-&gt;len = ngx_http_cache_status[n].len;</span></a>
-<a name="5987"><span class="lineNum">    5987 </span><span class="lineNoCov">          0 :     v-&gt;data = ngx_http_cache_status[n].data;</span></a>
+<a name="5983"><span class="lineNum">    5983 </span>            :     v-&gt;valid = 1;</a>
+<a name="5984"><span class="lineNum">    5984 </span>            :     v-&gt;no_cacheable = 0;</a>
+<a name="5985"><span class="lineNum">    5985 </span>            :     v-&gt;not_found = 0;</a>
+<a name="5986"><span class="lineNum">    5986 </span>            :     v-&gt;len = ngx_http_cache_status[n].len;</a>
+<a name="5987"><span class="lineNum">    5987 </span>            :     v-&gt;data = ngx_http_cache_status[n].data;</a>
 <a name="5988"><span class="lineNum">    5988 </span>            : </a>
-<a name="5989"><span class="lineNum">    5989 </span><span class="lineNoCov">          0 :     return NGX_OK;</span></a>
+<a name="5989"><span class="lineNum">    5989 </span>            :     return NGX_OK;</a>
 <a name="5990"><span class="lineNum">    5990 </span>            : }</a>
 <a name="5991"><span class="lineNum">    5991 </span>            : </a>
 <a name="5992"><span class="lineNum">    5992 </span>            : </a>
 <a name="5993"><span class="lineNum">    5993 </span>            : static ngx_int_t</a>
-<a name="5994"><span class="lineNum">    5994 </span><span class="lineNoCov">          0 : ngx_http_upstream_cache_last_modified(ngx_http_request_t *r,</span></a>
+<a name="5994"><span class="lineNum">    5994 </span>            : ngx_http_upstream_cache_last_modified(ngx_http_request_t *r,</a>
 <a name="5995"><span class="lineNum">    5995 </span>            :     ngx_http_variable_value_t *v, uintptr_t data)</a>
 <a name="5996"><span class="lineNum">    5996 </span>            : {</a>
 <a name="5997"><span class="lineNum">    5997 </span>            :     u_char  *p;</a>
 <a name="5998"><span class="lineNum">    5998 </span>            : </a>
-<a name="5999"><span class="lineNum">    5999 </span><span class="lineNoCov">          0 :     if (r-&gt;upstream == NULL</span></a>
-<a name="6000"><span class="lineNum">    6000 </span><span class="lineNoCov">          0 :         || !r-&gt;upstream-&gt;conf-&gt;cache_revalidate</span></a>
-<a name="6001"><span class="lineNum">    6001 </span><span class="lineNoCov">          0 :         || r-&gt;upstream-&gt;cache_status != NGX_HTTP_CACHE_EXPIRED</span></a>
-<a name="6002"><span class="lineNum">    6002 </span><span class="lineNoCov">          0 :         || r-&gt;cache-&gt;last_modified == -1)</span></a>
+<a name="5999"><span class="lineNum">    5999 </span>            :     if (r-&gt;upstream == NULL</a>
+<a name="6000"><span class="lineNum">    6000 </span>            :         || !r-&gt;upstream-&gt;conf-&gt;cache_revalidate</a>
+<a name="6001"><span class="lineNum">    6001 </span>            :         || r-&gt;upstream-&gt;cache_status != NGX_HTTP_CACHE_EXPIRED</a>
+<a name="6002"><span class="lineNum">    6002 </span>            :         || r-&gt;cache-&gt;last_modified == -1)</a>
 <a name="6003"><span class="lineNum">    6003 </span>            :     {</a>
-<a name="6004"><span class="lineNum">    6004 </span><span class="lineNoCov">          0 :         v-&gt;not_found = 1;</span></a>
-<a name="6005"><span class="lineNum">    6005 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
+<a name="6004"><span class="lineNum">    6004 </span>            :         v-&gt;not_found = 1;</a>
+<a name="6005"><span class="lineNum">    6005 </span>            :         return NGX_OK;</a>
 <a name="6006"><span class="lineNum">    6006 </span>            :     }</a>
 <a name="6007"><span class="lineNum">    6007 </span>            : </a>
-<a name="6008"><span class="lineNum">    6008 </span><span class="lineNoCov">          0 :     p = ngx_pnalloc(r-&gt;pool, sizeof(&quot;Mon, 28 Sep 1970 06:00:00 GMT&quot;) - 1);</span></a>
-<a name="6009"><span class="lineNum">    6009 </span><span class="lineNoCov">          0 :     if (p == NULL) {</span></a>
-<a name="6010"><span class="lineNum">    6010 </span><span class="lineNoCov">          0 :         return NGX_ERROR;</span></a>
+<a name="6008"><span class="lineNum">    6008 </span>            :     p = ngx_pnalloc(r-&gt;pool, sizeof(&quot;Mon, 28 Sep 1970 06:00:00 GMT&quot;) - 1);</a>
+<a name="6009"><span class="lineNum">    6009 </span>            :     if (p == NULL) {</a>
+<a name="6010"><span class="lineNum">    6010 </span>            :         return NGX_ERROR;</a>
 <a name="6011"><span class="lineNum">    6011 </span>            :     }</a>
 <a name="6012"><span class="lineNum">    6012 </span>            : </a>
-<a name="6013"><span class="lineNum">    6013 </span><span class="lineNoCov">          0 :     v-&gt;len = ngx_http_time(p, r-&gt;cache-&gt;last_modified) - p;</span></a>
-<a name="6014"><span class="lineNum">    6014 </span><span class="lineNoCov">          0 :     v-&gt;valid = 1;</span></a>
-<a name="6015"><span class="lineNum">    6015 </span><span class="lineNoCov">          0 :     v-&gt;no_cacheable = 0;</span></a>
-<a name="6016"><span class="lineNum">    6016 </span><span class="lineNoCov">          0 :     v-&gt;not_found = 0;</span></a>
-<a name="6017"><span class="lineNum">    6017 </span><span class="lineNoCov">          0 :     v-&gt;data = p;</span></a>
+<a name="6013"><span class="lineNum">    6013 </span>            :     v-&gt;len = ngx_http_time(p, r-&gt;cache-&gt;last_modified) - p;</a>
+<a name="6014"><span class="lineNum">    6014 </span>            :     v-&gt;valid = 1;</a>
+<a name="6015"><span class="lineNum">    6015 </span>            :     v-&gt;no_cacheable = 0;</a>
+<a name="6016"><span class="lineNum">    6016 </span>            :     v-&gt;not_found = 0;</a>
+<a name="6017"><span class="lineNum">    6017 </span>            :     v-&gt;data = p;</a>
 <a name="6018"><span class="lineNum">    6018 </span>            : </a>
-<a name="6019"><span class="lineNum">    6019 </span><span class="lineNoCov">          0 :     return NGX_OK;</span></a>
+<a name="6019"><span class="lineNum">    6019 </span>            :     return NGX_OK;</a>
 <a name="6020"><span class="lineNum">    6020 </span>            : }</a>
 <a name="6021"><span class="lineNum">    6021 </span>            : </a>
 <a name="6022"><span class="lineNum">    6022 </span>            : </a>
 <a name="6023"><span class="lineNum">    6023 </span>            : static ngx_int_t</a>
-<a name="6024"><span class="lineNum">    6024 </span><span class="lineNoCov">          0 : ngx_http_upstream_cache_etag(ngx_http_request_t *r,</span></a>
+<a name="6024"><span class="lineNum">    6024 </span>            : ngx_http_upstream_cache_etag(ngx_http_request_t *r,</a>
 <a name="6025"><span class="lineNum">    6025 </span>            :     ngx_http_variable_value_t *v, uintptr_t data)</a>
 <a name="6026"><span class="lineNum">    6026 </span>            : {</a>
-<a name="6027"><span class="lineNum">    6027 </span><span class="lineNoCov">          0 :     if (r-&gt;upstream == NULL</span></a>
-<a name="6028"><span class="lineNum">    6028 </span><span class="lineNoCov">          0 :         || !r-&gt;upstream-&gt;conf-&gt;cache_revalidate</span></a>
-<a name="6029"><span class="lineNum">    6029 </span><span class="lineNoCov">          0 :         || r-&gt;upstream-&gt;cache_status != NGX_HTTP_CACHE_EXPIRED</span></a>
-<a name="6030"><span class="lineNum">    6030 </span><span class="lineNoCov">          0 :         || r-&gt;cache-&gt;etag.len == 0)</span></a>
+<a name="6027"><span class="lineNum">    6027 </span>            :     if (r-&gt;upstream == NULL</a>
+<a name="6028"><span class="lineNum">    6028 </span>            :         || !r-&gt;upstream-&gt;conf-&gt;cache_revalidate</a>
+<a name="6029"><span class="lineNum">    6029 </span>            :         || r-&gt;upstream-&gt;cache_status != NGX_HTTP_CACHE_EXPIRED</a>
+<a name="6030"><span class="lineNum">    6030 </span>            :         || r-&gt;cache-&gt;etag.len == 0)</a>
 <a name="6031"><span class="lineNum">    6031 </span>            :     {</a>
-<a name="6032"><span class="lineNum">    6032 </span><span class="lineNoCov">          0 :         v-&gt;not_found = 1;</span></a>
-<a name="6033"><span class="lineNum">    6033 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
+<a name="6032"><span class="lineNum">    6032 </span>            :         v-&gt;not_found = 1;</a>
+<a name="6033"><span class="lineNum">    6033 </span>            :         return NGX_OK;</a>
 <a name="6034"><span class="lineNum">    6034 </span>            :     }</a>
 <a name="6035"><span class="lineNum">    6035 </span>            : </a>
-<a name="6036"><span class="lineNum">    6036 </span><span class="lineNoCov">          0 :     v-&gt;valid = 1;</span></a>
-<a name="6037"><span class="lineNum">    6037 </span><span class="lineNoCov">          0 :     v-&gt;no_cacheable = 0;</span></a>
-<a name="6038"><span class="lineNum">    6038 </span><span class="lineNoCov">          0 :     v-&gt;not_found = 0;</span></a>
-<a name="6039"><span class="lineNum">    6039 </span><span class="lineNoCov">          0 :     v-&gt;len = r-&gt;cache-&gt;etag.len;</span></a>
-<a name="6040"><span class="lineNum">    6040 </span><span class="lineNoCov">          0 :     v-&gt;data = r-&gt;cache-&gt;etag.data;</span></a>
+<a name="6036"><span class="lineNum">    6036 </span>            :     v-&gt;valid = 1;</a>
+<a name="6037"><span class="lineNum">    6037 </span>            :     v-&gt;no_cacheable = 0;</a>
+<a name="6038"><span class="lineNum">    6038 </span>            :     v-&gt;not_found = 0;</a>
+<a name="6039"><span class="lineNum">    6039 </span>            :     v-&gt;len = r-&gt;cache-&gt;etag.len;</a>
+<a name="6040"><span class="lineNum">    6040 </span>            :     v-&gt;data = r-&gt;cache-&gt;etag.data;</a>
 <a name="6041"><span class="lineNum">    6041 </span>            : </a>
-<a name="6042"><span class="lineNum">    6042 </span><span class="lineNoCov">          0 :     return NGX_OK;</span></a>
+<a name="6042"><span class="lineNum">    6042 </span>            :     return NGX_OK;</a>
 <a name="6043"><span class="lineNum">    6043 </span>            : }</a>
 <a name="6044"><span class="lineNum">    6044 </span>            : </a>
 <a name="6045"><span class="lineNum">    6045 </span>            : #endif</a>
@@ -6812,42 +6812,42 @@
 <a name="6750"><span class="lineNum">    6750 </span>            : </a>
 <a name="6751"><span class="lineNum">    6751 </span>            : </a>
 <a name="6752"><span class="lineNum">    6752 </span>            : static void *</a>
-<a name="6753"><span class="lineNum">    6753 </span><span class="lineCov">         22 : ngx_http_upstream_create_main_conf(ngx_conf_t *cf)</span></a>
+<a name="6753"><span class="lineNum">    6753 </span><span class="lineCov">         48 : ngx_http_upstream_create_main_conf(ngx_conf_t *cf)</span></a>
 <a name="6754"><span class="lineNum">    6754 </span>            : {</a>
 <a name="6755"><span class="lineNum">    6755 </span>            :     ngx_http_upstream_main_conf_t  *umcf;</a>
 <a name="6756"><span class="lineNum">    6756 </span>            : </a>
-<a name="6757"><span class="lineNum">    6757 </span><span class="lineCov">         22 :     umcf = ngx_pcalloc(cf-&gt;pool, sizeof(ngx_http_upstream_main_conf_t));</span></a>
-<a name="6758"><span class="lineNum">    6758 </span><span class="lineCov">         22 :     if (umcf == NULL) {</span></a>
+<a name="6757"><span class="lineNum">    6757 </span><span class="lineCov">         48 :     umcf = ngx_pcalloc(cf-&gt;pool, sizeof(ngx_http_upstream_main_conf_t));</span></a>
+<a name="6758"><span class="lineNum">    6758 </span><span class="lineCov">         48 :     if (umcf == NULL) {</span></a>
 <a name="6759"><span class="lineNum">    6759 </span><span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="6760"><span class="lineNum">    6760 </span>            :     }</a>
 <a name="6761"><span class="lineNum">    6761 </span>            : </a>
-<a name="6762"><span class="lineNum">    6762 </span><span class="lineCov">         22 :     if (ngx_array_init(&amp;umcf-&gt;upstreams, cf-&gt;pool, 4,</span></a>
+<a name="6762"><span class="lineNum">    6762 </span><span class="lineCov">         48 :     if (ngx_array_init(&amp;umcf-&gt;upstreams, cf-&gt;pool, 4,</span></a>
 <a name="6763"><span class="lineNum">    6763 </span>            :                        sizeof(ngx_http_upstream_srv_conf_t *))</a>
 <a name="6764"><span class="lineNum">    6764 </span>            :         != NGX_OK)</a>
 <a name="6765"><span class="lineNum">    6765 </span>            :     {</a>
 <a name="6766"><span class="lineNum">    6766 </span><span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="6767"><span class="lineNum">    6767 </span>            :     }</a>
 <a name="6768"><span class="lineNum">    6768 </span>            : </a>
-<a name="6769"><span class="lineNum">    6769 </span><span class="lineCov">         22 :     return umcf;</span></a>
+<a name="6769"><span class="lineNum">    6769 </span><span class="lineCov">         48 :     return umcf;</span></a>
 <a name="6770"><span class="lineNum">    6770 </span>            : }</a>
 <a name="6771"><span class="lineNum">    6771 </span>            : </a>
 <a name="6772"><span class="lineNum">    6772 </span>            : </a>
 <a name="6773"><span class="lineNum">    6773 </span>            : static char *</a>
-<a name="6774"><span class="lineNum">    6774 </span><span class="lineCov">         22 : ngx_http_upstream_init_main_conf(ngx_conf_t *cf, void *conf)</span></a>
+<a name="6774"><span class="lineNum">    6774 </span><span class="lineCov">         48 : ngx_http_upstream_init_main_conf(ngx_conf_t *cf, void *conf)</span></a>
 <a name="6775"><span class="lineNum">    6775 </span>            : {</a>
-<a name="6776"><span class="lineNum">    6776 </span><span class="lineCov">         22 :     ngx_http_upstream_main_conf_t  *umcf = conf;</span></a>
+<a name="6776"><span class="lineNum">    6776 </span><span class="lineCov">         48 :     ngx_http_upstream_main_conf_t  *umcf = conf;</span></a>
 <a name="6777"><span class="lineNum">    6777 </span>            : </a>
 <a name="6778"><span class="lineNum">    6778 </span>            :     ngx_uint_t                      i;</a>
-<a name="6779"><span class="lineNum">    6779 </span><span class="lineCov">         22 :     ngx_array_t                     headers_in;</span></a>
+<a name="6779"><span class="lineNum">    6779 </span><span class="lineCov">         48 :     ngx_array_t                     headers_in;</span></a>
 <a name="6780"><span class="lineNum">    6780 </span>            :     ngx_hash_key_t                 *hk;</a>
-<a name="6781"><span class="lineNum">    6781 </span><span class="lineCov">         22 :     ngx_hash_init_t                 hash;</span></a>
+<a name="6781"><span class="lineNum">    6781 </span><span class="lineCov">         48 :     ngx_hash_init_t                 hash;</span></a>
 <a name="6782"><span class="lineNum">    6782 </span>            :     ngx_http_upstream_init_pt       init;</a>
 <a name="6783"><span class="lineNum">    6783 </span>            :     ngx_http_upstream_header_t     *header;</a>
 <a name="6784"><span class="lineNum">    6784 </span>            :     ngx_http_upstream_srv_conf_t  **uscfp;</a>
 <a name="6785"><span class="lineNum">    6785 </span>            : </a>
-<a name="6786"><span class="lineNum">    6786 </span><span class="lineCov">         22 :     uscfp = umcf-&gt;upstreams.elts;</span></a>
+<a name="6786"><span class="lineNum">    6786 </span><span class="lineCov">         48 :     uscfp = umcf-&gt;upstreams.elts;</span></a>
 <a name="6787"><span class="lineNum">    6787 </span>            : </a>
-<a name="6788"><span class="lineNum">    6788 </span><span class="lineCov">         22 :     for (i = 0; i &lt; umcf-&gt;upstreams.nelts; i++) {</span></a>
+<a name="6788"><span class="lineNum">    6788 </span><span class="lineCov">         48 :     for (i = 0; i &lt; umcf-&gt;upstreams.nelts; i++) {</span></a>
 <a name="6789"><span class="lineNum">    6789 </span>            : </a>
 <a name="6790"><span class="lineNum">    6790 </span><span class="lineNoCov">          0 :         init = uscfp[i]-&gt;peer.init_upstream ? uscfp[i]-&gt;peer.init_upstream:</span></a>
 <a name="6791"><span class="lineNum">    6791 </span>            :                                             ngx_http_upstream_init_round_robin;</a>
@@ -6860,36 +6860,36 @@
 <a name="6798"><span class="lineNum">    6798 </span>            : </a>
 <a name="6799"><span class="lineNum">    6799 </span>            :     /* upstream_headers_in_hash */</a>
 <a name="6800"><span class="lineNum">    6800 </span>            : </a>
-<a name="6801"><span class="lineNum">    6801 </span><span class="lineCov">         22 :     if (ngx_array_init(&amp;headers_in, cf-&gt;temp_pool, 32, sizeof(ngx_hash_key_t))</span></a>
+<a name="6801"><span class="lineNum">    6801 </span><span class="lineCov">         48 :     if (ngx_array_init(&amp;headers_in, cf-&gt;temp_pool, 32, sizeof(ngx_hash_key_t))</span></a>
 <a name="6802"><span class="lineNum">    6802 </span>            :         != NGX_OK)</a>
 <a name="6803"><span class="lineNum">    6803 </span>            :     {</a>
 <a name="6804"><span class="lineNum">    6804 </span><span class="lineNoCov">          0 :         return NGX_CONF_ERROR;</span></a>
 <a name="6805"><span class="lineNum">    6805 </span>            :     }</a>
 <a name="6806"><span class="lineNum">    6806 </span>            : </a>
-<a name="6807"><span class="lineNum">    6807 </span><span class="lineCov">        616 :     for (header = ngx_http_upstream_headers_in; header-&gt;name.len; header++) {</span></a>
-<a name="6808"><span class="lineNum">    6808 </span><span class="lineCov">        594 :         hk = ngx_array_push(&amp;headers_in);</span></a>
-<a name="6809"><span class="lineNum">    6809 </span><span class="lineCov">        594 :         if (hk == NULL) {</span></a>
+<a name="6807"><span class="lineNum">    6807 </span><span class="lineCov">       1344 :     for (header = ngx_http_upstream_headers_in; header-&gt;name.len; header++) {</span></a>
+<a name="6808"><span class="lineNum">    6808 </span><span class="lineCov">       1296 :         hk = ngx_array_push(&amp;headers_in);</span></a>
+<a name="6809"><span class="lineNum">    6809 </span><span class="lineCov">       1296 :         if (hk == NULL) {</span></a>
 <a name="6810"><span class="lineNum">    6810 </span><span class="lineNoCov">          0 :             return NGX_CONF_ERROR;</span></a>
 <a name="6811"><span class="lineNum">    6811 </span>            :         }</a>
 <a name="6812"><span class="lineNum">    6812 </span>            : </a>
-<a name="6813"><span class="lineNum">    6813 </span><span class="lineCov">        594 :         hk-&gt;key = header-&gt;name;</span></a>
-<a name="6814"><span class="lineNum">    6814 </span><span class="lineCov">        594 :         hk-&gt;key_hash = ngx_hash_key_lc(header-&gt;name.data, header-&gt;name.len);</span></a>
-<a name="6815"><span class="lineNum">    6815 </span><span class="lineCov">        594 :         hk-&gt;value = header;</span></a>
+<a name="6813"><span class="lineNum">    6813 </span><span class="lineCov">       1296 :         hk-&gt;key = header-&gt;name;</span></a>
+<a name="6814"><span class="lineNum">    6814 </span><span class="lineCov">       1296 :         hk-&gt;key_hash = ngx_hash_key_lc(header-&gt;name.data, header-&gt;name.len);</span></a>
+<a name="6815"><span class="lineNum">    6815 </span><span class="lineCov">       1296 :         hk-&gt;value = header;</span></a>
 <a name="6816"><span class="lineNum">    6816 </span>            :     }</a>
 <a name="6817"><span class="lineNum">    6817 </span>            : </a>
-<a name="6818"><span class="lineNum">    6818 </span><span class="lineCov">         22 :     hash.hash = &amp;umcf-&gt;headers_in_hash;</span></a>
-<a name="6819"><span class="lineNum">    6819 </span><span class="lineCov">         22 :     hash.key = ngx_hash_key_lc;</span></a>
-<a name="6820"><span class="lineNum">    6820 </span><span class="lineCov">         22 :     hash.max_size = 512;</span></a>
-<a name="6821"><span class="lineNum">    6821 </span><span class="lineCov">         22 :     hash.bucket_size = ngx_align(64, ngx_cacheline_size);</span></a>
-<a name="6822"><span class="lineNum">    6822 </span><span class="lineCov">         22 :     hash.name = &quot;upstream_headers_in_hash&quot;;</span></a>
-<a name="6823"><span class="lineNum">    6823 </span><span class="lineCov">         22 :     hash.pool = cf-&gt;pool;</span></a>
-<a name="6824"><span class="lineNum">    6824 </span><span class="lineCov">         22 :     hash.temp_pool = NULL;</span></a>
+<a name="6818"><span class="lineNum">    6818 </span><span class="lineCov">         48 :     hash.hash = &amp;umcf-&gt;headers_in_hash;</span></a>
+<a name="6819"><span class="lineNum">    6819 </span><span class="lineCov">         48 :     hash.key = ngx_hash_key_lc;</span></a>
+<a name="6820"><span class="lineNum">    6820 </span><span class="lineCov">         48 :     hash.max_size = 512;</span></a>
+<a name="6821"><span class="lineNum">    6821 </span><span class="lineCov">         48 :     hash.bucket_size = ngx_align(64, ngx_cacheline_size);</span></a>
+<a name="6822"><span class="lineNum">    6822 </span><span class="lineCov">         48 :     hash.name = &quot;upstream_headers_in_hash&quot;;</span></a>
+<a name="6823"><span class="lineNum">    6823 </span><span class="lineCov">         48 :     hash.pool = cf-&gt;pool;</span></a>
+<a name="6824"><span class="lineNum">    6824 </span><span class="lineCov">         48 :     hash.temp_pool = NULL;</span></a>
 <a name="6825"><span class="lineNum">    6825 </span>            : </a>
-<a name="6826"><span class="lineNum">    6826 </span><span class="lineCov">         22 :     if (ngx_hash_init(&amp;hash, headers_in.elts, headers_in.nelts) != NGX_OK) {</span></a>
+<a name="6826"><span class="lineNum">    6826 </span><span class="lineCov">         48 :     if (ngx_hash_init(&amp;hash, headers_in.elts, headers_in.nelts) != NGX_OK) {</span></a>
 <a name="6827"><span class="lineNum">    6827 </span><span class="lineNoCov">          0 :         return NGX_CONF_ERROR;</span></a>
 <a name="6828"><span class="lineNum">    6828 </span>            :     }</a>
 <a name="6829"><span class="lineNum">    6829 </span>            : </a>
-<a name="6830"><span class="lineNum">    6830 </span><span class="lineCov">         22 :     return NGX_CONF_OK;</span></a>
+<a name="6830"><span class="lineNum">    6830 </span><span class="lineCov">         48 :     return NGX_CONF_OK;</span></a>
 <a name="6831"><span class="lineNum">    6831 </span>            : }</a>
 </pre>
       </td>

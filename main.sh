@@ -43,6 +43,7 @@ rm -rf "${sanitizer_log:?}"
 
 mkdir "${report_dir:?}"
 mkdir "${test_result_dir:?}"
+mkdir "${sanitizer_log:?}"
 
 if [ "$DEFAULT_HTTP_PORT" = '' ]; then
   echo "DEFAULT_HTTP_PORT not set"
@@ -77,6 +78,7 @@ echo "configuring dbg with prefix=${prefix}"
 --build=nginx-dbg \
 --builddir=./target/ \
 --with-debug \
+--with-http_v2_module \
 --without-http_charset_module \
 --without-http_gzip_module \
 --without-http_ssi_module \
@@ -105,7 +107,9 @@ echo "configuring dbg with prefix=${prefix}"
 --without-http_upstream_random_module \
 --without-http_upstream_keepalive_module \
 --without-http_upstream_zone_module \
- \
+\
+--without-http-cache \
+\
 --without-mail_pop3_module \
 --without-mail_imap_module \
 --without-mail_smtp_module \
@@ -153,16 +157,19 @@ done
   #невозможно (скажем, память, выделенную под какой-нибудь environ,
   #освобождать нельзя, она используется при выходе). Хорошее решение -
   #выключить leak sanitizer и забыть.
+# 3. Дополнительной проверки на вывод sanitizer не требуется, т.к. если встретится ошибка,
+# то при вызове nginx будет возвращен код ошибки - команда не будет выполнена успешно
+export ASAN_OPTIONS="detect_leaks=0:log_path=./target/nginx:verbosity=1"
 
-#export ASAN_OPTIONS="log_path=${sanitizer_log}/log "
-export ASAN_OPTIONS="log_path=${sanitizer_log}/log detect_leaks=0 "
+./target/nginx -t || {
+    echo "failed to start nginx. conf file" 1>&2
+    exit 1
+}
 
 ./target/nginx || {
     echo "failed to start nginx. no result generated" 1>&2
     exit 1
 }
-
-# java maven
 
 cd "$JAVA_TEST_DIR"
 mvn clean || result=$(($?))
@@ -180,6 +187,7 @@ fi
 cd "$coverage_dir"
 echo "stopping nginx"
 ./target/nginx -s quit
+mv ./target/log* "${sanitizer_log}"
 
 echo "processing results"
 

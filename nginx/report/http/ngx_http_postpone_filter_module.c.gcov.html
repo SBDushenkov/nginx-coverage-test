@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-21 14:56:56</td>
+            <td class="headerValue">2024-10-22 11:54:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -114,21 +114,21 @@
 <a name="52"><span class="lineNum">      52 </span>            : </a>
 <a name="53"><span class="lineNum">      53 </span>            : </a>
 <a name="54"><span class="lineNum">      54 </span>            : static ngx_int_t</a>
-<a name="55"><span class="lineNum">      55 </span><span class="lineCov">         22 : ngx_http_postpone_filter(ngx_http_request_t *r, ngx_chain_t *in)</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">         23 : ngx_http_postpone_filter(ngx_http_request_t *r, ngx_chain_t *in)</span></a>
 <a name="56"><span class="lineNum">      56 </span>            : {</a>
 <a name="57"><span class="lineNum">      57 </span>            :     ngx_connection_t              *c;</a>
 <a name="58"><span class="lineNum">      58 </span>            :     ngx_http_postponed_request_t  *pr;</a>
 <a name="59"><span class="lineNum">      59 </span>            : </a>
-<a name="60"><span class="lineNum">      60 </span><span class="lineCov">         22 :     c = r-&gt;connection;</span></a>
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">         23 :     c = r-&gt;connection;</span></a>
 <a name="61"><span class="lineNum">      61 </span>            : </a>
-<a name="62"><span class="lineNum">      62 </span><span class="lineCov">         22 :     ngx_log_debug3(NGX_LOG_DEBUG_HTTP, c-&gt;log, 0,</span></a>
+<a name="62"><span class="lineNum">      62 </span><span class="lineCov">         23 :     ngx_log_debug3(NGX_LOG_DEBUG_HTTP, c-&gt;log, 0,</span></a>
 <a name="63"><span class="lineNum">      63 </span>            :                    &quot;http postpone filter \&quot;%V?%V\&quot; %p&quot;, &amp;r-&gt;uri, &amp;r-&gt;args, in);</a>
 <a name="64"><span class="lineNum">      64 </span>            : </a>
-<a name="65"><span class="lineNum">      65 </span><span class="lineCov">         22 :     if (r-&gt;subrequest_in_memory) {</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">         23 :     if (r-&gt;subrequest_in_memory) {</span></a>
 <a name="66"><span class="lineNum">      66 </span><span class="lineNoCov">          0 :         return ngx_http_postpone_filter_in_memory(r, in);</span></a>
 <a name="67"><span class="lineNum">      67 </span>            :     }</a>
 <a name="68"><span class="lineNum">      68 </span>            : </a>
-<a name="69"><span class="lineNum">      69 </span><span class="lineCov">         22 :     if (r != c-&gt;data) {</span></a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">         23 :     if (r != c-&gt;data) {</span></a>
 <a name="70"><span class="lineNum">      70 </span>            : </a>
 <a name="71"><span class="lineNum">      71 </span><span class="lineNoCov">          0 :         if (in) {</span></a>
 <a name="72"><span class="lineNum">      72 </span><span class="lineNoCov">          0 :             if (ngx_http_postpone_filter_add(r, in) != NGX_OK) {</span></a>
@@ -147,10 +147,10 @@
 <a name="85"><span class="lineNum">      85 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
 <a name="86"><span class="lineNum">      86 </span>            :     }</a>
 <a name="87"><span class="lineNum">      87 </span>            : </a>
-<a name="88"><span class="lineNum">      88 </span><span class="lineCov">         22 :     if (r-&gt;postponed == NULL) {</span></a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">         23 :     if (r-&gt;postponed == NULL) {</span></a>
 <a name="89"><span class="lineNum">      89 </span>            : </a>
-<a name="90"><span class="lineNum">      90 </span><span class="lineCov">         22 :         if (in || c-&gt;buffered) {</span></a>
-<a name="91"><span class="lineNum">      91 </span><span class="lineCov">         22 :             return ngx_http_next_body_filter(r-&gt;main, in);</span></a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">         23 :         if (in || c-&gt;buffered) {</span></a>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">         23 :             return ngx_http_next_body_filter(r-&gt;main, in);</span></a>
 <a name="92"><span class="lineNum">      92 </span>            :         }</a>
 <a name="93"><span class="lineNum">      93 </span>            : </a>
 <a name="94"><span class="lineNum">      94 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
@@ -312,12 +312,12 @@
 <a name="250"><span class="lineNum">     250 </span>            : </a>
 <a name="251"><span class="lineNum">     251 </span>            : </a>
 <a name="252"><span class="lineNum">     252 </span>            : static ngx_int_t</a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineCov">         22 : ngx_http_postpone_filter_init(ngx_conf_t *cf)</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">         48 : ngx_http_postpone_filter_init(ngx_conf_t *cf)</span></a>
 <a name="254"><span class="lineNum">     254 </span>            : {</a>
-<a name="255"><span class="lineNum">     255 </span><span class="lineCov">         22 :     ngx_http_next_body_filter = ngx_http_top_body_filter;</span></a>
-<a name="256"><span class="lineNum">     256 </span><span class="lineCov">         22 :     ngx_http_top_body_filter = ngx_http_postpone_filter;</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">         48 :     ngx_http_next_body_filter = ngx_http_top_body_filter;</span></a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineCov">         48 :     ngx_http_top_body_filter = ngx_http_postpone_filter;</span></a>
 <a name="257"><span class="lineNum">     257 </span>            : </a>
-<a name="258"><span class="lineNum">     258 </span><span class="lineCov">         22 :     return NGX_OK;</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineCov">         48 :     return NGX_OK;</span></a>
 <a name="259"><span class="lineNum">     259 </span>            : }</a>
 </pre>
       </td>

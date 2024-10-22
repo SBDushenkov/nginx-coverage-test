@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-21 14:56:56</td>
+            <td class="headerValue">2024-10-22 11:54:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">6</td>
@@ -146,24 +146,24 @@
 <a name="84"><span class="lineNum">      84 </span>            : </a>
 <a name="85"><span class="lineNum">      85 </span>            : </a>
 <a name="86"><span class="lineNum">      86 </span>            : ngx_pid_t</a>
-<a name="87"><span class="lineNum">      87 </span><span class="lineCov">          7 : ngx_spawn_process(ngx_cycle_t *cycle, ngx_spawn_proc_pt proc, void *data,</span></a>
+<a name="87"><span class="lineNum">      87 </span><span class="lineCov">         16 : ngx_spawn_process(ngx_cycle_t *cycle, ngx_spawn_proc_pt proc, void *data,</span></a>
 <a name="88"><span class="lineNum">      88 </span>            :     char *name, ngx_int_t respawn)</a>
 <a name="89"><span class="lineNum">      89 </span>            : {</a>
-<a name="90"><span class="lineNum">      90 </span><span class="lineCov">          7 :     u_long     on;</span></a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">         16 :     u_long     on;</span></a>
 <a name="91"><span class="lineNum">      91 </span>            :     ngx_pid_t  pid;</a>
 <a name="92"><span class="lineNum">      92 </span>            :     ngx_int_t  s;</a>
 <a name="93"><span class="lineNum">      93 </span>            : </a>
-<a name="94"><span class="lineNum">      94 </span><span class="lineCov">          7 :     if (respawn &gt;= 0) {</span></a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">         16 :     if (respawn &gt;= 0) {</span></a>
 <a name="95"><span class="lineNum">      95 </span><span class="lineNoCov">          0 :         s = respawn;</span></a>
 <a name="96"><span class="lineNum">      96 </span>            : </a>
 <a name="97"><span class="lineNum">      97 </span>            :     } else {</a>
-<a name="98"><span class="lineNum">      98 </span><span class="lineCov">         13 :         for (s = 0; s &lt; ngx_last_process; s++) {</span></a>
-<a name="99"><span class="lineNum">      99 </span><span class="lineCov">          9 :             if (ngx_processes[s].pid == -1) {</span></a>
-<a name="100"><span class="lineNum">     100 </span><span class="lineCov">          3 :                 break;</span></a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineCov">         24 :         for (s = 0; s &lt; ngx_last_process; s++) {</span></a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">         15 :             if (ngx_processes[s].pid == -1) {</span></a>
+<a name="100"><span class="lineNum">     100 </span><span class="lineCov">          7 :                 break;</span></a>
 <a name="101"><span class="lineNum">     101 </span>            :             }</a>
 <a name="102"><span class="lineNum">     102 </span>            :         }</a>
 <a name="103"><span class="lineNum">     103 </span>            : </a>
-<a name="104"><span class="lineNum">     104 </span><span class="lineCov">          7 :         if (s == NGX_MAX_PROCESSES) {</span></a>
+<a name="104"><span class="lineNum">     104 </span><span class="lineCov">         16 :         if (s == NGX_MAX_PROCESSES) {</span></a>
 <a name="105"><span class="lineNum">     105 </span><span class="lineNoCov">          0 :             ngx_log_error(NGX_LOG_ALERT, cycle-&gt;log, 0,</span></a>
 <a name="106"><span class="lineNum">     106 </span>            :                           &quot;no more than %d processes can be spawned&quot;,</a>
 <a name="107"><span class="lineNum">     107 </span>            :                           NGX_MAX_PROCESSES);</a>
@@ -172,23 +172,23 @@
 <a name="110"><span class="lineNum">     110 </span>            :     }</a>
 <a name="111"><span class="lineNum">     111 </span>            : </a>
 <a name="112"><span class="lineNum">     112 </span>            : </a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          7 :     if (respawn != NGX_PROCESS_DETACHED) {</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">         16 :     if (respawn != NGX_PROCESS_DETACHED) {</span></a>
 <a name="114"><span class="lineNum">     114 </span>            : </a>
 <a name="115"><span class="lineNum">     115 </span>            :         /* Solaris 9 still has no AF_LOCAL */</a>
 <a name="116"><span class="lineNum">     116 </span>            : </a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">          7 :         if (socketpair(AF_UNIX, SOCK_STREAM, 0, ngx_processes[s].channel) == -1)</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">         16 :         if (socketpair(AF_UNIX, SOCK_STREAM, 0, ngx_processes[s].channel) == -1)</span></a>
 <a name="118"><span class="lineNum">     118 </span>            :         {</a>
 <a name="119"><span class="lineNum">     119 </span><span class="lineNoCov">          0 :             ngx_log_error(NGX_LOG_ALERT, cycle-&gt;log, ngx_errno,</span></a>
 <a name="120"><span class="lineNum">     120 </span>            :                           &quot;socketpair() failed while spawning \&quot;%s\&quot;&quot;, name);</a>
 <a name="121"><span class="lineNum">     121 </span><span class="lineNoCov">          0 :             return NGX_INVALID_PID;</span></a>
 <a name="122"><span class="lineNum">     122 </span>            :         }</a>
 <a name="123"><span class="lineNum">     123 </span>            : </a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">          7 :         ngx_log_debug2(NGX_LOG_DEBUG_CORE, cycle-&gt;log, 0,</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">         16 :         ngx_log_debug2(NGX_LOG_DEBUG_CORE, cycle-&gt;log, 0,</span></a>
 <a name="125"><span class="lineNum">     125 </span>            :                        &quot;channel %d:%d&quot;,</a>
 <a name="126"><span class="lineNum">     126 </span>            :                        ngx_processes[s].channel[0],</a>
 <a name="127"><span class="lineNum">     127 </span>            :                        ngx_processes[s].channel[1]);</a>
 <a name="128"><span class="lineNum">     128 </span>            : </a>
-<a name="129"><span class="lineNum">     129 </span><span class="lineCov">          7 :         if (ngx_nonblocking(ngx_processes[s].channel[0]) == -1) {</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">         16 :         if (ngx_nonblocking(ngx_processes[s].channel[0]) == -1) {</span></a>
 <a name="130"><span class="lineNum">     130 </span><span class="lineNoCov">          0 :             ngx_log_error(NGX_LOG_ALERT, cycle-&gt;log, ngx_errno,</span></a>
 <a name="131"><span class="lineNum">     131 </span>            :                           ngx_nonblocking_n &quot; failed while spawning \&quot;%s\&quot;&quot;,</a>
 <a name="132"><span class="lineNum">     132 </span>            :                           name);</a>
@@ -196,7 +196,7 @@
 <a name="134"><span class="lineNum">     134 </span><span class="lineNoCov">          0 :             return NGX_INVALID_PID;</span></a>
 <a name="135"><span class="lineNum">     135 </span>            :         }</a>
 <a name="136"><span class="lineNum">     136 </span>            : </a>
-<a name="137"><span class="lineNum">     137 </span><span class="lineCov">          7 :         if (ngx_nonblocking(ngx_processes[s].channel[1]) == -1) {</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">         16 :         if (ngx_nonblocking(ngx_processes[s].channel[1]) == -1) {</span></a>
 <a name="138"><span class="lineNum">     138 </span><span class="lineNoCov">          0 :             ngx_log_error(NGX_LOG_ALERT, cycle-&gt;log, ngx_errno,</span></a>
 <a name="139"><span class="lineNum">     139 </span>            :                           ngx_nonblocking_n &quot; failed while spawning \&quot;%s\&quot;&quot;,</a>
 <a name="140"><span class="lineNum">     140 </span>            :                           name);</a>
@@ -204,22 +204,22 @@
 <a name="142"><span class="lineNum">     142 </span><span class="lineNoCov">          0 :             return NGX_INVALID_PID;</span></a>
 <a name="143"><span class="lineNum">     143 </span>            :         }</a>
 <a name="144"><span class="lineNum">     144 </span>            : </a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">          7 :         on = 1;</span></a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">          7 :         if (ioctl(ngx_processes[s].channel[0], FIOASYNC, &amp;on) == -1) {</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">         16 :         on = 1;</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">         16 :         if (ioctl(ngx_processes[s].channel[0], FIOASYNC, &amp;on) == -1) {</span></a>
 <a name="147"><span class="lineNum">     147 </span><span class="lineNoCov">          0 :             ngx_log_error(NGX_LOG_ALERT, cycle-&gt;log, ngx_errno,</span></a>
 <a name="148"><span class="lineNum">     148 </span>            :                           &quot;ioctl(FIOASYNC) failed while spawning \&quot;%s\&quot;&quot;, name);</a>
 <a name="149"><span class="lineNum">     149 </span><span class="lineNoCov">          0 :             ngx_close_channel(ngx_processes[s].channel, cycle-&gt;log);</span></a>
 <a name="150"><span class="lineNum">     150 </span><span class="lineNoCov">          0 :             return NGX_INVALID_PID;</span></a>
 <a name="151"><span class="lineNum">     151 </span>            :         }</a>
 <a name="152"><span class="lineNum">     152 </span>            : </a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">          7 :         if (fcntl(ngx_processes[s].channel[0], F_SETOWN, ngx_pid) == -1) {</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">         16 :         if (fcntl(ngx_processes[s].channel[0], F_SETOWN, ngx_pid) == -1) {</span></a>
 <a name="154"><span class="lineNum">     154 </span><span class="lineNoCov">          0 :             ngx_log_error(NGX_LOG_ALERT, cycle-&gt;log, ngx_errno,</span></a>
 <a name="155"><span class="lineNum">     155 </span>            :                           &quot;fcntl(F_SETOWN) failed while spawning \&quot;%s\&quot;&quot;, name);</a>
 <a name="156"><span class="lineNum">     156 </span><span class="lineNoCov">          0 :             ngx_close_channel(ngx_processes[s].channel, cycle-&gt;log);</span></a>
 <a name="157"><span class="lineNum">     157 </span><span class="lineNoCov">          0 :             return NGX_INVALID_PID;</span></a>
 <a name="158"><span class="lineNum">     158 </span>            :         }</a>
 <a name="159"><span class="lineNum">     159 </span>            : </a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">          7 :         if (fcntl(ngx_processes[s].channel[0], F_SETFD, FD_CLOEXEC) == -1) {</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">         16 :         if (fcntl(ngx_processes[s].channel[0], F_SETFD, FD_CLOEXEC) == -1) {</span></a>
 <a name="161"><span class="lineNum">     161 </span><span class="lineNoCov">          0 :             ngx_log_error(NGX_LOG_ALERT, cycle-&gt;log, ngx_errno,</span></a>
 <a name="162"><span class="lineNum">     162 </span>            :                           &quot;fcntl(FD_CLOEXEC) failed while spawning \&quot;%s\&quot;&quot;,</a>
 <a name="163"><span class="lineNum">     163 </span>            :                            name);</a>
@@ -227,7 +227,7 @@
 <a name="165"><span class="lineNum">     165 </span><span class="lineNoCov">          0 :             return NGX_INVALID_PID;</span></a>
 <a name="166"><span class="lineNum">     166 </span>            :         }</a>
 <a name="167"><span class="lineNum">     167 </span>            : </a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">          7 :         if (fcntl(ngx_processes[s].channel[1], F_SETFD, FD_CLOEXEC) == -1) {</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">         16 :         if (fcntl(ngx_processes[s].channel[1], F_SETFD, FD_CLOEXEC) == -1) {</span></a>
 <a name="169"><span class="lineNum">     169 </span><span class="lineNoCov">          0 :             ngx_log_error(NGX_LOG_ALERT, cycle-&gt;log, ngx_errno,</span></a>
 <a name="170"><span class="lineNum">     170 </span>            :                           &quot;fcntl(FD_CLOEXEC) failed while spawning \&quot;%s\&quot;&quot;,</a>
 <a name="171"><span class="lineNum">     171 </span>            :                            name);</a>
@@ -235,19 +235,19 @@
 <a name="173"><span class="lineNum">     173 </span><span class="lineNoCov">          0 :             return NGX_INVALID_PID;</span></a>
 <a name="174"><span class="lineNum">     174 </span>            :         }</a>
 <a name="175"><span class="lineNum">     175 </span>            : </a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">          7 :         ngx_channel = ngx_processes[s].channel[1];</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">         16 :         ngx_channel = ngx_processes[s].channel[1];</span></a>
 <a name="177"><span class="lineNum">     177 </span>            : </a>
 <a name="178"><span class="lineNum">     178 </span>            :     } else {</a>
 <a name="179"><span class="lineNum">     179 </span><span class="lineNoCov">          0 :         ngx_processes[s].channel[0] = -1;</span></a>
 <a name="180"><span class="lineNum">     180 </span><span class="lineNoCov">          0 :         ngx_processes[s].channel[1] = -1;</span></a>
 <a name="181"><span class="lineNum">     181 </span>            :     }</a>
 <a name="182"><span class="lineNum">     182 </span>            : </a>
-<a name="183"><span class="lineNum">     183 </span><span class="lineCov">          7 :     ngx_process_slot = s;</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">         16 :     ngx_process_slot = s;</span></a>
 <a name="184"><span class="lineNum">     184 </span>            : </a>
 <a name="185"><span class="lineNum">     185 </span>            : </a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          7 :     pid = fork();</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">         16 :     pid = fork();</span></a>
 <a name="187"><span class="lineNum">     187 </span>            : </a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">         14 :     switch (pid) {</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">         32 :     switch (pid) {</span></a>
 <a name="189"><span class="lineNum">     189 </span>            : </a>
 <a name="190"><span class="lineNum">     190 </span><span class="lineNoCov">          0 :     case -1:</span></a>
 <a name="191"><span class="lineNum">     191 </span><span class="lineNoCov">          0 :         ngx_log_error(NGX_LOG_ALERT, cycle-&gt;log, ngx_errno,</span></a>
@@ -255,31 +255,31 @@
 <a name="193"><span class="lineNum">     193 </span><span class="lineNoCov">          0 :         ngx_close_channel(ngx_processes[s].channel, cycle-&gt;log);</span></a>
 <a name="194"><span class="lineNum">     194 </span><span class="lineNoCov">          0 :         return NGX_INVALID_PID;</span></a>
 <a name="195"><span class="lineNum">     195 </span>            : </a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineCov">          7 :     case 0:</span></a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">          7 :         ngx_parent = ngx_pid;</span></a>
-<a name="198"><span class="lineNum">     198 </span><span class="lineCov">          7 :         ngx_pid = ngx_getpid();</span></a>
-<a name="199"><span class="lineNum">     199 </span><span class="lineCov">          7 :         proc(cycle, data);</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineCov">         16 :     case 0:</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">         16 :         ngx_parent = ngx_pid;</span></a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">         16 :         ngx_pid = ngx_getpid();</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">         16 :         proc(cycle, data);</span></a>
 <a name="200"><span class="lineNum">     200 </span><span class="lineNoCov">          0 :         break;</span></a>
 <a name="201"><span class="lineNum">     201 </span>            : </a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">          7 :     default:</span></a>
-<a name="203"><span class="lineNum">     203 </span><span class="lineCov">          7 :         break;</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">         16 :     default:</span></a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineCov">         16 :         break;</span></a>
 <a name="204"><span class="lineNum">     204 </span>            :     }</a>
 <a name="205"><span class="lineNum">     205 </span>            : </a>
-<a name="206"><span class="lineNum">     206 </span><span class="lineCov">          7 :     ngx_log_error(NGX_LOG_NOTICE, cycle-&gt;log, 0, &quot;start %s %P&quot;, name, pid);</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">         16 :     ngx_log_error(NGX_LOG_NOTICE, cycle-&gt;log, 0, &quot;start %s %P&quot;, name, pid);</span></a>
 <a name="207"><span class="lineNum">     207 </span>            : </a>
-<a name="208"><span class="lineNum">     208 </span><span class="lineCov">          7 :     ngx_processes[s].pid = pid;</span></a>
-<a name="209"><span class="lineNum">     209 </span><span class="lineCov">          7 :     ngx_processes[s].exited = 0;</span></a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineCov">         16 :     ngx_processes[s].pid = pid;</span></a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">         16 :     ngx_processes[s].exited = 0;</span></a>
 <a name="210"><span class="lineNum">     210 </span>            : </a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">          7 :     if (respawn &gt;= 0) {</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">         16 :     if (respawn &gt;= 0) {</span></a>
 <a name="212"><span class="lineNum">     212 </span><span class="lineNoCov">          0 :         return pid;</span></a>
 <a name="213"><span class="lineNum">     213 </span>            :     }</a>
 <a name="214"><span class="lineNum">     214 </span>            : </a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">          7 :     ngx_processes[s].proc = proc;</span></a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineCov">          7 :     ngx_processes[s].data = data;</span></a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">          7 :     ngx_processes[s].name = name;</span></a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">          7 :     ngx_processes[s].exiting = 0;</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">         16 :     ngx_processes[s].proc = proc;</span></a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineCov">         16 :     ngx_processes[s].data = data;</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">         16 :     ngx_processes[s].name = name;</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">         16 :     ngx_processes[s].exiting = 0;</span></a>
 <a name="219"><span class="lineNum">     219 </span>            : </a>
-<a name="220"><span class="lineNum">     220 </span><span class="lineCov">          7 :     switch (respawn) {</span></a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">         16 :     switch (respawn) {</span></a>
 <a name="221"><span class="lineNum">     221 </span>            : </a>
 <a name="222"><span class="lineNum">     222 </span><span class="lineNoCov">          0 :     case NGX_PROCESS_NORESPAWN:</span></a>
 <a name="223"><span class="lineNum">     223 </span><span class="lineNoCov">          0 :         ngx_processes[s].respawn = 0;</span></a>
@@ -299,11 +299,11 @@
 <a name="237"><span class="lineNum">     237 </span><span class="lineCov">          1 :         ngx_processes[s].detached = 0;</span></a>
 <a name="238"><span class="lineNum">     238 </span><span class="lineCov">          1 :         break;</span></a>
 <a name="239"><span class="lineNum">     239 </span>            : </a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineCov">          6 :     case NGX_PROCESS_JUST_RESPAWN:</span></a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">          6 :         ngx_processes[s].respawn = 1;</span></a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">          6 :         ngx_processes[s].just_spawn = 1;</span></a>
-<a name="243"><span class="lineNum">     243 </span><span class="lineCov">          6 :         ngx_processes[s].detached = 0;</span></a>
-<a name="244"><span class="lineNum">     244 </span><span class="lineCov">          6 :         break;</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">         15 :     case NGX_PROCESS_JUST_RESPAWN:</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">         15 :         ngx_processes[s].respawn = 1;</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">         15 :         ngx_processes[s].just_spawn = 1;</span></a>
+<a name="243"><span class="lineNum">     243 </span><span class="lineCov">         15 :         ngx_processes[s].detached = 0;</span></a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineCov">         15 :         break;</span></a>
 <a name="245"><span class="lineNum">     245 </span>            : </a>
 <a name="246"><span class="lineNum">     246 </span><span class="lineNoCov">          0 :     case NGX_PROCESS_DETACHED:</span></a>
 <a name="247"><span class="lineNum">     247 </span><span class="lineNoCov">          0 :         ngx_processes[s].respawn = 0;</span></a>
@@ -312,11 +312,11 @@
 <a name="250"><span class="lineNum">     250 </span><span class="lineNoCov">          0 :         break;</span></a>
 <a name="251"><span class="lineNum">     251 </span>            :     }</a>
 <a name="252"><span class="lineNum">     252 </span>            : </a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineCov">          7 :     if (s == ngx_last_process) {</span></a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">          4 :         ngx_last_process++;</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">         16 :     if (s == ngx_last_process) {</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">          9 :         ngx_last_process++;</span></a>
 <a name="255"><span class="lineNum">     255 </span>            :     }</a>
 <a name="256"><span class="lineNum">     256 </span>            : </a>
-<a name="257"><span class="lineNum">     257 </span><span class="lineCov">          7 :     return pid;</span></a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineCov">         16 :     return pid;</span></a>
 <a name="258"><span class="lineNum">     258 </span>            : }</a>
 <a name="259"><span class="lineNum">     259 </span>            : </a>
 <a name="260"><span class="lineNum">     260 </span>            : </a>
@@ -378,30 +378,30 @@
 <a name="316"><span class="lineNum">     316 </span>            : </a>
 <a name="317"><span class="lineNum">     317 </span>            : </a>
 <a name="318"><span class="lineNum">     318 </span>            : static void</a>
-<a name="319"><span class="lineNum">     319 </span><span class="lineCov">         20 : ngx_signal_handler(int signo, siginfo_t *siginfo, void *ucontext)</span></a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineCov">         47 : ngx_signal_handler(int signo, siginfo_t *siginfo, void *ucontext)</span></a>
 <a name="320"><span class="lineNum">     320 </span>            : {</a>
 <a name="321"><span class="lineNum">     321 </span>            :     char            *action;</a>
 <a name="322"><span class="lineNum">     322 </span>            :     ngx_int_t        ignore;</a>
 <a name="323"><span class="lineNum">     323 </span>            :     ngx_err_t        err;</a>
 <a name="324"><span class="lineNum">     324 </span>            :     ngx_signal_t    *sig;</a>
 <a name="325"><span class="lineNum">     325 </span>            : </a>
-<a name="326"><span class="lineNum">     326 </span><span class="lineCov">         20 :     ignore = 0;</span></a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineCov">         47 :     ignore = 0;</span></a>
 <a name="327"><span class="lineNum">     327 </span>            : </a>
-<a name="328"><span class="lineNum">     328 </span><span class="lineCov">         20 :     err = ngx_errno;</span></a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineCov">         47 :     err = ngx_errno;</span></a>
 <a name="329"><span class="lineNum">     329 </span>            : </a>
-<a name="330"><span class="lineNum">     330 </span><span class="lineCov">        135 :     for (sig = signals; sig-&gt;signo != 0; sig++) {</span></a>
-<a name="331"><span class="lineNum">     331 </span><span class="lineCov">        135 :         if (sig-&gt;signo == signo) {</span></a>
-<a name="332"><span class="lineNum">     332 </span><span class="lineCov">         20 :             break;</span></a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineCov">        315 :     for (sig = signals; sig-&gt;signo != 0; sig++) {</span></a>
+<a name="331"><span class="lineNum">     331 </span><span class="lineCov">        315 :         if (sig-&gt;signo == signo) {</span></a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineCov">         47 :             break;</span></a>
 <a name="333"><span class="lineNum">     333 </span>            :         }</a>
 <a name="334"><span class="lineNum">     334 </span>            :     }</a>
 <a name="335"><span class="lineNum">     335 </span>            : </a>
-<a name="336"><span class="lineNum">     336 </span><span class="lineCov">         20 :     ngx_time_sigsafe_update();</span></a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineCov">         47 :     ngx_time_sigsafe_update();</span></a>
 <a name="337"><span class="lineNum">     337 </span>            : </a>
-<a name="338"><span class="lineNum">     338 </span><span class="lineCov">         20 :     action = &quot;&quot;;</span></a>
+<a name="338"><span class="lineNum">     338 </span><span class="lineCov">         47 :     action = &quot;&quot;;</span></a>
 <a name="339"><span class="lineNum">     339 </span>            : </a>
-<a name="340"><span class="lineNum">     340 </span><span class="lineCov">         20 :     switch (ngx_process) {</span></a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineCov">         47 :     switch (ngx_process) {</span></a>
 <a name="341"><span class="lineNum">     341 </span>            : </a>
-<a name="342"><span class="lineNum">     342 </span><span class="lineCov">         20 :     case NGX_PROCESS_MASTER:</span></a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineCov">         47 :     case NGX_PROCESS_MASTER:</span></a>
 <a name="343"><span class="lineNum">     343 </span>            :     case NGX_PROCESS_SINGLE:</a>
 <a name="344"><span class="lineNum">     344 </span>            :         switch (signo) {</a>
 <a name="345"><span class="lineNum">     345 </span>            : </a>
@@ -423,10 +423,10 @@
 <a name="361"><span class="lineNum">     361 </span>            :             }</a>
 <a name="362"><span class="lineNum">     362 </span><span class="lineNoCov">          0 :             break;</span></a>
 <a name="363"><span class="lineNum">     363 </span>            : </a>
-<a name="364"><span class="lineNum">     364 </span><span class="lineCov">          6 :         case ngx_signal_value(NGX_RECONFIGURE_SIGNAL):</span></a>
-<a name="365"><span class="lineNum">     365 </span><span class="lineCov">          6 :             ngx_reconfigure = 1;</span></a>
-<a name="366"><span class="lineNum">     366 </span><span class="lineCov">          6 :             action = &quot;, reconfiguring&quot;;</span></a>
-<a name="367"><span class="lineNum">     367 </span><span class="lineCov">          6 :             break;</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">         15 :         case ngx_signal_value(NGX_RECONFIGURE_SIGNAL):</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">         15 :             ngx_reconfigure = 1;</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">         15 :             action = &quot;, reconfiguring&quot;;</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineCov">         15 :             break;</span></a>
 <a name="368"><span class="lineNum">     368 </span>            : </a>
 <a name="369"><span class="lineNum">     369 </span><span class="lineNoCov">          0 :         case ngx_signal_value(NGX_REOPEN_SIGNAL):</span></a>
 <a name="370"><span class="lineNum">     370 </span><span class="lineNoCov">          0 :             ngx_reopen = 1;</span></a>
@@ -456,16 +456,16 @@
 <a name="394"><span class="lineNum">     394 </span><span class="lineNoCov">          0 :             ngx_sigalrm = 1;</span></a>
 <a name="395"><span class="lineNum">     395 </span><span class="lineNoCov">          0 :             break;</span></a>
 <a name="396"><span class="lineNum">     396 </span>            : </a>
-<a name="397"><span class="lineNum">     397 </span><span class="lineCov">          6 :         case SIGIO:</span></a>
-<a name="398"><span class="lineNum">     398 </span><span class="lineCov">          6 :             ngx_sigio = 1;</span></a>
-<a name="399"><span class="lineNum">     399 </span><span class="lineCov">          6 :             break;</span></a>
+<a name="397"><span class="lineNum">     397 </span><span class="lineCov">         15 :         case SIGIO:</span></a>
+<a name="398"><span class="lineNum">     398 </span><span class="lineCov">         15 :             ngx_sigio = 1;</span></a>
+<a name="399"><span class="lineNum">     399 </span><span class="lineCov">         15 :             break;</span></a>
 <a name="400"><span class="lineNum">     400 </span>            : </a>
-<a name="401"><span class="lineNum">     401 </span><span class="lineCov">          7 :         case SIGCHLD:</span></a>
-<a name="402"><span class="lineNum">     402 </span><span class="lineCov">          7 :             ngx_reap = 1;</span></a>
-<a name="403"><span class="lineNum">     403 </span><span class="lineCov">          7 :             break;</span></a>
+<a name="401"><span class="lineNum">     401 </span><span class="lineCov">         16 :         case SIGCHLD:</span></a>
+<a name="402"><span class="lineNum">     402 </span><span class="lineCov">         16 :             ngx_reap = 1;</span></a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineCov">         16 :             break;</span></a>
 <a name="404"><span class="lineNum">     404 </span>            :         }</a>
 <a name="405"><span class="lineNum">     405 </span>            : </a>
-<a name="406"><span class="lineNum">     406 </span><span class="lineCov">         20 :         break;</span></a>
+<a name="406"><span class="lineNum">     406 </span><span class="lineCov">         47 :         break;</span></a>
 <a name="407"><span class="lineNum">     407 </span>            : </a>
 <a name="408"><span class="lineNum">     408 </span><span class="lineNoCov">          0 :     case NGX_PROCESS_WORKER:</span></a>
 <a name="409"><span class="lineNum">     409 </span>            :     case NGX_PROCESS_HELPER:</a>
@@ -503,52 +503,52 @@
 <a name="441"><span class="lineNum">     441 </span><span class="lineNoCov">          0 :         break;</span></a>
 <a name="442"><span class="lineNum">     442 </span>            :     }</a>
 <a name="443"><span class="lineNum">     443 </span>            : </a>
-<a name="444"><span class="lineNum">     444 </span><span class="lineCov">         20 :     if (siginfo &amp;&amp; siginfo-&gt;si_pid) {</span></a>
-<a name="445"><span class="lineNum">     445 </span><span class="lineCov">         14 :         ngx_log_error(NGX_LOG_NOTICE, ngx_cycle-&gt;log, 0,</span></a>
+<a name="444"><span class="lineNum">     444 </span><span class="lineCov">         47 :     if (siginfo &amp;&amp; siginfo-&gt;si_pid) {</span></a>
+<a name="445"><span class="lineNum">     445 </span><span class="lineCov">         32 :         ngx_log_error(NGX_LOG_NOTICE, ngx_cycle-&gt;log, 0,</span></a>
 <a name="446"><span class="lineNum">     446 </span>            :                       &quot;signal %d (%s) received from %P%s&quot;,</a>
 <a name="447"><span class="lineNum">     447 </span>            :                       signo, sig-&gt;signame, siginfo-&gt;si_pid, action);</a>
 <a name="448"><span class="lineNum">     448 </span>            : </a>
 <a name="449"><span class="lineNum">     449 </span>            :     } else {</a>
-<a name="450"><span class="lineNum">     450 </span><span class="lineCov">          6 :         ngx_log_error(NGX_LOG_NOTICE, ngx_cycle-&gt;log, 0,</span></a>
+<a name="450"><span class="lineNum">     450 </span><span class="lineCov">         15 :         ngx_log_error(NGX_LOG_NOTICE, ngx_cycle-&gt;log, 0,</span></a>
 <a name="451"><span class="lineNum">     451 </span>            :                       &quot;signal %d (%s) received%s&quot;,</a>
 <a name="452"><span class="lineNum">     452 </span>            :                       signo, sig-&gt;signame, action);</a>
 <a name="453"><span class="lineNum">     453 </span>            :     }</a>
 <a name="454"><span class="lineNum">     454 </span>            : </a>
-<a name="455"><span class="lineNum">     455 </span><span class="lineCov">         20 :     if (ignore) {</span></a>
+<a name="455"><span class="lineNum">     455 </span><span class="lineCov">         47 :     if (ignore) {</span></a>
 <a name="456"><span class="lineNum">     456 </span><span class="lineNoCov">          0 :         ngx_log_error(NGX_LOG_CRIT, ngx_cycle-&gt;log, 0,</span></a>
 <a name="457"><span class="lineNum">     457 </span>            :                       &quot;the changing binary signal is ignored: &quot;</a>
 <a name="458"><span class="lineNum">     458 </span>            :                       &quot;you should shutdown or terminate &quot;</a>
 <a name="459"><span class="lineNum">     459 </span>            :                       &quot;before either old or new binary's process&quot;);</a>
 <a name="460"><span class="lineNum">     460 </span>            :     }</a>
 <a name="461"><span class="lineNum">     461 </span>            : </a>
-<a name="462"><span class="lineNum">     462 </span><span class="lineCov">         20 :     if (signo == SIGCHLD) {</span></a>
-<a name="463"><span class="lineNum">     463 </span><span class="lineCov">          7 :         ngx_process_get_status();</span></a>
+<a name="462"><span class="lineNum">     462 </span><span class="lineCov">         47 :     if (signo == SIGCHLD) {</span></a>
+<a name="463"><span class="lineNum">     463 </span><span class="lineCov">         16 :         ngx_process_get_status();</span></a>
 <a name="464"><span class="lineNum">     464 </span>            :     }</a>
 <a name="465"><span class="lineNum">     465 </span>            : </a>
-<a name="466"><span class="lineNum">     466 </span><span class="lineCov">         20 :     ngx_set_errno(err);</span></a>
-<a name="467"><span class="lineNum">     467 </span><span class="lineCov">         20 : }</span></a>
+<a name="466"><span class="lineNum">     466 </span><span class="lineCov">         47 :     ngx_set_errno(err);</span></a>
+<a name="467"><span class="lineNum">     467 </span><span class="lineCov">         47 : }</span></a>
 <a name="468"><span class="lineNum">     468 </span>            : </a>
 <a name="469"><span class="lineNum">     469 </span>            : </a>
 <a name="470"><span class="lineNum">     470 </span>            : static void</a>
-<a name="471"><span class="lineNum">     471 </span><span class="lineCov">          7 : ngx_process_get_status(void)</span></a>
+<a name="471"><span class="lineNum">     471 </span><span class="lineCov">         16 : ngx_process_get_status(void)</span></a>
 <a name="472"><span class="lineNum">     472 </span>            : {</a>
-<a name="473"><span class="lineNum">     473 </span><span class="lineCov">          7 :     int              status;</span></a>
+<a name="473"><span class="lineNum">     473 </span><span class="lineCov">         16 :     int              status;</span></a>
 <a name="474"><span class="lineNum">     474 </span>            :     char            *process;</a>
 <a name="475"><span class="lineNum">     475 </span>            :     ngx_pid_t        pid;</a>
 <a name="476"><span class="lineNum">     476 </span>            :     ngx_err_t        err;</a>
 <a name="477"><span class="lineNum">     477 </span>            :     ngx_int_t        i;</a>
 <a name="478"><span class="lineNum">     478 </span>            :     ngx_uint_t       one;</a>
 <a name="479"><span class="lineNum">     479 </span>            : </a>
-<a name="480"><span class="lineNum">     480 </span><span class="lineCov">          7 :     one = 0;</span></a>
+<a name="480"><span class="lineNum">     480 </span><span class="lineCov">         16 :     one = 0;</span></a>
 <a name="481"><span class="lineNum">     481 </span>            : </a>
 <a name="482"><span class="lineNum">     482 </span>            :     for ( ;; ) {</a>
-<a name="483"><span class="lineNum">     483 </span><span class="lineCov">         14 :         pid = waitpid(-1, &amp;status, WNOHANG);</span></a>
+<a name="483"><span class="lineNum">     483 </span><span class="lineCov">         32 :         pid = waitpid(-1, &amp;status, WNOHANG);</span></a>
 <a name="484"><span class="lineNum">     484 </span>            : </a>
-<a name="485"><span class="lineNum">     485 </span><span class="lineCov">         14 :         if (pid == 0) {</span></a>
-<a name="486"><span class="lineNum">     486 </span><span class="lineCov">          6 :             return;</span></a>
+<a name="485"><span class="lineNum">     485 </span><span class="lineCov">         32 :         if (pid == 0) {</span></a>
+<a name="486"><span class="lineNum">     486 </span><span class="lineCov">         15 :             return;</span></a>
 <a name="487"><span class="lineNum">     487 </span>            :         }</a>
 <a name="488"><span class="lineNum">     488 </span>            : </a>
-<a name="489"><span class="lineNum">     489 </span><span class="lineCov">          8 :         if (pid == -1) {</span></a>
+<a name="489"><span class="lineNum">     489 </span><span class="lineCov">         17 :         if (pid == -1) {</span></a>
 <a name="490"><span class="lineNum">     490 </span><span class="lineCov">          1 :             err = ngx_errno;</span></a>
 <a name="491"><span class="lineNum">     491 </span>            : </a>
 <a name="492"><span class="lineNum">     492 </span><span class="lineCov">          1 :             if (err == NGX_EINTR) {</span></a>
@@ -580,19 +580,19 @@
 <a name="518"><span class="lineNum">     518 </span>            :         }</a>
 <a name="519"><span class="lineNum">     519 </span>            : </a>
 <a name="520"><span class="lineNum">     520 </span>            : </a>
-<a name="521"><span class="lineNum">     521 </span><span class="lineCov">          7 :         one = 1;</span></a>
-<a name="522"><span class="lineNum">     522 </span><span class="lineCov">          7 :         process = &quot;unknown process&quot;;</span></a>
+<a name="521"><span class="lineNum">     521 </span><span class="lineCov">         16 :         one = 1;</span></a>
+<a name="522"><span class="lineNum">     522 </span><span class="lineCov">         16 :         process = &quot;unknown process&quot;;</span></a>
 <a name="523"><span class="lineNum">     523 </span>            : </a>
-<a name="524"><span class="lineNum">     524 </span><span class="lineCov">         13 :         for (i = 0; i &lt; ngx_last_process; i++) {</span></a>
-<a name="525"><span class="lineNum">     525 </span><span class="lineCov">         13 :             if (ngx_processes[i].pid == pid) {</span></a>
-<a name="526"><span class="lineNum">     526 </span><span class="lineCov">          7 :                 ngx_processes[i].status = status;</span></a>
-<a name="527"><span class="lineNum">     527 </span><span class="lineCov">          7 :                 ngx_processes[i].exited = 1;</span></a>
-<a name="528"><span class="lineNum">     528 </span><span class="lineCov">          7 :                 process = ngx_processes[i].name;</span></a>
-<a name="529"><span class="lineNum">     529 </span><span class="lineCov">          7 :                 break;</span></a>
+<a name="524"><span class="lineNum">     524 </span><span class="lineCov">         24 :         for (i = 0; i &lt; ngx_last_process; i++) {</span></a>
+<a name="525"><span class="lineNum">     525 </span><span class="lineCov">         24 :             if (ngx_processes[i].pid == pid) {</span></a>
+<a name="526"><span class="lineNum">     526 </span><span class="lineCov">         16 :                 ngx_processes[i].status = status;</span></a>
+<a name="527"><span class="lineNum">     527 </span><span class="lineCov">         16 :                 ngx_processes[i].exited = 1;</span></a>
+<a name="528"><span class="lineNum">     528 </span><span class="lineCov">         16 :                 process = ngx_processes[i].name;</span></a>
+<a name="529"><span class="lineNum">     529 </span><span class="lineCov">         16 :                 break;</span></a>
 <a name="530"><span class="lineNum">     530 </span>            :             }</a>
 <a name="531"><span class="lineNum">     531 </span>            :         }</a>
 <a name="532"><span class="lineNum">     532 </span>            : </a>
-<a name="533"><span class="lineNum">     533 </span><span class="lineCov">          7 :         if (WTERMSIG(status)) {</span></a>
+<a name="533"><span class="lineNum">     533 </span><span class="lineCov">         16 :         if (WTERMSIG(status)) {</span></a>
 <a name="534"><span class="lineNum">     534 </span>            : #ifdef WCOREDUMP</a>
 <a name="535"><span class="lineNum">     535 </span><span class="lineNoCov">          0 :             ngx_log_error(NGX_LOG_ALERT, ngx_cycle-&gt;log, 0,</span></a>
 <a name="536"><span class="lineNum">     536 </span>            :                           &quot;%s %P exited on signal %d%s&quot;,</a>
@@ -605,12 +605,12 @@
 <a name="543"><span class="lineNum">     543 </span>            : #endif</a>
 <a name="544"><span class="lineNum">     544 </span>            : </a>
 <a name="545"><span class="lineNum">     545 </span>            :         } else {</a>
-<a name="546"><span class="lineNum">     546 </span><span class="lineCov">          7 :             ngx_log_error(NGX_LOG_NOTICE, ngx_cycle-&gt;log, 0,</span></a>
+<a name="546"><span class="lineNum">     546 </span><span class="lineCov">         16 :             ngx_log_error(NGX_LOG_NOTICE, ngx_cycle-&gt;log, 0,</span></a>
 <a name="547"><span class="lineNum">     547 </span>            :                           &quot;%s %P exited with code %d&quot;,</a>
 <a name="548"><span class="lineNum">     548 </span>            :                           process, pid, WEXITSTATUS(status));</a>
 <a name="549"><span class="lineNum">     549 </span>            :         }</a>
 <a name="550"><span class="lineNum">     550 </span>            : </a>
-<a name="551"><span class="lineNum">     551 </span><span class="lineCov">          7 :         if (WEXITSTATUS(status) == 2 &amp;&amp; ngx_processes[i].respawn) {</span></a>
+<a name="551"><span class="lineNum">     551 </span><span class="lineCov">         16 :         if (WEXITSTATUS(status) == 2 &amp;&amp; ngx_processes[i].respawn) {</span></a>
 <a name="552"><span class="lineNum">     552 </span><span class="lineNoCov">          0 :             ngx_log_error(NGX_LOG_ALERT, ngx_cycle-&gt;log, 0,</span></a>
 <a name="553"><span class="lineNum">     553 </span>            :                           &quot;%s %P exited with fatal code %d &quot;</a>
 <a name="554"><span class="lineNum">     554 </span>            :                           &quot;and cannot be respawned&quot;,</a>
@@ -618,13 +618,13 @@
 <a name="556"><span class="lineNum">     556 </span><span class="lineNoCov">          0 :             ngx_processes[i].respawn = 0;</span></a>
 <a name="557"><span class="lineNum">     557 </span>            :         }</a>
 <a name="558"><span class="lineNum">     558 </span>            : </a>
-<a name="559"><span class="lineNum">     559 </span><span class="lineCov">          7 :         ngx_unlock_mutexes(pid);</span></a>
+<a name="559"><span class="lineNum">     559 </span><span class="lineCov">         16 :         ngx_unlock_mutexes(pid);</span></a>
 <a name="560"><span class="lineNum">     560 </span>            :     }</a>
 <a name="561"><span class="lineNum">     561 </span>            : }</a>
 <a name="562"><span class="lineNum">     562 </span>            : </a>
 <a name="563"><span class="lineNum">     563 </span>            : </a>
 <a name="564"><span class="lineNum">     564 </span>            : static void</a>
-<a name="565"><span class="lineNum">     565 </span><span class="lineCov">          7 : ngx_unlock_mutexes(ngx_pid_t pid)</span></a>
+<a name="565"><span class="lineNum">     565 </span><span class="lineCov">         16 : ngx_unlock_mutexes(ngx_pid_t pid)</span></a>
 <a name="566"><span class="lineNum">     566 </span>            : {</a>
 <a name="567"><span class="lineNum">     567 </span>            :     ngx_uint_t        i;</a>
 <a name="568"><span class="lineNum">     568 </span>            :     ngx_shm_zone_t   *shm_zone;</a>
@@ -636,8 +636,8 @@
 <a name="574"><span class="lineNum">     574 </span>            :      * held it</a>
 <a name="575"><span class="lineNum">     575 </span>            :      */</a>
 <a name="576"><span class="lineNum">     576 </span>            : </a>
-<a name="577"><span class="lineNum">     577 </span><span class="lineCov">          7 :     if (ngx_accept_mutex_ptr) {</span></a>
-<a name="578"><span class="lineNum">     578 </span><span class="lineCov">          7 :         (void) ngx_shmtx_force_unlock(&amp;ngx_accept_mutex, pid);</span></a>
+<a name="577"><span class="lineNum">     577 </span><span class="lineCov">         16 :     if (ngx_accept_mutex_ptr) {</span></a>
+<a name="578"><span class="lineNum">     578 </span><span class="lineCov">         16 :         (void) ngx_shmtx_force_unlock(&amp;ngx_accept_mutex, pid);</span></a>
 <a name="579"><span class="lineNum">     579 </span>            :     }</a>
 <a name="580"><span class="lineNum">     580 </span>            : </a>
 <a name="581"><span class="lineNum">     581 </span>            :     /*</a>
@@ -645,14 +645,14 @@
 <a name="583"><span class="lineNum">     583 </span>            :      * process</a>
 <a name="584"><span class="lineNum">     584 </span>            :      */</a>
 <a name="585"><span class="lineNum">     585 </span>            : </a>
-<a name="586"><span class="lineNum">     586 </span><span class="lineCov">          7 :     part = (ngx_list_part_t *) &amp;ngx_cycle-&gt;shared_memory.part;</span></a>
-<a name="587"><span class="lineNum">     587 </span><span class="lineCov">          7 :     shm_zone = part-&gt;elts;</span></a>
+<a name="586"><span class="lineNum">     586 </span><span class="lineCov">         16 :     part = (ngx_list_part_t *) &amp;ngx_cycle-&gt;shared_memory.part;</span></a>
+<a name="587"><span class="lineNum">     587 </span><span class="lineCov">         16 :     shm_zone = part-&gt;elts;</span></a>
 <a name="588"><span class="lineNum">     588 </span>            : </a>
-<a name="589"><span class="lineNum">     589 </span><span class="lineCov">          7 :     for (i = 0; /* void */ ; i++) {</span></a>
+<a name="589"><span class="lineNum">     589 </span><span class="lineCov">         16 :     for (i = 0; /* void */ ; i++) {</span></a>
 <a name="590"><span class="lineNum">     590 </span>            : </a>
-<a name="591"><span class="lineNum">     591 </span><span class="lineCov">          7 :         if (i &gt;= part-&gt;nelts) {</span></a>
-<a name="592"><span class="lineNum">     592 </span><span class="lineCov">          7 :             if (part-&gt;next == NULL) {</span></a>
-<a name="593"><span class="lineNum">     593 </span><span class="lineCov">          7 :                 break;</span></a>
+<a name="591"><span class="lineNum">     591 </span><span class="lineCov">         16 :         if (i &gt;= part-&gt;nelts) {</span></a>
+<a name="592"><span class="lineNum">     592 </span><span class="lineCov">         16 :             if (part-&gt;next == NULL) {</span></a>
+<a name="593"><span class="lineNum">     593 </span><span class="lineCov">         16 :                 break;</span></a>
 <a name="594"><span class="lineNum">     594 </span>            :             }</a>
 <a name="595"><span class="lineNum">     595 </span><span class="lineNoCov">          0 :             part = part-&gt;next;</span></a>
 <a name="596"><span class="lineNum">     596 </span><span class="lineNoCov">          0 :             shm_zone = part-&gt;elts;</span></a>
@@ -667,7 +667,7 @@
 <a name="605"><span class="lineNum">     605 </span>            :                           &amp;shm_zone[i].shm.name, pid);</a>
 <a name="606"><span class="lineNum">     606 </span>            :         }</a>
 <a name="607"><span class="lineNum">     607 </span>            :     }</a>
-<a name="608"><span class="lineNum">     608 </span><span class="lineCov">          7 : }</span></a>
+<a name="608"><span class="lineNum">     608 </span><span class="lineCov">         16 : }</span></a>
 <a name="609"><span class="lineNum">     609 </span>            : </a>
 <a name="610"><span class="lineNum">     610 </span>            : </a>
 <a name="611"><span class="lineNum">     611 </span>            : void</a>
@@ -691,14 +691,14 @@
 <a name="629"><span class="lineNum">     629 </span>            : </a>
 <a name="630"><span class="lineNum">     630 </span>            : </a>
 <a name="631"><span class="lineNum">     631 </span>            : ngx_int_t</a>
-<a name="632"><span class="lineNum">     632 </span><span class="lineCov">         15 : ngx_os_signal_process(ngx_cycle_t *cycle, char *name, ngx_pid_t pid)</span></a>
+<a name="632"><span class="lineNum">     632 </span><span class="lineCov">         16 : ngx_os_signal_process(ngx_cycle_t *cycle, char *name, ngx_pid_t pid)</span></a>
 <a name="633"><span class="lineNum">     633 </span>            : {</a>
 <a name="634"><span class="lineNum">     634 </span>            :     ngx_signal_t  *sig;</a>
 <a name="635"><span class="lineNum">     635 </span>            : </a>
-<a name="636"><span class="lineNum">     636 </span><span class="lineCov">         19 :     for (sig = signals; sig-&gt;signo != 0; sig++) {</span></a>
-<a name="637"><span class="lineNum">     637 </span><span class="lineCov">         19 :         if (ngx_strcmp(name, sig-&gt;name) == 0) {</span></a>
-<a name="638"><span class="lineNum">     638 </span><span class="lineCov">         15 :             if (kill(pid, sig-&gt;signo) != -1) {</span></a>
-<a name="639"><span class="lineNum">     639 </span><span class="lineCov">         15 :                 return 0;</span></a>
+<a name="636"><span class="lineNum">     636 </span><span class="lineCov">         20 :     for (sig = signals; sig-&gt;signo != 0; sig++) {</span></a>
+<a name="637"><span class="lineNum">     637 </span><span class="lineCov">         20 :         if (ngx_strcmp(name, sig-&gt;name) == 0) {</span></a>
+<a name="638"><span class="lineNum">     638 </span><span class="lineCov">         16 :             if (kill(pid, sig-&gt;signo) != -1) {</span></a>
+<a name="639"><span class="lineNum">     639 </span><span class="lineCov">         16 :                 return 0;</span></a>
 <a name="640"><span class="lineNum">     640 </span>            :             }</a>
 <a name="641"><span class="lineNum">     641 </span>            : </a>
 <a name="642"><span class="lineNum">     642 </span><span class="lineNoCov">          0 :             ngx_log_error(NGX_LOG_ALERT, cycle-&gt;log, ngx_errno,</span></a>
