@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-22 11:54:02</td>
+            <td class="headerValue">2024-10-22 13:10:45</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -116,10 +116,10 @@
 <a name="54"><span class="lineNum">      54 </span>            : </a>
 <a name="55"><span class="lineNum">      55 </span>            : </a>
 <a name="56"><span class="lineNum">      56 </span>            : void</a>
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">         89 : ngx_localtime(time_t s, ngx_tm_t *tm)</span></a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">         93 : ngx_localtime(time_t s, ngx_tm_t *tm)</span></a>
 <a name="58"><span class="lineNum">      58 </span>            : {</a>
 <a name="59"><span class="lineNum">      59 </span>            : #if (NGX_HAVE_LOCALTIME_R)</a>
-<a name="60"><span class="lineNum">      60 </span><span class="lineCov">         89 :     (void) localtime_r(&amp;s, tm);</span></a>
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">         93 :     (void) localtime_r(&amp;s, tm);</span></a>
 <a name="61"><span class="lineNum">      61 </span>            : </a>
 <a name="62"><span class="lineNum">      62 </span>            : #else</a>
 <a name="63"><span class="lineNum">      63 </span>            :     ngx_tm_t  *t;</a>
@@ -129,9 +129,9 @@
 <a name="67"><span class="lineNum">      67 </span>            : </a>
 <a name="68"><span class="lineNum">      68 </span>            : #endif</a>
 <a name="69"><span class="lineNum">      69 </span>            : </a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineCov">         89 :     tm-&gt;ngx_tm_mon++;</span></a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">         89 :     tm-&gt;ngx_tm_year += 1900;</span></a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">         89 : }</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">         93 :     tm-&gt;ngx_tm_mon++;</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">         93 :     tm-&gt;ngx_tm_year += 1900;</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">         93 : }</span></a>
 <a name="73"><span class="lineNum">      73 </span>            : </a>
 <a name="74"><span class="lineNum">      74 </span>            : </a>
 <a name="75"><span class="lineNum">      75 </span>            : void</a>
