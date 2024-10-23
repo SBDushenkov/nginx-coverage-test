@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-22 13:10:45</td>
+            <td class="headerValue">2024-10-23 15:06:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -77,19 +77,19 @@
 <a name="15"><span class="lineNum">      15 </span>            : </a>
 <a name="16"><span class="lineNum">      16 </span>            : </a>
 <a name="17"><span class="lineNum">      17 </span>            : void *</a>
-<a name="18"><span class="lineNum">      18 </span><span class="lineCov">        746 : ngx_alloc(size_t size, ngx_log_t *log)</span></a>
+<a name="18"><span class="lineNum">      18 </span><span class="lineCov">       1298 : ngx_alloc(size_t size, ngx_log_t *log)</span></a>
 <a name="19"><span class="lineNum">      19 </span>            : {</a>
 <a name="20"><span class="lineNum">      20 </span>            :     void  *p;</a>
 <a name="21"><span class="lineNum">      21 </span>            : </a>
-<a name="22"><span class="lineNum">      22 </span><span class="lineCov">        746 :     p = malloc(size);</span></a>
-<a name="23"><span class="lineNum">      23 </span><span class="lineCov">        746 :     if (p == NULL) {</span></a>
+<a name="22"><span class="lineNum">      22 </span><span class="lineCov">       1298 :     p = malloc(size);</span></a>
+<a name="23"><span class="lineNum">      23 </span><span class="lineCov">       1298 :     if (p == NULL) {</span></a>
 <a name="24"><span class="lineNum">      24 </span><span class="lineNoCov">          0 :         ngx_log_error(NGX_LOG_EMERG, log, ngx_errno,</span></a>
 <a name="25"><span class="lineNum">      25 </span>            :                       &quot;malloc(%uz) failed&quot;, size);</a>
 <a name="26"><span class="lineNum">      26 </span>            :     }</a>
 <a name="27"><span class="lineNum">      27 </span>            : </a>
-<a name="28"><span class="lineNum">      28 </span><span class="lineCov">        746 :     ngx_log_debug2(NGX_LOG_DEBUG_ALLOC, log, 0, &quot;malloc: %p:%uz&quot;, p, size);</span></a>
+<a name="28"><span class="lineNum">      28 </span><span class="lineCov">       1298 :     ngx_log_debug2(NGX_LOG_DEBUG_ALLOC, log, 0, &quot;malloc: %p:%uz&quot;, p, size);</span></a>
 <a name="29"><span class="lineNum">      29 </span>            : </a>
-<a name="30"><span class="lineNum">      30 </span><span class="lineCov">        746 :     return p;</span></a>
+<a name="30"><span class="lineNum">      30 </span><span class="lineCov">       1298 :     return p;</span></a>
 <a name="31"><span class="lineNum">      31 </span>            : }</a>
 <a name="32"><span class="lineNum">      32 </span>            : </a>
 <a name="33"><span class="lineNum">      33 </span>            : </a>
@@ -111,23 +111,23 @@
 <a name="49"><span class="lineNum">      49 </span>            : #if (NGX_HAVE_POSIX_MEMALIGN)</a>
 <a name="50"><span class="lineNum">      50 </span>            : </a>
 <a name="51"><span class="lineNum">      51 </span>            : void *</a>
-<a name="52"><span class="lineNum">      52 </span><span class="lineCov">        303 : ngx_memalign(size_t alignment, size_t size, ngx_log_t *log)</span></a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">        567 : ngx_memalign(size_t alignment, size_t size, ngx_log_t *log)</span></a>
 <a name="53"><span class="lineNum">      53 </span>            : {</a>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">        303 :     void  *p;</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">        567 :     void  *p;</span></a>
 <a name="55"><span class="lineNum">      55 </span>            :     int    err;</a>
 <a name="56"><span class="lineNum">      56 </span>            : </a>
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">        303 :     err = posix_memalign(&amp;p, alignment, size);</span></a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">        567 :     err = posix_memalign(&amp;p, alignment, size);</span></a>
 <a name="58"><span class="lineNum">      58 </span>            : </a>
-<a name="59"><span class="lineNum">      59 </span><span class="lineCov">        303 :     if (err) {</span></a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">        567 :     if (err) {</span></a>
 <a name="60"><span class="lineNum">      60 </span><span class="lineNoCov">          0 :         ngx_log_error(NGX_LOG_EMERG, log, err,</span></a>
 <a name="61"><span class="lineNum">      61 </span>            :                       &quot;posix_memalign(%uz, %uz) failed&quot;, alignment, size);</a>
 <a name="62"><span class="lineNum">      62 </span><span class="lineNoCov">          0 :         p = NULL;</span></a>
 <a name="63"><span class="lineNum">      63 </span>            :     }</a>
 <a name="64"><span class="lineNum">      64 </span>            : </a>
-<a name="65"><span class="lineNum">      65 </span><span class="lineCov">        303 :     ngx_log_debug3(NGX_LOG_DEBUG_ALLOC, log, 0,</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">        567 :     ngx_log_debug3(NGX_LOG_DEBUG_ALLOC, log, 0,</span></a>
 <a name="66"><span class="lineNum">      66 </span>            :                    &quot;posix_memalign: %p:%uz @%uz&quot;, p, size, alignment);</a>
 <a name="67"><span class="lineNum">      67 </span>            : </a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineCov">        303 :     return p;</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">        567 :     return p;</span></a>
 <a name="69"><span class="lineNum">      69 </span>            : }</a>
 <a name="70"><span class="lineNum">      70 </span>            : </a>
 <a name="71"><span class="lineNum">      71 </span>            : #elif (NGX_HAVE_MEMALIGN)</a>

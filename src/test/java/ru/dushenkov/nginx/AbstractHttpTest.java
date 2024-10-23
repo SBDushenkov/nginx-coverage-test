@@ -44,10 +44,12 @@ public abstract class AbstractHttpTest implements InitializingBean {
     @Value("${nginx.host}")
     protected String host;
 
+
     protected String baseUrl;
     protected Path nginxConfDir;
     protected Path nginxLogDir;
     protected Path nginxTargetDir;
+    protected Path nginxHtmlDir;
 
 
     @BeforeEach
@@ -112,7 +114,6 @@ public abstract class AbstractHttpTest implements InitializingBean {
         log.info("Nginx new configuration applied successfully");
     }
 
-
     protected abstract String getConfigContent();
 
     @Override
@@ -120,6 +121,7 @@ public abstract class AbstractHttpTest implements InitializingBean {
         nginxLogDir = Path.of(workDirString, "coverage", "nginx-install", "logs");
         nginxConfDir = Path.of(workDirString, "coverage", "nginx-install", "conf");
         nginxTargetDir = Path.of(workDirString, "coverage", "target");
+        nginxHtmlDir = Path.of(workDirString, "coverage", "nginx-install", "html");
 
         baseUrl = "http://" + host + ":" + defaultHttpPort;
 

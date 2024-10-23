@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-22 13:10:45</td>
+            <td class="headerValue">2024-10-23 15:06:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -138,24 +138,24 @@
 <a name="76"><span class="lineNum">      76 </span>            : </a>
 <a name="77"><span class="lineNum">      77 </span>            : </a>
 <a name="78"><span class="lineNum">      78 </span>            : static ngx_int_t</a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">          5 : ngx_http_try_files_handler(ngx_http_request_t *r)</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">         33 : ngx_http_try_files_handler(ngx_http_request_t *r)</span></a>
 <a name="80"><span class="lineNum">      80 </span>            : {</a>
-<a name="81"><span class="lineNum">      81 </span><span class="lineCov">          5 :     size_t                          len, root, alias, reserve, allocated;</span></a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">         33 :     size_t                          len, root, alias, reserve, allocated;</span></a>
 <a name="82"><span class="lineNum">      82 </span>            :     u_char                         *p, *name;</a>
-<a name="83"><span class="lineNum">      83 </span><span class="lineCov">          5 :     ngx_str_t                       path, args;</span></a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">         33 :     ngx_str_t                       path, args;</span></a>
 <a name="84"><span class="lineNum">      84 </span>            :     ngx_uint_t                      test_dir;</a>
 <a name="85"><span class="lineNum">      85 </span>            :     ngx_http_try_file_t            *tf;</a>
-<a name="86"><span class="lineNum">      86 </span><span class="lineCov">          5 :     ngx_open_file_info_t            of;</span></a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">         33 :     ngx_open_file_info_t            of;</span></a>
 <a name="87"><span class="lineNum">      87 </span>            :     ngx_http_script_code_pt         code;</a>
-<a name="88"><span class="lineNum">      88 </span><span class="lineCov">          5 :     ngx_http_script_engine_t        e;</span></a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">         33 :     ngx_http_script_engine_t        e;</span></a>
 <a name="89"><span class="lineNum">      89 </span>            :     ngx_http_core_loc_conf_t       *clcf;</a>
 <a name="90"><span class="lineNum">      90 </span>            :     ngx_http_script_len_code_pt     lcode;</a>
 <a name="91"><span class="lineNum">      91 </span>            :     ngx_http_try_files_loc_conf_t  *tlcf;</a>
 <a name="92"><span class="lineNum">      92 </span>            : </a>
-<a name="93"><span class="lineNum">      93 </span><span class="lineCov">          5 :     tlcf = ngx_http_get_module_loc_conf(r, ngx_http_try_files_module);</span></a>
+<a name="93"><span class="lineNum">      93 </span><span class="lineCov">         33 :     tlcf = ngx_http_get_module_loc_conf(r, ngx_http_try_files_module);</span></a>
 <a name="94"><span class="lineNum">      94 </span>            : </a>
-<a name="95"><span class="lineNum">      95 </span><span class="lineCov">          5 :     if (tlcf-&gt;try_files == NULL) {</span></a>
-<a name="96"><span class="lineNum">      96 </span><span class="lineCov">          5 :         return NGX_DECLINED;</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">         33 :     if (tlcf-&gt;try_files == NULL) {</span></a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">         33 :         return NGX_DECLINED;</span></a>
 <a name="97"><span class="lineNum">      97 </span>            :     }</a>
 <a name="98"><span class="lineNum">      98 </span>            : </a>
 <a name="99"><span class="lineNum">      99 </span><span class="lineNoCov">          0 :     ngx_log_debug0(NGX_LOG_DEBUG_HTTP, r-&gt;connection-&gt;log, 0,</span></a>
@@ -428,12 +428,12 @@
 <a name="366"><span class="lineNum">     366 </span>            : </a>
 <a name="367"><span class="lineNum">     367 </span>            : </a>
 <a name="368"><span class="lineNum">     368 </span>            : static void *</a>
-<a name="369"><span class="lineNum">     369 </span><span class="lineCov">        192 : ngx_http_try_files_create_loc_conf(ngx_conf_t *cf)</span></a>
+<a name="369"><span class="lineNum">     369 </span><span class="lineCov">        660 : ngx_http_try_files_create_loc_conf(ngx_conf_t *cf)</span></a>
 <a name="370"><span class="lineNum">     370 </span>            : {</a>
 <a name="371"><span class="lineNum">     371 </span>            :     ngx_http_try_files_loc_conf_t  *tlcf;</a>
 <a name="372"><span class="lineNum">     372 </span>            : </a>
-<a name="373"><span class="lineNum">     373 </span><span class="lineCov">        192 :     tlcf = ngx_pcalloc(cf-&gt;pool, sizeof(ngx_http_try_files_loc_conf_t));</span></a>
-<a name="374"><span class="lineNum">     374 </span><span class="lineCov">        192 :     if (tlcf == NULL) {</span></a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineCov">        660 :     tlcf = ngx_pcalloc(cf-&gt;pool, sizeof(ngx_http_try_files_loc_conf_t));</span></a>
+<a name="374"><span class="lineNum">     374 </span><span class="lineCov">        660 :     if (tlcf == NULL) {</span></a>
 <a name="375"><span class="lineNum">     375 </span><span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="376"><span class="lineNum">     376 </span>            :     }</a>
 <a name="377"><span class="lineNum">     377 </span>            : </a>
@@ -443,26 +443,26 @@
 <a name="381"><span class="lineNum">     381 </span>            :      *     tlcf-&gt;try_files = NULL;</a>
 <a name="382"><span class="lineNum">     382 </span>            :      */</a>
 <a name="383"><span class="lineNum">     383 </span>            : </a>
-<a name="384"><span class="lineNum">     384 </span><span class="lineCov">        192 :     return tlcf;</span></a>
+<a name="384"><span class="lineNum">     384 </span><span class="lineCov">        660 :     return tlcf;</span></a>
 <a name="385"><span class="lineNum">     385 </span>            : }</a>
 <a name="386"><span class="lineNum">     386 </span>            : </a>
 <a name="387"><span class="lineNum">     387 </span>            : </a>
 <a name="388"><span class="lineNum">     388 </span>            : static ngx_int_t</a>
-<a name="389"><span class="lineNum">     389 </span><span class="lineCov">         48 : ngx_http_try_files_init(ngx_conf_t *cf)</span></a>
+<a name="389"><span class="lineNum">     389 </span><span class="lineCov">         84 : ngx_http_try_files_init(ngx_conf_t *cf)</span></a>
 <a name="390"><span class="lineNum">     390 </span>            : {</a>
 <a name="391"><span class="lineNum">     391 </span>            :     ngx_http_handler_pt        *h;</a>
 <a name="392"><span class="lineNum">     392 </span>            :     ngx_http_core_main_conf_t  *cmcf;</a>
 <a name="393"><span class="lineNum">     393 </span>            : </a>
-<a name="394"><span class="lineNum">     394 </span><span class="lineCov">         48 :     cmcf = ngx_http_conf_get_module_main_conf(cf, ngx_http_core_module);</span></a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineCov">         84 :     cmcf = ngx_http_conf_get_module_main_conf(cf, ngx_http_core_module);</span></a>
 <a name="395"><span class="lineNum">     395 </span>            : </a>
-<a name="396"><span class="lineNum">     396 </span><span class="lineCov">         48 :     h = ngx_array_push(&amp;cmcf-&gt;phases[NGX_HTTP_PRECONTENT_PHASE].handlers);</span></a>
-<a name="397"><span class="lineNum">     397 </span><span class="lineCov">         48 :     if (h == NULL) {</span></a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineCov">         84 :     h = ngx_array_push(&amp;cmcf-&gt;phases[NGX_HTTP_PRECONTENT_PHASE].handlers);</span></a>
+<a name="397"><span class="lineNum">     397 </span><span class="lineCov">         84 :     if (h == NULL) {</span></a>
 <a name="398"><span class="lineNum">     398 </span><span class="lineNoCov">          0 :         return NGX_ERROR;</span></a>
 <a name="399"><span class="lineNum">     399 </span>            :     }</a>
 <a name="400"><span class="lineNum">     400 </span>            : </a>
-<a name="401"><span class="lineNum">     401 </span><span class="lineCov">         48 :     *h = ngx_http_try_files_handler;</span></a>
+<a name="401"><span class="lineNum">     401 </span><span class="lineCov">         84 :     *h = ngx_http_try_files_handler;</span></a>
 <a name="402"><span class="lineNum">     402 </span>            : </a>
-<a name="403"><span class="lineNum">     403 </span><span class="lineCov">         48 :     return NGX_OK;</span></a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineCov">         84 :     return NGX_OK;</span></a>
 <a name="404"><span class="lineNum">     404 </span>            : }</a>
 </pre>
       </td>

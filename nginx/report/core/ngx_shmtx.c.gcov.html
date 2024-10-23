@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-22 13:10:45</td>
+            <td class="headerValue">2024-10-23 15:06:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -78,12 +78,12 @@
 <a name="16"><span class="lineNum">      16 </span>            : </a>
 <a name="17"><span class="lineNum">      17 </span>            : </a>
 <a name="18"><span class="lineNum">      18 </span>            : ngx_int_t</a>
-<a name="19"><span class="lineNum">      19 </span><span class="lineCov">         17 : ngx_shmtx_create(ngx_shmtx_t *mtx, ngx_shmtx_sh_t *addr, u_char *name)</span></a>
+<a name="19"><span class="lineNum">      19 </span><span class="lineCov">         29 : ngx_shmtx_create(ngx_shmtx_t *mtx, ngx_shmtx_sh_t *addr, u_char *name)</span></a>
 <a name="20"><span class="lineNum">      20 </span>            : {</a>
-<a name="21"><span class="lineNum">      21 </span><span class="lineCov">         17 :     mtx-&gt;lock = &amp;addr-&gt;lock;</span></a>
+<a name="21"><span class="lineNum">      21 </span><span class="lineCov">         29 :     mtx-&gt;lock = &amp;addr-&gt;lock;</span></a>
 <a name="22"><span class="lineNum">      22 </span>            : </a>
-<a name="23"><span class="lineNum">      23 </span><span class="lineCov">         17 :     if (mtx-&gt;spin == (ngx_uint_t) -1) {</span></a>
-<a name="24"><span class="lineNum">      24 </span><span class="lineCov">         17 :         return NGX_OK;</span></a>
+<a name="23"><span class="lineNum">      23 </span><span class="lineCov">         29 :     if (mtx-&gt;spin == (ngx_uint_t) -1) {</span></a>
+<a name="24"><span class="lineNum">      24 </span><span class="lineCov">         29 :         return NGX_OK;</span></a>
 <a name="25"><span class="lineNum">      25 </span>            :     }</a>
 <a name="26"><span class="lineNum">      26 </span>            : </a>
 <a name="27"><span class="lineNum">      27 </span><span class="lineNoCov">          0 :     mtx-&gt;spin = 2048;</span></a>
@@ -209,17 +209,17 @@
 <a name="147"><span class="lineNum">     147 </span>            : </a>
 <a name="148"><span class="lineNum">     148 </span>            : </a>
 <a name="149"><span class="lineNum">     149 </span>            : ngx_uint_t</a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">         16 : ngx_shmtx_force_unlock(ngx_shmtx_t *mtx, ngx_pid_t pid)</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">         28 : ngx_shmtx_force_unlock(ngx_shmtx_t *mtx, ngx_pid_t pid)</span></a>
 <a name="151"><span class="lineNum">     151 </span>            : {</a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">         16 :     ngx_log_debug0(NGX_LOG_DEBUG_CORE, ngx_cycle-&gt;log, 0,</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">         28 :     ngx_log_debug0(NGX_LOG_DEBUG_CORE, ngx_cycle-&gt;log, 0,</span></a>
 <a name="153"><span class="lineNum">     153 </span>            :                    &quot;shmtx forced unlock&quot;);</a>
 <a name="154"><span class="lineNum">     154 </span>            : </a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">         16 :     if (ngx_atomic_cmp_set(mtx-&gt;lock, pid, 0)) {</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">         28 :     if (ngx_atomic_cmp_set(mtx-&gt;lock, pid, 0)) {</span></a>
 <a name="156"><span class="lineNum">     156 </span><span class="lineNoCov">          0 :         ngx_shmtx_wakeup(mtx);</span></a>
 <a name="157"><span class="lineNum">     157 </span><span class="lineNoCov">          0 :         return 1;</span></a>
 <a name="158"><span class="lineNum">     158 </span>            :     }</a>
 <a name="159"><span class="lineNum">     159 </span>            : </a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">         16 :     return 0;</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">         28 :     return 0;</span></a>
 <a name="161"><span class="lineNum">     161 </span>            : }</a>
 <a name="162"><span class="lineNum">     162 </span>            : </a>
 <a name="163"><span class="lineNum">     163 </span>            : </a>

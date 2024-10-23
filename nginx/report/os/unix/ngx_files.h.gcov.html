@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-22 13:10:45</td>
+            <td class="headerValue">2024-10-23 15:06:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -204,9 +204,9 @@
 <a name="142"><span class="lineNum">     142 </span>            :  * and in this case gcc 4.3 ignores (void) cast</a>
 <a name="143"><span class="lineNum">     143 </span>            :  */</a>
 <a name="144"><span class="lineNum">     144 </span>            : static ngx_inline ssize_t</a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">         79 : ngx_write_fd(ngx_fd_t fd, void *buf, size_t n)</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">        144 : ngx_write_fd(ngx_fd_t fd, void *buf, size_t n)</span></a>
 <a name="146"><span class="lineNum">     146 </span>            : {</a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">         79 :     return write(fd, buf, n);</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">        144 :     return write(fd, buf, n);</span></a>
 <a name="148"><span class="lineNum">     148 </span>            : }</a>
 <a name="149"><span class="lineNum">     149 </span>            : </a>
 <a name="150"><span class="lineNum">     150 </span>            : #define ngx_write_fd_n           &quot;write()&quot;</a>

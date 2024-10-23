@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-22 13:10:45</td>
+            <td class="headerValue">2024-10-23 15:06:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -93,24 +93,24 @@
 <a name="31"><span class="lineNum">      31 </span>            : </a>
 <a name="32"><span class="lineNum">      32 </span>            : </a>
 <a name="33"><span class="lineNum">      33 </span>            : ngx_int_t</a>
-<a name="34"><span class="lineNum">      34 </span><span class="lineCov">         33 : ngx_os_specific_init(ngx_log_t *log)</span></a>
+<a name="34"><span class="lineNum">      34 </span><span class="lineCov">         57 : ngx_os_specific_init(ngx_log_t *log)</span></a>
 <a name="35"><span class="lineNum">      35 </span>            : {</a>
-<a name="36"><span class="lineNum">      36 </span><span class="lineCov">         33 :     struct utsname  u;</span></a>
+<a name="36"><span class="lineNum">      36 </span><span class="lineCov">         57 :     struct utsname  u;</span></a>
 <a name="37"><span class="lineNum">      37 </span>            : </a>
-<a name="38"><span class="lineNum">      38 </span><span class="lineCov">         33 :     if (uname(&amp;u) == -1) {</span></a>
+<a name="38"><span class="lineNum">      38 </span><span class="lineCov">         57 :     if (uname(&amp;u) == -1) {</span></a>
 <a name="39"><span class="lineNum">      39 </span><span class="lineNoCov">          0 :         ngx_log_error(NGX_LOG_ALERT, log, ngx_errno, &quot;uname() failed&quot;);</span></a>
 <a name="40"><span class="lineNum">      40 </span><span class="lineNoCov">          0 :         return NGX_ERROR;</span></a>
 <a name="41"><span class="lineNum">      41 </span>            :     }</a>
 <a name="42"><span class="lineNum">      42 </span>            : </a>
-<a name="43"><span class="lineNum">      43 </span><span class="lineCov">         33 :     (void) ngx_cpystrn(ngx_linux_kern_ostype, (u_char *) u.sysname,</span></a>
+<a name="43"><span class="lineNum">      43 </span><span class="lineCov">         57 :     (void) ngx_cpystrn(ngx_linux_kern_ostype, (u_char *) u.sysname,</span></a>
 <a name="44"><span class="lineNum">      44 </span>            :                        sizeof(ngx_linux_kern_ostype));</a>
 <a name="45"><span class="lineNum">      45 </span>            : </a>
-<a name="46"><span class="lineNum">      46 </span><span class="lineCov">         33 :     (void) ngx_cpystrn(ngx_linux_kern_osrelease, (u_char *) u.release,</span></a>
+<a name="46"><span class="lineNum">      46 </span><span class="lineCov">         57 :     (void) ngx_cpystrn(ngx_linux_kern_osrelease, (u_char *) u.release,</span></a>
 <a name="47"><span class="lineNum">      47 </span>            :                        sizeof(ngx_linux_kern_osrelease));</a>
 <a name="48"><span class="lineNum">      48 </span>            : </a>
-<a name="49"><span class="lineNum">      49 </span><span class="lineCov">         33 :     ngx_os_io = ngx_linux_io;</span></a>
+<a name="49"><span class="lineNum">      49 </span><span class="lineCov">         57 :     ngx_os_io = ngx_linux_io;</span></a>
 <a name="50"><span class="lineNum">      50 </span>            : </a>
-<a name="51"><span class="lineNum">      51 </span><span class="lineCov">         33 :     return NGX_OK;</span></a>
+<a name="51"><span class="lineNum">      51 </span><span class="lineCov">         57 :     return NGX_OK;</span></a>
 <a name="52"><span class="lineNum">      52 </span>            : }</a>
 <a name="53"><span class="lineNum">      53 </span>            : </a>
 <a name="54"><span class="lineNum">      54 </span>            : </a>

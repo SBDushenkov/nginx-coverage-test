@@ -31,13 +31,13 @@
             <td class="headerValue">report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">64</td>
+            <td class="headerCovTableEntry">68</td>
             <td class="headerCovTableEntry">494</td>
-            <td class="headerCovTableEntryLo">13.0 %</td>
+            <td class="headerCovTableEntryLo">13.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-22 13:10:45</td>
+            <td class="headerValue">2024-10-23 15:06:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -203,60 +203,60 @@
 <a name="141"><span class="lineNum">     141 </span>            : </a>
 <a name="142"><span class="lineNum">     142 </span>            : </a>
 <a name="143"><span class="lineNum">     143 </span>            : ngx_int_t</a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">          5 : ngx_open_cached_file(ngx_open_file_cache_t *cache, ngx_str_t *name,</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">         25 : ngx_open_cached_file(ngx_open_file_cache_t *cache, ngx_str_t *name,</span></a>
 <a name="145"><span class="lineNum">     145 </span>            :     ngx_open_file_info_t *of, ngx_pool_t *pool)</a>
 <a name="146"><span class="lineNum">     146 </span>            : {</a>
 <a name="147"><span class="lineNum">     147 </span>            :     time_t                          now;</a>
 <a name="148"><span class="lineNum">     148 </span>            :     uint32_t                        hash;</a>
 <a name="149"><span class="lineNum">     149 </span>            :     ngx_int_t                       rc;</a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">          5 :     ngx_file_info_t                 fi;</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">         25 :     ngx_file_info_t                 fi;</span></a>
 <a name="151"><span class="lineNum">     151 </span>            :     ngx_pool_cleanup_t             *cln;</a>
 <a name="152"><span class="lineNum">     152 </span>            :     ngx_cached_open_file_t         *file;</a>
 <a name="153"><span class="lineNum">     153 </span>            :     ngx_pool_cleanup_file_t        *clnf;</a>
 <a name="154"><span class="lineNum">     154 </span>            :     ngx_open_file_cache_cleanup_t  *ofcln;</a>
 <a name="155"><span class="lineNum">     155 </span>            : </a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">          5 :     of-&gt;fd = NGX_INVALID_FILE;</span></a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">          5 :     of-&gt;err = 0;</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">         25 :     of-&gt;fd = NGX_INVALID_FILE;</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">         25 :     of-&gt;err = 0;</span></a>
 <a name="158"><span class="lineNum">     158 </span>            : </a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">          5 :     if (cache == NULL) {</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">         25 :     if (cache == NULL) {</span></a>
 <a name="160"><span class="lineNum">     160 </span>            : </a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">          5 :         if (of-&gt;test_only) {</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">         25 :         if (of-&gt;test_only) {</span></a>
 <a name="162"><span class="lineNum">     162 </span>            : </a>
-<a name="163"><span class="lineNum">     163 </span><span class="lineCov">          2 :             if (ngx_file_info_wrapper(name, of, &amp;fi, pool-&gt;log)</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">         16 :             if (ngx_file_info_wrapper(name, of, &amp;fi, pool-&gt;log)</span></a>
 <a name="164"><span class="lineNum">     164 </span>            :                 == NGX_FILE_ERROR)</a>
 <a name="165"><span class="lineNum">     165 </span>            :             {</a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineNoCov">          0 :                 return NGX_ERROR;</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">          8 :                 return NGX_ERROR;</span></a>
 <a name="167"><span class="lineNum">     167 </span>            :             }</a>
 <a name="168"><span class="lineNum">     168 </span>            : </a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          2 :             of-&gt;uniq = ngx_file_uniq(&amp;fi);</span></a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          2 :             of-&gt;mtime = ngx_file_mtime(&amp;fi);</span></a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">          2 :             of-&gt;size = ngx_file_size(&amp;fi);</span></a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">          2 :             of-&gt;fs_size = ngx_file_fs_size(&amp;fi);</span></a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">          2 :             of-&gt;is_dir = ngx_is_dir(&amp;fi);</span></a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          2 :             of-&gt;is_file = ngx_is_file(&amp;fi);</span></a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          2 :             of-&gt;is_link = ngx_is_link(&amp;fi);</span></a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">          2 :             of-&gt;is_exec = ngx_is_exec(&amp;fi);</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          8 :             of-&gt;uniq = ngx_file_uniq(&amp;fi);</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          8 :             of-&gt;mtime = ngx_file_mtime(&amp;fi);</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">          8 :             of-&gt;size = ngx_file_size(&amp;fi);</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">          8 :             of-&gt;fs_size = ngx_file_fs_size(&amp;fi);</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">          8 :             of-&gt;is_dir = ngx_is_dir(&amp;fi);</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          8 :             of-&gt;is_file = ngx_is_file(&amp;fi);</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          8 :             of-&gt;is_link = ngx_is_link(&amp;fi);</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">          8 :             of-&gt;is_exec = ngx_is_exec(&amp;fi);</span></a>
 <a name="177"><span class="lineNum">     177 </span>            : </a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">          2 :             return NGX_OK;</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">          8 :             return NGX_OK;</span></a>
 <a name="179"><span class="lineNum">     179 </span>            :         }</a>
 <a name="180"><span class="lineNum">     180 </span>            : </a>
-<a name="181"><span class="lineNum">     181 </span><span class="lineCov">          3 :         cln = ngx_pool_cleanup_add(pool, sizeof(ngx_pool_cleanup_file_t));</span></a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">          3 :         if (cln == NULL) {</span></a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineCov">          9 :         cln = ngx_pool_cleanup_add(pool, sizeof(ngx_pool_cleanup_file_t));</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">          9 :         if (cln == NULL) {</span></a>
 <a name="183"><span class="lineNum">     183 </span><span class="lineNoCov">          0 :             return NGX_ERROR;</span></a>
 <a name="184"><span class="lineNum">     184 </span>            :         }</a>
 <a name="185"><span class="lineNum">     185 </span>            : </a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          3 :         rc = ngx_open_and_stat_file(name, of, pool-&gt;log);</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          9 :         rc = ngx_open_and_stat_file(name, of, pool-&gt;log);</span></a>
 <a name="187"><span class="lineNum">     187 </span>            : </a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">          3 :         if (rc == NGX_OK &amp;&amp; !of-&gt;is_dir) {</span></a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">          2 :             cln-&gt;handler = ngx_pool_cleanup_file;</span></a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          2 :             clnf = cln-&gt;data;</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">          9 :         if (rc == NGX_OK &amp;&amp; !of-&gt;is_dir) {</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">          8 :             cln-&gt;handler = ngx_pool_cleanup_file;</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          8 :             clnf = cln-&gt;data;</span></a>
 <a name="191"><span class="lineNum">     191 </span>            : </a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">          2 :             clnf-&gt;fd = of-&gt;fd;</span></a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">          2 :             clnf-&gt;name = name-&gt;data;</span></a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">          2 :             clnf-&gt;log = pool-&gt;log;</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">          8 :             clnf-&gt;fd = of-&gt;fd;</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">          8 :             clnf-&gt;name = name-&gt;data;</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">          8 :             clnf-&gt;log = pool-&gt;log;</span></a>
 <a name="195"><span class="lineNum">     195 </span>            :         }</a>
 <a name="196"><span class="lineNum">     196 </span>            : </a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">          3 :         return rc;</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">          9 :         return rc;</span></a>
 <a name="198"><span class="lineNum">     198 </span>            :     }</a>
 <a name="199"><span class="lineNum">     199 </span>            : </a>
 <a name="200"><span class="lineNum">     200 </span><span class="lineNoCov">          0 :     cln = ngx_pool_cleanup_add(pool, sizeof(ngx_open_file_cache_cleanup_t));</span></a>
@@ -673,7 +673,7 @@
 <a name="611"><span class="lineNum">     611 </span>            : </a>
 <a name="612"><span class="lineNum">     612 </span>            : </a>
 <a name="613"><span class="lineNum">     613 </span>            : static ngx_fd_t</a>
-<a name="614"><span class="lineNum">     614 </span><span class="lineCov">          3 : ngx_open_file_wrapper(ngx_str_t *name, ngx_open_file_info_t *of,</span></a>
+<a name="614"><span class="lineNum">     614 </span><span class="lineCov">          9 : ngx_open_file_wrapper(ngx_str_t *name, ngx_open_file_info_t *of,</span></a>
 <a name="615"><span class="lineNum">     615 </span>            :     ngx_int_t mode, ngx_int_t create, ngx_int_t access, ngx_log_t *log)</a>
 <a name="616"><span class="lineNum">     616 </span>            : {</a>
 <a name="617"><span class="lineNum">     617 </span>            :     ngx_fd_t  fd;</a>
@@ -694,18 +694,18 @@
 <a name="632"><span class="lineNum">     632 </span>            : </a>
 <a name="633"><span class="lineNum">     633 </span>            :     u_char           *p, *cp, *end;</a>
 <a name="634"><span class="lineNum">     634 </span>            :     ngx_fd_t          at_fd;</a>
-<a name="635"><span class="lineNum">     635 </span><span class="lineCov">          3 :     ngx_str_t         at_name;</span></a>
+<a name="635"><span class="lineNum">     635 </span><span class="lineCov">          9 :     ngx_str_t         at_name;</span></a>
 <a name="636"><span class="lineNum">     636 </span>            : </a>
-<a name="637"><span class="lineNum">     637 </span><span class="lineCov">          3 :     if (of-&gt;disable_symlinks == NGX_DISABLE_SYMLINKS_OFF) {</span></a>
-<a name="638"><span class="lineNum">     638 </span><span class="lineCov">          3 :         fd = ngx_open_file(name-&gt;data, mode, create, access);</span></a>
+<a name="637"><span class="lineNum">     637 </span><span class="lineCov">          9 :     if (of-&gt;disable_symlinks == NGX_DISABLE_SYMLINKS_OFF) {</span></a>
+<a name="638"><span class="lineNum">     638 </span><span class="lineCov">          9 :         fd = ngx_open_file(name-&gt;data, mode, create, access);</span></a>
 <a name="639"><span class="lineNum">     639 </span>            : </a>
-<a name="640"><span class="lineNum">     640 </span><span class="lineCov">          3 :         if (fd == NGX_INVALID_FILE) {</span></a>
+<a name="640"><span class="lineNum">     640 </span><span class="lineCov">          9 :         if (fd == NGX_INVALID_FILE) {</span></a>
 <a name="641"><span class="lineNum">     641 </span><span class="lineCov">          1 :             of-&gt;err = ngx_errno;</span></a>
 <a name="642"><span class="lineNum">     642 </span><span class="lineCov">          1 :             of-&gt;failed = ngx_open_file_n;</span></a>
 <a name="643"><span class="lineNum">     643 </span><span class="lineCov">          1 :             return NGX_INVALID_FILE;</span></a>
 <a name="644"><span class="lineNum">     644 </span>            :         }</a>
 <a name="645"><span class="lineNum">     645 </span>            : </a>
-<a name="646"><span class="lineNum">     646 </span><span class="lineCov">          2 :         return fd;</span></a>
+<a name="646"><span class="lineNum">     646 </span><span class="lineCov">          8 :         return fd;</span></a>
 <a name="647"><span class="lineNum">     647 </span>            :     }</a>
 <a name="648"><span class="lineNum">     648 </span>            : </a>
 <a name="649"><span class="lineNum">     649 </span><span class="lineNoCov">          0 :     p = name-&gt;data;</span></a>
@@ -840,7 +840,7 @@
 <a name="778"><span class="lineNum">     778 </span>            : </a>
 <a name="779"><span class="lineNum">     779 </span>            : </a>
 <a name="780"><span class="lineNum">     780 </span>            : static ngx_int_t</a>
-<a name="781"><span class="lineNum">     781 </span><span class="lineCov">          2 : ngx_file_info_wrapper(ngx_str_t *name, ngx_open_file_info_t *of,</span></a>
+<a name="781"><span class="lineNum">     781 </span><span class="lineCov">         16 : ngx_file_info_wrapper(ngx_str_t *name, ngx_open_file_info_t *of,</span></a>
 <a name="782"><span class="lineNum">     782 </span>            :     ngx_file_info_t *fi, ngx_log_t *log)</a>
 <a name="783"><span class="lineNum">     783 </span>            : {</a>
 <a name="784"><span class="lineNum">     784 </span>            :     ngx_int_t  rc;</a>
@@ -861,17 +861,17 @@
 <a name="799"><span class="lineNum">     799 </span>            : </a>
 <a name="800"><span class="lineNum">     800 </span>            :     ngx_fd_t  fd;</a>
 <a name="801"><span class="lineNum">     801 </span>            : </a>
-<a name="802"><span class="lineNum">     802 </span><span class="lineCov">          2 :     if (of-&gt;disable_symlinks == NGX_DISABLE_SYMLINKS_OFF) {</span></a>
+<a name="802"><span class="lineNum">     802 </span><span class="lineCov">         16 :     if (of-&gt;disable_symlinks == NGX_DISABLE_SYMLINKS_OFF) {</span></a>
 <a name="803"><span class="lineNum">     803 </span>            : </a>
-<a name="804"><span class="lineNum">     804 </span><span class="lineCov">          2 :         rc = ngx_file_info(name-&gt;data, fi);</span></a>
+<a name="804"><span class="lineNum">     804 </span><span class="lineCov">         16 :         rc = ngx_file_info(name-&gt;data, fi);</span></a>
 <a name="805"><span class="lineNum">     805 </span>            : </a>
-<a name="806"><span class="lineNum">     806 </span><span class="lineCov">          2 :         if (rc == NGX_FILE_ERROR) {</span></a>
-<a name="807"><span class="lineNum">     807 </span><span class="lineNoCov">          0 :             of-&gt;err = ngx_errno;</span></a>
-<a name="808"><span class="lineNum">     808 </span><span class="lineNoCov">          0 :             of-&gt;failed = ngx_file_info_n;</span></a>
-<a name="809"><span class="lineNum">     809 </span><span class="lineNoCov">          0 :             return NGX_FILE_ERROR;</span></a>
+<a name="806"><span class="lineNum">     806 </span><span class="lineCov">         16 :         if (rc == NGX_FILE_ERROR) {</span></a>
+<a name="807"><span class="lineNum">     807 </span><span class="lineCov">          8 :             of-&gt;err = ngx_errno;</span></a>
+<a name="808"><span class="lineNum">     808 </span><span class="lineCov">          8 :             of-&gt;failed = ngx_file_info_n;</span></a>
+<a name="809"><span class="lineNum">     809 </span><span class="lineCov">          8 :             return NGX_FILE_ERROR;</span></a>
 <a name="810"><span class="lineNum">     810 </span>            :         }</a>
 <a name="811"><span class="lineNum">     811 </span>            : </a>
-<a name="812"><span class="lineNum">     812 </span><span class="lineCov">          2 :         return rc;</span></a>
+<a name="812"><span class="lineNum">     812 </span><span class="lineCov">          8 :         return rc;</span></a>
 <a name="813"><span class="lineNum">     813 </span>            :     }</a>
 <a name="814"><span class="lineNum">     814 </span>            : </a>
 <a name="815"><span class="lineNum">     815 </span><span class="lineNoCov">          0 :     fd = ngx_open_file_wrapper(name, of, NGX_FILE_RDONLY|NGX_FILE_NONBLOCK,</span></a>
@@ -899,13 +899,13 @@
 <a name="837"><span class="lineNum">     837 </span>            : </a>
 <a name="838"><span class="lineNum">     838 </span>            : </a>
 <a name="839"><span class="lineNum">     839 </span>            : static ngx_int_t</a>
-<a name="840"><span class="lineNum">     840 </span><span class="lineCov">          3 : ngx_open_and_stat_file(ngx_str_t *name, ngx_open_file_info_t *of,</span></a>
+<a name="840"><span class="lineNum">     840 </span><span class="lineCov">          9 : ngx_open_and_stat_file(ngx_str_t *name, ngx_open_file_info_t *of,</span></a>
 <a name="841"><span class="lineNum">     841 </span>            :     ngx_log_t *log)</a>
 <a name="842"><span class="lineNum">     842 </span>            : {</a>
 <a name="843"><span class="lineNum">     843 </span>            :     ngx_fd_t         fd;</a>
-<a name="844"><span class="lineNum">     844 </span><span class="lineCov">          3 :     ngx_file_info_t  fi;</span></a>
+<a name="844"><span class="lineNum">     844 </span><span class="lineCov">          9 :     ngx_file_info_t  fi;</span></a>
 <a name="845"><span class="lineNum">     845 </span>            : </a>
-<a name="846"><span class="lineNum">     846 </span><span class="lineCov">          3 :     if (of-&gt;fd != NGX_INVALID_FILE) {</span></a>
+<a name="846"><span class="lineNum">     846 </span><span class="lineCov">          9 :     if (of-&gt;fd != NGX_INVALID_FILE) {</span></a>
 <a name="847"><span class="lineNum">     847 </span>            : </a>
 <a name="848"><span class="lineNum">     848 </span><span class="lineNoCov">          0 :         if (ngx_file_info_wrapper(name, of, &amp;fi, log) == NGX_FILE_ERROR) {</span></a>
 <a name="849"><span class="lineNum">     849 </span><span class="lineNoCov">          0 :             of-&gt;fd = NGX_INVALID_FILE;</span></a>
@@ -916,7 +916,7 @@
 <a name="854"><span class="lineNum">     854 </span><span class="lineNoCov">          0 :             goto done;</span></a>
 <a name="855"><span class="lineNum">     855 </span>            :         }</a>
 <a name="856"><span class="lineNum">     856 </span>            : </a>
-<a name="857"><span class="lineNum">     857 </span><span class="lineCov">          3 :     } else if (of-&gt;test_dir) {</span></a>
+<a name="857"><span class="lineNum">     857 </span><span class="lineCov">          9 :     } else if (of-&gt;test_dir) {</span></a>
 <a name="858"><span class="lineNum">     858 </span>            : </a>
 <a name="859"><span class="lineNum">     859 </span><span class="lineNoCov">          0 :         if (ngx_file_info_wrapper(name, of, &amp;fi, log) == NGX_FILE_ERROR) {</span></a>
 <a name="860"><span class="lineNum">     860 </span><span class="lineNoCov">          0 :             of-&gt;fd = NGX_INVALID_FILE;</span></a>
@@ -928,14 +928,14 @@
 <a name="866"><span class="lineNum">     866 </span>            :         }</a>
 <a name="867"><span class="lineNum">     867 </span>            :     }</a>
 <a name="868"><span class="lineNum">     868 </span>            : </a>
-<a name="869"><span class="lineNum">     869 </span><span class="lineCov">          3 :     if (!of-&gt;log) {</span></a>
+<a name="869"><span class="lineNum">     869 </span><span class="lineCov">          9 :     if (!of-&gt;log) {</span></a>
 <a name="870"><span class="lineNum">     870 </span>            : </a>
 <a name="871"><span class="lineNum">     871 </span>            :         /*</a>
 <a name="872"><span class="lineNum">     872 </span>            :          * Use non-blocking open() not to hang on FIFO files, etc.</a>
 <a name="873"><span class="lineNum">     873 </span>            :          * This flag has no effect on a regular files.</a>
 <a name="874"><span class="lineNum">     874 </span>            :          */</a>
 <a name="875"><span class="lineNum">     875 </span>            : </a>
-<a name="876"><span class="lineNum">     876 </span><span class="lineCov">          3 :         fd = ngx_open_file_wrapper(name, of, NGX_FILE_RDONLY|NGX_FILE_NONBLOCK,</span></a>
+<a name="876"><span class="lineNum">     876 </span><span class="lineCov">          9 :         fd = ngx_open_file_wrapper(name, of, NGX_FILE_RDONLY|NGX_FILE_NONBLOCK,</span></a>
 <a name="877"><span class="lineNum">     877 </span>            :                                    NGX_FILE_OPEN, 0, log);</a>
 <a name="878"><span class="lineNum">     878 </span>            : </a>
 <a name="879"><span class="lineNum">     879 </span>            :     } else {</a>
@@ -944,12 +944,12 @@
 <a name="882"><span class="lineNum">     882 </span>            :                                    NGX_FILE_DEFAULT_ACCESS, log);</a>
 <a name="883"><span class="lineNum">     883 </span>            :     }</a>
 <a name="884"><span class="lineNum">     884 </span>            : </a>
-<a name="885"><span class="lineNum">     885 </span><span class="lineCov">          3 :     if (fd == NGX_INVALID_FILE) {</span></a>
+<a name="885"><span class="lineNum">     885 </span><span class="lineCov">          9 :     if (fd == NGX_INVALID_FILE) {</span></a>
 <a name="886"><span class="lineNum">     886 </span><span class="lineCov">          1 :         of-&gt;fd = NGX_INVALID_FILE;</span></a>
 <a name="887"><span class="lineNum">     887 </span><span class="lineCov">          1 :         return NGX_ERROR;</span></a>
 <a name="888"><span class="lineNum">     888 </span>            :     }</a>
 <a name="889"><span class="lineNum">     889 </span>            : </a>
-<a name="890"><span class="lineNum">     890 </span><span class="lineCov">          2 :     if (ngx_fd_info(fd, &amp;fi) == NGX_FILE_ERROR) {</span></a>
+<a name="890"><span class="lineNum">     890 </span><span class="lineCov">          8 :     if (ngx_fd_info(fd, &amp;fi) == NGX_FILE_ERROR) {</span></a>
 <a name="891"><span class="lineNum">     891 </span><span class="lineNoCov">          0 :         ngx_log_error(NGX_LOG_CRIT, log, ngx_errno,</span></a>
 <a name="892"><span class="lineNum">     892 </span>            :                       ngx_fd_info_n &quot; \&quot;%V\&quot; failed&quot;, name);</a>
 <a name="893"><span class="lineNum">     893 </span>            : </a>
@@ -963,7 +963,7 @@
 <a name="901"><span class="lineNum">     901 </span><span class="lineNoCov">          0 :         return NGX_ERROR;</span></a>
 <a name="902"><span class="lineNum">     902 </span>            :     }</a>
 <a name="903"><span class="lineNum">     903 </span>            : </a>
-<a name="904"><span class="lineNum">     904 </span><span class="lineCov">          2 :     if (ngx_is_dir(&amp;fi)) {</span></a>
+<a name="904"><span class="lineNum">     904 </span><span class="lineCov">          8 :     if (ngx_is_dir(&amp;fi)) {</span></a>
 <a name="905"><span class="lineNum">     905 </span><span class="lineNoCov">          0 :         if (ngx_close_file(fd) == NGX_FILE_ERROR) {</span></a>
 <a name="906"><span class="lineNum">     906 </span><span class="lineNoCov">          0 :             ngx_log_error(NGX_LOG_ALERT, log, ngx_errno,</span></a>
 <a name="907"><span class="lineNum">     907 </span>            :                           ngx_close_file_n &quot; \&quot;%V\&quot; failed&quot;, name);</a>
@@ -972,16 +972,16 @@
 <a name="910"><span class="lineNum">     910 </span><span class="lineNoCov">          0 :         of-&gt;fd = NGX_INVALID_FILE;</span></a>
 <a name="911"><span class="lineNum">     911 </span>            : </a>
 <a name="912"><span class="lineNum">     912 </span>            :     } else {</a>
-<a name="913"><span class="lineNum">     913 </span><span class="lineCov">          2 :         of-&gt;fd = fd;</span></a>
+<a name="913"><span class="lineNum">     913 </span><span class="lineCov">          8 :         of-&gt;fd = fd;</span></a>
 <a name="914"><span class="lineNum">     914 </span>            : </a>
-<a name="915"><span class="lineNum">     915 </span><span class="lineCov">          2 :         if (of-&gt;read_ahead &amp;&amp; ngx_file_size(&amp;fi) &gt; NGX_MIN_READ_AHEAD) {</span></a>
+<a name="915"><span class="lineNum">     915 </span><span class="lineCov">          8 :         if (of-&gt;read_ahead &amp;&amp; ngx_file_size(&amp;fi) &gt; NGX_MIN_READ_AHEAD) {</span></a>
 <a name="916"><span class="lineNum">     916 </span><span class="lineNoCov">          0 :             if (ngx_read_ahead(fd, of-&gt;read_ahead) == NGX_ERROR) {</span></a>
 <a name="917"><span class="lineNum">     917 </span><span class="lineNoCov">          0 :                 ngx_log_error(NGX_LOG_ALERT, log, ngx_errno,</span></a>
 <a name="918"><span class="lineNum">     918 </span>            :                               ngx_read_ahead_n &quot; \&quot;%V\&quot; failed&quot;, name);</a>
 <a name="919"><span class="lineNum">     919 </span>            :             }</a>
 <a name="920"><span class="lineNum">     920 </span>            :         }</a>
 <a name="921"><span class="lineNum">     921 </span>            : </a>
-<a name="922"><span class="lineNum">     922 </span><span class="lineCov">          2 :         if (of-&gt;directio &lt;= ngx_file_size(&amp;fi)) {</span></a>
+<a name="922"><span class="lineNum">     922 </span><span class="lineCov">          8 :         if (of-&gt;directio &lt;= ngx_file_size(&amp;fi)) {</span></a>
 <a name="923"><span class="lineNum">     923 </span><span class="lineNoCov">          0 :             if (ngx_directio_on(fd) == NGX_FILE_ERROR) {</span></a>
 <a name="924"><span class="lineNum">     924 </span><span class="lineNoCov">          0 :                 ngx_log_error(NGX_LOG_ALERT, log, ngx_errno,</span></a>
 <a name="925"><span class="lineNum">     925 </span>            :                               ngx_directio_on_n &quot; \&quot;%V\&quot; failed&quot;, name);</a>
@@ -992,18 +992,18 @@
 <a name="930"><span class="lineNum">     930 </span>            :         }</a>
 <a name="931"><span class="lineNum">     931 </span>            :     }</a>
 <a name="932"><span class="lineNum">     932 </span>            : </a>
-<a name="933"><span class="lineNum">     933 </span><span class="lineCov">          2 : done:</span></a>
+<a name="933"><span class="lineNum">     933 </span><span class="lineCov">          8 : done:</span></a>
 <a name="934"><span class="lineNum">     934 </span>            : </a>
-<a name="935"><span class="lineNum">     935 </span><span class="lineCov">          2 :     of-&gt;uniq = ngx_file_uniq(&amp;fi);</span></a>
-<a name="936"><span class="lineNum">     936 </span><span class="lineCov">          2 :     of-&gt;mtime = ngx_file_mtime(&amp;fi);</span></a>
-<a name="937"><span class="lineNum">     937 </span><span class="lineCov">          2 :     of-&gt;size = ngx_file_size(&amp;fi);</span></a>
-<a name="938"><span class="lineNum">     938 </span><span class="lineCov">          2 :     of-&gt;fs_size = ngx_file_fs_size(&amp;fi);</span></a>
-<a name="939"><span class="lineNum">     939 </span><span class="lineCov">          2 :     of-&gt;is_dir = ngx_is_dir(&amp;fi);</span></a>
-<a name="940"><span class="lineNum">     940 </span><span class="lineCov">          2 :     of-&gt;is_file = ngx_is_file(&amp;fi);</span></a>
-<a name="941"><span class="lineNum">     941 </span><span class="lineCov">          2 :     of-&gt;is_link = ngx_is_link(&amp;fi);</span></a>
-<a name="942"><span class="lineNum">     942 </span><span class="lineCov">          2 :     of-&gt;is_exec = ngx_is_exec(&amp;fi);</span></a>
+<a name="935"><span class="lineNum">     935 </span><span class="lineCov">          8 :     of-&gt;uniq = ngx_file_uniq(&amp;fi);</span></a>
+<a name="936"><span class="lineNum">     936 </span><span class="lineCov">          8 :     of-&gt;mtime = ngx_file_mtime(&amp;fi);</span></a>
+<a name="937"><span class="lineNum">     937 </span><span class="lineCov">          8 :     of-&gt;size = ngx_file_size(&amp;fi);</span></a>
+<a name="938"><span class="lineNum">     938 </span><span class="lineCov">          8 :     of-&gt;fs_size = ngx_file_fs_size(&amp;fi);</span></a>
+<a name="939"><span class="lineNum">     939 </span><span class="lineCov">          8 :     of-&gt;is_dir = ngx_is_dir(&amp;fi);</span></a>
+<a name="940"><span class="lineNum">     940 </span><span class="lineCov">          8 :     of-&gt;is_file = ngx_is_file(&amp;fi);</span></a>
+<a name="941"><span class="lineNum">     941 </span><span class="lineCov">          8 :     of-&gt;is_link = ngx_is_link(&amp;fi);</span></a>
+<a name="942"><span class="lineNum">     942 </span><span class="lineCov">          8 :     of-&gt;is_exec = ngx_is_exec(&amp;fi);</span></a>
 <a name="943"><span class="lineNum">     943 </span>            : </a>
-<a name="944"><span class="lineNum">     944 </span><span class="lineCov">          2 :     return NGX_OK;</span></a>
+<a name="944"><span class="lineNum">     944 </span><span class="lineCov">          8 :     return NGX_OK;</span></a>
 <a name="945"><span class="lineNum">     945 </span>            : }</a>
 <a name="946"><span class="lineNum">     946 </span>            : </a>
 <a name="947"><span class="lineNum">     947 </span>            : </a>

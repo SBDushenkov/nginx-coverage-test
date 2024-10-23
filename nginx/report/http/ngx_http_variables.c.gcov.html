@@ -31,18 +31,18 @@
             <td class="headerValue">report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">183</td>
+            <td class="headerCovTableEntry">192</td>
             <td class="headerCovTableEntry">1114</td>
-            <td class="headerCovTableEntryLo">16.4 %</td>
+            <td class="headerCovTableEntryLo">17.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-22 13:10:45</td>
+            <td class="headerValue">2024-10-23 15:06:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">12</td>
+            <td class="headerCovTableEntry">13</td>
             <td class="headerCovTableEntry">72</td>
-            <td class="headerCovTableEntryLo">16.7 %</td>
+            <td class="headerCovTableEntryLo">18.1 %</td>
           </tr>
           <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -474,7 +474,7 @@
 <a name="412"><span class="lineNum">     412 </span>            : </a>
 <a name="413"><span class="lineNum">     413 </span>            : </a>
 <a name="414"><span class="lineNum">     414 </span>            : ngx_http_variable_t *</a>
-<a name="415"><span class="lineNum">     415 </span><span class="lineCov">       3984 : ngx_http_add_variable(ngx_conf_t *cf, ngx_str_t *name, ngx_uint_t flags)</span></a>
+<a name="415"><span class="lineNum">     415 </span><span class="lineCov">       6972 : ngx_http_add_variable(ngx_conf_t *cf, ngx_str_t *name, ngx_uint_t flags)</span></a>
 <a name="416"><span class="lineNum">     416 </span>            : {</a>
 <a name="417"><span class="lineNum">     417 </span>            :     ngx_int_t                   rc;</a>
 <a name="418"><span class="lineNum">     418 </span>            :     ngx_uint_t                  i;</a>
@@ -482,24 +482,24 @@
 <a name="420"><span class="lineNum">     420 </span>            :     ngx_http_variable_t        *v;</a>
 <a name="421"><span class="lineNum">     421 </span>            :     ngx_http_core_main_conf_t  *cmcf;</a>
 <a name="422"><span class="lineNum">     422 </span>            : </a>
-<a name="423"><span class="lineNum">     423 </span><span class="lineCov">       3984 :     if (name-&gt;len == 0) {</span></a>
+<a name="423"><span class="lineNum">     423 </span><span class="lineCov">       6972 :     if (name-&gt;len == 0) {</span></a>
 <a name="424"><span class="lineNum">     424 </span><span class="lineNoCov">          0 :         ngx_conf_log_error(NGX_LOG_EMERG, cf, 0,</span></a>
 <a name="425"><span class="lineNum">     425 </span>            :                            &quot;invalid variable name \&quot;$\&quot;&quot;);</a>
 <a name="426"><span class="lineNum">     426 </span><span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="427"><span class="lineNum">     427 </span>            :     }</a>
 <a name="428"><span class="lineNum">     428 </span>            : </a>
-<a name="429"><span class="lineNum">     429 </span><span class="lineCov">       3984 :     if (flags &amp; NGX_HTTP_VAR_PREFIX) {</span></a>
-<a name="430"><span class="lineNum">     430 </span><span class="lineCov">        432 :         return ngx_http_add_prefix_variable(cf, name, flags);</span></a>
+<a name="429"><span class="lineNum">     429 </span><span class="lineCov">       6972 :     if (flags &amp; NGX_HTTP_VAR_PREFIX) {</span></a>
+<a name="430"><span class="lineNum">     430 </span><span class="lineCov">        756 :         return ngx_http_add_prefix_variable(cf, name, flags);</span></a>
 <a name="431"><span class="lineNum">     431 </span>            :     }</a>
 <a name="432"><span class="lineNum">     432 </span>            : </a>
-<a name="433"><span class="lineNum">     433 </span><span class="lineCov">       3552 :     cmcf = ngx_http_conf_get_module_main_conf(cf, ngx_http_core_module);</span></a>
+<a name="433"><span class="lineNum">     433 </span><span class="lineCov">       6216 :     cmcf = ngx_http_conf_get_module_main_conf(cf, ngx_http_core_module);</span></a>
 <a name="434"><span class="lineNum">     434 </span>            : </a>
-<a name="435"><span class="lineNum">     435 </span><span class="lineCov">       3552 :     key = cmcf-&gt;variables_keys-&gt;keys.elts;</span></a>
-<a name="436"><span class="lineNum">     436 </span><span class="lineCov">     133200 :     for (i = 0; i &lt; cmcf-&gt;variables_keys-&gt;keys.nelts; i++) {</span></a>
-<a name="437"><span class="lineNum">     437 </span><span class="lineCov">     129648 :         if (name-&gt;len != key[i].key.len</span></a>
-<a name="438"><span class="lineNum">     438 </span><span class="lineCov">       5904 :             || ngx_strncasecmp(name-&gt;data, key[i].key.data, name-&gt;len) != 0)</span></a>
+<a name="435"><span class="lineNum">     435 </span><span class="lineCov">       6216 :     key = cmcf-&gt;variables_keys-&gt;keys.elts;</span></a>
+<a name="436"><span class="lineNum">     436 </span><span class="lineCov">     233100 :     for (i = 0; i &lt; cmcf-&gt;variables_keys-&gt;keys.nelts; i++) {</span></a>
+<a name="437"><span class="lineNum">     437 </span><span class="lineCov">     226884 :         if (name-&gt;len != key[i].key.len</span></a>
+<a name="438"><span class="lineNum">     438 </span><span class="lineCov">      10332 :             || ngx_strncasecmp(name-&gt;data, key[i].key.data, name-&gt;len) != 0)</span></a>
 <a name="439"><span class="lineNum">     439 </span>            :         {</a>
-<a name="440"><span class="lineNum">     440 </span><span class="lineCov">     129648 :             continue;</span></a>
+<a name="440"><span class="lineNum">     440 </span><span class="lineCov">     226884 :             continue;</span></a>
 <a name="441"><span class="lineNum">     441 </span>            :         }</a>
 <a name="442"><span class="lineNum">     442 </span>            : </a>
 <a name="443"><span class="lineNum">     443 </span><span class="lineNoCov">          0 :         v = key[i].value;</span></a>
@@ -517,56 +517,56 @@
 <a name="455"><span class="lineNum">     455 </span><span class="lineNoCov">          0 :         return v;</span></a>
 <a name="456"><span class="lineNum">     456 </span>            :     }</a>
 <a name="457"><span class="lineNum">     457 </span>            : </a>
-<a name="458"><span class="lineNum">     458 </span><span class="lineCov">       3552 :     v = ngx_palloc(cf-&gt;pool, sizeof(ngx_http_variable_t));</span></a>
-<a name="459"><span class="lineNum">     459 </span><span class="lineCov">       3552 :     if (v == NULL) {</span></a>
+<a name="458"><span class="lineNum">     458 </span><span class="lineCov">       6216 :     v = ngx_palloc(cf-&gt;pool, sizeof(ngx_http_variable_t));</span></a>
+<a name="459"><span class="lineNum">     459 </span><span class="lineCov">       6216 :     if (v == NULL) {</span></a>
 <a name="460"><span class="lineNum">     460 </span><span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="461"><span class="lineNum">     461 </span>            :     }</a>
 <a name="462"><span class="lineNum">     462 </span>            : </a>
-<a name="463"><span class="lineNum">     463 </span><span class="lineCov">       3552 :     v-&gt;name.len = name-&gt;len;</span></a>
-<a name="464"><span class="lineNum">     464 </span><span class="lineCov">       3552 :     v-&gt;name.data = ngx_pnalloc(cf-&gt;pool, name-&gt;len);</span></a>
-<a name="465"><span class="lineNum">     465 </span><span class="lineCov">       3552 :     if (v-&gt;name.data == NULL) {</span></a>
+<a name="463"><span class="lineNum">     463 </span><span class="lineCov">       6216 :     v-&gt;name.len = name-&gt;len;</span></a>
+<a name="464"><span class="lineNum">     464 </span><span class="lineCov">       6216 :     v-&gt;name.data = ngx_pnalloc(cf-&gt;pool, name-&gt;len);</span></a>
+<a name="465"><span class="lineNum">     465 </span><span class="lineCov">       6216 :     if (v-&gt;name.data == NULL) {</span></a>
 <a name="466"><span class="lineNum">     466 </span><span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="467"><span class="lineNum">     467 </span>            :     }</a>
 <a name="468"><span class="lineNum">     468 </span>            : </a>
-<a name="469"><span class="lineNum">     469 </span><span class="lineCov">       3552 :     ngx_strlow(v-&gt;name.data, name-&gt;data, name-&gt;len);</span></a>
+<a name="469"><span class="lineNum">     469 </span><span class="lineCov">       6216 :     ngx_strlow(v-&gt;name.data, name-&gt;data, name-&gt;len);</span></a>
 <a name="470"><span class="lineNum">     470 </span>            : </a>
-<a name="471"><span class="lineNum">     471 </span><span class="lineCov">       3552 :     v-&gt;set_handler = NULL;</span></a>
-<a name="472"><span class="lineNum">     472 </span><span class="lineCov">       3552 :     v-&gt;get_handler = NULL;</span></a>
-<a name="473"><span class="lineNum">     473 </span><span class="lineCov">       3552 :     v-&gt;data = 0;</span></a>
-<a name="474"><span class="lineNum">     474 </span><span class="lineCov">       3552 :     v-&gt;flags = flags;</span></a>
-<a name="475"><span class="lineNum">     475 </span><span class="lineCov">       3552 :     v-&gt;index = 0;</span></a>
+<a name="471"><span class="lineNum">     471 </span><span class="lineCov">       6216 :     v-&gt;set_handler = NULL;</span></a>
+<a name="472"><span class="lineNum">     472 </span><span class="lineCov">       6216 :     v-&gt;get_handler = NULL;</span></a>
+<a name="473"><span class="lineNum">     473 </span><span class="lineCov">       6216 :     v-&gt;data = 0;</span></a>
+<a name="474"><span class="lineNum">     474 </span><span class="lineCov">       6216 :     v-&gt;flags = flags;</span></a>
+<a name="475"><span class="lineNum">     475 </span><span class="lineCov">       6216 :     v-&gt;index = 0;</span></a>
 <a name="476"><span class="lineNum">     476 </span>            : </a>
-<a name="477"><span class="lineNum">     477 </span><span class="lineCov">       3552 :     rc = ngx_hash_add_key(cmcf-&gt;variables_keys, &amp;v-&gt;name, v, 0);</span></a>
+<a name="477"><span class="lineNum">     477 </span><span class="lineCov">       6216 :     rc = ngx_hash_add_key(cmcf-&gt;variables_keys, &amp;v-&gt;name, v, 0);</span></a>
 <a name="478"><span class="lineNum">     478 </span>            : </a>
-<a name="479"><span class="lineNum">     479 </span><span class="lineCov">       3552 :     if (rc == NGX_ERROR) {</span></a>
+<a name="479"><span class="lineNum">     479 </span><span class="lineCov">       6216 :     if (rc == NGX_ERROR) {</span></a>
 <a name="480"><span class="lineNum">     480 </span><span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="481"><span class="lineNum">     481 </span>            :     }</a>
 <a name="482"><span class="lineNum">     482 </span>            : </a>
-<a name="483"><span class="lineNum">     483 </span><span class="lineCov">       3552 :     if (rc == NGX_BUSY) {</span></a>
+<a name="483"><span class="lineNum">     483 </span><span class="lineCov">       6216 :     if (rc == NGX_BUSY) {</span></a>
 <a name="484"><span class="lineNum">     484 </span><span class="lineNoCov">          0 :         ngx_conf_log_error(NGX_LOG_EMERG, cf, 0,</span></a>
 <a name="485"><span class="lineNum">     485 </span>            :                            &quot;conflicting variable name \&quot;%V\&quot;&quot;, name);</a>
 <a name="486"><span class="lineNum">     486 </span><span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="487"><span class="lineNum">     487 </span>            :     }</a>
 <a name="488"><span class="lineNum">     488 </span>            : </a>
-<a name="489"><span class="lineNum">     489 </span><span class="lineCov">       3552 :     return v;</span></a>
+<a name="489"><span class="lineNum">     489 </span><span class="lineCov">       6216 :     return v;</span></a>
 <a name="490"><span class="lineNum">     490 </span>            : }</a>
 <a name="491"><span class="lineNum">     491 </span>            : </a>
 <a name="492"><span class="lineNum">     492 </span>            : </a>
 <a name="493"><span class="lineNum">     493 </span>            : static ngx_http_variable_t *</a>
-<a name="494"><span class="lineNum">     494 </span><span class="lineCov">        432 : ngx_http_add_prefix_variable(ngx_conf_t *cf, ngx_str_t *name, ngx_uint_t flags)</span></a>
+<a name="494"><span class="lineNum">     494 </span><span class="lineCov">        756 : ngx_http_add_prefix_variable(ngx_conf_t *cf, ngx_str_t *name, ngx_uint_t flags)</span></a>
 <a name="495"><span class="lineNum">     495 </span>            : {</a>
 <a name="496"><span class="lineNum">     496 </span>            :     ngx_uint_t                  i;</a>
 <a name="497"><span class="lineNum">     497 </span>            :     ngx_http_variable_t        *v;</a>
 <a name="498"><span class="lineNum">     498 </span>            :     ngx_http_core_main_conf_t  *cmcf;</a>
 <a name="499"><span class="lineNum">     499 </span>            : </a>
-<a name="500"><span class="lineNum">     500 </span><span class="lineCov">        432 :     cmcf = ngx_http_conf_get_module_main_conf(cf, ngx_http_core_module);</span></a>
+<a name="500"><span class="lineNum">     500 </span><span class="lineCov">        756 :     cmcf = ngx_http_conf_get_module_main_conf(cf, ngx_http_core_module);</span></a>
 <a name="501"><span class="lineNum">     501 </span>            : </a>
-<a name="502"><span class="lineNum">     502 </span><span class="lineCov">        432 :     v = cmcf-&gt;prefix_variables.elts;</span></a>
-<a name="503"><span class="lineNum">     503 </span><span class="lineCov">       2160 :     for (i = 0; i &lt; cmcf-&gt;prefix_variables.nelts; i++) {</span></a>
-<a name="504"><span class="lineNum">     504 </span><span class="lineCov">       1728 :         if (name-&gt;len != v[i].name.len</span></a>
+<a name="502"><span class="lineNum">     502 </span><span class="lineCov">        756 :     v = cmcf-&gt;prefix_variables.elts;</span></a>
+<a name="503"><span class="lineNum">     503 </span><span class="lineCov">       3780 :     for (i = 0; i &lt; cmcf-&gt;prefix_variables.nelts; i++) {</span></a>
+<a name="504"><span class="lineNum">     504 </span><span class="lineCov">       3024 :         if (name-&gt;len != v[i].name.len</span></a>
 <a name="505"><span class="lineNum">     505 </span><span class="lineNoCov">          0 :             || ngx_strncasecmp(name-&gt;data, v[i].name.data, name-&gt;len) != 0)</span></a>
 <a name="506"><span class="lineNum">     506 </span>            :         {</a>
-<a name="507"><span class="lineNum">     507 </span><span class="lineCov">       1728 :             continue;</span></a>
+<a name="507"><span class="lineNum">     507 </span><span class="lineCov">       3024 :             continue;</span></a>
 <a name="508"><span class="lineNum">     508 </span>            :         }</a>
 <a name="509"><span class="lineNum">     509 </span>            : </a>
 <a name="510"><span class="lineNum">     510 </span><span class="lineNoCov">          0 :         v = &amp;v[i];</span></a>
@@ -584,48 +584,48 @@
 <a name="522"><span class="lineNum">     522 </span><span class="lineNoCov">          0 :         return v;</span></a>
 <a name="523"><span class="lineNum">     523 </span>            :     }</a>
 <a name="524"><span class="lineNum">     524 </span>            : </a>
-<a name="525"><span class="lineNum">     525 </span><span class="lineCov">        432 :     v = ngx_array_push(&amp;cmcf-&gt;prefix_variables);</span></a>
-<a name="526"><span class="lineNum">     526 </span><span class="lineCov">        432 :     if (v == NULL) {</span></a>
+<a name="525"><span class="lineNum">     525 </span><span class="lineCov">        756 :     v = ngx_array_push(&amp;cmcf-&gt;prefix_variables);</span></a>
+<a name="526"><span class="lineNum">     526 </span><span class="lineCov">        756 :     if (v == NULL) {</span></a>
 <a name="527"><span class="lineNum">     527 </span><span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="528"><span class="lineNum">     528 </span>            :     }</a>
 <a name="529"><span class="lineNum">     529 </span>            : </a>
-<a name="530"><span class="lineNum">     530 </span><span class="lineCov">        432 :     v-&gt;name.len = name-&gt;len;</span></a>
-<a name="531"><span class="lineNum">     531 </span><span class="lineCov">        432 :     v-&gt;name.data = ngx_pnalloc(cf-&gt;pool, name-&gt;len);</span></a>
-<a name="532"><span class="lineNum">     532 </span><span class="lineCov">        432 :     if (v-&gt;name.data == NULL) {</span></a>
+<a name="530"><span class="lineNum">     530 </span><span class="lineCov">        756 :     v-&gt;name.len = name-&gt;len;</span></a>
+<a name="531"><span class="lineNum">     531 </span><span class="lineCov">        756 :     v-&gt;name.data = ngx_pnalloc(cf-&gt;pool, name-&gt;len);</span></a>
+<a name="532"><span class="lineNum">     532 </span><span class="lineCov">        756 :     if (v-&gt;name.data == NULL) {</span></a>
 <a name="533"><span class="lineNum">     533 </span><span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="534"><span class="lineNum">     534 </span>            :     }</a>
 <a name="535"><span class="lineNum">     535 </span>            : </a>
-<a name="536"><span class="lineNum">     536 </span><span class="lineCov">        432 :     ngx_strlow(v-&gt;name.data, name-&gt;data, name-&gt;len);</span></a>
+<a name="536"><span class="lineNum">     536 </span><span class="lineCov">        756 :     ngx_strlow(v-&gt;name.data, name-&gt;data, name-&gt;len);</span></a>
 <a name="537"><span class="lineNum">     537 </span>            : </a>
-<a name="538"><span class="lineNum">     538 </span><span class="lineCov">        432 :     v-&gt;set_handler = NULL;</span></a>
-<a name="539"><span class="lineNum">     539 </span><span class="lineCov">        432 :     v-&gt;get_handler = NULL;</span></a>
-<a name="540"><span class="lineNum">     540 </span><span class="lineCov">        432 :     v-&gt;data = 0;</span></a>
-<a name="541"><span class="lineNum">     541 </span><span class="lineCov">        432 :     v-&gt;flags = flags;</span></a>
-<a name="542"><span class="lineNum">     542 </span><span class="lineCov">        432 :     v-&gt;index = 0;</span></a>
+<a name="538"><span class="lineNum">     538 </span><span class="lineCov">        756 :     v-&gt;set_handler = NULL;</span></a>
+<a name="539"><span class="lineNum">     539 </span><span class="lineCov">        756 :     v-&gt;get_handler = NULL;</span></a>
+<a name="540"><span class="lineNum">     540 </span><span class="lineCov">        756 :     v-&gt;data = 0;</span></a>
+<a name="541"><span class="lineNum">     541 </span><span class="lineCov">        756 :     v-&gt;flags = flags;</span></a>
+<a name="542"><span class="lineNum">     542 </span><span class="lineCov">        756 :     v-&gt;index = 0;</span></a>
 <a name="543"><span class="lineNum">     543 </span>            : </a>
-<a name="544"><span class="lineNum">     544 </span><span class="lineCov">        432 :     return v;</span></a>
+<a name="544"><span class="lineNum">     544 </span><span class="lineCov">        756 :     return v;</span></a>
 <a name="545"><span class="lineNum">     545 </span>            : }</a>
 <a name="546"><span class="lineNum">     546 </span>            : </a>
 <a name="547"><span class="lineNum">     547 </span>            : </a>
 <a name="548"><span class="lineNum">     548 </span>            : ngx_int_t</a>
-<a name="549"><span class="lineNum">     549 </span><span class="lineCov">        339 : ngx_http_get_variable_index(ngx_conf_t *cf, ngx_str_t *name)</span></a>
+<a name="549"><span class="lineNum">     549 </span><span class="lineCov">        663 : ngx_http_get_variable_index(ngx_conf_t *cf, ngx_str_t *name)</span></a>
 <a name="550"><span class="lineNum">     550 </span>            : {</a>
 <a name="551"><span class="lineNum">     551 </span>            :     ngx_uint_t                  i;</a>
 <a name="552"><span class="lineNum">     552 </span>            :     ngx_http_variable_t        *v;</a>
 <a name="553"><span class="lineNum">     553 </span>            :     ngx_http_core_main_conf_t  *cmcf;</a>
 <a name="554"><span class="lineNum">     554 </span>            : </a>
-<a name="555"><span class="lineNum">     555 </span><span class="lineCov">        339 :     if (name-&gt;len == 0) {</span></a>
+<a name="555"><span class="lineNum">     555 </span><span class="lineCov">        663 :     if (name-&gt;len == 0) {</span></a>
 <a name="556"><span class="lineNum">     556 </span><span class="lineNoCov">          0 :         ngx_conf_log_error(NGX_LOG_EMERG, cf, 0,</span></a>
 <a name="557"><span class="lineNum">     557 </span>            :                            &quot;invalid variable name \&quot;$\&quot;&quot;);</a>
 <a name="558"><span class="lineNum">     558 </span><span class="lineNoCov">          0 :         return NGX_ERROR;</span></a>
 <a name="559"><span class="lineNum">     559 </span>            :     }</a>
 <a name="560"><span class="lineNum">     560 </span>            : </a>
-<a name="561"><span class="lineNum">     561 </span><span class="lineCov">        339 :     cmcf = ngx_http_conf_get_module_main_conf(cf, ngx_http_core_module);</span></a>
+<a name="561"><span class="lineNum">     561 </span><span class="lineCov">        663 :     cmcf = ngx_http_conf_get_module_main_conf(cf, ngx_http_core_module);</span></a>
 <a name="562"><span class="lineNum">     562 </span>            : </a>
-<a name="563"><span class="lineNum">     563 </span><span class="lineCov">        339 :     v = cmcf-&gt;variables.elts;</span></a>
+<a name="563"><span class="lineNum">     563 </span><span class="lineCov">        663 :     v = cmcf-&gt;variables.elts;</span></a>
 <a name="564"><span class="lineNum">     564 </span>            : </a>
-<a name="565"><span class="lineNum">     565 </span><span class="lineCov">        339 :     if (v == NULL) {</span></a>
-<a name="566"><span class="lineNum">     566 </span><span class="lineCov">         48 :         if (ngx_array_init(&amp;cmcf-&gt;variables, cf-&gt;pool, 4,</span></a>
+<a name="565"><span class="lineNum">     565 </span><span class="lineCov">        663 :     if (v == NULL) {</span></a>
+<a name="566"><span class="lineNum">     566 </span><span class="lineCov">         84 :         if (ngx_array_init(&amp;cmcf-&gt;variables, cf-&gt;pool, 4,</span></a>
 <a name="567"><span class="lineNum">     567 </span>            :                            sizeof(ngx_http_variable_t))</a>
 <a name="568"><span class="lineNum">     568 </span>            :             != NGX_OK)</a>
 <a name="569"><span class="lineNum">     569 </span>            :         {</a>
@@ -633,79 +633,79 @@
 <a name="571"><span class="lineNum">     571 </span>            :         }</a>
 <a name="572"><span class="lineNum">     572 </span>            : </a>
 <a name="573"><span class="lineNum">     573 </span>            :     } else {</a>
-<a name="574"><span class="lineNum">     574 </span><span class="lineCov">       1365 :         for (i = 0; i &lt; cmcf-&gt;variables.nelts; i++) {</span></a>
-<a name="575"><span class="lineNum">     575 </span><span class="lineCov">       1074 :             if (name-&gt;len != v[i].name.len</span></a>
-<a name="576"><span class="lineNum">     576 </span><span class="lineCov">        114 :                 || ngx_strncasecmp(name-&gt;data, v[i].name.data, name-&gt;len) != 0)</span></a>
+<a name="574"><span class="lineNum">     574 </span><span class="lineCov">       2481 :         for (i = 0; i &lt; cmcf-&gt;variables.nelts; i++) {</span></a>
+<a name="575"><span class="lineNum">     575 </span><span class="lineCov">       1974 :             if (name-&gt;len != v[i].name.len</span></a>
+<a name="576"><span class="lineNum">     576 </span><span class="lineCov">        294 :                 || ngx_strncasecmp(name-&gt;data, v[i].name.data, name-&gt;len) != 0)</span></a>
 <a name="577"><span class="lineNum">     577 </span>            :             {</a>
-<a name="578"><span class="lineNum">     578 </span><span class="lineCov">       1074 :                 continue;</span></a>
+<a name="578"><span class="lineNum">     578 </span><span class="lineCov">       1902 :                 continue;</span></a>
 <a name="579"><span class="lineNum">     579 </span>            :             }</a>
 <a name="580"><span class="lineNum">     580 </span>            : </a>
-<a name="581"><span class="lineNum">     581 </span><span class="lineNoCov">          0 :             return i;</span></a>
+<a name="581"><span class="lineNum">     581 </span><span class="lineCov">         72 :             return i;</span></a>
 <a name="582"><span class="lineNum">     582 </span>            :         }</a>
 <a name="583"><span class="lineNum">     583 </span>            :     }</a>
 <a name="584"><span class="lineNum">     584 </span>            : </a>
-<a name="585"><span class="lineNum">     585 </span><span class="lineCov">        339 :     v = ngx_array_push(&amp;cmcf-&gt;variables);</span></a>
-<a name="586"><span class="lineNum">     586 </span><span class="lineCov">        339 :     if (v == NULL) {</span></a>
+<a name="585"><span class="lineNum">     585 </span><span class="lineCov">        591 :     v = ngx_array_push(&amp;cmcf-&gt;variables);</span></a>
+<a name="586"><span class="lineNum">     586 </span><span class="lineCov">        591 :     if (v == NULL) {</span></a>
 <a name="587"><span class="lineNum">     587 </span><span class="lineNoCov">          0 :         return NGX_ERROR;</span></a>
 <a name="588"><span class="lineNum">     588 </span>            :     }</a>
 <a name="589"><span class="lineNum">     589 </span>            : </a>
-<a name="590"><span class="lineNum">     590 </span><span class="lineCov">        339 :     v-&gt;name.len = name-&gt;len;</span></a>
-<a name="591"><span class="lineNum">     591 </span><span class="lineCov">        339 :     v-&gt;name.data = ngx_pnalloc(cf-&gt;pool, name-&gt;len);</span></a>
-<a name="592"><span class="lineNum">     592 </span><span class="lineCov">        339 :     if (v-&gt;name.data == NULL) {</span></a>
+<a name="590"><span class="lineNum">     590 </span><span class="lineCov">        591 :     v-&gt;name.len = name-&gt;len;</span></a>
+<a name="591"><span class="lineNum">     591 </span><span class="lineCov">        591 :     v-&gt;name.data = ngx_pnalloc(cf-&gt;pool, name-&gt;len);</span></a>
+<a name="592"><span class="lineNum">     592 </span><span class="lineCov">        591 :     if (v-&gt;name.data == NULL) {</span></a>
 <a name="593"><span class="lineNum">     593 </span><span class="lineNoCov">          0 :         return NGX_ERROR;</span></a>
 <a name="594"><span class="lineNum">     594 </span>            :     }</a>
 <a name="595"><span class="lineNum">     595 </span>            : </a>
-<a name="596"><span class="lineNum">     596 </span><span class="lineCov">        339 :     ngx_strlow(v-&gt;name.data, name-&gt;data, name-&gt;len);</span></a>
+<a name="596"><span class="lineNum">     596 </span><span class="lineCov">        591 :     ngx_strlow(v-&gt;name.data, name-&gt;data, name-&gt;len);</span></a>
 <a name="597"><span class="lineNum">     597 </span>            : </a>
-<a name="598"><span class="lineNum">     598 </span><span class="lineCov">        339 :     v-&gt;set_handler = NULL;</span></a>
-<a name="599"><span class="lineNum">     599 </span><span class="lineCov">        339 :     v-&gt;get_handler = NULL;</span></a>
-<a name="600"><span class="lineNum">     600 </span><span class="lineCov">        339 :     v-&gt;data = 0;</span></a>
-<a name="601"><span class="lineNum">     601 </span><span class="lineCov">        339 :     v-&gt;flags = 0;</span></a>
-<a name="602"><span class="lineNum">     602 </span><span class="lineCov">        339 :     v-&gt;index = cmcf-&gt;variables.nelts - 1;</span></a>
+<a name="598"><span class="lineNum">     598 </span><span class="lineCov">        591 :     v-&gt;set_handler = NULL;</span></a>
+<a name="599"><span class="lineNum">     599 </span><span class="lineCov">        591 :     v-&gt;get_handler = NULL;</span></a>
+<a name="600"><span class="lineNum">     600 </span><span class="lineCov">        591 :     v-&gt;data = 0;</span></a>
+<a name="601"><span class="lineNum">     601 </span><span class="lineCov">        591 :     v-&gt;flags = 0;</span></a>
+<a name="602"><span class="lineNum">     602 </span><span class="lineCov">        591 :     v-&gt;index = cmcf-&gt;variables.nelts - 1;</span></a>
 <a name="603"><span class="lineNum">     603 </span>            : </a>
-<a name="604"><span class="lineNum">     604 </span><span class="lineCov">        339 :     return v-&gt;index;</span></a>
+<a name="604"><span class="lineNum">     604 </span><span class="lineCov">        591 :     return v-&gt;index;</span></a>
 <a name="605"><span class="lineNum">     605 </span>            : }</a>
 <a name="606"><span class="lineNum">     606 </span>            : </a>
 <a name="607"><span class="lineNum">     607 </span>            : </a>
 <a name="608"><span class="lineNum">     608 </span>            : ngx_http_variable_value_t *</a>
-<a name="609"><span class="lineNum">     609 </span><span class="lineCov">        342 : ngx_http_get_indexed_variable(ngx_http_request_t *r, ngx_uint_t index)</span></a>
+<a name="609"><span class="lineNum">     609 </span><span class="lineCov">        600 : ngx_http_get_indexed_variable(ngx_http_request_t *r, ngx_uint_t index)</span></a>
 <a name="610"><span class="lineNum">     610 </span>            : {</a>
 <a name="611"><span class="lineNum">     611 </span>            :     ngx_http_variable_t        *v;</a>
 <a name="612"><span class="lineNum">     612 </span>            :     ngx_http_core_main_conf_t  *cmcf;</a>
 <a name="613"><span class="lineNum">     613 </span>            : </a>
-<a name="614"><span class="lineNum">     614 </span><span class="lineCov">        342 :     cmcf = ngx_http_get_module_main_conf(r, ngx_http_core_module);</span></a>
+<a name="614"><span class="lineNum">     614 </span><span class="lineCov">        600 :     cmcf = ngx_http_get_module_main_conf(r, ngx_http_core_module);</span></a>
 <a name="615"><span class="lineNum">     615 </span>            : </a>
-<a name="616"><span class="lineNum">     616 </span><span class="lineCov">        342 :     if (cmcf-&gt;variables.nelts &lt;= index) {</span></a>
+<a name="616"><span class="lineNum">     616 </span><span class="lineCov">        600 :     if (cmcf-&gt;variables.nelts &lt;= index) {</span></a>
 <a name="617"><span class="lineNum">     617 </span><span class="lineNoCov">          0 :         ngx_log_error(NGX_LOG_ALERT, r-&gt;connection-&gt;log, 0,</span></a>
 <a name="618"><span class="lineNum">     618 </span>            :                       &quot;unknown variable index: %ui&quot;, index);</a>
 <a name="619"><span class="lineNum">     619 </span><span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="620"><span class="lineNum">     620 </span>            :     }</a>
 <a name="621"><span class="lineNum">     621 </span>            : </a>
-<a name="622"><span class="lineNum">     622 </span><span class="lineCov">        342 :     if (r-&gt;variables[index].not_found || r-&gt;variables[index].valid) {</span></a>
-<a name="623"><span class="lineNum">     623 </span><span class="lineCov">        171 :         return &amp;r-&gt;variables[index];</span></a>
+<a name="622"><span class="lineNum">     622 </span><span class="lineCov">        600 :     if (r-&gt;variables[index].not_found || r-&gt;variables[index].valid) {</span></a>
+<a name="623"><span class="lineNum">     623 </span><span class="lineCov">        300 :         return &amp;r-&gt;variables[index];</span></a>
 <a name="624"><span class="lineNum">     624 </span>            :     }</a>
 <a name="625"><span class="lineNum">     625 </span>            : </a>
-<a name="626"><span class="lineNum">     626 </span><span class="lineCov">        171 :     v = cmcf-&gt;variables.elts;</span></a>
+<a name="626"><span class="lineNum">     626 </span><span class="lineCov">        300 :     v = cmcf-&gt;variables.elts;</span></a>
 <a name="627"><span class="lineNum">     627 </span>            : </a>
-<a name="628"><span class="lineNum">     628 </span><span class="lineCov">        171 :     if (ngx_http_variable_depth == 0) {</span></a>
+<a name="628"><span class="lineNum">     628 </span><span class="lineCov">        300 :     if (ngx_http_variable_depth == 0) {</span></a>
 <a name="629"><span class="lineNum">     629 </span><span class="lineNoCov">          0 :         ngx_log_error(NGX_LOG_ERR, r-&gt;connection-&gt;log, 0,</span></a>
 <a name="630"><span class="lineNum">     630 </span>            :                       &quot;cycle while evaluating variable \&quot;%V\&quot;&quot;,</a>
 <a name="631"><span class="lineNum">     631 </span>            :                       &amp;v[index].name);</a>
 <a name="632"><span class="lineNum">     632 </span><span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="633"><span class="lineNum">     633 </span>            :     }</a>
 <a name="634"><span class="lineNum">     634 </span>            : </a>
-<a name="635"><span class="lineNum">     635 </span><span class="lineCov">        171 :     ngx_http_variable_depth--;</span></a>
+<a name="635"><span class="lineNum">     635 </span><span class="lineCov">        300 :     ngx_http_variable_depth--;</span></a>
 <a name="636"><span class="lineNum">     636 </span>            : </a>
-<a name="637"><span class="lineNum">     637 </span><span class="lineCov">        171 :     if (v[index].get_handler(r, &amp;r-&gt;variables[index], v[index].data)</span></a>
+<a name="637"><span class="lineNum">     637 </span><span class="lineCov">        300 :     if (v[index].get_handler(r, &amp;r-&gt;variables[index], v[index].data)</span></a>
 <a name="638"><span class="lineNum">     638 </span>            :         == NGX_OK)</a>
 <a name="639"><span class="lineNum">     639 </span>            :     {</a>
-<a name="640"><span class="lineNum">     640 </span><span class="lineCov">        171 :         ngx_http_variable_depth++;</span></a>
+<a name="640"><span class="lineNum">     640 </span><span class="lineCov">        300 :         ngx_http_variable_depth++;</span></a>
 <a name="641"><span class="lineNum">     641 </span>            : </a>
-<a name="642"><span class="lineNum">     642 </span><span class="lineCov">        171 :         if (v[index].flags &amp; NGX_HTTP_VAR_NOCACHEABLE) {</span></a>
-<a name="643"><span class="lineNum">     643 </span><span class="lineCov">         14 :             r-&gt;variables[index].no_cacheable = 1;</span></a>
+<a name="642"><span class="lineNum">     642 </span><span class="lineCov">        300 :         if (v[index].flags &amp; NGX_HTTP_VAR_NOCACHEABLE) {</span></a>
+<a name="643"><span class="lineNum">     643 </span><span class="lineCov">         20 :             r-&gt;variables[index].no_cacheable = 1;</span></a>
 <a name="644"><span class="lineNum">     644 </span>            :         }</a>
 <a name="645"><span class="lineNum">     645 </span>            : </a>
-<a name="646"><span class="lineNum">     646 </span><span class="lineCov">        171 :         return &amp;r-&gt;variables[index];</span></a>
+<a name="646"><span class="lineNum">     646 </span><span class="lineCov">        300 :         return &amp;r-&gt;variables[index];</span></a>
 <a name="647"><span class="lineNum">     647 </span>            :     }</a>
 <a name="648"><span class="lineNum">     648 </span>            : </a>
 <a name="649"><span class="lineNum">     649 </span><span class="lineNoCov">          0 :     ngx_http_variable_depth++;</span></a>
@@ -808,25 +808,25 @@
 <a name="746"><span class="lineNum">     746 </span>            : </a>
 <a name="747"><span class="lineNum">     747 </span>            : </a>
 <a name="748"><span class="lineNum">     748 </span>            : static ngx_int_t</a>
-<a name="749"><span class="lineNum">     749 </span><span class="lineCov">         21 : ngx_http_variable_request(ngx_http_request_t *r, ngx_http_variable_value_t *v,</span></a>
+<a name="749"><span class="lineNum">     749 </span><span class="lineCov">         27 : ngx_http_variable_request(ngx_http_request_t *r, ngx_http_variable_value_t *v,</span></a>
 <a name="750"><span class="lineNum">     750 </span>            :     uintptr_t data)</a>
 <a name="751"><span class="lineNum">     751 </span>            : {</a>
 <a name="752"><span class="lineNum">     752 </span>            :     ngx_str_t  *s;</a>
 <a name="753"><span class="lineNum">     753 </span>            : </a>
-<a name="754"><span class="lineNum">     754 </span><span class="lineCov">         21 :     s = (ngx_str_t *) ((char *) r + data);</span></a>
+<a name="754"><span class="lineNum">     754 </span><span class="lineCov">         27 :     s = (ngx_str_t *) ((char *) r + data);</span></a>
 <a name="755"><span class="lineNum">     755 </span>            : </a>
-<a name="756"><span class="lineNum">     756 </span><span class="lineCov">         21 :     if (s-&gt;data) {</span></a>
-<a name="757"><span class="lineNum">     757 </span><span class="lineCov">         16 :         v-&gt;len = s-&gt;len;</span></a>
-<a name="758"><span class="lineNum">     758 </span><span class="lineCov">         16 :         v-&gt;valid = 1;</span></a>
-<a name="759"><span class="lineNum">     759 </span><span class="lineCov">         16 :         v-&gt;no_cacheable = 0;</span></a>
-<a name="760"><span class="lineNum">     760 </span><span class="lineCov">         16 :         v-&gt;not_found = 0;</span></a>
-<a name="761"><span class="lineNum">     761 </span><span class="lineCov">         16 :         v-&gt;data = s-&gt;data;</span></a>
+<a name="756"><span class="lineNum">     756 </span><span class="lineCov">         27 :     if (s-&gt;data) {</span></a>
+<a name="757"><span class="lineNum">     757 </span><span class="lineCov">         22 :         v-&gt;len = s-&gt;len;</span></a>
+<a name="758"><span class="lineNum">     758 </span><span class="lineCov">         22 :         v-&gt;valid = 1;</span></a>
+<a name="759"><span class="lineNum">     759 </span><span class="lineCov">         22 :         v-&gt;no_cacheable = 0;</span></a>
+<a name="760"><span class="lineNum">     760 </span><span class="lineCov">         22 :         v-&gt;not_found = 0;</span></a>
+<a name="761"><span class="lineNum">     761 </span><span class="lineCov">         22 :         v-&gt;data = s-&gt;data;</span></a>
 <a name="762"><span class="lineNum">     762 </span>            : </a>
 <a name="763"><span class="lineNum">     763 </span>            :     } else {</a>
 <a name="764"><span class="lineNum">     764 </span><span class="lineCov">          5 :         v-&gt;not_found = 1;</span></a>
 <a name="765"><span class="lineNum">     765 </span>            :     }</a>
 <a name="766"><span class="lineNum">     766 </span>            : </a>
-<a name="767"><span class="lineNum">     767 </span><span class="lineCov">         21 :     return NGX_OK;</span></a>
+<a name="767"><span class="lineNum">     767 </span><span class="lineCov">         27 :     return NGX_OK;</span></a>
 <a name="768"><span class="lineNum">     768 </span>            : }</a>
 <a name="769"><span class="lineNum">     769 </span>            : </a>
 <a name="770"><span class="lineNum">     770 </span>            : </a>
@@ -870,10 +870,10 @@
 <a name="808"><span class="lineNum">     808 </span>            : </a>
 <a name="809"><span class="lineNum">     809 </span>            : </a>
 <a name="810"><span class="lineNum">     810 </span>            : static ngx_int_t</a>
-<a name="811"><span class="lineNum">     811 </span><span class="lineCov">         60 : ngx_http_variable_header(ngx_http_request_t *r, ngx_http_variable_value_t *v,</span></a>
+<a name="811"><span class="lineNum">     811 </span><span class="lineCov">        108 : ngx_http_variable_header(ngx_http_request_t *r, ngx_http_variable_value_t *v,</span></a>
 <a name="812"><span class="lineNum">     812 </span>            :     uintptr_t data)</a>
 <a name="813"><span class="lineNum">     813 </span>            : {</a>
-<a name="814"><span class="lineNum">     814 </span><span class="lineCov">         60 :     return ngx_http_variable_headers_internal(r, v, data, ',');</span></a>
+<a name="814"><span class="lineNum">     814 </span><span class="lineCov">        108 :     return ngx_http_variable_headers_internal(r, v, data, ',');</span></a>
 <a name="815"><span class="lineNum">     815 </span>            : }</a>
 <a name="816"><span class="lineNum">     816 </span>            : </a>
 <a name="817"><span class="lineNum">     817 </span>            : </a>
@@ -886,42 +886,42 @@
 <a name="824"><span class="lineNum">     824 </span>            : </a>
 <a name="825"><span class="lineNum">     825 </span>            : </a>
 <a name="826"><span class="lineNum">     826 </span>            : static ngx_int_t</a>
-<a name="827"><span class="lineNum">     827 </span><span class="lineCov">         60 : ngx_http_variable_headers_internal(ngx_http_request_t *r,</span></a>
+<a name="827"><span class="lineNum">     827 </span><span class="lineCov">        108 : ngx_http_variable_headers_internal(ngx_http_request_t *r,</span></a>
 <a name="828"><span class="lineNum">     828 </span>            :     ngx_http_variable_value_t *v, uintptr_t data, u_char sep)</a>
 <a name="829"><span class="lineNum">     829 </span>            : {</a>
 <a name="830"><span class="lineNum">     830 </span>            :     size_t            len;</a>
 <a name="831"><span class="lineNum">     831 </span>            :     u_char           *p, *end;</a>
 <a name="832"><span class="lineNum">     832 </span>            :     ngx_table_elt_t  *h, *th;</a>
 <a name="833"><span class="lineNum">     833 </span>            : </a>
-<a name="834"><span class="lineNum">     834 </span><span class="lineCov">         60 :     h = *(ngx_table_elt_t **) ((char *) r + data);</span></a>
+<a name="834"><span class="lineNum">     834 </span><span class="lineCov">        108 :     h = *(ngx_table_elt_t **) ((char *) r + data);</span></a>
 <a name="835"><span class="lineNum">     835 </span>            : </a>
-<a name="836"><span class="lineNum">     836 </span><span class="lineCov">         60 :     len = 0;</span></a>
+<a name="836"><span class="lineNum">     836 </span><span class="lineCov">        108 :     len = 0;</span></a>
 <a name="837"><span class="lineNum">     837 </span>            : </a>
-<a name="838"><span class="lineNum">     838 </span><span class="lineCov">         85 :     for (th = h; th; th = th-&gt;next) {</span></a>
+<a name="838"><span class="lineNum">     838 </span><span class="lineCov">        157 :     for (th = h; th; th = th-&gt;next) {</span></a>
 <a name="839"><span class="lineNum">     839 </span>            : </a>
-<a name="840"><span class="lineNum">     840 </span><span class="lineCov">         25 :         if (th-&gt;hash == 0) {</span></a>
+<a name="840"><span class="lineNum">     840 </span><span class="lineCov">         49 :         if (th-&gt;hash == 0) {</span></a>
 <a name="841"><span class="lineNum">     841 </span><span class="lineNoCov">          0 :             continue;</span></a>
 <a name="842"><span class="lineNum">     842 </span>            :         }</a>
 <a name="843"><span class="lineNum">     843 </span>            : </a>
-<a name="844"><span class="lineNum">     844 </span><span class="lineCov">         25 :         len += th-&gt;value.len + 2;</span></a>
+<a name="844"><span class="lineNum">     844 </span><span class="lineCov">         49 :         len += th-&gt;value.len + 2;</span></a>
 <a name="845"><span class="lineNum">     845 </span>            :     }</a>
 <a name="846"><span class="lineNum">     846 </span>            : </a>
-<a name="847"><span class="lineNum">     847 </span><span class="lineCov">         60 :     if (len == 0) {</span></a>
-<a name="848"><span class="lineNum">     848 </span><span class="lineCov">         35 :         v-&gt;not_found = 1;</span></a>
-<a name="849"><span class="lineNum">     849 </span><span class="lineCov">         35 :         return NGX_OK;</span></a>
+<a name="847"><span class="lineNum">     847 </span><span class="lineCov">        108 :     if (len == 0) {</span></a>
+<a name="848"><span class="lineNum">     848 </span><span class="lineCov">         59 :         v-&gt;not_found = 1;</span></a>
+<a name="849"><span class="lineNum">     849 </span><span class="lineCov">         59 :         return NGX_OK;</span></a>
 <a name="850"><span class="lineNum">     850 </span>            :     }</a>
 <a name="851"><span class="lineNum">     851 </span>            : </a>
-<a name="852"><span class="lineNum">     852 </span><span class="lineCov">         25 :     len -= 2;</span></a>
+<a name="852"><span class="lineNum">     852 </span><span class="lineCov">         49 :     len -= 2;</span></a>
 <a name="853"><span class="lineNum">     853 </span>            : </a>
-<a name="854"><span class="lineNum">     854 </span><span class="lineCov">         25 :     v-&gt;valid = 1;</span></a>
-<a name="855"><span class="lineNum">     855 </span><span class="lineCov">         25 :     v-&gt;no_cacheable = 0;</span></a>
-<a name="856"><span class="lineNum">     856 </span><span class="lineCov">         25 :     v-&gt;not_found = 0;</span></a>
+<a name="854"><span class="lineNum">     854 </span><span class="lineCov">         49 :     v-&gt;valid = 1;</span></a>
+<a name="855"><span class="lineNum">     855 </span><span class="lineCov">         49 :     v-&gt;no_cacheable = 0;</span></a>
+<a name="856"><span class="lineNum">     856 </span><span class="lineCov">         49 :     v-&gt;not_found = 0;</span></a>
 <a name="857"><span class="lineNum">     857 </span>            : </a>
-<a name="858"><span class="lineNum">     858 </span><span class="lineCov">         25 :     if (h-&gt;next == NULL) {</span></a>
-<a name="859"><span class="lineNum">     859 </span><span class="lineCov">         25 :         v-&gt;len = h-&gt;value.len;</span></a>
-<a name="860"><span class="lineNum">     860 </span><span class="lineCov">         25 :         v-&gt;data = h-&gt;value.data;</span></a>
+<a name="858"><span class="lineNum">     858 </span><span class="lineCov">         49 :     if (h-&gt;next == NULL) {</span></a>
+<a name="859"><span class="lineNum">     859 </span><span class="lineCov">         49 :         v-&gt;len = h-&gt;value.len;</span></a>
+<a name="860"><span class="lineNum">     860 </span><span class="lineCov">         49 :         v-&gt;data = h-&gt;value.data;</span></a>
 <a name="861"><span class="lineNum">     861 </span>            : </a>
-<a name="862"><span class="lineNum">     862 </span><span class="lineCov">         25 :         return NGX_OK;</span></a>
+<a name="862"><span class="lineNum">     862 </span><span class="lineCov">         49 :         return NGX_OK;</span></a>
 <a name="863"><span class="lineNum">     863 </span>            :     }</a>
 <a name="864"><span class="lineNum">     864 </span>            : </a>
 <a name="865"><span class="lineNum">     865 </span><span class="lineNoCov">          0 :     p = ngx_pnalloc(r-&gt;pool, len);</span></a>
@@ -1094,14 +1094,14 @@
 <a name="1032"><span class="lineNum">    1032 </span>            : </a>
 <a name="1033"><span class="lineNum">    1033 </span>            : </a>
 <a name="1034"><span class="lineNum">    1034 </span>            : static ngx_int_t</a>
-<a name="1035"><span class="lineNum">    1035 </span><span class="lineCov">         30 : ngx_http_variable_request_line(ngx_http_request_t *r,</span></a>
+<a name="1035"><span class="lineNum">    1035 </span><span class="lineCov">         54 : ngx_http_variable_request_line(ngx_http_request_t *r,</span></a>
 <a name="1036"><span class="lineNum">    1036 </span>            :     ngx_http_variable_value_t *v, uintptr_t data)</a>
 <a name="1037"><span class="lineNum">    1037 </span>            : {</a>
 <a name="1038"><span class="lineNum">    1038 </span>            :     u_char  *p, *s;</a>
 <a name="1039"><span class="lineNum">    1039 </span>            : </a>
-<a name="1040"><span class="lineNum">    1040 </span><span class="lineCov">         30 :     s = r-&gt;request_line.data;</span></a>
+<a name="1040"><span class="lineNum">    1040 </span><span class="lineCov">         54 :     s = r-&gt;request_line.data;</span></a>
 <a name="1041"><span class="lineNum">    1041 </span>            : </a>
-<a name="1042"><span class="lineNum">    1042 </span><span class="lineCov">         30 :     if (s == NULL) {</span></a>
+<a name="1042"><span class="lineNum">    1042 </span><span class="lineCov">         54 :     if (s == NULL) {</span></a>
 <a name="1043"><span class="lineNum">    1043 </span><span class="lineCov">          2 :         s = r-&gt;request_start;</span></a>
 <a name="1044"><span class="lineNum">    1044 </span>            : </a>
 <a name="1045"><span class="lineNum">    1045 </span><span class="lineCov">          2 :         if (s == NULL) {</span></a>
@@ -1119,13 +1119,13 @@
 <a name="1057"><span class="lineNum">    1057 </span><span class="lineCov">          2 :         r-&gt;request_line.data = s;</span></a>
 <a name="1058"><span class="lineNum">    1058 </span>            :     }</a>
 <a name="1059"><span class="lineNum">    1059 </span>            : </a>
-<a name="1060"><span class="lineNum">    1060 </span><span class="lineCov">         30 :     v-&gt;len = r-&gt;request_line.len;</span></a>
-<a name="1061"><span class="lineNum">    1061 </span><span class="lineCov">         30 :     v-&gt;valid = 1;</span></a>
-<a name="1062"><span class="lineNum">    1062 </span><span class="lineCov">         30 :     v-&gt;no_cacheable = 0;</span></a>
-<a name="1063"><span class="lineNum">    1063 </span><span class="lineCov">         30 :     v-&gt;not_found = 0;</span></a>
-<a name="1064"><span class="lineNum">    1064 </span><span class="lineCov">         30 :     v-&gt;data = s;</span></a>
+<a name="1060"><span class="lineNum">    1060 </span><span class="lineCov">         54 :     v-&gt;len = r-&gt;request_line.len;</span></a>
+<a name="1061"><span class="lineNum">    1061 </span><span class="lineCov">         54 :     v-&gt;valid = 1;</span></a>
+<a name="1062"><span class="lineNum">    1062 </span><span class="lineCov">         54 :     v-&gt;no_cacheable = 0;</span></a>
+<a name="1063"><span class="lineNum">    1063 </span><span class="lineCov">         54 :     v-&gt;not_found = 0;</span></a>
+<a name="1064"><span class="lineNum">    1064 </span><span class="lineCov">         54 :     v-&gt;data = s;</span></a>
 <a name="1065"><span class="lineNum">    1065 </span>            : </a>
-<a name="1066"><span class="lineNum">    1066 </span><span class="lineCov">         30 :     return NGX_OK;</span></a>
+<a name="1066"><span class="lineNum">    1066 </span><span class="lineCov">         54 :     return NGX_OK;</span></a>
 <a name="1067"><span class="lineNum">    1067 </span>            : }</a>
 <a name="1068"><span class="lineNum">    1068 </span>            : </a>
 <a name="1069"><span class="lineNum">    1069 </span>            : </a>
@@ -1359,16 +1359,16 @@
 <a name="1297"><span class="lineNum">    1297 </span>            : </a>
 <a name="1298"><span class="lineNum">    1298 </span>            : </a>
 <a name="1299"><span class="lineNum">    1299 </span>            : static ngx_int_t</a>
-<a name="1300"><span class="lineNum">    1300 </span><span class="lineCov">         30 : ngx_http_variable_remote_addr(ngx_http_request_t *r,</span></a>
+<a name="1300"><span class="lineNum">    1300 </span><span class="lineCov">         54 : ngx_http_variable_remote_addr(ngx_http_request_t *r,</span></a>
 <a name="1301"><span class="lineNum">    1301 </span>            :     ngx_http_variable_value_t *v, uintptr_t data)</a>
 <a name="1302"><span class="lineNum">    1302 </span>            : {</a>
-<a name="1303"><span class="lineNum">    1303 </span><span class="lineCov">         30 :     v-&gt;len = r-&gt;connection-&gt;addr_text.len;</span></a>
-<a name="1304"><span class="lineNum">    1304 </span><span class="lineCov">         30 :     v-&gt;valid = 1;</span></a>
-<a name="1305"><span class="lineNum">    1305 </span><span class="lineCov">         30 :     v-&gt;no_cacheable = 0;</span></a>
-<a name="1306"><span class="lineNum">    1306 </span><span class="lineCov">         30 :     v-&gt;not_found = 0;</span></a>
-<a name="1307"><span class="lineNum">    1307 </span><span class="lineCov">         30 :     v-&gt;data = r-&gt;connection-&gt;addr_text.data;</span></a>
+<a name="1303"><span class="lineNum">    1303 </span><span class="lineCov">         54 :     v-&gt;len = r-&gt;connection-&gt;addr_text.len;</span></a>
+<a name="1304"><span class="lineNum">    1304 </span><span class="lineCov">         54 :     v-&gt;valid = 1;</span></a>
+<a name="1305"><span class="lineNum">    1305 </span><span class="lineCov">         54 :     v-&gt;no_cacheable = 0;</span></a>
+<a name="1306"><span class="lineNum">    1306 </span><span class="lineCov">         54 :     v-&gt;not_found = 0;</span></a>
+<a name="1307"><span class="lineNum">    1307 </span><span class="lineCov">         54 :     v-&gt;data = r-&gt;connection-&gt;addr_text.data;</span></a>
 <a name="1308"><span class="lineNum">    1308 </span>            : </a>
-<a name="1309"><span class="lineNum">    1309 </span><span class="lineCov">         30 :     return NGX_OK;</span></a>
+<a name="1309"><span class="lineNum">    1309 </span><span class="lineCov">         54 :     return NGX_OK;</span></a>
 <a name="1310"><span class="lineNum">    1310 </span>            : }</a>
 <a name="1311"><span class="lineNum">    1311 </span>            : </a>
 <a name="1312"><span class="lineNum">    1312 </span>            : </a>
@@ -1769,20 +1769,20 @@
 <a name="1707"><span class="lineNum">    1707 </span>            : </a>
 <a name="1708"><span class="lineNum">    1708 </span>            : </a>
 <a name="1709"><span class="lineNum">    1709 </span>            : static ngx_int_t</a>
-<a name="1710"><span class="lineNum">    1710 </span><span class="lineNoCov">          0 : ngx_http_variable_server_name(ngx_http_request_t *r,</span></a>
+<a name="1710"><span class="lineNum">    1710 </span><span class="lineCov">          3 : ngx_http_variable_server_name(ngx_http_request_t *r,</span></a>
 <a name="1711"><span class="lineNum">    1711 </span>            :     ngx_http_variable_value_t *v, uintptr_t data)</a>
 <a name="1712"><span class="lineNum">    1712 </span>            : {</a>
 <a name="1713"><span class="lineNum">    1713 </span>            :     ngx_http_core_srv_conf_t  *cscf;</a>
 <a name="1714"><span class="lineNum">    1714 </span>            : </a>
-<a name="1715"><span class="lineNum">    1715 </span><span class="lineNoCov">          0 :     cscf = ngx_http_get_module_srv_conf(r, ngx_http_core_module);</span></a>
+<a name="1715"><span class="lineNum">    1715 </span><span class="lineCov">          3 :     cscf = ngx_http_get_module_srv_conf(r, ngx_http_core_module);</span></a>
 <a name="1716"><span class="lineNum">    1716 </span>            : </a>
-<a name="1717"><span class="lineNum">    1717 </span><span class="lineNoCov">          0 :     v-&gt;len = cscf-&gt;server_name.len;</span></a>
-<a name="1718"><span class="lineNum">    1718 </span><span class="lineNoCov">          0 :     v-&gt;valid = 1;</span></a>
-<a name="1719"><span class="lineNum">    1719 </span><span class="lineNoCov">          0 :     v-&gt;no_cacheable = 0;</span></a>
-<a name="1720"><span class="lineNum">    1720 </span><span class="lineNoCov">          0 :     v-&gt;not_found = 0;</span></a>
-<a name="1721"><span class="lineNum">    1721 </span><span class="lineNoCov">          0 :     v-&gt;data = cscf-&gt;server_name.data;</span></a>
+<a name="1717"><span class="lineNum">    1717 </span><span class="lineCov">          3 :     v-&gt;len = cscf-&gt;server_name.len;</span></a>
+<a name="1718"><span class="lineNum">    1718 </span><span class="lineCov">          3 :     v-&gt;valid = 1;</span></a>
+<a name="1719"><span class="lineNum">    1719 </span><span class="lineCov">          3 :     v-&gt;no_cacheable = 0;</span></a>
+<a name="1720"><span class="lineNum">    1720 </span><span class="lineCov">          3 :     v-&gt;not_found = 0;</span></a>
+<a name="1721"><span class="lineNum">    1721 </span><span class="lineCov">          3 :     v-&gt;data = cscf-&gt;server_name.data;</span></a>
 <a name="1722"><span class="lineNum">    1722 </span>            : </a>
-<a name="1723"><span class="lineNum">    1723 </span><span class="lineNoCov">          0 :     return NGX_OK;</span></a>
+<a name="1723"><span class="lineNum">    1723 </span><span class="lineCov">          3 :     return NGX_OK;</span></a>
 <a name="1724"><span class="lineNum">    1724 </span>            : }</a>
 <a name="1725"><span class="lineNum">    1725 </span>            : </a>
 <a name="1726"><span class="lineNum">    1726 </span>            : </a>
@@ -1806,16 +1806,16 @@
 <a name="1744"><span class="lineNum">    1744 </span>            : </a>
 <a name="1745"><span class="lineNum">    1745 </span>            : </a>
 <a name="1746"><span class="lineNum">    1746 </span>            : static ngx_int_t</a>
-<a name="1747"><span class="lineNum">    1747 </span><span class="lineCov">         30 : ngx_http_variable_remote_user(ngx_http_request_t *r,</span></a>
+<a name="1747"><span class="lineNum">    1747 </span><span class="lineCov">         54 : ngx_http_variable_remote_user(ngx_http_request_t *r,</span></a>
 <a name="1748"><span class="lineNum">    1748 </span>            :     ngx_http_variable_value_t *v, uintptr_t data)</a>
 <a name="1749"><span class="lineNum">    1749 </span>            : {</a>
 <a name="1750"><span class="lineNum">    1750 </span>            :     ngx_int_t  rc;</a>
 <a name="1751"><span class="lineNum">    1751 </span>            : </a>
-<a name="1752"><span class="lineNum">    1752 </span><span class="lineCov">         30 :     rc = ngx_http_auth_basic_user(r);</span></a>
+<a name="1752"><span class="lineNum">    1752 </span><span class="lineCov">         54 :     rc = ngx_http_auth_basic_user(r);</span></a>
 <a name="1753"><span class="lineNum">    1753 </span>            : </a>
-<a name="1754"><span class="lineNum">    1754 </span><span class="lineCov">         30 :     if (rc == NGX_DECLINED) {</span></a>
-<a name="1755"><span class="lineNum">    1755 </span><span class="lineCov">         30 :         v-&gt;not_found = 1;</span></a>
-<a name="1756"><span class="lineNum">    1756 </span><span class="lineCov">         30 :         return NGX_OK;</span></a>
+<a name="1754"><span class="lineNum">    1754 </span><span class="lineCov">         54 :     if (rc == NGX_DECLINED) {</span></a>
+<a name="1755"><span class="lineNum">    1755 </span><span class="lineCov">         54 :         v-&gt;not_found = 1;</span></a>
+<a name="1756"><span class="lineNum">    1756 </span><span class="lineCov">         54 :         return NGX_OK;</span></a>
 <a name="1757"><span class="lineNum">    1757 </span>            :     }</a>
 <a name="1758"><span class="lineNum">    1758 </span>            : </a>
 <a name="1759"><span class="lineNum">    1759 </span><span class="lineNoCov">          0 :     if (rc == NGX_ERROR) {</span></a>
@@ -2746,91 +2746,91 @@
 <a name="2684"><span class="lineNum">    2684 </span>            : </a>
 <a name="2685"><span class="lineNum">    2685 </span>            : </a>
 <a name="2686"><span class="lineNum">    2686 </span>            : ngx_int_t</a>
-<a name="2687"><span class="lineNum">    2687 </span><span class="lineCov">         48 : ngx_http_variables_add_core_vars(ngx_conf_t *cf)</span></a>
+<a name="2687"><span class="lineNum">    2687 </span><span class="lineCov">         84 : ngx_http_variables_add_core_vars(ngx_conf_t *cf)</span></a>
 <a name="2688"><span class="lineNum">    2688 </span>            : {</a>
 <a name="2689"><span class="lineNum">    2689 </span>            :     ngx_http_variable_t        *cv, *v;</a>
 <a name="2690"><span class="lineNum">    2690 </span>            :     ngx_http_core_main_conf_t  *cmcf;</a>
 <a name="2691"><span class="lineNum">    2691 </span>            : </a>
-<a name="2692"><span class="lineNum">    2692 </span><span class="lineCov">         48 :     cmcf = ngx_http_conf_get_module_main_conf(cf, ngx_http_core_module);</span></a>
+<a name="2692"><span class="lineNum">    2692 </span><span class="lineCov">         84 :     cmcf = ngx_http_conf_get_module_main_conf(cf, ngx_http_core_module);</span></a>
 <a name="2693"><span class="lineNum">    2693 </span>            : </a>
-<a name="2694"><span class="lineNum">    2694 </span><span class="lineCov">         48 :     cmcf-&gt;variables_keys = ngx_pcalloc(cf-&gt;temp_pool,</span></a>
+<a name="2694"><span class="lineNum">    2694 </span><span class="lineCov">         84 :     cmcf-&gt;variables_keys = ngx_pcalloc(cf-&gt;temp_pool,</span></a>
 <a name="2695"><span class="lineNum">    2695 </span>            :                                        sizeof(ngx_hash_keys_arrays_t));</a>
-<a name="2696"><span class="lineNum">    2696 </span><span class="lineCov">         48 :     if (cmcf-&gt;variables_keys == NULL) {</span></a>
+<a name="2696"><span class="lineNum">    2696 </span><span class="lineCov">         84 :     if (cmcf-&gt;variables_keys == NULL) {</span></a>
 <a name="2697"><span class="lineNum">    2697 </span><span class="lineNoCov">          0 :         return NGX_ERROR;</span></a>
 <a name="2698"><span class="lineNum">    2698 </span>            :     }</a>
 <a name="2699"><span class="lineNum">    2699 </span>            : </a>
-<a name="2700"><span class="lineNum">    2700 </span><span class="lineCov">         48 :     cmcf-&gt;variables_keys-&gt;pool = cf-&gt;pool;</span></a>
-<a name="2701"><span class="lineNum">    2701 </span><span class="lineCov">         48 :     cmcf-&gt;variables_keys-&gt;temp_pool = cf-&gt;pool;</span></a>
+<a name="2700"><span class="lineNum">    2700 </span><span class="lineCov">         84 :     cmcf-&gt;variables_keys-&gt;pool = cf-&gt;pool;</span></a>
+<a name="2701"><span class="lineNum">    2701 </span><span class="lineCov">         84 :     cmcf-&gt;variables_keys-&gt;temp_pool = cf-&gt;pool;</span></a>
 <a name="2702"><span class="lineNum">    2702 </span>            : </a>
-<a name="2703"><span class="lineNum">    2703 </span><span class="lineCov">         48 :     if (ngx_hash_keys_array_init(cmcf-&gt;variables_keys, NGX_HASH_SMALL)</span></a>
+<a name="2703"><span class="lineNum">    2703 </span><span class="lineCov">         84 :     if (ngx_hash_keys_array_init(cmcf-&gt;variables_keys, NGX_HASH_SMALL)</span></a>
 <a name="2704"><span class="lineNum">    2704 </span>            :         != NGX_OK)</a>
 <a name="2705"><span class="lineNum">    2705 </span>            :     {</a>
 <a name="2706"><span class="lineNum">    2706 </span><span class="lineNoCov">          0 :         return NGX_ERROR;</span></a>
 <a name="2707"><span class="lineNum">    2707 </span>            :     }</a>
 <a name="2708"><span class="lineNum">    2708 </span>            : </a>
-<a name="2709"><span class="lineNum">    2709 </span><span class="lineCov">         48 :     if (ngx_array_init(&amp;cmcf-&gt;prefix_variables, cf-&gt;pool, 8,</span></a>
+<a name="2709"><span class="lineNum">    2709 </span><span class="lineCov">         84 :     if (ngx_array_init(&amp;cmcf-&gt;prefix_variables, cf-&gt;pool, 8,</span></a>
 <a name="2710"><span class="lineNum">    2710 </span>            :                        sizeof(ngx_http_variable_t))</a>
 <a name="2711"><span class="lineNum">    2711 </span>            :         != NGX_OK)</a>
 <a name="2712"><span class="lineNum">    2712 </span>            :     {</a>
 <a name="2713"><span class="lineNum">    2713 </span><span class="lineNoCov">          0 :         return NGX_ERROR;</span></a>
 <a name="2714"><span class="lineNum">    2714 </span>            :     }</a>
 <a name="2715"><span class="lineNum">    2715 </span>            : </a>
-<a name="2716"><span class="lineNum">    2716 </span><span class="lineCov">       3456 :     for (cv = ngx_http_core_variables; cv-&gt;name.len; cv++) {</span></a>
-<a name="2717"><span class="lineNum">    2717 </span><span class="lineCov">       3408 :         v = ngx_http_add_variable(cf, &amp;cv-&gt;name, cv-&gt;flags);</span></a>
-<a name="2718"><span class="lineNum">    2718 </span><span class="lineCov">       3408 :         if (v == NULL) {</span></a>
+<a name="2716"><span class="lineNum">    2716 </span><span class="lineCov">       6048 :     for (cv = ngx_http_core_variables; cv-&gt;name.len; cv++) {</span></a>
+<a name="2717"><span class="lineNum">    2717 </span><span class="lineCov">       5964 :         v = ngx_http_add_variable(cf, &amp;cv-&gt;name, cv-&gt;flags);</span></a>
+<a name="2718"><span class="lineNum">    2718 </span><span class="lineCov">       5964 :         if (v == NULL) {</span></a>
 <a name="2719"><span class="lineNum">    2719 </span><span class="lineNoCov">          0 :             return NGX_ERROR;</span></a>
 <a name="2720"><span class="lineNum">    2720 </span>            :         }</a>
 <a name="2721"><span class="lineNum">    2721 </span>            : </a>
-<a name="2722"><span class="lineNum">    2722 </span><span class="lineCov">       3408 :         *v = *cv;</span></a>
+<a name="2722"><span class="lineNum">    2722 </span><span class="lineCov">       5964 :         *v = *cv;</span></a>
 <a name="2723"><span class="lineNum">    2723 </span>            :     }</a>
 <a name="2724"><span class="lineNum">    2724 </span>            : </a>
-<a name="2725"><span class="lineNum">    2725 </span><span class="lineCov">         48 :     return NGX_OK;</span></a>
+<a name="2725"><span class="lineNum">    2725 </span><span class="lineCov">         84 :     return NGX_OK;</span></a>
 <a name="2726"><span class="lineNum">    2726 </span>            : }</a>
 <a name="2727"><span class="lineNum">    2727 </span>            : </a>
 <a name="2728"><span class="lineNum">    2728 </span>            : </a>
 <a name="2729"><span class="lineNum">    2729 </span>            : ngx_int_t</a>
-<a name="2730"><span class="lineNum">    2730 </span><span class="lineCov">         48 : ngx_http_variables_init_vars(ngx_conf_t *cf)</span></a>
-<a name="2731"><span class="lineNum">    2731 </span><span class="lineCov">        339 : {</span></a>
+<a name="2730"><span class="lineNum">    2730 </span><span class="lineCov">         84 : ngx_http_variables_init_vars(ngx_conf_t *cf)</span></a>
+<a name="2731"><span class="lineNum">    2731 </span><span class="lineCov">        591 : {</span></a>
 <a name="2732"><span class="lineNum">    2732 </span>            :     size_t                      len;</a>
 <a name="2733"><span class="lineNum">    2733 </span>            :     ngx_uint_t                  i, n;</a>
 <a name="2734"><span class="lineNum">    2734 </span>            :     ngx_hash_key_t             *key;</a>
-<a name="2735"><span class="lineNum">    2735 </span><span class="lineCov">         48 :     ngx_hash_init_t             hash;</span></a>
+<a name="2735"><span class="lineNum">    2735 </span><span class="lineCov">         84 :     ngx_hash_init_t             hash;</span></a>
 <a name="2736"><span class="lineNum">    2736 </span>            :     ngx_http_variable_t        *v, *av, *pv;</a>
 <a name="2737"><span class="lineNum">    2737 </span>            :     ngx_http_core_main_conf_t  *cmcf;</a>
 <a name="2738"><span class="lineNum">    2738 </span>            : </a>
 <a name="2739"><span class="lineNum">    2739 </span>            :     /* set the handlers for the indexed http variables */</a>
 <a name="2740"><span class="lineNum">    2740 </span>            : </a>
-<a name="2741"><span class="lineNum">    2741 </span><span class="lineCov">         48 :     cmcf = ngx_http_conf_get_module_main_conf(cf, ngx_http_core_module);</span></a>
+<a name="2741"><span class="lineNum">    2741 </span><span class="lineCov">         84 :     cmcf = ngx_http_conf_get_module_main_conf(cf, ngx_http_core_module);</span></a>
 <a name="2742"><span class="lineNum">    2742 </span>            : </a>
-<a name="2743"><span class="lineNum">    2743 </span><span class="lineCov">         48 :     v = cmcf-&gt;variables.elts;</span></a>
-<a name="2744"><span class="lineNum">    2744 </span><span class="lineCov">         48 :     pv = cmcf-&gt;prefix_variables.elts;</span></a>
-<a name="2745"><span class="lineNum">    2745 </span><span class="lineCov">         48 :     key = cmcf-&gt;variables_keys-&gt;keys.elts;</span></a>
+<a name="2743"><span class="lineNum">    2743 </span><span class="lineCov">         84 :     v = cmcf-&gt;variables.elts;</span></a>
+<a name="2744"><span class="lineNum">    2744 </span><span class="lineCov">         84 :     pv = cmcf-&gt;prefix_variables.elts;</span></a>
+<a name="2745"><span class="lineNum">    2745 </span><span class="lineCov">         84 :     key = cmcf-&gt;variables_keys-&gt;keys.elts;</span></a>
 <a name="2746"><span class="lineNum">    2746 </span>            : </a>
-<a name="2747"><span class="lineNum">    2747 </span><span class="lineCov">        387 :     for (i = 0; i &lt; cmcf-&gt;variables.nelts; i++) {</span></a>
+<a name="2747"><span class="lineNum">    2747 </span><span class="lineCov">        675 :     for (i = 0; i &lt; cmcf-&gt;variables.nelts; i++) {</span></a>
 <a name="2748"><span class="lineNum">    2748 </span>            : </a>
-<a name="2749"><span class="lineNum">    2749 </span><span class="lineCov">       5556 :         for (n = 0; n &lt; cmcf-&gt;variables_keys-&gt;keys.nelts; n++) {</span></a>
+<a name="2749"><span class="lineNum">    2749 </span><span class="lineCov">       9876 :         for (n = 0; n &lt; cmcf-&gt;variables_keys-&gt;keys.nelts; n++) {</span></a>
 <a name="2750"><span class="lineNum">    2750 </span>            : </a>
-<a name="2751"><span class="lineNum">    2751 </span><span class="lineCov">       5556 :             av = key[n].value;</span></a>
+<a name="2751"><span class="lineNum">    2751 </span><span class="lineCov">       9876 :             av = key[n].value;</span></a>
 <a name="2752"><span class="lineNum">    2752 </span>            : </a>
-<a name="2753"><span class="lineNum">    2753 </span><span class="lineCov">       5556 :             if (v[i].name.len == key[n].key.len</span></a>
-<a name="2754"><span class="lineNum">    2754 </span><span class="lineCov">        921 :                 &amp;&amp; ngx_strncmp(v[i].name.data, key[n].key.data, v[i].name.len)</span></a>
+<a name="2753"><span class="lineNum">    2753 </span><span class="lineCov">       9876 :             if (v[i].name.len == key[n].key.len</span></a>
+<a name="2754"><span class="lineNum">    2754 </span><span class="lineCov">       1677 :                 &amp;&amp; ngx_strncmp(v[i].name.data, key[n].key.data, v[i].name.len)</span></a>
 <a name="2755"><span class="lineNum">    2755 </span>            :                    == 0)</a>
 <a name="2756"><span class="lineNum">    2756 </span>            :             {</a>
-<a name="2757"><span class="lineNum">    2757 </span><span class="lineCov">        339 :                 v[i].get_handler = av-&gt;get_handler;</span></a>
-<a name="2758"><span class="lineNum">    2758 </span><span class="lineCov">        339 :                 v[i].data = av-&gt;data;</span></a>
+<a name="2757"><span class="lineNum">    2757 </span><span class="lineCov">        591 :                 v[i].get_handler = av-&gt;get_handler;</span></a>
+<a name="2758"><span class="lineNum">    2758 </span><span class="lineCov">        591 :                 v[i].data = av-&gt;data;</span></a>
 <a name="2759"><span class="lineNum">    2759 </span>            : </a>
-<a name="2760"><span class="lineNum">    2760 </span><span class="lineCov">        339 :                 av-&gt;flags |= NGX_HTTP_VAR_INDEXED;</span></a>
-<a name="2761"><span class="lineNum">    2761 </span><span class="lineCov">        339 :                 v[i].flags = av-&gt;flags;</span></a>
+<a name="2760"><span class="lineNum">    2760 </span><span class="lineCov">        591 :                 av-&gt;flags |= NGX_HTTP_VAR_INDEXED;</span></a>
+<a name="2761"><span class="lineNum">    2761 </span><span class="lineCov">        591 :                 v[i].flags = av-&gt;flags;</span></a>
 <a name="2762"><span class="lineNum">    2762 </span>            : </a>
-<a name="2763"><span class="lineNum">    2763 </span><span class="lineCov">        339 :                 av-&gt;index = i;</span></a>
+<a name="2763"><span class="lineNum">    2763 </span><span class="lineCov">        591 :                 av-&gt;index = i;</span></a>
 <a name="2764"><span class="lineNum">    2764 </span>            : </a>
-<a name="2765"><span class="lineNum">    2765 </span><span class="lineCov">        339 :                 if (av-&gt;get_handler == NULL</span></a>
-<a name="2766"><span class="lineNum">    2766 </span><span class="lineCov">        339 :                     || (av-&gt;flags &amp; NGX_HTTP_VAR_WEAK))</span></a>
+<a name="2765"><span class="lineNum">    2765 </span><span class="lineCov">        591 :                 if (av-&gt;get_handler == NULL</span></a>
+<a name="2766"><span class="lineNum">    2766 </span><span class="lineCov">        591 :                     || (av-&gt;flags &amp; NGX_HTTP_VAR_WEAK))</span></a>
 <a name="2767"><span class="lineNum">    2767 </span>            :                 {</a>
 <a name="2768"><span class="lineNum">    2768 </span>            :                     break;</a>
 <a name="2769"><span class="lineNum">    2769 </span>            :                 }</a>
 <a name="2770"><span class="lineNum">    2770 </span>            : </a>
-<a name="2771"><span class="lineNum">    2771 </span><span class="lineCov">        339 :                 goto next;</span></a>
+<a name="2771"><span class="lineNum">    2771 </span><span class="lineCov">        591 :                 goto next;</span></a>
 <a name="2772"><span class="lineNum">    2772 </span>            :             }</a>
 <a name="2773"><span class="lineNum">    2773 </span>            :         }</a>
 <a name="2774"><span class="lineNum">    2774 </span>            : </a>
@@ -2862,38 +2862,38 @@
 <a name="2800"><span class="lineNum">    2800 </span><span class="lineNoCov">          0 :             return NGX_ERROR;</span></a>
 <a name="2801"><span class="lineNum">    2801 </span>            :         }</a>
 <a name="2802"><span class="lineNum">    2802 </span>            : </a>
-<a name="2803"><span class="lineNum">    2803 </span><span class="lineCov">        339 :     next:</span></a>
-<a name="2804"><span class="lineNum">    2804 </span><span class="lineCov">        339 :         continue;</span></a>
+<a name="2803"><span class="lineNum">    2803 </span><span class="lineCov">        591 :     next:</span></a>
+<a name="2804"><span class="lineNum">    2804 </span><span class="lineCov">        591 :         continue;</span></a>
 <a name="2805"><span class="lineNum">    2805 </span>            :     }</a>
 <a name="2806"><span class="lineNum">    2806 </span>            : </a>
 <a name="2807"><span class="lineNum">    2807 </span>            : </a>
-<a name="2808"><span class="lineNum">    2808 </span><span class="lineCov">       3600 :     for (n = 0; n &lt; cmcf-&gt;variables_keys-&gt;keys.nelts; n++) {</span></a>
-<a name="2809"><span class="lineNum">    2809 </span><span class="lineCov">       3552 :         av = key[n].value;</span></a>
+<a name="2808"><span class="lineNum">    2808 </span><span class="lineCov">       6300 :     for (n = 0; n &lt; cmcf-&gt;variables_keys-&gt;keys.nelts; n++) {</span></a>
+<a name="2809"><span class="lineNum">    2809 </span><span class="lineCov">       6216 :         av = key[n].value;</span></a>
 <a name="2810"><span class="lineNum">    2810 </span>            : </a>
-<a name="2811"><span class="lineNum">    2811 </span><span class="lineCov">       3552 :         if (av-&gt;flags &amp; NGX_HTTP_VAR_NOHASH) {</span></a>
+<a name="2811"><span class="lineNum">    2811 </span><span class="lineCov">       6216 :         if (av-&gt;flags &amp; NGX_HTTP_VAR_NOHASH) {</span></a>
 <a name="2812"><span class="lineNum">    2812 </span><span class="lineNoCov">          0 :             key[n].key.data = NULL;</span></a>
 <a name="2813"><span class="lineNum">    2813 </span>            :         }</a>
 <a name="2814"><span class="lineNum">    2814 </span>            :     }</a>
 <a name="2815"><span class="lineNum">    2815 </span>            : </a>
 <a name="2816"><span class="lineNum">    2816 </span>            : </a>
-<a name="2817"><span class="lineNum">    2817 </span><span class="lineCov">         48 :     hash.hash = &amp;cmcf-&gt;variables_hash;</span></a>
-<a name="2818"><span class="lineNum">    2818 </span><span class="lineCov">         48 :     hash.key = ngx_hash_key;</span></a>
-<a name="2819"><span class="lineNum">    2819 </span><span class="lineCov">         48 :     hash.max_size = cmcf-&gt;variables_hash_max_size;</span></a>
-<a name="2820"><span class="lineNum">    2820 </span><span class="lineCov">         48 :     hash.bucket_size = cmcf-&gt;variables_hash_bucket_size;</span></a>
-<a name="2821"><span class="lineNum">    2821 </span><span class="lineCov">         48 :     hash.name = &quot;variables_hash&quot;;</span></a>
-<a name="2822"><span class="lineNum">    2822 </span><span class="lineCov">         48 :     hash.pool = cf-&gt;pool;</span></a>
-<a name="2823"><span class="lineNum">    2823 </span><span class="lineCov">         48 :     hash.temp_pool = NULL;</span></a>
+<a name="2817"><span class="lineNum">    2817 </span><span class="lineCov">         84 :     hash.hash = &amp;cmcf-&gt;variables_hash;</span></a>
+<a name="2818"><span class="lineNum">    2818 </span><span class="lineCov">         84 :     hash.key = ngx_hash_key;</span></a>
+<a name="2819"><span class="lineNum">    2819 </span><span class="lineCov">         84 :     hash.max_size = cmcf-&gt;variables_hash_max_size;</span></a>
+<a name="2820"><span class="lineNum">    2820 </span><span class="lineCov">         84 :     hash.bucket_size = cmcf-&gt;variables_hash_bucket_size;</span></a>
+<a name="2821"><span class="lineNum">    2821 </span><span class="lineCov">         84 :     hash.name = &quot;variables_hash&quot;;</span></a>
+<a name="2822"><span class="lineNum">    2822 </span><span class="lineCov">         84 :     hash.pool = cf-&gt;pool;</span></a>
+<a name="2823"><span class="lineNum">    2823 </span><span class="lineCov">         84 :     hash.temp_pool = NULL;</span></a>
 <a name="2824"><span class="lineNum">    2824 </span>            : </a>
-<a name="2825"><span class="lineNum">    2825 </span><span class="lineCov">         48 :     if (ngx_hash_init(&amp;hash, cmcf-&gt;variables_keys-&gt;keys.elts,</span></a>
-<a name="2826"><span class="lineNum">    2826 </span><span class="lineCov">         48 :                       cmcf-&gt;variables_keys-&gt;keys.nelts)</span></a>
+<a name="2825"><span class="lineNum">    2825 </span><span class="lineCov">         84 :     if (ngx_hash_init(&amp;hash, cmcf-&gt;variables_keys-&gt;keys.elts,</span></a>
+<a name="2826"><span class="lineNum">    2826 </span><span class="lineCov">         84 :                       cmcf-&gt;variables_keys-&gt;keys.nelts)</span></a>
 <a name="2827"><span class="lineNum">    2827 </span>            :         != NGX_OK)</a>
 <a name="2828"><span class="lineNum">    2828 </span>            :     {</a>
 <a name="2829"><span class="lineNum">    2829 </span><span class="lineNoCov">          0 :         return NGX_ERROR;</span></a>
 <a name="2830"><span class="lineNum">    2830 </span>            :     }</a>
 <a name="2831"><span class="lineNum">    2831 </span>            : </a>
-<a name="2832"><span class="lineNum">    2832 </span><span class="lineCov">         48 :     cmcf-&gt;variables_keys = NULL;</span></a>
+<a name="2832"><span class="lineNum">    2832 </span><span class="lineCov">         84 :     cmcf-&gt;variables_keys = NULL;</span></a>
 <a name="2833"><span class="lineNum">    2833 </span>            : </a>
-<a name="2834"><span class="lineNum">    2834 </span><span class="lineCov">         48 :     return NGX_OK;</span></a>
+<a name="2834"><span class="lineNum">    2834 </span><span class="lineCov">         84 :     return NGX_OK;</span></a>
 <a name="2835"><span class="lineNum">    2835 </span>            : }</a>
 </pre>
       </td>

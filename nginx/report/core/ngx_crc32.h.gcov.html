@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-22 13:10:45</td>
+            <td class="headerValue">2024-10-23 15:06:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -98,17 +98,17 @@
 <a name="36"><span class="lineNum">      36 </span>            : </a>
 <a name="37"><span class="lineNum">      37 </span>            : </a>
 <a name="38"><span class="lineNum">      38 </span>            : static ngx_inline uint32_t</a>
-<a name="39"><span class="lineNum">      39 </span><span class="lineCov">         50 : ngx_crc32_long(u_char *p, size_t len)</span></a>
+<a name="39"><span class="lineNum">      39 </span><span class="lineCov">         86 : ngx_crc32_long(u_char *p, size_t len)</span></a>
 <a name="40"><span class="lineNum">      40 </span>            : {</a>
 <a name="41"><span class="lineNum">      41 </span>            :     uint32_t  crc;</a>
 <a name="42"><span class="lineNum">      42 </span>            : </a>
-<a name="43"><span class="lineNum">      43 </span><span class="lineCov">         50 :     crc = 0xffffffff;</span></a>
+<a name="43"><span class="lineNum">      43 </span><span class="lineCov">         86 :     crc = 0xffffffff;</span></a>
 <a name="44"><span class="lineNum">      44 </span>            : </a>
-<a name="45"><span class="lineNum">      45 </span><span class="lineCov">       4450 :     while (len--) {</span></a>
-<a name="46"><span class="lineNum">      46 </span><span class="lineCov">       4400 :         crc = ngx_crc32_table256[(crc ^ *p++) &amp; 0xff] ^ (crc &gt;&gt; 8);</span></a>
+<a name="45"><span class="lineNum">      45 </span><span class="lineCov">       7654 :     while (len--) {</span></a>
+<a name="46"><span class="lineNum">      46 </span><span class="lineCov">       7568 :         crc = ngx_crc32_table256[(crc ^ *p++) &amp; 0xff] ^ (crc &gt;&gt; 8);</span></a>
 <a name="47"><span class="lineNum">      47 </span>            :     }</a>
 <a name="48"><span class="lineNum">      48 </span>            : </a>
-<a name="49"><span class="lineNum">      49 </span><span class="lineCov">         50 :     return crc ^ 0xffffffff;</span></a>
+<a name="49"><span class="lineNum">      49 </span><span class="lineCov">         86 :     return crc ^ 0xffffffff;</span></a>
 <a name="50"><span class="lineNum">      50 </span>            : }</a>
 <a name="51"><span class="lineNum">      51 </span>            : </a>
 <a name="52"><span class="lineNum">      52 </span>            : </a>

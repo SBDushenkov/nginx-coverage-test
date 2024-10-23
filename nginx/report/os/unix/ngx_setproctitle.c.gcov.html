@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-22 13:10:45</td>
+            <td class="headerValue">2024-10-23 15:06:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -94,51 +94,51 @@
 <a name="32"><span class="lineNum">      32 </span>            : static char *ngx_os_argv_last;</a>
 <a name="33"><span class="lineNum">      33 </span>            : </a>
 <a name="34"><span class="lineNum">      34 </span>            : ngx_int_t</a>
-<a name="35"><span class="lineNum">      35 </span><span class="lineCov">         33 : ngx_init_setproctitle(ngx_log_t *log)</span></a>
+<a name="35"><span class="lineNum">      35 </span><span class="lineCov">         57 : ngx_init_setproctitle(ngx_log_t *log)</span></a>
 <a name="36"><span class="lineNum">      36 </span>            : {</a>
 <a name="37"><span class="lineNum">      37 </span>            :     u_char      *p;</a>
 <a name="38"><span class="lineNum">      38 </span>            :     size_t       size;</a>
 <a name="39"><span class="lineNum">      39 </span>            :     ngx_uint_t   i;</a>
 <a name="40"><span class="lineNum">      40 </span>            : </a>
-<a name="41"><span class="lineNum">      41 </span><span class="lineCov">         33 :     size = 0;</span></a>
+<a name="41"><span class="lineNum">      41 </span><span class="lineCov">         57 :     size = 0;</span></a>
 <a name="42"><span class="lineNum">      42 </span>            : </a>
-<a name="43"><span class="lineNum">      43 </span><span class="lineCov">       2139 :     for (i = 0; environ[i]; i++) {</span></a>
-<a name="44"><span class="lineNum">      44 </span><span class="lineCov">       2106 :         size += ngx_strlen(environ[i]) + 1;</span></a>
+<a name="43"><span class="lineNum">      43 </span><span class="lineCov">       3699 :     for (i = 0; environ[i]; i++) {</span></a>
+<a name="44"><span class="lineNum">      44 </span><span class="lineCov">       3642 :         size += ngx_strlen(environ[i]) + 1;</span></a>
 <a name="45"><span class="lineNum">      45 </span>            :     }</a>
 <a name="46"><span class="lineNum">      46 </span>            : </a>
-<a name="47"><span class="lineNum">      47 </span><span class="lineCov">         33 :     p = ngx_alloc(size, log);</span></a>
-<a name="48"><span class="lineNum">      48 </span><span class="lineCov">         33 :     if (p == NULL) {</span></a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">         57 :     p = ngx_alloc(size, log);</span></a>
+<a name="48"><span class="lineNum">      48 </span><span class="lineCov">         57 :     if (p == NULL) {</span></a>
 <a name="49"><span class="lineNum">      49 </span><span class="lineNoCov">          0 :         return NGX_ERROR;</span></a>
 <a name="50"><span class="lineNum">      50 </span>            :     }</a>
 <a name="51"><span class="lineNum">      51 </span>            : </a>
-<a name="52"><span class="lineNum">      52 </span><span class="lineCov">         33 :     ngx_os_argv_last = ngx_os_argv[0];</span></a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">         57 :     ngx_os_argv_last = ngx_os_argv[0];</span></a>
 <a name="53"><span class="lineNum">      53 </span>            : </a>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">        114 :     for (i = 0; ngx_os_argv[i]; i++) {</span></a>
-<a name="55"><span class="lineNum">      55 </span><span class="lineCov">         81 :         if (ngx_os_argv_last == ngx_os_argv[i]) {</span></a>
-<a name="56"><span class="lineNum">      56 </span><span class="lineCov">         81 :             ngx_os_argv_last = ngx_os_argv[i] + ngx_strlen(ngx_os_argv[i]) + 1;</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">        198 :     for (i = 0; ngx_os_argv[i]; i++) {</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">        141 :         if (ngx_os_argv_last == ngx_os_argv[i]) {</span></a>
+<a name="56"><span class="lineNum">      56 </span><span class="lineCov">        141 :             ngx_os_argv_last = ngx_os_argv[i] + ngx_strlen(ngx_os_argv[i]) + 1;</span></a>
 <a name="57"><span class="lineNum">      57 </span>            :         }</a>
 <a name="58"><span class="lineNum">      58 </span>            :     }</a>
 <a name="59"><span class="lineNum">      59 </span>            : </a>
-<a name="60"><span class="lineNum">      60 </span><span class="lineCov">       2139 :     for (i = 0; environ[i]; i++) {</span></a>
-<a name="61"><span class="lineNum">      61 </span><span class="lineCov">       2106 :         if (ngx_os_argv_last == environ[i]) {</span></a>
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">       3699 :     for (i = 0; environ[i]; i++) {</span></a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">       3642 :         if (ngx_os_argv_last == environ[i]) {</span></a>
 <a name="62"><span class="lineNum">      62 </span>            : </a>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">       2106 :             size = ngx_strlen(environ[i]) + 1;</span></a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">       2106 :             ngx_os_argv_last = environ[i] + size;</span></a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">       3642 :             size = ngx_strlen(environ[i]) + 1;</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">       3642 :             ngx_os_argv_last = environ[i] + size;</span></a>
 <a name="65"><span class="lineNum">      65 </span>            : </a>
-<a name="66"><span class="lineNum">      66 </span><span class="lineCov">       2106 :             ngx_cpystrn(p, (u_char *) environ[i], size);</span></a>
-<a name="67"><span class="lineNum">      67 </span><span class="lineCov">       2106 :             environ[i] = (char *) p;</span></a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineCov">       2106 :             p += size;</span></a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">       3642 :             ngx_cpystrn(p, (u_char *) environ[i], size);</span></a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">       3642 :             environ[i] = (char *) p;</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">       3642 :             p += size;</span></a>
 <a name="69"><span class="lineNum">      69 </span>            :         }</a>
 <a name="70"><span class="lineNum">      70 </span>            :     }</a>
 <a name="71"><span class="lineNum">      71 </span>            : </a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">         33 :     ngx_os_argv_last--;</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">         57 :     ngx_os_argv_last--;</span></a>
 <a name="73"><span class="lineNum">      73 </span>            : </a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">         33 :     return NGX_OK;</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">         57 :     return NGX_OK;</span></a>
 <a name="75"><span class="lineNum">      75 </span>            : }</a>
 <a name="76"><span class="lineNum">      76 </span>            : </a>
 <a name="77"><span class="lineNum">      77 </span>            : </a>
 <a name="78"><span class="lineNum">      78 </span>            : void</a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">         33 : ngx_setproctitle(char *title)</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">         57 : ngx_setproctitle(char *title)</span></a>
 <a name="80"><span class="lineNum">      80 </span>            : {</a>
 <a name="81"><span class="lineNum">      81 </span>            :     u_char     *p;</a>
 <a name="82"><span class="lineNum">      82 </span>            : </a>
@@ -149,12 +149,12 @@
 <a name="87"><span class="lineNum">      87 </span>            : </a>
 <a name="88"><span class="lineNum">      88 </span>            : #endif</a>
 <a name="89"><span class="lineNum">      89 </span>            : </a>
-<a name="90"><span class="lineNum">      90 </span><span class="lineCov">         33 :     ngx_os_argv[1] = NULL;</span></a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">         57 :     ngx_os_argv[1] = NULL;</span></a>
 <a name="91"><span class="lineNum">      91 </span>            : </a>
-<a name="92"><span class="lineNum">      92 </span><span class="lineCov">         33 :     p = ngx_cpystrn((u_char *) ngx_os_argv[0], (u_char *) &quot;nginx: &quot;,</span></a>
-<a name="93"><span class="lineNum">      93 </span><span class="lineCov">         33 :                     ngx_os_argv_last - ngx_os_argv[0]);</span></a>
+<a name="92"><span class="lineNum">      92 </span><span class="lineCov">         57 :     p = ngx_cpystrn((u_char *) ngx_os_argv[0], (u_char *) &quot;nginx: &quot;,</span></a>
+<a name="93"><span class="lineNum">      93 </span><span class="lineCov">         57 :                     ngx_os_argv_last - ngx_os_argv[0]);</span></a>
 <a name="94"><span class="lineNum">      94 </span>            : </a>
-<a name="95"><span class="lineNum">      95 </span><span class="lineCov">         33 :     p = ngx_cpystrn(p, (u_char *) title, ngx_os_argv_last - (char *) p);</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">         57 :     p = ngx_cpystrn(p, (u_char *) title, ngx_os_argv_last - (char *) p);</span></a>
 <a name="96"><span class="lineNum">      96 </span>            : </a>
 <a name="97"><span class="lineNum">      97 </span>            : #if (NGX_SOLARIS)</a>
 <a name="98"><span class="lineNum">      98 </span>            : </a>
@@ -186,13 +186,13 @@
 <a name="124"><span class="lineNum">     124 </span>            : </a>
 <a name="125"><span class="lineNum">     125 </span>            : #endif</a>
 <a name="126"><span class="lineNum">     126 </span>            : </a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineCov">         33 :     if (ngx_os_argv_last - (char *) p) {</span></a>
-<a name="128"><span class="lineNum">     128 </span><span class="lineCov">         33 :         ngx_memset(p, NGX_SETPROCTITLE_PAD, ngx_os_argv_last - (char *) p);</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">         57 :     if (ngx_os_argv_last - (char *) p) {</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">         57 :         ngx_memset(p, NGX_SETPROCTITLE_PAD, ngx_os_argv_last - (char *) p);</span></a>
 <a name="129"><span class="lineNum">     129 </span>            :     }</a>
 <a name="130"><span class="lineNum">     130 </span>            : </a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">         33 :     ngx_log_debug1(NGX_LOG_DEBUG_CORE, ngx_cycle-&gt;log, 0,</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">         57 :     ngx_log_debug1(NGX_LOG_DEBUG_CORE, ngx_cycle-&gt;log, 0,</span></a>
 <a name="132"><span class="lineNum">     132 </span>            :                    &quot;setproctitle: \&quot;%s\&quot;&quot;, ngx_os_argv[0]);</a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineCov">         33 : }</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">         57 : }</span></a>
 <a name="134"><span class="lineNum">     134 </span>            : </a>
 <a name="135"><span class="lineNum">     135 </span>            : #endif /* NGX_SETPROCTITLE_USES_ENV */</a>
 </pre>

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-22 13:10:45</td>
+            <td class="headerValue">2024-10-23 15:06:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -167,7 +167,7 @@
 <a name="105"><span class="lineNum">     105 </span>            : </a>
 <a name="106"><span class="lineNum">     106 </span>            : </a>
 <a name="107"><span class="lineNum">     107 </span>            : ngx_chain_t *</a>
-<a name="108"><span class="lineNum">     108 </span><span class="lineCov">         30 : ngx_output_chain_to_iovec(ngx_iovec_t *vec, ngx_chain_t *in, size_t limit,</span></a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">         54 : ngx_output_chain_to_iovec(ngx_iovec_t *vec, ngx_chain_t *in, size_t limit,</span></a>
 <a name="109"><span class="lineNum">     109 </span>            :     ngx_log_t *log)</a>
 <a name="110"><span class="lineNum">     110 </span>            : {</a>
 <a name="111"><span class="lineNum">     111 </span>            :     size_t         total, size;</a>
@@ -175,22 +175,22 @@
 <a name="113"><span class="lineNum">     113 </span>            :     ngx_uint_t     n;</a>
 <a name="114"><span class="lineNum">     114 </span>            :     struct iovec  *iov;</a>
 <a name="115"><span class="lineNum">     115 </span>            : </a>
-<a name="116"><span class="lineNum">     116 </span><span class="lineCov">         30 :     iov = NULL;</span></a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">         30 :     prev = NULL;</span></a>
-<a name="118"><span class="lineNum">     118 </span><span class="lineCov">         30 :     total = 0;</span></a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">         30 :     n = 0;</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">         54 :     iov = NULL;</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">         54 :     prev = NULL;</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">         54 :     total = 0;</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">         54 :     n = 0;</span></a>
 <a name="120"><span class="lineNum">     120 </span>            : </a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">         90 :     for ( /* void */ ; in &amp;&amp; total &lt; limit; in = in-&gt;next) {</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">        168 :     for ( /* void */ ; in &amp;&amp; total &lt; limit; in = in-&gt;next) {</span></a>
 <a name="122"><span class="lineNum">     122 </span>            : </a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">         60 :         if (ngx_buf_special(in-&gt;buf)) {</span></a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">         15 :             continue;</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">        114 :         if (ngx_buf_special(in-&gt;buf)) {</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">         27 :             continue;</span></a>
 <a name="125"><span class="lineNum">     125 </span>            :         }</a>
 <a name="126"><span class="lineNum">     126 </span>            : </a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineCov">         45 :         if (in-&gt;buf-&gt;in_file) {</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">         87 :         if (in-&gt;buf-&gt;in_file) {</span></a>
 <a name="128"><span class="lineNum">     128 </span><span class="lineNoCov">          0 :             break;</span></a>
 <a name="129"><span class="lineNum">     129 </span>            :         }</a>
 <a name="130"><span class="lineNum">     130 </span>            : </a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">         45 :         if (!ngx_buf_in_memory(in-&gt;buf)) {</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">         87 :         if (!ngx_buf_in_memory(in-&gt;buf)) {</span></a>
 <a name="132"><span class="lineNum">     132 </span><span class="lineNoCov">          0 :             ngx_log_error(NGX_LOG_ALERT, log, 0,</span></a>
 <a name="133"><span class="lineNum">     133 </span>            :                           &quot;bad buf in output chain &quot;</a>
 <a name="134"><span class="lineNum">     134 </span>            :                           &quot;t:%d r:%d f:%d %p %p-%p %p %O-%O&quot;,</a>
@@ -209,51 +209,51 @@
 <a name="147"><span class="lineNum">     147 </span><span class="lineNoCov">          0 :             return NGX_CHAIN_ERROR;</span></a>
 <a name="148"><span class="lineNum">     148 </span>            :         }</a>
 <a name="149"><span class="lineNum">     149 </span>            : </a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">         45 :         size = in-&gt;buf-&gt;last - in-&gt;buf-&gt;pos;</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">         87 :         size = in-&gt;buf-&gt;last - in-&gt;buf-&gt;pos;</span></a>
 <a name="151"><span class="lineNum">     151 </span>            : </a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">         45 :         if (size &gt; limit - total) {</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">         87 :         if (size &gt; limit - total) {</span></a>
 <a name="153"><span class="lineNum">     153 </span><span class="lineNoCov">          0 :             size = limit - total;</span></a>
 <a name="154"><span class="lineNum">     154 </span>            :         }</a>
 <a name="155"><span class="lineNum">     155 </span>            : </a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">         45 :         if (prev == in-&gt;buf-&gt;pos) {</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">         87 :         if (prev == in-&gt;buf-&gt;pos) {</span></a>
 <a name="157"><span class="lineNum">     157 </span><span class="lineNoCov">          0 :             iov-&gt;iov_len += size;</span></a>
 <a name="158"><span class="lineNum">     158 </span>            : </a>
 <a name="159"><span class="lineNum">     159 </span>            :         } else {</a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">         45 :             if (n == vec-&gt;nalloc) {</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">         87 :             if (n == vec-&gt;nalloc) {</span></a>
 <a name="161"><span class="lineNum">     161 </span><span class="lineNoCov">          0 :                 break;</span></a>
 <a name="162"><span class="lineNum">     162 </span>            :             }</a>
 <a name="163"><span class="lineNum">     163 </span>            : </a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineCov">         45 :             iov = &amp;vec-&gt;iovs[n++];</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">         87 :             iov = &amp;vec-&gt;iovs[n++];</span></a>
 <a name="165"><span class="lineNum">     165 </span>            : </a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">         45 :             iov-&gt;iov_base = (void *) in-&gt;buf-&gt;pos;</span></a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">         45 :             iov-&gt;iov_len = size;</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">         87 :             iov-&gt;iov_base = (void *) in-&gt;buf-&gt;pos;</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">         87 :             iov-&gt;iov_len = size;</span></a>
 <a name="168"><span class="lineNum">     168 </span>            :         }</a>
 <a name="169"><span class="lineNum">     169 </span>            : </a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">         45 :         prev = in-&gt;buf-&gt;pos + size;</span></a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">         45 :         total += size;</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">         87 :         prev = in-&gt;buf-&gt;pos + size;</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">         87 :         total += size;</span></a>
 <a name="172"><span class="lineNum">     172 </span>            :     }</a>
 <a name="173"><span class="lineNum">     173 </span>            : </a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">         30 :     vec-&gt;count = n;</span></a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">         30 :     vec-&gt;size = total;</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">         54 :     vec-&gt;count = n;</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">         54 :     vec-&gt;size = total;</span></a>
 <a name="176"><span class="lineNum">     176 </span>            : </a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineCov">         30 :     return in;</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">         54 :     return in;</span></a>
 <a name="178"><span class="lineNum">     178 </span>            : }</a>
 <a name="179"><span class="lineNum">     179 </span>            : </a>
 <a name="180"><span class="lineNum">     180 </span>            : </a>
 <a name="181"><span class="lineNum">     181 </span>            : ssize_t</a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">         30 : ngx_writev(ngx_connection_t *c, ngx_iovec_t *vec)</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">         54 : ngx_writev(ngx_connection_t *c, ngx_iovec_t *vec)</span></a>
 <a name="183"><span class="lineNum">     183 </span>            : {</a>
 <a name="184"><span class="lineNum">     184 </span>            :     ssize_t    n;</a>
 <a name="185"><span class="lineNum">     185 </span>            :     ngx_err_t  err;</a>
 <a name="186"><span class="lineNum">     186 </span>            : </a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">         30 : eintr:</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">         54 : eintr:</span></a>
 <a name="188"><span class="lineNum">     188 </span>            : </a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">         30 :     n = writev(c-&gt;fd, vec-&gt;iovs, vec-&gt;count);</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">         54 :     n = writev(c-&gt;fd, vec-&gt;iovs, vec-&gt;count);</span></a>
 <a name="190"><span class="lineNum">     190 </span>            : </a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">         30 :     ngx_log_debug2(NGX_LOG_DEBUG_EVENT, c-&gt;log, 0,</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">         54 :     ngx_log_debug2(NGX_LOG_DEBUG_EVENT, c-&gt;log, 0,</span></a>
 <a name="192"><span class="lineNum">     192 </span>            :                    &quot;writev: %z of %uz&quot;, n, vec-&gt;size);</a>
 <a name="193"><span class="lineNum">     193 </span>            : </a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">         30 :     if (n == -1) {</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">         54 :     if (n == -1) {</span></a>
 <a name="195"><span class="lineNum">     195 </span><span class="lineNoCov">          0 :         err = ngx_errno;</span></a>
 <a name="196"><span class="lineNum">     196 </span>            : </a>
 <a name="197"><span class="lineNum">     197 </span><span class="lineNoCov">          0 :         switch (err) {</span></a>
@@ -274,7 +274,7 @@
 <a name="212"><span class="lineNum">     212 </span>            :         }</a>
 <a name="213"><span class="lineNum">     213 </span>            :     }</a>
 <a name="214"><span class="lineNum">     214 </span>            : </a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">         30 :     return n;</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">         54 :     return n;</span></a>
 <a name="216"><span class="lineNum">     216 </span>            : }</a>
 </pre>
       </td>

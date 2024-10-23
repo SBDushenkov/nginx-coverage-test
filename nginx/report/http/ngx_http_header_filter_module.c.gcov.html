@@ -31,13 +31,13 @@
             <td class="headerValue">report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">129</td>
+            <td class="headerCovTableEntry">134</td>
             <td class="headerCovTableEntry">218</td>
-            <td class="headerCovTableEntryLo">59.2 %</td>
+            <td class="headerCovTableEntryLo">61.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-22 13:10:45</td>
+            <td class="headerValue">2024-10-23 15:06:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -216,41 +216,41 @@
 <a name="154"><span class="lineNum">     154 </span>            : </a>
 <a name="155"><span class="lineNum">     155 </span>            : </a>
 <a name="156"><span class="lineNum">     156 </span>            : static ngx_int_t</a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">         30 : ngx_http_header_filter(ngx_http_request_t *r)</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">         54 : ngx_http_header_filter(ngx_http_request_t *r)</span></a>
 <a name="158"><span class="lineNum">     158 </span>            : {</a>
 <a name="159"><span class="lineNum">     159 </span>            :     u_char                    *p;</a>
 <a name="160"><span class="lineNum">     160 </span>            :     size_t                     len;</a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">         30 :     ngx_str_t                  host, *status_line;</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">         54 :     ngx_str_t                  host, *status_line;</span></a>
 <a name="162"><span class="lineNum">     162 </span>            :     ngx_buf_t                 *b;</a>
 <a name="163"><span class="lineNum">     163 </span>            :     ngx_uint_t                 status, i, port;</a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineCov">         30 :     ngx_chain_t                out;</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">         54 :     ngx_chain_t                out;</span></a>
 <a name="165"><span class="lineNum">     165 </span>            :     ngx_list_part_t           *part;</a>
 <a name="166"><span class="lineNum">     166 </span>            :     ngx_table_elt_t           *header;</a>
 <a name="167"><span class="lineNum">     167 </span>            :     ngx_connection_t          *c;</a>
 <a name="168"><span class="lineNum">     168 </span>            :     ngx_http_core_loc_conf_t  *clcf;</a>
 <a name="169"><span class="lineNum">     169 </span>            :     ngx_http_core_srv_conf_t  *cscf;</a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">         30 :     u_char                     addr[NGX_SOCKADDR_STRLEN];</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">         54 :     u_char                     addr[NGX_SOCKADDR_STRLEN];</span></a>
 <a name="171"><span class="lineNum">     171 </span>            : </a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">         30 :     if (r-&gt;header_sent) {</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">         54 :     if (r-&gt;header_sent) {</span></a>
 <a name="173"><span class="lineNum">     173 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
 <a name="174"><span class="lineNum">     174 </span>            :     }</a>
 <a name="175"><span class="lineNum">     175 </span>            : </a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">         30 :     r-&gt;header_sent = 1;</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">         54 :     r-&gt;header_sent = 1;</span></a>
 <a name="177"><span class="lineNum">     177 </span>            : </a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">         30 :     if (r != r-&gt;main) {</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">         54 :     if (r != r-&gt;main) {</span></a>
 <a name="179"><span class="lineNum">     179 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
 <a name="180"><span class="lineNum">     180 </span>            :     }</a>
 <a name="181"><span class="lineNum">     181 </span>            : </a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">         30 :     if (r-&gt;http_version &lt; NGX_HTTP_VERSION_10) {</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">         54 :     if (r-&gt;http_version &lt; NGX_HTTP_VERSION_10) {</span></a>
 <a name="183"><span class="lineNum">     183 </span><span class="lineNoCov">          0 :         return NGX_OK;</span></a>
 <a name="184"><span class="lineNum">     184 </span>            :     }</a>
 <a name="185"><span class="lineNum">     185 </span>            : </a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">         30 :     if (r-&gt;method == NGX_HTTP_HEAD) {</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">         54 :     if (r-&gt;method == NGX_HTTP_HEAD) {</span></a>
 <a name="187"><span class="lineNum">     187 </span><span class="lineNoCov">          0 :         r-&gt;header_only = 1;</span></a>
 <a name="188"><span class="lineNum">     188 </span>            :     }</a>
 <a name="189"><span class="lineNum">     189 </span>            : </a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">         30 :     if (r-&gt;headers_out.last_modified_time != -1) {</span></a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">          1 :         if (r-&gt;headers_out.status != NGX_HTTP_OK</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">         54 :     if (r-&gt;headers_out.last_modified_time != -1) {</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">          7 :         if (r-&gt;headers_out.status != NGX_HTTP_OK</span></a>
 <a name="192"><span class="lineNum">     192 </span><span class="lineNoCov">          0 :             &amp;&amp; r-&gt;headers_out.status != NGX_HTTP_PARTIAL_CONTENT</span></a>
 <a name="193"><span class="lineNum">     193 </span><span class="lineNoCov">          0 :             &amp;&amp; r-&gt;headers_out.status != NGX_HTTP_NOT_MODIFIED)</span></a>
 <a name="194"><span class="lineNum">     194 </span>            :         {</a>
@@ -259,17 +259,17 @@
 <a name="197"><span class="lineNum">     197 </span>            :         }</a>
 <a name="198"><span class="lineNum">     198 </span>            :     }</a>
 <a name="199"><span class="lineNum">     199 </span>            : </a>
-<a name="200"><span class="lineNum">     200 </span><span class="lineCov">         30 :     if (r-&gt;keepalive &amp;&amp; (ngx_terminate || ngx_exiting)) {</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineCov">         54 :     if (r-&gt;keepalive &amp;&amp; (ngx_terminate || ngx_exiting)) {</span></a>
 <a name="201"><span class="lineNum">     201 </span><span class="lineNoCov">          0 :         r-&gt;keepalive = 0;</span></a>
 <a name="202"><span class="lineNum">     202 </span>            :     }</a>
 <a name="203"><span class="lineNum">     203 </span>            : </a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">         30 :     len = sizeof(&quot;HTTP/1.x &quot;) - 1 + sizeof(CRLF) - 1</span></a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">         54 :     len = sizeof(&quot;HTTP/1.x &quot;) - 1 + sizeof(CRLF) - 1</span></a>
 <a name="205"><span class="lineNum">     205 </span>            :           /* the end of the header */</a>
 <a name="206"><span class="lineNum">     206 </span>            :           + sizeof(CRLF) - 1;</a>
 <a name="207"><span class="lineNum">     207 </span>            : </a>
 <a name="208"><span class="lineNum">     208 </span>            :     /* status line */</a>
 <a name="209"><span class="lineNum">     209 </span>            : </a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">         30 :     if (r-&gt;headers_out.status_line.len) {</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">         54 :     if (r-&gt;headers_out.status_line.len) {</span></a>
 <a name="211"><span class="lineNum">     211 </span><span class="lineNoCov">          0 :         len += r-&gt;headers_out.status_line.len;</span></a>
 <a name="212"><span class="lineNum">     212 </span><span class="lineNoCov">          0 :         status_line = &amp;r-&gt;headers_out.status_line;</span></a>
 <a name="213"><span class="lineNum">     213 </span>            : #if (NGX_SUPPRESS_WARN)</a>
@@ -278,14 +278,14 @@
 <a name="216"><span class="lineNum">     216 </span>            : </a>
 <a name="217"><span class="lineNum">     217 </span>            :     } else {</a>
 <a name="218"><span class="lineNum">     218 </span>            : </a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">         30 :         status = r-&gt;headers_out.status;</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineCov">         54 :         status = r-&gt;headers_out.status;</span></a>
 <a name="220"><span class="lineNum">     220 </span>            : </a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineCov">         30 :         if (status &gt;= NGX_HTTP_OK</span></a>
-<a name="222"><span class="lineNum">     222 </span><span class="lineCov">         30 :             &amp;&amp; status &lt; NGX_HTTP_LAST_2XX)</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">         54 :         if (status &gt;= NGX_HTTP_OK</span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">         54 :             &amp;&amp; status &lt; NGX_HTTP_LAST_2XX)</span></a>
 <a name="223"><span class="lineNum">     223 </span>            :         {</a>
 <a name="224"><span class="lineNum">     224 </span>            :             /* 2XX */</a>
 <a name="225"><span class="lineNum">     225 </span>            : </a>
-<a name="226"><span class="lineNum">     226 </span><span class="lineCov">         23 :             if (status == NGX_HTTP_NO_CONTENT) {</span></a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">         41 :             if (status == NGX_HTTP_NO_CONTENT) {</span></a>
 <a name="227"><span class="lineNum">     227 </span><span class="lineCov">          7 :                 r-&gt;header_only = 1;</span></a>
 <a name="228"><span class="lineNum">     228 </span><span class="lineCov">          7 :                 ngx_str_null(&amp;r-&gt;headers_out.content_type);</span></a>
 <a name="229"><span class="lineNum">     229 </span><span class="lineCov">          7 :                 r-&gt;headers_out.last_modified_time = -1;</span></a>
@@ -294,12 +294,12 @@
 <a name="232"><span class="lineNum">     232 </span><span class="lineCov">          7 :                 r-&gt;headers_out.content_length_n = -1;</span></a>
 <a name="233"><span class="lineNum">     233 </span>            :             }</a>
 <a name="234"><span class="lineNum">     234 </span>            : </a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineCov">         23 :             status -= NGX_HTTP_OK;</span></a>
-<a name="236"><span class="lineNum">     236 </span><span class="lineCov">         23 :             status_line = &amp;ngx_http_status_lines[status];</span></a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineCov">         23 :             len += ngx_http_status_lines[status].len;</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">         41 :             status -= NGX_HTTP_OK;</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineCov">         41 :             status_line = &amp;ngx_http_status_lines[status];</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">         41 :             len += ngx_http_status_lines[status].len;</span></a>
 <a name="238"><span class="lineNum">     238 </span>            : </a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineCov">          7 :         } else if (status &gt;= NGX_HTTP_MOVED_PERMANENTLY</span></a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineCov">          7 :                    &amp;&amp; status &lt; NGX_HTTP_LAST_3XX)</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">         13 :         } else if (status &gt;= NGX_HTTP_MOVED_PERMANENTLY</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">         13 :                    &amp;&amp; status &lt; NGX_HTTP_LAST_3XX)</span></a>
 <a name="241"><span class="lineNum">     241 </span>            :         {</a>
 <a name="242"><span class="lineNum">     242 </span>            :             /* 3XX */</a>
 <a name="243"><span class="lineNum">     243 </span>            : </a>
@@ -311,43 +311,43 @@
 <a name="249"><span class="lineNum">     249 </span><span class="lineNoCov">          0 :             status_line = &amp;ngx_http_status_lines[status];</span></a>
 <a name="250"><span class="lineNum">     250 </span><span class="lineNoCov">          0 :             len += ngx_http_status_lines[status].len;</span></a>
 <a name="251"><span class="lineNum">     251 </span>            : </a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">          7 :         } else if (status &gt;= NGX_HTTP_BAD_REQUEST</span></a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineCov">          7 :                    &amp;&amp; status &lt; NGX_HTTP_LAST_4XX)</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineCov">         13 :         } else if (status &gt;= NGX_HTTP_BAD_REQUEST</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">         13 :                    &amp;&amp; status &lt; NGX_HTTP_LAST_4XX)</span></a>
 <a name="254"><span class="lineNum">     254 </span>            :         {</a>
 <a name="255"><span class="lineNum">     255 </span>            :             /* 4XX */</a>
-<a name="256"><span class="lineNum">     256 </span><span class="lineCov">          7 :             status = status - NGX_HTTP_BAD_REQUEST</span></a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineCov">         12 :             status = status - NGX_HTTP_BAD_REQUEST</span></a>
 <a name="257"><span class="lineNum">     257 </span>            :                             + NGX_HTTP_OFF_4XX;</a>
 <a name="258"><span class="lineNum">     258 </span>            : </a>
-<a name="259"><span class="lineNum">     259 </span><span class="lineCov">          7 :             status_line = &amp;ngx_http_status_lines[status];</span></a>
-<a name="260"><span class="lineNum">     260 </span><span class="lineCov">          7 :             len += ngx_http_status_lines[status].len;</span></a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineCov">         12 :             status_line = &amp;ngx_http_status_lines[status];</span></a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineCov">         12 :             len += ngx_http_status_lines[status].len;</span></a>
 <a name="261"><span class="lineNum">     261 </span>            : </a>
-<a name="262"><span class="lineNum">     262 </span><span class="lineNoCov">          0 :         } else if (status &gt;= NGX_HTTP_INTERNAL_SERVER_ERROR</span></a>
-<a name="263"><span class="lineNum">     263 </span><span class="lineNoCov">          0 :                    &amp;&amp; status &lt; NGX_HTTP_LAST_5XX)</span></a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineCov">          1 :         } else if (status &gt;= NGX_HTTP_INTERNAL_SERVER_ERROR</span></a>
+<a name="263"><span class="lineNum">     263 </span><span class="lineCov">          1 :                    &amp;&amp; status &lt; NGX_HTTP_LAST_5XX)</span></a>
 <a name="264"><span class="lineNum">     264 </span>            :         {</a>
 <a name="265"><span class="lineNum">     265 </span>            :             /* 5XX */</a>
-<a name="266"><span class="lineNum">     266 </span><span class="lineNoCov">          0 :             status = status - NGX_HTTP_INTERNAL_SERVER_ERROR</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineCov">          1 :             status = status - NGX_HTTP_INTERNAL_SERVER_ERROR</span></a>
 <a name="267"><span class="lineNum">     267 </span>            :                             + NGX_HTTP_OFF_5XX;</a>
 <a name="268"><span class="lineNum">     268 </span>            : </a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineNoCov">          0 :             status_line = &amp;ngx_http_status_lines[status];</span></a>
-<a name="270"><span class="lineNum">     270 </span><span class="lineNoCov">          0 :             len += ngx_http_status_lines[status].len;</span></a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">          1 :             status_line = &amp;ngx_http_status_lines[status];</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">          1 :             len += ngx_http_status_lines[status].len;</span></a>
 <a name="271"><span class="lineNum">     271 </span>            : </a>
 <a name="272"><span class="lineNum">     272 </span>            :         } else {</a>
 <a name="273"><span class="lineNum">     273 </span><span class="lineNoCov">          0 :             len += NGX_INT_T_LEN + 1 /* SP */;</span></a>
 <a name="274"><span class="lineNum">     274 </span><span class="lineNoCov">          0 :             status_line = NULL;</span></a>
 <a name="275"><span class="lineNum">     275 </span>            :         }</a>
 <a name="276"><span class="lineNum">     276 </span>            : </a>
-<a name="277"><span class="lineNum">     277 </span><span class="lineCov">         30 :         if (status_line &amp;&amp; status_line-&gt;len == 0) {</span></a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineCov">         54 :         if (status_line &amp;&amp; status_line-&gt;len == 0) {</span></a>
 <a name="278"><span class="lineNum">     278 </span><span class="lineNoCov">          0 :             status = r-&gt;headers_out.status;</span></a>
 <a name="279"><span class="lineNum">     279 </span><span class="lineNoCov">          0 :             len += NGX_INT_T_LEN + 1 /* SP */;</span></a>
 <a name="280"><span class="lineNum">     280 </span><span class="lineNoCov">          0 :             status_line = NULL;</span></a>
 <a name="281"><span class="lineNum">     281 </span>            :         }</a>
 <a name="282"><span class="lineNum">     282 </span>            :     }</a>
 <a name="283"><span class="lineNum">     283 </span>            : </a>
-<a name="284"><span class="lineNum">     284 </span><span class="lineCov">         30 :     clcf = ngx_http_get_module_loc_conf(r, ngx_http_core_module);</span></a>
+<a name="284"><span class="lineNum">     284 </span><span class="lineCov">         54 :     clcf = ngx_http_get_module_loc_conf(r, ngx_http_core_module);</span></a>
 <a name="285"><span class="lineNum">     285 </span>            : </a>
-<a name="286"><span class="lineNum">     286 </span><span class="lineCov">         30 :     if (r-&gt;headers_out.server == NULL) {</span></a>
-<a name="287"><span class="lineNum">     287 </span><span class="lineCov">         30 :         if (clcf-&gt;server_tokens == NGX_HTTP_SERVER_TOKENS_ON) {</span></a>
-<a name="288"><span class="lineNum">     288 </span><span class="lineCov">         30 :             len += sizeof(ngx_http_server_full_string) - 1;</span></a>
+<a name="286"><span class="lineNum">     286 </span><span class="lineCov">         54 :     if (r-&gt;headers_out.server == NULL) {</span></a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineCov">         54 :         if (clcf-&gt;server_tokens == NGX_HTTP_SERVER_TOKENS_ON) {</span></a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">         54 :             len += sizeof(ngx_http_server_full_string) - 1;</span></a>
 <a name="289"><span class="lineNum">     289 </span>            : </a>
 <a name="290"><span class="lineNum">     290 </span><span class="lineNoCov">          0 :         } else if (clcf-&gt;server_tokens == NGX_HTTP_SERVER_TOKENS_BUILD) {</span></a>
 <a name="291"><span class="lineNum">     291 </span><span class="lineNoCov">          0 :             len += sizeof(ngx_http_server_build_string) - 1;</span></a>
@@ -357,36 +357,36 @@
 <a name="295"><span class="lineNum">     295 </span>            :         }</a>
 <a name="296"><span class="lineNum">     296 </span>            :     }</a>
 <a name="297"><span class="lineNum">     297 </span>            : </a>
-<a name="298"><span class="lineNum">     298 </span><span class="lineCov">         30 :     if (r-&gt;headers_out.date == NULL) {</span></a>
-<a name="299"><span class="lineNum">     299 </span><span class="lineCov">         30 :         len += sizeof(&quot;Date: Mon, 28 Sep 1970 06:00:00 GMT&quot; CRLF) - 1;</span></a>
+<a name="298"><span class="lineNum">     298 </span><span class="lineCov">         54 :     if (r-&gt;headers_out.date == NULL) {</span></a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">         54 :         len += sizeof(&quot;Date: Mon, 28 Sep 1970 06:00:00 GMT&quot; CRLF) - 1;</span></a>
 <a name="300"><span class="lineNum">     300 </span>            :     }</a>
 <a name="301"><span class="lineNum">     301 </span>            : </a>
-<a name="302"><span class="lineNum">     302 </span><span class="lineCov">         30 :     if (r-&gt;headers_out.content_type.len) {</span></a>
-<a name="303"><span class="lineNum">     303 </span><span class="lineCov">         23 :         len += sizeof(&quot;Content-Type: &quot;) - 1</span></a>
-<a name="304"><span class="lineNum">     304 </span><span class="lineCov">         23 :                + r-&gt;headers_out.content_type.len + 2;</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">         54 :     if (r-&gt;headers_out.content_type.len) {</span></a>
+<a name="303"><span class="lineNum">     303 </span><span class="lineCov">         47 :         len += sizeof(&quot;Content-Type: &quot;) - 1</span></a>
+<a name="304"><span class="lineNum">     304 </span><span class="lineCov">         47 :                + r-&gt;headers_out.content_type.len + 2;</span></a>
 <a name="305"><span class="lineNum">     305 </span>            : </a>
-<a name="306"><span class="lineNum">     306 </span><span class="lineCov">         23 :         if (r-&gt;headers_out.content_type_len == r-&gt;headers_out.content_type.len</span></a>
-<a name="307"><span class="lineNum">     307 </span><span class="lineCov">         23 :             &amp;&amp; r-&gt;headers_out.charset.len)</span></a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineCov">         47 :         if (r-&gt;headers_out.content_type_len == r-&gt;headers_out.content_type.len</span></a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineCov">         47 :             &amp;&amp; r-&gt;headers_out.charset.len)</span></a>
 <a name="308"><span class="lineNum">     308 </span>            :         {</a>
 <a name="309"><span class="lineNum">     309 </span><span class="lineNoCov">          0 :             len += sizeof(&quot;; charset=&quot;) - 1 + r-&gt;headers_out.charset.len;</span></a>
 <a name="310"><span class="lineNum">     310 </span>            :         }</a>
 <a name="311"><span class="lineNum">     311 </span>            :     }</a>
 <a name="312"><span class="lineNum">     312 </span>            : </a>
-<a name="313"><span class="lineNum">     313 </span><span class="lineCov">         30 :     if (r-&gt;headers_out.content_length == NULL</span></a>
-<a name="314"><span class="lineNum">     314 </span><span class="lineCov">         30 :         &amp;&amp; r-&gt;headers_out.content_length_n &gt;= 0)</span></a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">         54 :     if (r-&gt;headers_out.content_length == NULL</span></a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineCov">         54 :         &amp;&amp; r-&gt;headers_out.content_length_n &gt;= 0)</span></a>
 <a name="315"><span class="lineNum">     315 </span>            :     {</a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineCov">         23 :         len += sizeof(&quot;Content-Length: &quot;) - 1 + NGX_OFF_T_LEN + 2;</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">         47 :         len += sizeof(&quot;Content-Length: &quot;) - 1 + NGX_OFF_T_LEN + 2;</span></a>
 <a name="317"><span class="lineNum">     317 </span>            :     }</a>
 <a name="318"><span class="lineNum">     318 </span>            : </a>
-<a name="319"><span class="lineNum">     319 </span><span class="lineCov">         30 :     if (r-&gt;headers_out.last_modified == NULL</span></a>
-<a name="320"><span class="lineNum">     320 </span><span class="lineCov">         30 :         &amp;&amp; r-&gt;headers_out.last_modified_time != -1)</span></a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineCov">         54 :     if (r-&gt;headers_out.last_modified == NULL</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">         54 :         &amp;&amp; r-&gt;headers_out.last_modified_time != -1)</span></a>
 <a name="321"><span class="lineNum">     321 </span>            :     {</a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineCov">          1 :         len += sizeof(&quot;Last-Modified: Mon, 28 Sep 1970 06:00:00 GMT&quot; CRLF) - 1;</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">          7 :         len += sizeof(&quot;Last-Modified: Mon, 28 Sep 1970 06:00:00 GMT&quot; CRLF) - 1;</span></a>
 <a name="323"><span class="lineNum">     323 </span>            :     }</a>
 <a name="324"><span class="lineNum">     324 </span>            : </a>
-<a name="325"><span class="lineNum">     325 </span><span class="lineCov">         30 :     c = r-&gt;connection;</span></a>
+<a name="325"><span class="lineNum">     325 </span><span class="lineCov">         54 :     c = r-&gt;connection;</span></a>
 <a name="326"><span class="lineNum">     326 </span>            : </a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineCov">         30 :     if (r-&gt;headers_out.location</span></a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">         54 :     if (r-&gt;headers_out.location</span></a>
 <a name="328"><span class="lineNum">     328 </span><span class="lineNoCov">          0 :         &amp;&amp; r-&gt;headers_out.location-&gt;value.len</span></a>
 <a name="329"><span class="lineNum">     329 </span><span class="lineNoCov">          0 :         &amp;&amp; r-&gt;headers_out.location-&gt;value.data[0] == '/'</span></a>
 <a name="330"><span class="lineNum">     330 </span><span class="lineNoCov">          0 :         &amp;&amp; clcf-&gt;absolute_redirect)</span></a>
@@ -433,19 +433,19 @@
 <a name="371"><span class="lineNum">     371 </span>            :         }</a>
 <a name="372"><span class="lineNum">     372 </span>            : </a>
 <a name="373"><span class="lineNum">     373 </span>            :     } else {</a>
-<a name="374"><span class="lineNum">     374 </span><span class="lineCov">         30 :         ngx_str_null(&amp;host);</span></a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineCov">         30 :         port = 0;</span></a>
+<a name="374"><span class="lineNum">     374 </span><span class="lineCov">         54 :         ngx_str_null(&amp;host);</span></a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineCov">         54 :         port = 0;</span></a>
 <a name="376"><span class="lineNum">     376 </span>            :     }</a>
 <a name="377"><span class="lineNum">     377 </span>            : </a>
-<a name="378"><span class="lineNum">     378 </span><span class="lineCov">         30 :     if (r-&gt;chunked) {</span></a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineCov">         54 :     if (r-&gt;chunked) {</span></a>
 <a name="379"><span class="lineNum">     379 </span><span class="lineNoCov">          0 :         len += sizeof(&quot;Transfer-Encoding: chunked&quot; CRLF) - 1;</span></a>
 <a name="380"><span class="lineNum">     380 </span>            :     }</a>
 <a name="381"><span class="lineNum">     381 </span>            : </a>
-<a name="382"><span class="lineNum">     382 </span><span class="lineCov">         30 :     if (r-&gt;headers_out.status == NGX_HTTP_SWITCHING_PROTOCOLS) {</span></a>
+<a name="382"><span class="lineNum">     382 </span><span class="lineCov">         54 :     if (r-&gt;headers_out.status == NGX_HTTP_SWITCHING_PROTOCOLS) {</span></a>
 <a name="383"><span class="lineNum">     383 </span><span class="lineNoCov">          0 :         len += sizeof(&quot;Connection: upgrade&quot; CRLF) - 1;</span></a>
 <a name="384"><span class="lineNum">     384 </span>            : </a>
-<a name="385"><span class="lineNum">     385 </span><span class="lineCov">         30 :     } else if (r-&gt;keepalive) {</span></a>
-<a name="386"><span class="lineNum">     386 </span><span class="lineCov">         25 :         len += sizeof(&quot;Connection: keep-alive&quot; CRLF) - 1;</span></a>
+<a name="385"><span class="lineNum">     385 </span><span class="lineCov">         54 :     } else if (r-&gt;keepalive) {</span></a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">         48 :         len += sizeof(&quot;Connection: keep-alive&quot; CRLF) - 1;</span></a>
 <a name="387"><span class="lineNum">     387 </span>            : </a>
 <a name="388"><span class="lineNum">     388 </span>            :         /*</a>
 <a name="389"><span class="lineNum">     389 </span>            :          * MSIE and Opera ignore the &quot;Keep-Alive: timeout=&lt;N&gt;&quot; header.</a>
@@ -455,12 +455,12 @@
 <a name="393"><span class="lineNum">     393 </span>            :          * Konqueror keeps the connection alive for about N seconds.</a>
 <a name="394"><span class="lineNum">     394 </span>            :          */</a>
 <a name="395"><span class="lineNum">     395 </span>            : </a>
-<a name="396"><span class="lineNum">     396 </span><span class="lineCov">         25 :         if (clcf-&gt;keepalive_header) {</span></a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineCov">         48 :         if (clcf-&gt;keepalive_header) {</span></a>
 <a name="397"><span class="lineNum">     397 </span><span class="lineNoCov">          0 :             len += sizeof(&quot;Keep-Alive: timeout=&quot;) - 1 + NGX_TIME_T_LEN + 2;</span></a>
 <a name="398"><span class="lineNum">     398 </span>            :         }</a>
 <a name="399"><span class="lineNum">     399 </span>            : </a>
 <a name="400"><span class="lineNum">     400 </span>            :     } else {</a>
-<a name="401"><span class="lineNum">     401 </span><span class="lineCov">          5 :         len += sizeof(&quot;Connection: close&quot; CRLF) - 1;</span></a>
+<a name="401"><span class="lineNum">     401 </span><span class="lineCov">          6 :         len += sizeof(&quot;Connection: close&quot; CRLF) - 1;</span></a>
 <a name="402"><span class="lineNum">     402 </span>            :     }</a>
 <a name="403"><span class="lineNum">     403 </span>            : </a>
 <a name="404"><span class="lineNum">     404 </span>            : #if (NGX_HTTP_GZIP)</a>
@@ -474,14 +474,14 @@
 <a name="412"><span class="lineNum">     412 </span>            :     }</a>
 <a name="413"><span class="lineNum">     413 </span>            : #endif</a>
 <a name="414"><span class="lineNum">     414 </span>            : </a>
-<a name="415"><span class="lineNum">     415 </span><span class="lineCov">         30 :     part = &amp;r-&gt;headers_out.headers.part;</span></a>
-<a name="416"><span class="lineNum">     416 </span><span class="lineCov">         30 :     header = part-&gt;elts;</span></a>
+<a name="415"><span class="lineNum">     415 </span><span class="lineCov">         54 :     part = &amp;r-&gt;headers_out.headers.part;</span></a>
+<a name="416"><span class="lineNum">     416 </span><span class="lineCov">         54 :     header = part-&gt;elts;</span></a>
 <a name="417"><span class="lineNum">     417 </span>            : </a>
-<a name="418"><span class="lineNum">     418 </span><span class="lineCov">         68 :     for (i = 0; /* void */; i++) {</span></a>
+<a name="418"><span class="lineNum">     418 </span><span class="lineCov">        122 :     for (i = 0; /* void */; i++) {</span></a>
 <a name="419"><span class="lineNum">     419 </span>            : </a>
-<a name="420"><span class="lineNum">     420 </span><span class="lineCov">         68 :         if (i &gt;= part-&gt;nelts) {</span></a>
-<a name="421"><span class="lineNum">     421 </span><span class="lineCov">         30 :             if (part-&gt;next == NULL) {</span></a>
-<a name="422"><span class="lineNum">     422 </span><span class="lineCov">         30 :                 break;</span></a>
+<a name="420"><span class="lineNum">     420 </span><span class="lineCov">        122 :         if (i &gt;= part-&gt;nelts) {</span></a>
+<a name="421"><span class="lineNum">     421 </span><span class="lineCov">         54 :             if (part-&gt;next == NULL) {</span></a>
+<a name="422"><span class="lineNum">     422 </span><span class="lineCov">         54 :                 break;</span></a>
 <a name="423"><span class="lineNum">     423 </span>            :             }</a>
 <a name="424"><span class="lineNum">     424 </span>            : </a>
 <a name="425"><span class="lineNum">     425 </span><span class="lineNoCov">          0 :             part = part-&gt;next;</span></a>
@@ -489,35 +489,35 @@
 <a name="427"><span class="lineNum">     427 </span><span class="lineNoCov">          0 :             i = 0;</span></a>
 <a name="428"><span class="lineNum">     428 </span>            :         }</a>
 <a name="429"><span class="lineNum">     429 </span>            : </a>
-<a name="430"><span class="lineNum">     430 </span><span class="lineCov">         38 :         if (header[i].hash == 0) {</span></a>
+<a name="430"><span class="lineNum">     430 </span><span class="lineCov">         68 :         if (header[i].hash == 0) {</span></a>
 <a name="431"><span class="lineNum">     431 </span><span class="lineNoCov">          0 :             continue;</span></a>
 <a name="432"><span class="lineNum">     432 </span>            :         }</a>
 <a name="433"><span class="lineNum">     433 </span>            : </a>
-<a name="434"><span class="lineNum">     434 </span><span class="lineCov">         38 :         len += header[i].key.len + sizeof(&quot;: &quot;) - 1 + header[i].value.len</span></a>
+<a name="434"><span class="lineNum">     434 </span><span class="lineCov">         68 :         len += header[i].key.len + sizeof(&quot;: &quot;) - 1 + header[i].value.len</span></a>
 <a name="435"><span class="lineNum">     435 </span>            :                + sizeof(CRLF) - 1;</a>
 <a name="436"><span class="lineNum">     436 </span>            :     }</a>
 <a name="437"><span class="lineNum">     437 </span>            : </a>
-<a name="438"><span class="lineNum">     438 </span><span class="lineCov">         30 :     b = ngx_create_temp_buf(r-&gt;pool, len);</span></a>
-<a name="439"><span class="lineNum">     439 </span><span class="lineCov">         30 :     if (b == NULL) {</span></a>
+<a name="438"><span class="lineNum">     438 </span><span class="lineCov">         54 :     b = ngx_create_temp_buf(r-&gt;pool, len);</span></a>
+<a name="439"><span class="lineNum">     439 </span><span class="lineCov">         54 :     if (b == NULL) {</span></a>
 <a name="440"><span class="lineNum">     440 </span><span class="lineNoCov">          0 :         return NGX_ERROR;</span></a>
 <a name="441"><span class="lineNum">     441 </span>            :     }</a>
 <a name="442"><span class="lineNum">     442 </span>            : </a>
 <a name="443"><span class="lineNum">     443 </span>            :     /* &quot;HTTP/1.x &quot; */</a>
-<a name="444"><span class="lineNum">     444 </span><span class="lineCov">         30 :     b-&gt;last = ngx_cpymem(b-&gt;last, &quot;HTTP/1.1 &quot;, sizeof(&quot;HTTP/1.x &quot;) - 1);</span></a>
+<a name="444"><span class="lineNum">     444 </span><span class="lineCov">         54 :     b-&gt;last = ngx_cpymem(b-&gt;last, &quot;HTTP/1.1 &quot;, sizeof(&quot;HTTP/1.x &quot;) - 1);</span></a>
 <a name="445"><span class="lineNum">     445 </span>            : </a>
 <a name="446"><span class="lineNum">     446 </span>            :     /* status line */</a>
-<a name="447"><span class="lineNum">     447 </span><span class="lineCov">         30 :     if (status_line) {</span></a>
-<a name="448"><span class="lineNum">     448 </span><span class="lineCov">         30 :         b-&gt;last = ngx_copy(b-&gt;last, status_line-&gt;data, status_line-&gt;len);</span></a>
+<a name="447"><span class="lineNum">     447 </span><span class="lineCov">         54 :     if (status_line) {</span></a>
+<a name="448"><span class="lineNum">     448 </span><span class="lineCov">         54 :         b-&gt;last = ngx_copy(b-&gt;last, status_line-&gt;data, status_line-&gt;len);</span></a>
 <a name="449"><span class="lineNum">     449 </span>            : </a>
 <a name="450"><span class="lineNum">     450 </span>            :     } else {</a>
 <a name="451"><span class="lineNum">     451 </span><span class="lineNoCov">          0 :         b-&gt;last = ngx_sprintf(b-&gt;last, &quot;%03ui &quot;, status);</span></a>
 <a name="452"><span class="lineNum">     452 </span>            :     }</a>
-<a name="453"><span class="lineNum">     453 </span><span class="lineCov">         30 :     *b-&gt;last++ = CR; *b-&gt;last++ = LF;</span></a>
+<a name="453"><span class="lineNum">     453 </span><span class="lineCov">         54 :     *b-&gt;last++ = CR; *b-&gt;last++ = LF;</span></a>
 <a name="454"><span class="lineNum">     454 </span>            : </a>
-<a name="455"><span class="lineNum">     455 </span><span class="lineCov">         30 :     if (r-&gt;headers_out.server == NULL) {</span></a>
-<a name="456"><span class="lineNum">     456 </span><span class="lineCov">         30 :         if (clcf-&gt;server_tokens == NGX_HTTP_SERVER_TOKENS_ON) {</span></a>
-<a name="457"><span class="lineNum">     457 </span><span class="lineCov">         30 :             p = ngx_http_server_full_string;</span></a>
-<a name="458"><span class="lineNum">     458 </span><span class="lineCov">         30 :             len = sizeof(ngx_http_server_full_string) - 1;</span></a>
+<a name="455"><span class="lineNum">     455 </span><span class="lineCov">         54 :     if (r-&gt;headers_out.server == NULL) {</span></a>
+<a name="456"><span class="lineNum">     456 </span><span class="lineCov">         54 :         if (clcf-&gt;server_tokens == NGX_HTTP_SERVER_TOKENS_ON) {</span></a>
+<a name="457"><span class="lineNum">     457 </span><span class="lineCov">         54 :             p = ngx_http_server_full_string;</span></a>
+<a name="458"><span class="lineNum">     458 </span><span class="lineCov">         54 :             len = sizeof(ngx_http_server_full_string) - 1;</span></a>
 <a name="459"><span class="lineNum">     459 </span>            : </a>
 <a name="460"><span class="lineNum">     460 </span><span class="lineNoCov">          0 :         } else if (clcf-&gt;server_tokens == NGX_HTTP_SERVER_TOKENS_BUILD) {</span></a>
 <a name="461"><span class="lineNum">     461 </span><span class="lineNoCov">          0 :             p = ngx_http_server_build_string;</span></a>
@@ -528,26 +528,26 @@
 <a name="466"><span class="lineNum">     466 </span><span class="lineNoCov">          0 :             len = sizeof(ngx_http_server_string) - 1;</span></a>
 <a name="467"><span class="lineNum">     467 </span>            :         }</a>
 <a name="468"><span class="lineNum">     468 </span>            : </a>
-<a name="469"><span class="lineNum">     469 </span><span class="lineCov">         30 :         b-&gt;last = ngx_cpymem(b-&gt;last, p, len);</span></a>
+<a name="469"><span class="lineNum">     469 </span><span class="lineCov">         54 :         b-&gt;last = ngx_cpymem(b-&gt;last, p, len);</span></a>
 <a name="470"><span class="lineNum">     470 </span>            :     }</a>
 <a name="471"><span class="lineNum">     471 </span>            : </a>
-<a name="472"><span class="lineNum">     472 </span><span class="lineCov">         30 :     if (r-&gt;headers_out.date == NULL) {</span></a>
-<a name="473"><span class="lineNum">     473 </span><span class="lineCov">         30 :         b-&gt;last = ngx_cpymem(b-&gt;last, &quot;Date: &quot;, sizeof(&quot;Date: &quot;) - 1);</span></a>
-<a name="474"><span class="lineNum">     474 </span><span class="lineCov">         30 :         b-&gt;last = ngx_cpymem(b-&gt;last, ngx_cached_http_time.data,</span></a>
+<a name="472"><span class="lineNum">     472 </span><span class="lineCov">         54 :     if (r-&gt;headers_out.date == NULL) {</span></a>
+<a name="473"><span class="lineNum">     473 </span><span class="lineCov">         54 :         b-&gt;last = ngx_cpymem(b-&gt;last, &quot;Date: &quot;, sizeof(&quot;Date: &quot;) - 1);</span></a>
+<a name="474"><span class="lineNum">     474 </span><span class="lineCov">         54 :         b-&gt;last = ngx_cpymem(b-&gt;last, ngx_cached_http_time.data,</span></a>
 <a name="475"><span class="lineNum">     475 </span>            :                              ngx_cached_http_time.len);</a>
 <a name="476"><span class="lineNum">     476 </span>            : </a>
-<a name="477"><span class="lineNum">     477 </span><span class="lineCov">         30 :         *b-&gt;last++ = CR; *b-&gt;last++ = LF;</span></a>
+<a name="477"><span class="lineNum">     477 </span><span class="lineCov">         54 :         *b-&gt;last++ = CR; *b-&gt;last++ = LF;</span></a>
 <a name="478"><span class="lineNum">     478 </span>            :     }</a>
 <a name="479"><span class="lineNum">     479 </span>            : </a>
-<a name="480"><span class="lineNum">     480 </span><span class="lineCov">         30 :     if (r-&gt;headers_out.content_type.len) {</span></a>
-<a name="481"><span class="lineNum">     481 </span><span class="lineCov">         23 :         b-&gt;last = ngx_cpymem(b-&gt;last, &quot;Content-Type: &quot;,</span></a>
+<a name="480"><span class="lineNum">     480 </span><span class="lineCov">         54 :     if (r-&gt;headers_out.content_type.len) {</span></a>
+<a name="481"><span class="lineNum">     481 </span><span class="lineCov">         47 :         b-&gt;last = ngx_cpymem(b-&gt;last, &quot;Content-Type: &quot;,</span></a>
 <a name="482"><span class="lineNum">     482 </span>            :                              sizeof(&quot;Content-Type: &quot;) - 1);</a>
-<a name="483"><span class="lineNum">     483 </span><span class="lineCov">         23 :         p = b-&gt;last;</span></a>
-<a name="484"><span class="lineNum">     484 </span><span class="lineCov">         23 :         b-&gt;last = ngx_copy(b-&gt;last, r-&gt;headers_out.content_type.data,</span></a>
+<a name="483"><span class="lineNum">     483 </span><span class="lineCov">         47 :         p = b-&gt;last;</span></a>
+<a name="484"><span class="lineNum">     484 </span><span class="lineCov">         47 :         b-&gt;last = ngx_copy(b-&gt;last, r-&gt;headers_out.content_type.data,</span></a>
 <a name="485"><span class="lineNum">     485 </span>            :                            r-&gt;headers_out.content_type.len);</a>
 <a name="486"><span class="lineNum">     486 </span>            : </a>
-<a name="487"><span class="lineNum">     487 </span><span class="lineCov">         23 :         if (r-&gt;headers_out.content_type_len == r-&gt;headers_out.content_type.len</span></a>
-<a name="488"><span class="lineNum">     488 </span><span class="lineCov">         23 :             &amp;&amp; r-&gt;headers_out.charset.len)</span></a>
+<a name="487"><span class="lineNum">     487 </span><span class="lineCov">         47 :         if (r-&gt;headers_out.content_type_len == r-&gt;headers_out.content_type.len</span></a>
+<a name="488"><span class="lineNum">     488 </span><span class="lineCov">         47 :             &amp;&amp; r-&gt;headers_out.charset.len)</span></a>
 <a name="489"><span class="lineNum">     489 </span>            :         {</a>
 <a name="490"><span class="lineNum">     490 </span><span class="lineNoCov">          0 :             b-&gt;last = ngx_cpymem(b-&gt;last, &quot;; charset=&quot;,</span></a>
 <a name="491"><span class="lineNum">     491 </span>            :                                  sizeof(&quot;; charset=&quot;) - 1);</a>
@@ -560,27 +560,27 @@
 <a name="498"><span class="lineNum">     498 </span><span class="lineNoCov">          0 :             r-&gt;headers_out.content_type.data = p;</span></a>
 <a name="499"><span class="lineNum">     499 </span>            :         }</a>
 <a name="500"><span class="lineNum">     500 </span>            : </a>
-<a name="501"><span class="lineNum">     501 </span><span class="lineCov">         23 :         *b-&gt;last++ = CR; *b-&gt;last++ = LF;</span></a>
+<a name="501"><span class="lineNum">     501 </span><span class="lineCov">         47 :         *b-&gt;last++ = CR; *b-&gt;last++ = LF;</span></a>
 <a name="502"><span class="lineNum">     502 </span>            :     }</a>
 <a name="503"><span class="lineNum">     503 </span>            : </a>
-<a name="504"><span class="lineNum">     504 </span><span class="lineCov">         30 :     if (r-&gt;headers_out.content_length == NULL</span></a>
-<a name="505"><span class="lineNum">     505 </span><span class="lineCov">         30 :         &amp;&amp; r-&gt;headers_out.content_length_n &gt;= 0)</span></a>
+<a name="504"><span class="lineNum">     504 </span><span class="lineCov">         54 :     if (r-&gt;headers_out.content_length == NULL</span></a>
+<a name="505"><span class="lineNum">     505 </span><span class="lineCov">         54 :         &amp;&amp; r-&gt;headers_out.content_length_n &gt;= 0)</span></a>
 <a name="506"><span class="lineNum">     506 </span>            :     {</a>
-<a name="507"><span class="lineNum">     507 </span><span class="lineCov">         23 :         b-&gt;last = ngx_sprintf(b-&gt;last, &quot;Content-Length: %O&quot; CRLF,</span></a>
+<a name="507"><span class="lineNum">     507 </span><span class="lineCov">         47 :         b-&gt;last = ngx_sprintf(b-&gt;last, &quot;Content-Length: %O&quot; CRLF,</span></a>
 <a name="508"><span class="lineNum">     508 </span>            :                               r-&gt;headers_out.content_length_n);</a>
 <a name="509"><span class="lineNum">     509 </span>            :     }</a>
 <a name="510"><span class="lineNum">     510 </span>            : </a>
-<a name="511"><span class="lineNum">     511 </span><span class="lineCov">         30 :     if (r-&gt;headers_out.last_modified == NULL</span></a>
-<a name="512"><span class="lineNum">     512 </span><span class="lineCov">         30 :         &amp;&amp; r-&gt;headers_out.last_modified_time != -1)</span></a>
+<a name="511"><span class="lineNum">     511 </span><span class="lineCov">         54 :     if (r-&gt;headers_out.last_modified == NULL</span></a>
+<a name="512"><span class="lineNum">     512 </span><span class="lineCov">         54 :         &amp;&amp; r-&gt;headers_out.last_modified_time != -1)</span></a>
 <a name="513"><span class="lineNum">     513 </span>            :     {</a>
-<a name="514"><span class="lineNum">     514 </span><span class="lineCov">          1 :         b-&gt;last = ngx_cpymem(b-&gt;last, &quot;Last-Modified: &quot;,</span></a>
+<a name="514"><span class="lineNum">     514 </span><span class="lineCov">          7 :         b-&gt;last = ngx_cpymem(b-&gt;last, &quot;Last-Modified: &quot;,</span></a>
 <a name="515"><span class="lineNum">     515 </span>            :                              sizeof(&quot;Last-Modified: &quot;) - 1);</a>
-<a name="516"><span class="lineNum">     516 </span><span class="lineCov">          1 :         b-&gt;last = ngx_http_time(b-&gt;last, r-&gt;headers_out.last_modified_time);</span></a>
+<a name="516"><span class="lineNum">     516 </span><span class="lineCov">          7 :         b-&gt;last = ngx_http_time(b-&gt;last, r-&gt;headers_out.last_modified_time);</span></a>
 <a name="517"><span class="lineNum">     517 </span>            : </a>
-<a name="518"><span class="lineNum">     518 </span><span class="lineCov">          1 :         *b-&gt;last++ = CR; *b-&gt;last++ = LF;</span></a>
+<a name="518"><span class="lineNum">     518 </span><span class="lineCov">          7 :         *b-&gt;last++ = CR; *b-&gt;last++ = LF;</span></a>
 <a name="519"><span class="lineNum">     519 </span>            :     }</a>
 <a name="520"><span class="lineNum">     520 </span>            : </a>
-<a name="521"><span class="lineNum">     521 </span><span class="lineCov">         30 :     if (host.data) {</span></a>
+<a name="521"><span class="lineNum">     521 </span><span class="lineCov">         54 :     if (host.data) {</span></a>
 <a name="522"><span class="lineNum">     522 </span>            : </a>
 <a name="523"><span class="lineNum">     523 </span><span class="lineNoCov">          0 :         p = b-&gt;last + sizeof(&quot;Location: &quot;) - 1;</span></a>
 <a name="524"><span class="lineNum">     524 </span>            : </a>
@@ -612,26 +612,26 @@
 <a name="550"><span class="lineNum">     550 </span><span class="lineNoCov">          0 :         *b-&gt;last++ = CR; *b-&gt;last++ = LF;</span></a>
 <a name="551"><span class="lineNum">     551 </span>            :     }</a>
 <a name="552"><span class="lineNum">     552 </span>            : </a>
-<a name="553"><span class="lineNum">     553 </span><span class="lineCov">         30 :     if (r-&gt;chunked) {</span></a>
+<a name="553"><span class="lineNum">     553 </span><span class="lineCov">         54 :     if (r-&gt;chunked) {</span></a>
 <a name="554"><span class="lineNum">     554 </span><span class="lineNoCov">          0 :         b-&gt;last = ngx_cpymem(b-&gt;last, &quot;Transfer-Encoding: chunked&quot; CRLF,</span></a>
 <a name="555"><span class="lineNum">     555 </span>            :                              sizeof(&quot;Transfer-Encoding: chunked&quot; CRLF) - 1);</a>
 <a name="556"><span class="lineNum">     556 </span>            :     }</a>
 <a name="557"><span class="lineNum">     557 </span>            : </a>
-<a name="558"><span class="lineNum">     558 </span><span class="lineCov">         30 :     if (r-&gt;headers_out.status == NGX_HTTP_SWITCHING_PROTOCOLS) {</span></a>
+<a name="558"><span class="lineNum">     558 </span><span class="lineCov">         54 :     if (r-&gt;headers_out.status == NGX_HTTP_SWITCHING_PROTOCOLS) {</span></a>
 <a name="559"><span class="lineNum">     559 </span><span class="lineNoCov">          0 :         b-&gt;last = ngx_cpymem(b-&gt;last, &quot;Connection: upgrade&quot; CRLF,</span></a>
 <a name="560"><span class="lineNum">     560 </span>            :                              sizeof(&quot;Connection: upgrade&quot; CRLF) - 1);</a>
 <a name="561"><span class="lineNum">     561 </span>            : </a>
-<a name="562"><span class="lineNum">     562 </span><span class="lineCov">         30 :     } else if (r-&gt;keepalive) {</span></a>
-<a name="563"><span class="lineNum">     563 </span><span class="lineCov">         25 :         b-&gt;last = ngx_cpymem(b-&gt;last, &quot;Connection: keep-alive&quot; CRLF,</span></a>
+<a name="562"><span class="lineNum">     562 </span><span class="lineCov">         54 :     } else if (r-&gt;keepalive) {</span></a>
+<a name="563"><span class="lineNum">     563 </span><span class="lineCov">         48 :         b-&gt;last = ngx_cpymem(b-&gt;last, &quot;Connection: keep-alive&quot; CRLF,</span></a>
 <a name="564"><span class="lineNum">     564 </span>            :                              sizeof(&quot;Connection: keep-alive&quot; CRLF) - 1);</a>
 <a name="565"><span class="lineNum">     565 </span>            : </a>
-<a name="566"><span class="lineNum">     566 </span><span class="lineCov">         25 :         if (clcf-&gt;keepalive_header) {</span></a>
+<a name="566"><span class="lineNum">     566 </span><span class="lineCov">         48 :         if (clcf-&gt;keepalive_header) {</span></a>
 <a name="567"><span class="lineNum">     567 </span><span class="lineNoCov">          0 :             b-&gt;last = ngx_sprintf(b-&gt;last, &quot;Keep-Alive: timeout=%T&quot; CRLF,</span></a>
 <a name="568"><span class="lineNum">     568 </span>            :                                   clcf-&gt;keepalive_header);</a>
 <a name="569"><span class="lineNum">     569 </span>            :         }</a>
 <a name="570"><span class="lineNum">     570 </span>            : </a>
 <a name="571"><span class="lineNum">     571 </span>            :     } else {</a>
-<a name="572"><span class="lineNum">     572 </span><span class="lineCov">          5 :         b-&gt;last = ngx_cpymem(b-&gt;last, &quot;Connection: close&quot; CRLF,</span></a>
+<a name="572"><span class="lineNum">     572 </span><span class="lineCov">          6 :         b-&gt;last = ngx_cpymem(b-&gt;last, &quot;Connection: close&quot; CRLF,</span></a>
 <a name="573"><span class="lineNum">     573 </span>            :                              sizeof(&quot;Connection: close&quot; CRLF) - 1);</a>
 <a name="574"><span class="lineNum">     574 </span>            :     }</a>
 <a name="575"><span class="lineNum">     575 </span>            : </a>
@@ -642,14 +642,14 @@
 <a name="580"><span class="lineNum">     580 </span>            :     }</a>
 <a name="581"><span class="lineNum">     581 </span>            : #endif</a>
 <a name="582"><span class="lineNum">     582 </span>            : </a>
-<a name="583"><span class="lineNum">     583 </span><span class="lineCov">         30 :     part = &amp;r-&gt;headers_out.headers.part;</span></a>
-<a name="584"><span class="lineNum">     584 </span><span class="lineCov">         30 :     header = part-&gt;elts;</span></a>
+<a name="583"><span class="lineNum">     583 </span><span class="lineCov">         54 :     part = &amp;r-&gt;headers_out.headers.part;</span></a>
+<a name="584"><span class="lineNum">     584 </span><span class="lineCov">         54 :     header = part-&gt;elts;</span></a>
 <a name="585"><span class="lineNum">     585 </span>            : </a>
-<a name="586"><span class="lineNum">     586 </span><span class="lineCov">         68 :     for (i = 0; /* void */; i++) {</span></a>
+<a name="586"><span class="lineNum">     586 </span><span class="lineCov">        122 :     for (i = 0; /* void */; i++) {</span></a>
 <a name="587"><span class="lineNum">     587 </span>            : </a>
-<a name="588"><span class="lineNum">     588 </span><span class="lineCov">         68 :         if (i &gt;= part-&gt;nelts) {</span></a>
-<a name="589"><span class="lineNum">     589 </span><span class="lineCov">         30 :             if (part-&gt;next == NULL) {</span></a>
-<a name="590"><span class="lineNum">     590 </span><span class="lineCov">         30 :                 break;</span></a>
+<a name="588"><span class="lineNum">     588 </span><span class="lineCov">        122 :         if (i &gt;= part-&gt;nelts) {</span></a>
+<a name="589"><span class="lineNum">     589 </span><span class="lineCov">         54 :             if (part-&gt;next == NULL) {</span></a>
+<a name="590"><span class="lineNum">     590 </span><span class="lineCov">         54 :                 break;</span></a>
 <a name="591"><span class="lineNum">     591 </span>            :             }</a>
 <a name="592"><span class="lineNum">     592 </span>            : </a>
 <a name="593"><span class="lineNum">     593 </span><span class="lineNoCov">          0 :             part = part-&gt;next;</span></a>
@@ -657,42 +657,42 @@
 <a name="595"><span class="lineNum">     595 </span><span class="lineNoCov">          0 :             i = 0;</span></a>
 <a name="596"><span class="lineNum">     596 </span>            :         }</a>
 <a name="597"><span class="lineNum">     597 </span>            : </a>
-<a name="598"><span class="lineNum">     598 </span><span class="lineCov">         38 :         if (header[i].hash == 0) {</span></a>
+<a name="598"><span class="lineNum">     598 </span><span class="lineCov">         68 :         if (header[i].hash == 0) {</span></a>
 <a name="599"><span class="lineNum">     599 </span><span class="lineNoCov">          0 :             continue;</span></a>
 <a name="600"><span class="lineNum">     600 </span>            :         }</a>
 <a name="601"><span class="lineNum">     601 </span>            : </a>
-<a name="602"><span class="lineNum">     602 </span><span class="lineCov">         38 :         b-&gt;last = ngx_copy(b-&gt;last, header[i].key.data, header[i].key.len);</span></a>
-<a name="603"><span class="lineNum">     603 </span><span class="lineCov">         38 :         *b-&gt;last++ = ':'; *b-&gt;last++ = ' ';</span></a>
+<a name="602"><span class="lineNum">     602 </span><span class="lineCov">         68 :         b-&gt;last = ngx_copy(b-&gt;last, header[i].key.data, header[i].key.len);</span></a>
+<a name="603"><span class="lineNum">     603 </span><span class="lineCov">         68 :         *b-&gt;last++ = ':'; *b-&gt;last++ = ' ';</span></a>
 <a name="604"><span class="lineNum">     604 </span>            : </a>
-<a name="605"><span class="lineNum">     605 </span><span class="lineCov">         38 :         b-&gt;last = ngx_copy(b-&gt;last, header[i].value.data, header[i].value.len);</span></a>
-<a name="606"><span class="lineNum">     606 </span><span class="lineCov">         38 :         *b-&gt;last++ = CR; *b-&gt;last++ = LF;</span></a>
+<a name="605"><span class="lineNum">     605 </span><span class="lineCov">         68 :         b-&gt;last = ngx_copy(b-&gt;last, header[i].value.data, header[i].value.len);</span></a>
+<a name="606"><span class="lineNum">     606 </span><span class="lineCov">         68 :         *b-&gt;last++ = CR; *b-&gt;last++ = LF;</span></a>
 <a name="607"><span class="lineNum">     607 </span>            :     }</a>
 <a name="608"><span class="lineNum">     608 </span>            : </a>
-<a name="609"><span class="lineNum">     609 </span><span class="lineCov">         30 :     ngx_log_debug2(NGX_LOG_DEBUG_HTTP, c-&gt;log, 0,</span></a>
+<a name="609"><span class="lineNum">     609 </span><span class="lineCov">         54 :     ngx_log_debug2(NGX_LOG_DEBUG_HTTP, c-&gt;log, 0,</span></a>
 <a name="610"><span class="lineNum">     610 </span>            :                    &quot;%*s&quot;, (size_t) (b-&gt;last - b-&gt;pos), b-&gt;pos);</a>
 <a name="611"><span class="lineNum">     611 </span>            : </a>
 <a name="612"><span class="lineNum">     612 </span>            :     /* the end of HTTP header */</a>
-<a name="613"><span class="lineNum">     613 </span><span class="lineCov">         30 :     *b-&gt;last++ = CR; *b-&gt;last++ = LF;</span></a>
+<a name="613"><span class="lineNum">     613 </span><span class="lineCov">         54 :     *b-&gt;last++ = CR; *b-&gt;last++ = LF;</span></a>
 <a name="614"><span class="lineNum">     614 </span>            : </a>
-<a name="615"><span class="lineNum">     615 </span><span class="lineCov">         30 :     r-&gt;header_size = b-&gt;last - b-&gt;pos;</span></a>
+<a name="615"><span class="lineNum">     615 </span><span class="lineCov">         54 :     r-&gt;header_size = b-&gt;last - b-&gt;pos;</span></a>
 <a name="616"><span class="lineNum">     616 </span>            : </a>
-<a name="617"><span class="lineNum">     617 </span><span class="lineCov">         30 :     if (r-&gt;header_only) {</span></a>
+<a name="617"><span class="lineNum">     617 </span><span class="lineCov">         54 :     if (r-&gt;header_only) {</span></a>
 <a name="618"><span class="lineNum">     618 </span><span class="lineCov">          7 :         b-&gt;last_buf = 1;</span></a>
 <a name="619"><span class="lineNum">     619 </span>            :     }</a>
 <a name="620"><span class="lineNum">     620 </span>            : </a>
-<a name="621"><span class="lineNum">     621 </span><span class="lineCov">         30 :     out.buf = b;</span></a>
-<a name="622"><span class="lineNum">     622 </span><span class="lineCov">         30 :     out.next = NULL;</span></a>
+<a name="621"><span class="lineNum">     621 </span><span class="lineCov">         54 :     out.buf = b;</span></a>
+<a name="622"><span class="lineNum">     622 </span><span class="lineCov">         54 :     out.next = NULL;</span></a>
 <a name="623"><span class="lineNum">     623 </span>            : </a>
-<a name="624"><span class="lineNum">     624 </span><span class="lineCov">         30 :     return ngx_http_write_filter(r, &amp;out);</span></a>
+<a name="624"><span class="lineNum">     624 </span><span class="lineCov">         54 :     return ngx_http_write_filter(r, &amp;out);</span></a>
 <a name="625"><span class="lineNum">     625 </span>            : }</a>
 <a name="626"><span class="lineNum">     626 </span>            : </a>
 <a name="627"><span class="lineNum">     627 </span>            : </a>
 <a name="628"><span class="lineNum">     628 </span>            : static ngx_int_t</a>
-<a name="629"><span class="lineNum">     629 </span><span class="lineCov">         48 : ngx_http_header_filter_init(ngx_conf_t *cf)</span></a>
+<a name="629"><span class="lineNum">     629 </span><span class="lineCov">         84 : ngx_http_header_filter_init(ngx_conf_t *cf)</span></a>
 <a name="630"><span class="lineNum">     630 </span>            : {</a>
-<a name="631"><span class="lineNum">     631 </span><span class="lineCov">         48 :     ngx_http_top_header_filter = ngx_http_header_filter;</span></a>
+<a name="631"><span class="lineNum">     631 </span><span class="lineCov">         84 :     ngx_http_top_header_filter = ngx_http_header_filter;</span></a>
 <a name="632"><span class="lineNum">     632 </span>            : </a>
-<a name="633"><span class="lineNum">     633 </span><span class="lineCov">         48 :     return NGX_OK;</span></a>
+<a name="633"><span class="lineNum">     633 </span><span class="lineCov">         84 :     return NGX_OK;</span></a>
 <a name="634"><span class="lineNum">     634 </span>            : }</a>
 </pre>
       </td>

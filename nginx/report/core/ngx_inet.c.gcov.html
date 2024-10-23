@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-22 13:10:45</td>
+            <td class="headerValue">2024-10-23 15:06:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">8</td>
@@ -242,7 +242,7 @@
 <a name="180"><span class="lineNum">     180 </span>            : </a>
 <a name="181"><span class="lineNum">     181 </span>            : </a>
 <a name="182"><span class="lineNum">     182 </span>            : size_t</a>
-<a name="183"><span class="lineNum">     183 </span><span class="lineCov">        116 : ngx_sock_ntop(struct sockaddr *sa, socklen_t socklen, u_char *text, size_t len,</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">        200 : ngx_sock_ntop(struct sockaddr *sa, socklen_t socklen, u_char *text, size_t len,</span></a>
 <a name="184"><span class="lineNum">     184 </span>            :     ngx_uint_t port)</a>
 <a name="185"><span class="lineNum">     185 </span>            : {</a>
 <a name="186"><span class="lineNum">     186 </span>            :     u_char               *p;</a>
@@ -257,22 +257,22 @@
 <a name="195"><span class="lineNum">     195 </span>            :     struct sockaddr_un   *saun;</a>
 <a name="196"><span class="lineNum">     196 </span>            : #endif</a>
 <a name="197"><span class="lineNum">     197 </span>            : </a>
-<a name="198"><span class="lineNum">     198 </span><span class="lineCov">        116 :     switch (sa-&gt;sa_family) {</span></a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">        200 :     switch (sa-&gt;sa_family) {</span></a>
 <a name="199"><span class="lineNum">     199 </span>            : </a>
-<a name="200"><span class="lineNum">     200 </span><span class="lineCov">        116 :     case AF_INET:</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineCov">        200 :     case AF_INET:</span></a>
 <a name="201"><span class="lineNum">     201 </span>            : </a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">        116 :         sin = (struct sockaddr_in *) sa;</span></a>
-<a name="203"><span class="lineNum">     203 </span><span class="lineCov">        116 :         p = (u_char *) &amp;sin-&gt;sin_addr;</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">        200 :         sin = (struct sockaddr_in *) sa;</span></a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineCov">        200 :         p = (u_char *) &amp;sin-&gt;sin_addr;</span></a>
 <a name="204"><span class="lineNum">     204 </span>            : </a>
-<a name="205"><span class="lineNum">     205 </span><span class="lineCov">        116 :         if (port) {</span></a>
-<a name="206"><span class="lineNum">     206 </span><span class="lineCov">         96 :             p = ngx_snprintf(text, len, &quot;%ud.%ud.%ud.%ud:%d&quot;,</span></a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">         96 :                              p[0], p[1], p[2], p[3], ntohs(sin-&gt;sin_port));</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">        200 :         if (port) {</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">        168 :             p = ngx_snprintf(text, len, &quot;%ud.%ud.%ud.%ud:%d&quot;,</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">        168 :                              p[0], p[1], p[2], p[3], ntohs(sin-&gt;sin_port));</span></a>
 <a name="208"><span class="lineNum">     208 </span>            :         } else {</a>
-<a name="209"><span class="lineNum">     209 </span><span class="lineCov">         20 :             p = ngx_snprintf(text, len, &quot;%ud.%ud.%ud.%ud&quot;,</span></a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">         20 :                              p[0], p[1], p[2], p[3]);</span></a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">         32 :             p = ngx_snprintf(text, len, &quot;%ud.%ud.%ud.%ud&quot;,</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">         32 :                              p[0], p[1], p[2], p[3]);</span></a>
 <a name="211"><span class="lineNum">     211 </span>            :         }</a>
 <a name="212"><span class="lineNum">     212 </span>            : </a>
-<a name="213"><span class="lineNum">     213 </span><span class="lineCov">        116 :         return (p - text);</span></a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineCov">        200 :         return (p - text);</span></a>
 <a name="214"><span class="lineNum">     214 </span>            : </a>
 <a name="215"><span class="lineNum">     215 </span>            : #if (NGX_HAVE_INET6)</a>
 <a name="216"><span class="lineNum">     216 </span>            : </a>
@@ -743,23 +743,23 @@
 <a name="681"><span class="lineNum">     681 </span>            : </a>
 <a name="682"><span class="lineNum">     682 </span>            : </a>
 <a name="683"><span class="lineNum">     683 </span>            : ngx_int_t</a>
-<a name="684"><span class="lineNum">     684 </span><span class="lineCov">         48 : ngx_parse_url(ngx_pool_t *pool, ngx_url_t *u)</span></a>
+<a name="684"><span class="lineNum">     684 </span><span class="lineCov">         84 : ngx_parse_url(ngx_pool_t *pool, ngx_url_t *u)</span></a>
 <a name="685"><span class="lineNum">     685 </span>            : {</a>
 <a name="686"><span class="lineNum">     686 </span>            :     u_char  *p;</a>
 <a name="687"><span class="lineNum">     687 </span>            :     size_t   len;</a>
 <a name="688"><span class="lineNum">     688 </span>            : </a>
-<a name="689"><span class="lineNum">     689 </span><span class="lineCov">         48 :     p = u-&gt;url.data;</span></a>
-<a name="690"><span class="lineNum">     690 </span><span class="lineCov">         48 :     len = u-&gt;url.len;</span></a>
+<a name="689"><span class="lineNum">     689 </span><span class="lineCov">         84 :     p = u-&gt;url.data;</span></a>
+<a name="690"><span class="lineNum">     690 </span><span class="lineCov">         84 :     len = u-&gt;url.len;</span></a>
 <a name="691"><span class="lineNum">     691 </span>            : </a>
-<a name="692"><span class="lineNum">     692 </span><span class="lineCov">         48 :     if (len &gt;= 5 &amp;&amp; ngx_strncasecmp(p, (u_char *) &quot;unix:&quot;, 5) == 0) {</span></a>
+<a name="692"><span class="lineNum">     692 </span><span class="lineCov">         84 :     if (len &gt;= 5 &amp;&amp; ngx_strncasecmp(p, (u_char *) &quot;unix:&quot;, 5) == 0) {</span></a>
 <a name="693"><span class="lineNum">     693 </span><span class="lineNoCov">          0 :         return ngx_parse_unix_domain_url(pool, u);</span></a>
 <a name="694"><span class="lineNum">     694 </span>            :     }</a>
 <a name="695"><span class="lineNum">     695 </span>            : </a>
-<a name="696"><span class="lineNum">     696 </span><span class="lineCov">         48 :     if (len &amp;&amp; p[0] == '[') {</span></a>
+<a name="696"><span class="lineNum">     696 </span><span class="lineCov">         84 :     if (len &amp;&amp; p[0] == '[') {</span></a>
 <a name="697"><span class="lineNum">     697 </span><span class="lineNoCov">          0 :         return ngx_parse_inet6_url(pool, u);</span></a>
 <a name="698"><span class="lineNum">     698 </span>            :     }</a>
 <a name="699"><span class="lineNum">     699 </span>            : </a>
-<a name="700"><span class="lineNum">     700 </span><span class="lineCov">         48 :     return ngx_parse_inet_url(pool, u);</span></a>
+<a name="700"><span class="lineNum">     700 </span><span class="lineCov">         84 :     return ngx_parse_inet_url(pool, u);</span></a>
 <a name="701"><span class="lineNum">     701 </span>            : }</a>
 <a name="702"><span class="lineNum">     702 </span>            : </a>
 <a name="703"><span class="lineNum">     703 </span>            : </a>
@@ -842,36 +842,36 @@
 <a name="780"><span class="lineNum">     780 </span>            : </a>
 <a name="781"><span class="lineNum">     781 </span>            : </a>
 <a name="782"><span class="lineNum">     782 </span>            : static ngx_int_t</a>
-<a name="783"><span class="lineNum">     783 </span><span class="lineCov">         48 : ngx_parse_inet_url(ngx_pool_t *pool, ngx_url_t *u)</span></a>
+<a name="783"><span class="lineNum">     783 </span><span class="lineCov">         84 : ngx_parse_inet_url(ngx_pool_t *pool, ngx_url_t *u)</span></a>
 <a name="784"><span class="lineNum">     784 </span>            : {</a>
 <a name="785"><span class="lineNum">     785 </span>            :     u_char              *host, *port, *last, *uri, *args, *dash;</a>
 <a name="786"><span class="lineNum">     786 </span>            :     size_t               len;</a>
 <a name="787"><span class="lineNum">     787 </span>            :     ngx_int_t            n;</a>
 <a name="788"><span class="lineNum">     788 </span>            :     struct sockaddr_in  *sin;</a>
 <a name="789"><span class="lineNum">     789 </span>            : </a>
-<a name="790"><span class="lineNum">     790 </span><span class="lineCov">         48 :     u-&gt;socklen = sizeof(struct sockaddr_in);</span></a>
-<a name="791"><span class="lineNum">     791 </span><span class="lineCov">         48 :     sin = (struct sockaddr_in *) &amp;u-&gt;sockaddr;</span></a>
-<a name="792"><span class="lineNum">     792 </span><span class="lineCov">         48 :     sin-&gt;sin_family = AF_INET;</span></a>
+<a name="790"><span class="lineNum">     790 </span><span class="lineCov">         84 :     u-&gt;socklen = sizeof(struct sockaddr_in);</span></a>
+<a name="791"><span class="lineNum">     791 </span><span class="lineCov">         84 :     sin = (struct sockaddr_in *) &amp;u-&gt;sockaddr;</span></a>
+<a name="792"><span class="lineNum">     792 </span><span class="lineCov">         84 :     sin-&gt;sin_family = AF_INET;</span></a>
 <a name="793"><span class="lineNum">     793 </span>            : </a>
-<a name="794"><span class="lineNum">     794 </span><span class="lineCov">         48 :     u-&gt;family = AF_INET;</span></a>
+<a name="794"><span class="lineNum">     794 </span><span class="lineCov">         84 :     u-&gt;family = AF_INET;</span></a>
 <a name="795"><span class="lineNum">     795 </span>            : </a>
-<a name="796"><span class="lineNum">     796 </span><span class="lineCov">         48 :     host = u-&gt;url.data;</span></a>
+<a name="796"><span class="lineNum">     796 </span><span class="lineCov">         84 :     host = u-&gt;url.data;</span></a>
 <a name="797"><span class="lineNum">     797 </span>            : </a>
-<a name="798"><span class="lineNum">     798 </span><span class="lineCov">         48 :     last = host + u-&gt;url.len;</span></a>
+<a name="798"><span class="lineNum">     798 </span><span class="lineCov">         84 :     last = host + u-&gt;url.len;</span></a>
 <a name="799"><span class="lineNum">     799 </span>            : </a>
-<a name="800"><span class="lineNum">     800 </span><span class="lineCov">         48 :     port = ngx_strlchr(host, last, ':');</span></a>
+<a name="800"><span class="lineNum">     800 </span><span class="lineCov">         84 :     port = ngx_strlchr(host, last, ':');</span></a>
 <a name="801"><span class="lineNum">     801 </span>            : </a>
-<a name="802"><span class="lineNum">     802 </span><span class="lineCov">         48 :     uri = ngx_strlchr(host, last, '/');</span></a>
+<a name="802"><span class="lineNum">     802 </span><span class="lineCov">         84 :     uri = ngx_strlchr(host, last, '/');</span></a>
 <a name="803"><span class="lineNum">     803 </span>            : </a>
-<a name="804"><span class="lineNum">     804 </span><span class="lineCov">         48 :     args = ngx_strlchr(host, last, '?');</span></a>
+<a name="804"><span class="lineNum">     804 </span><span class="lineCov">         84 :     args = ngx_strlchr(host, last, '?');</span></a>
 <a name="805"><span class="lineNum">     805 </span>            : </a>
-<a name="806"><span class="lineNum">     806 </span><span class="lineCov">         48 :     if (args) {</span></a>
+<a name="806"><span class="lineNum">     806 </span><span class="lineCov">         84 :     if (args) {</span></a>
 <a name="807"><span class="lineNum">     807 </span><span class="lineNoCov">          0 :         if (uri == NULL || args &lt; uri) {</span></a>
 <a name="808"><span class="lineNum">     808 </span><span class="lineNoCov">          0 :             uri = args;</span></a>
 <a name="809"><span class="lineNum">     809 </span>            :         }</a>
 <a name="810"><span class="lineNum">     810 </span>            :     }</a>
 <a name="811"><span class="lineNum">     811 </span>            : </a>
-<a name="812"><span class="lineNum">     812 </span><span class="lineCov">         48 :     if (uri) {</span></a>
+<a name="812"><span class="lineNum">     812 </span><span class="lineCov">         84 :     if (uri) {</span></a>
 <a name="813"><span class="lineNum">     813 </span><span class="lineNoCov">          0 :         if (u-&gt;listen || !u-&gt;uri_part) {</span></a>
 <a name="814"><span class="lineNum">     814 </span><span class="lineNoCov">          0 :             u-&gt;err = &quot;invalid host&quot;;</span></a>
 <a name="815"><span class="lineNum">     815 </span><span class="lineNoCov">          0 :             return NGX_ERROR;</span></a>
@@ -887,7 +887,7 @@
 <a name="825"><span class="lineNum">     825 </span>            :         }</a>
 <a name="826"><span class="lineNum">     826 </span>            :     }</a>
 <a name="827"><span class="lineNum">     827 </span>            : </a>
-<a name="828"><span class="lineNum">     828 </span><span class="lineCov">         48 :     if (port) {</span></a>
+<a name="828"><span class="lineNum">     828 </span><span class="lineCov">         84 :     if (port) {</span></a>
 <a name="829"><span class="lineNum">     829 </span><span class="lineNoCov">          0 :         port++;</span></a>
 <a name="830"><span class="lineNum">     830 </span>            : </a>
 <a name="831"><span class="lineNum">     831 </span><span class="lineNoCov">          0 :         len = last - port;</span></a>
@@ -932,17 +932,17 @@
 <a name="870"><span class="lineNum">     870 </span><span class="lineNoCov">          0 :         last = port - 1;</span></a>
 <a name="871"><span class="lineNum">     871 </span>            : </a>
 <a name="872"><span class="lineNum">     872 </span>            :     } else {</a>
-<a name="873"><span class="lineNum">     873 </span><span class="lineCov">         48 :         if (uri == NULL) {</span></a>
+<a name="873"><span class="lineNum">     873 </span><span class="lineCov">         84 :         if (uri == NULL) {</span></a>
 <a name="874"><span class="lineNum">     874 </span>            : </a>
-<a name="875"><span class="lineNum">     875 </span><span class="lineCov">         48 :             if (u-&gt;listen) {</span></a>
+<a name="875"><span class="lineNum">     875 </span><span class="lineCov">         84 :             if (u-&gt;listen) {</span></a>
 <a name="876"><span class="lineNum">     876 </span>            : </a>
 <a name="877"><span class="lineNum">     877 </span>            :                 /* test value as port only */</a>
 <a name="878"><span class="lineNum">     878 </span>            : </a>
-<a name="879"><span class="lineNum">     879 </span><span class="lineCov">         48 :                 len = last - host;</span></a>
+<a name="879"><span class="lineNum">     879 </span><span class="lineCov">         84 :                 len = last - host;</span></a>
 <a name="880"><span class="lineNum">     880 </span>            : </a>
-<a name="881"><span class="lineNum">     881 </span><span class="lineCov">         48 :                 dash = ngx_strlchr(host, last, '-');</span></a>
+<a name="881"><span class="lineNum">     881 </span><span class="lineCov">         84 :                 dash = ngx_strlchr(host, last, '-');</span></a>
 <a name="882"><span class="lineNum">     882 </span>            : </a>
-<a name="883"><span class="lineNum">     883 </span><span class="lineCov">         48 :                 if (dash) {</span></a>
+<a name="883"><span class="lineNum">     883 </span><span class="lineCov">         84 :                 if (dash) {</span></a>
 <a name="884"><span class="lineNum">     884 </span><span class="lineNoCov">          0 :                     dash++;</span></a>
 <a name="885"><span class="lineNum">     885 </span>            : </a>
 <a name="886"><span class="lineNum">     886 </span><span class="lineNoCov">          0 :                     n = ngx_atoi(dash, last - dash);</span></a>
@@ -961,34 +961,34 @@
 <a name="899"><span class="lineNum">     899 </span><span class="lineNoCov">          0 :                     len = dash - host - 1;</span></a>
 <a name="900"><span class="lineNum">     900 </span>            :                 }</a>
 <a name="901"><span class="lineNum">     901 </span>            : </a>
-<a name="902"><span class="lineNum">     902 </span><span class="lineCov">         48 :                 n = ngx_atoi(host, len);</span></a>
+<a name="902"><span class="lineNum">     902 </span><span class="lineCov">         84 :                 n = ngx_atoi(host, len);</span></a>
 <a name="903"><span class="lineNum">     903 </span>            : </a>
-<a name="904"><span class="lineNum">     904 </span><span class="lineCov">         48 :                 if (n != NGX_ERROR) {</span></a>
+<a name="904"><span class="lineNum">     904 </span><span class="lineCov">         84 :                 if (n != NGX_ERROR) {</span></a>
 <a name="905"><span class="lineNum">     905 </span>            : </a>
-<a name="906"><span class="lineNum">     906 </span><span class="lineCov">         48 :                     if (u-&gt;err) {</span></a>
+<a name="906"><span class="lineNum">     906 </span><span class="lineCov">         84 :                     if (u-&gt;err) {</span></a>
 <a name="907"><span class="lineNum">     907 </span><span class="lineNoCov">          0 :                         return NGX_ERROR;</span></a>
 <a name="908"><span class="lineNum">     908 </span>            :                     }</a>
 <a name="909"><span class="lineNum">     909 </span>            : </a>
-<a name="910"><span class="lineNum">     910 </span><span class="lineCov">         48 :                     if (n &lt; 1 || n &gt; 65535) {</span></a>
+<a name="910"><span class="lineNum">     910 </span><span class="lineCov">         84 :                     if (n &lt; 1 || n &gt; 65535) {</span></a>
 <a name="911"><span class="lineNum">     911 </span><span class="lineNoCov">          0 :                         u-&gt;err = &quot;invalid port&quot;;</span></a>
 <a name="912"><span class="lineNum">     912 </span><span class="lineNoCov">          0 :                         return NGX_ERROR;</span></a>
 <a name="913"><span class="lineNum">     913 </span>            :                     }</a>
 <a name="914"><span class="lineNum">     914 </span>            : </a>
-<a name="915"><span class="lineNum">     915 </span><span class="lineCov">         48 :                     if (u-&gt;last_port &amp;&amp; n &gt; u-&gt;last_port) {</span></a>
+<a name="915"><span class="lineNum">     915 </span><span class="lineCov">         84 :                     if (u-&gt;last_port &amp;&amp; n &gt; u-&gt;last_port) {</span></a>
 <a name="916"><span class="lineNum">     916 </span><span class="lineNoCov">          0 :                         u-&gt;err = &quot;invalid port range&quot;;</span></a>
 <a name="917"><span class="lineNum">     917 </span><span class="lineNoCov">          0 :                         return NGX_ERROR;</span></a>
 <a name="918"><span class="lineNum">     918 </span>            :                     }</a>
 <a name="919"><span class="lineNum">     919 </span>            : </a>
-<a name="920"><span class="lineNum">     920 </span><span class="lineCov">         48 :                     u-&gt;port = (in_port_t) n;</span></a>
-<a name="921"><span class="lineNum">     921 </span><span class="lineCov">         48 :                     sin-&gt;sin_port = htons((in_port_t) n);</span></a>
-<a name="922"><span class="lineNum">     922 </span><span class="lineCov">         48 :                     sin-&gt;sin_addr.s_addr = INADDR_ANY;</span></a>
+<a name="920"><span class="lineNum">     920 </span><span class="lineCov">         84 :                     u-&gt;port = (in_port_t) n;</span></a>
+<a name="921"><span class="lineNum">     921 </span><span class="lineCov">         84 :                     sin-&gt;sin_port = htons((in_port_t) n);</span></a>
+<a name="922"><span class="lineNum">     922 </span><span class="lineCov">         84 :                     sin-&gt;sin_addr.s_addr = INADDR_ANY;</span></a>
 <a name="923"><span class="lineNum">     923 </span>            : </a>
-<a name="924"><span class="lineNum">     924 </span><span class="lineCov">         48 :                     u-&gt;port_text.len = last - host;</span></a>
-<a name="925"><span class="lineNum">     925 </span><span class="lineCov">         48 :                     u-&gt;port_text.data = host;</span></a>
+<a name="924"><span class="lineNum">     924 </span><span class="lineCov">         84 :                     u-&gt;port_text.len = last - host;</span></a>
+<a name="925"><span class="lineNum">     925 </span><span class="lineCov">         84 :                     u-&gt;port_text.data = host;</span></a>
 <a name="926"><span class="lineNum">     926 </span>            : </a>
-<a name="927"><span class="lineNum">     927 </span><span class="lineCov">         48 :                     u-&gt;wildcard = 1;</span></a>
+<a name="927"><span class="lineNum">     927 </span><span class="lineCov">         84 :                     u-&gt;wildcard = 1;</span></a>
 <a name="928"><span class="lineNum">     928 </span>            : </a>
-<a name="929"><span class="lineNum">     929 </span><span class="lineCov">         48 :                     return ngx_inet_add_addr(pool, u, &amp;u-&gt;sockaddr.sockaddr,</span></a>
+<a name="929"><span class="lineNum">     929 </span><span class="lineCov">         84 :                     return ngx_inet_add_addr(pool, u, &amp;u-&gt;sockaddr.sockaddr,</span></a>
 <a name="930"><span class="lineNum">     930 </span>            :                                              u-&gt;socklen, 1);</a>
 <a name="931"><span class="lineNum">     931 </span>            :                 }</a>
 <a name="932"><span class="lineNum">     932 </span>            :             }</a>
@@ -1322,7 +1322,7 @@
 <a name="1260"><span class="lineNum">    1260 </span>            : </a>
 <a name="1261"><span class="lineNum">    1261 </span>            : </a>
 <a name="1262"><span class="lineNum">    1262 </span>            : static ngx_int_t</a>
-<a name="1263"><span class="lineNum">    1263 </span><span class="lineCov">         48 : ngx_inet_add_addr(ngx_pool_t *pool, ngx_url_t *u, struct sockaddr *sockaddr,</span></a>
+<a name="1263"><span class="lineNum">    1263 </span><span class="lineCov">         84 : ngx_inet_add_addr(ngx_pool_t *pool, ngx_url_t *u, struct sockaddr *sockaddr,</span></a>
 <a name="1264"><span class="lineNum">    1264 </span>            :     socklen_t socklen, ngx_uint_t total)</a>
 <a name="1265"><span class="lineNum">    1265 </span>            : {</a>
 <a name="1266"><span class="lineNum">    1266 </span>            :     u_char           *p;</a>
@@ -1331,26 +1331,26 @@
 <a name="1269"><span class="lineNum">    1269 </span>            :     ngx_addr_t       *addr;</a>
 <a name="1270"><span class="lineNum">    1270 </span>            :     struct sockaddr  *sa;</a>
 <a name="1271"><span class="lineNum">    1271 </span>            : </a>
-<a name="1272"><span class="lineNum">    1272 </span><span class="lineCov">         48 :     nports = u-&gt;last_port ? u-&gt;last_port - u-&gt;port + 1 : 1;</span></a>
+<a name="1272"><span class="lineNum">    1272 </span><span class="lineCov">         84 :     nports = u-&gt;last_port ? u-&gt;last_port - u-&gt;port + 1 : 1;</span></a>
 <a name="1273"><span class="lineNum">    1273 </span>            : </a>
-<a name="1274"><span class="lineNum">    1274 </span><span class="lineCov">         48 :     if (u-&gt;addrs == NULL) {</span></a>
-<a name="1275"><span class="lineNum">    1275 </span><span class="lineCov">         48 :         u-&gt;addrs = ngx_palloc(pool, total * nports * sizeof(ngx_addr_t));</span></a>
-<a name="1276"><span class="lineNum">    1276 </span><span class="lineCov">         48 :         if (u-&gt;addrs == NULL) {</span></a>
+<a name="1274"><span class="lineNum">    1274 </span><span class="lineCov">         84 :     if (u-&gt;addrs == NULL) {</span></a>
+<a name="1275"><span class="lineNum">    1275 </span><span class="lineCov">         84 :         u-&gt;addrs = ngx_palloc(pool, total * nports * sizeof(ngx_addr_t));</span></a>
+<a name="1276"><span class="lineNum">    1276 </span><span class="lineCov">         84 :         if (u-&gt;addrs == NULL) {</span></a>
 <a name="1277"><span class="lineNum">    1277 </span><span class="lineNoCov">          0 :             return NGX_ERROR;</span></a>
 <a name="1278"><span class="lineNum">    1278 </span>            :         }</a>
 <a name="1279"><span class="lineNum">    1279 </span>            :     }</a>
 <a name="1280"><span class="lineNum">    1280 </span>            : </a>
-<a name="1281"><span class="lineNum">    1281 </span><span class="lineCov">         96 :     for (i = 0; i &lt; nports; i++) {</span></a>
-<a name="1282"><span class="lineNum">    1282 </span><span class="lineCov">         48 :         sa = ngx_pcalloc(pool, socklen);</span></a>
-<a name="1283"><span class="lineNum">    1283 </span><span class="lineCov">         48 :         if (sa == NULL) {</span></a>
+<a name="1281"><span class="lineNum">    1281 </span><span class="lineCov">        168 :     for (i = 0; i &lt; nports; i++) {</span></a>
+<a name="1282"><span class="lineNum">    1282 </span><span class="lineCov">         84 :         sa = ngx_pcalloc(pool, socklen);</span></a>
+<a name="1283"><span class="lineNum">    1283 </span><span class="lineCov">         84 :         if (sa == NULL) {</span></a>
 <a name="1284"><span class="lineNum">    1284 </span><span class="lineNoCov">          0 :             return NGX_ERROR;</span></a>
 <a name="1285"><span class="lineNum">    1285 </span>            :         }</a>
 <a name="1286"><span class="lineNum">    1286 </span>            : </a>
-<a name="1287"><span class="lineNum">    1287 </span><span class="lineCov">         48 :         ngx_memcpy(sa, sockaddr, socklen);</span></a>
+<a name="1287"><span class="lineNum">    1287 </span><span class="lineCov">         84 :         ngx_memcpy(sa, sockaddr, socklen);</span></a>
 <a name="1288"><span class="lineNum">    1288 </span>            : </a>
-<a name="1289"><span class="lineNum">    1289 </span><span class="lineCov">         48 :         ngx_inet_set_port(sa, u-&gt;port + i);</span></a>
+<a name="1289"><span class="lineNum">    1289 </span><span class="lineCov">         84 :         ngx_inet_set_port(sa, u-&gt;port + i);</span></a>
 <a name="1290"><span class="lineNum">    1290 </span>            : </a>
-<a name="1291"><span class="lineNum">    1291 </span><span class="lineCov">         48 :         switch (sa-&gt;sa_family) {</span></a>
+<a name="1291"><span class="lineNum">    1291 </span><span class="lineCov">         84 :         switch (sa-&gt;sa_family) {</span></a>
 <a name="1292"><span class="lineNum">    1292 </span>            : </a>
 <a name="1293"><span class="lineNum">    1293 </span>            : #if (NGX_HAVE_INET6)</a>
 <a name="1294"><span class="lineNum">    1294 </span><span class="lineNoCov">          0 :         case AF_INET6:</span></a>
@@ -1358,32 +1358,32 @@
 <a name="1296"><span class="lineNum">    1296 </span><span class="lineNoCov">          0 :             break;</span></a>
 <a name="1297"><span class="lineNum">    1297 </span>            : #endif</a>
 <a name="1298"><span class="lineNum">    1298 </span>            : </a>
-<a name="1299"><span class="lineNum">    1299 </span><span class="lineCov">         48 :         default: /* AF_INET */</span></a>
-<a name="1300"><span class="lineNum">    1300 </span><span class="lineCov">         48 :             len = NGX_INET_ADDRSTRLEN + sizeof(&quot;:65535&quot;) - 1;</span></a>
+<a name="1299"><span class="lineNum">    1299 </span><span class="lineCov">         84 :         default: /* AF_INET */</span></a>
+<a name="1300"><span class="lineNum">    1300 </span><span class="lineCov">         84 :             len = NGX_INET_ADDRSTRLEN + sizeof(&quot;:65535&quot;) - 1;</span></a>
 <a name="1301"><span class="lineNum">    1301 </span>            :         }</a>
 <a name="1302"><span class="lineNum">    1302 </span>            : </a>
-<a name="1303"><span class="lineNum">    1303 </span><span class="lineCov">         48 :         p = ngx_pnalloc(pool, len);</span></a>
-<a name="1304"><span class="lineNum">    1304 </span><span class="lineCov">         48 :         if (p == NULL) {</span></a>
+<a name="1303"><span class="lineNum">    1303 </span><span class="lineCov">         84 :         p = ngx_pnalloc(pool, len);</span></a>
+<a name="1304"><span class="lineNum">    1304 </span><span class="lineCov">         84 :         if (p == NULL) {</span></a>
 <a name="1305"><span class="lineNum">    1305 </span><span class="lineNoCov">          0 :             return NGX_ERROR;</span></a>
 <a name="1306"><span class="lineNum">    1306 </span>            :         }</a>
 <a name="1307"><span class="lineNum">    1307 </span>            : </a>
-<a name="1308"><span class="lineNum">    1308 </span><span class="lineCov">         48 :         len = ngx_sock_ntop(sa, socklen, p, len, 1);</span></a>
+<a name="1308"><span class="lineNum">    1308 </span><span class="lineCov">         84 :         len = ngx_sock_ntop(sa, socklen, p, len, 1);</span></a>
 <a name="1309"><span class="lineNum">    1309 </span>            : </a>
-<a name="1310"><span class="lineNum">    1310 </span><span class="lineCov">         48 :         addr = &amp;u-&gt;addrs[u-&gt;naddrs++];</span></a>
+<a name="1310"><span class="lineNum">    1310 </span><span class="lineCov">         84 :         addr = &amp;u-&gt;addrs[u-&gt;naddrs++];</span></a>
 <a name="1311"><span class="lineNum">    1311 </span>            : </a>
-<a name="1312"><span class="lineNum">    1312 </span><span class="lineCov">         48 :         addr-&gt;sockaddr = sa;</span></a>
-<a name="1313"><span class="lineNum">    1313 </span><span class="lineCov">         48 :         addr-&gt;socklen = socklen;</span></a>
+<a name="1312"><span class="lineNum">    1312 </span><span class="lineCov">         84 :         addr-&gt;sockaddr = sa;</span></a>
+<a name="1313"><span class="lineNum">    1313 </span><span class="lineCov">         84 :         addr-&gt;socklen = socklen;</span></a>
 <a name="1314"><span class="lineNum">    1314 </span>            : </a>
-<a name="1315"><span class="lineNum">    1315 </span><span class="lineCov">         48 :         addr-&gt;name.len = len;</span></a>
-<a name="1316"><span class="lineNum">    1316 </span><span class="lineCov">         48 :         addr-&gt;name.data = p;</span></a>
+<a name="1315"><span class="lineNum">    1315 </span><span class="lineCov">         84 :         addr-&gt;name.len = len;</span></a>
+<a name="1316"><span class="lineNum">    1316 </span><span class="lineCov">         84 :         addr-&gt;name.data = p;</span></a>
 <a name="1317"><span class="lineNum">    1317 </span>            :     }</a>
 <a name="1318"><span class="lineNum">    1318 </span>            : </a>
-<a name="1319"><span class="lineNum">    1319 </span><span class="lineCov">         48 :     return NGX_OK;</span></a>
+<a name="1319"><span class="lineNum">    1319 </span><span class="lineCov">         84 :     return NGX_OK;</span></a>
 <a name="1320"><span class="lineNum">    1320 </span>            : }</a>
 <a name="1321"><span class="lineNum">    1321 </span>            : </a>
 <a name="1322"><span class="lineNum">    1322 </span>            : </a>
 <a name="1323"><span class="lineNum">    1323 </span>            : ngx_int_t</a>
-<a name="1324"><span class="lineNum">    1324 </span><span class="lineCov">         15 : ngx_cmp_sockaddr(struct sockaddr *sa1, socklen_t slen1,</span></a>
+<a name="1324"><span class="lineNum">    1324 </span><span class="lineCov">         27 : ngx_cmp_sockaddr(struct sockaddr *sa1, socklen_t slen1,</span></a>
 <a name="1325"><span class="lineNum">    1325 </span>            :     struct sockaddr *sa2, socklen_t slen2, ngx_uint_t cmp_port)</a>
 <a name="1326"><span class="lineNum">    1326 </span>            : {</a>
 <a name="1327"><span class="lineNum">    1327 </span>            :     struct sockaddr_in   *sin1, *sin2;</a>
@@ -1395,11 +1395,11 @@
 <a name="1333"><span class="lineNum">    1333 </span>            :     struct sockaddr_un   *saun1, *saun2;</a>
 <a name="1334"><span class="lineNum">    1334 </span>            : #endif</a>
 <a name="1335"><span class="lineNum">    1335 </span>            : </a>
-<a name="1336"><span class="lineNum">    1336 </span><span class="lineCov">         15 :     if (sa1-&gt;sa_family != sa2-&gt;sa_family) {</span></a>
+<a name="1336"><span class="lineNum">    1336 </span><span class="lineCov">         27 :     if (sa1-&gt;sa_family != sa2-&gt;sa_family) {</span></a>
 <a name="1337"><span class="lineNum">    1337 </span><span class="lineNoCov">          0 :         return NGX_DECLINED;</span></a>
 <a name="1338"><span class="lineNum">    1338 </span>            :     }</a>
 <a name="1339"><span class="lineNum">    1339 </span>            : </a>
-<a name="1340"><span class="lineNum">    1340 </span><span class="lineCov">         15 :     switch (sa1-&gt;sa_family) {</span></a>
+<a name="1340"><span class="lineNum">    1340 </span><span class="lineCov">         27 :     switch (sa1-&gt;sa_family) {</span></a>
 <a name="1341"><span class="lineNum">    1341 </span>            : </a>
 <a name="1342"><span class="lineNum">    1342 </span>            : #if (NGX_HAVE_INET6)</a>
 <a name="1343"><span class="lineNum">    1343 </span><span class="lineNoCov">          0 :     case AF_INET6:</span></a>
@@ -1442,35 +1442,35 @@
 <a name="1380"><span class="lineNum">    1380 </span><span class="lineNoCov">          0 :         break;</span></a>
 <a name="1381"><span class="lineNum">    1381 </span>            : #endif</a>
 <a name="1382"><span class="lineNum">    1382 </span>            : </a>
-<a name="1383"><span class="lineNum">    1383 </span><span class="lineCov">         15 :     default: /* AF_INET */</span></a>
+<a name="1383"><span class="lineNum">    1383 </span><span class="lineCov">         27 :     default: /* AF_INET */</span></a>
 <a name="1384"><span class="lineNum">    1384 </span>            : </a>
-<a name="1385"><span class="lineNum">    1385 </span><span class="lineCov">         15 :         sin1 = (struct sockaddr_in *) sa1;</span></a>
-<a name="1386"><span class="lineNum">    1386 </span><span class="lineCov">         15 :         sin2 = (struct sockaddr_in *) sa2;</span></a>
+<a name="1385"><span class="lineNum">    1385 </span><span class="lineCov">         27 :         sin1 = (struct sockaddr_in *) sa1;</span></a>
+<a name="1386"><span class="lineNum">    1386 </span><span class="lineCov">         27 :         sin2 = (struct sockaddr_in *) sa2;</span></a>
 <a name="1387"><span class="lineNum">    1387 </span>            : </a>
-<a name="1388"><span class="lineNum">    1388 </span><span class="lineCov">         15 :         if (cmp_port &amp;&amp; sin1-&gt;sin_port != sin2-&gt;sin_port) {</span></a>
+<a name="1388"><span class="lineNum">    1388 </span><span class="lineCov">         27 :         if (cmp_port &amp;&amp; sin1-&gt;sin_port != sin2-&gt;sin_port) {</span></a>
 <a name="1389"><span class="lineNum">    1389 </span><span class="lineNoCov">          0 :             return NGX_DECLINED;</span></a>
 <a name="1390"><span class="lineNum">    1390 </span>            :         }</a>
 <a name="1391"><span class="lineNum">    1391 </span>            : </a>
-<a name="1392"><span class="lineNum">    1392 </span><span class="lineCov">         15 :         if (sin1-&gt;sin_addr.s_addr != sin2-&gt;sin_addr.s_addr) {</span></a>
+<a name="1392"><span class="lineNum">    1392 </span><span class="lineCov">         27 :         if (sin1-&gt;sin_addr.s_addr != sin2-&gt;sin_addr.s_addr) {</span></a>
 <a name="1393"><span class="lineNum">    1393 </span><span class="lineNoCov">          0 :             return NGX_DECLINED;</span></a>
 <a name="1394"><span class="lineNum">    1394 </span>            :         }</a>
 <a name="1395"><span class="lineNum">    1395 </span>            : </a>
-<a name="1396"><span class="lineNum">    1396 </span><span class="lineCov">         15 :         break;</span></a>
+<a name="1396"><span class="lineNum">    1396 </span><span class="lineCov">         27 :         break;</span></a>
 <a name="1397"><span class="lineNum">    1397 </span>            :     }</a>
 <a name="1398"><span class="lineNum">    1398 </span>            : </a>
-<a name="1399"><span class="lineNum">    1399 </span><span class="lineCov">         15 :     return NGX_OK;</span></a>
+<a name="1399"><span class="lineNum">    1399 </span><span class="lineCov">         27 :     return NGX_OK;</span></a>
 <a name="1400"><span class="lineNum">    1400 </span>            : }</a>
 <a name="1401"><span class="lineNum">    1401 </span>            : </a>
 <a name="1402"><span class="lineNum">    1402 </span>            : </a>
 <a name="1403"><span class="lineNum">    1403 </span>            : in_port_t</a>
-<a name="1404"><span class="lineNum">    1404 </span><span class="lineCov">         48 : ngx_inet_get_port(struct sockaddr *sa)</span></a>
+<a name="1404"><span class="lineNum">    1404 </span><span class="lineCov">         84 : ngx_inet_get_port(struct sockaddr *sa)</span></a>
 <a name="1405"><span class="lineNum">    1405 </span>            : {</a>
 <a name="1406"><span class="lineNum">    1406 </span>            :     struct sockaddr_in   *sin;</a>
 <a name="1407"><span class="lineNum">    1407 </span>            : #if (NGX_HAVE_INET6)</a>
 <a name="1408"><span class="lineNum">    1408 </span>            :     struct sockaddr_in6  *sin6;</a>
 <a name="1409"><span class="lineNum">    1409 </span>            : #endif</a>
 <a name="1410"><span class="lineNum">    1410 </span>            : </a>
-<a name="1411"><span class="lineNum">    1411 </span><span class="lineCov">         48 :     switch (sa-&gt;sa_family) {</span></a>
+<a name="1411"><span class="lineNum">    1411 </span><span class="lineCov">         84 :     switch (sa-&gt;sa_family) {</span></a>
 <a name="1412"><span class="lineNum">    1412 </span>            : </a>
 <a name="1413"><span class="lineNum">    1413 </span>            : #if (NGX_HAVE_INET6)</a>
 <a name="1414"><span class="lineNum">    1414 </span><span class="lineNoCov">          0 :     case AF_INET6:</span></a>
@@ -1483,22 +1483,22 @@
 <a name="1421"><span class="lineNum">    1421 </span><span class="lineNoCov">          0 :         return 0;</span></a>
 <a name="1422"><span class="lineNum">    1422 </span>            : #endif</a>
 <a name="1423"><span class="lineNum">    1423 </span>            : </a>
-<a name="1424"><span class="lineNum">    1424 </span><span class="lineCov">         48 :     default: /* AF_INET */</span></a>
-<a name="1425"><span class="lineNum">    1425 </span><span class="lineCov">         48 :         sin = (struct sockaddr_in *) sa;</span></a>
-<a name="1426"><span class="lineNum">    1426 </span><span class="lineCov">         48 :         return ntohs(sin-&gt;sin_port);</span></a>
+<a name="1424"><span class="lineNum">    1424 </span><span class="lineCov">         84 :     default: /* AF_INET */</span></a>
+<a name="1425"><span class="lineNum">    1425 </span><span class="lineCov">         84 :         sin = (struct sockaddr_in *) sa;</span></a>
+<a name="1426"><span class="lineNum">    1426 </span><span class="lineCov">         84 :         return ntohs(sin-&gt;sin_port);</span></a>
 <a name="1427"><span class="lineNum">    1427 </span>            :     }</a>
 <a name="1428"><span class="lineNum">    1428 </span>            : }</a>
 <a name="1429"><span class="lineNum">    1429 </span>            : </a>
 <a name="1430"><span class="lineNum">    1430 </span>            : </a>
 <a name="1431"><span class="lineNum">    1431 </span>            : void</a>
-<a name="1432"><span class="lineNum">    1432 </span><span class="lineCov">         48 : ngx_inet_set_port(struct sockaddr *sa, in_port_t port)</span></a>
+<a name="1432"><span class="lineNum">    1432 </span><span class="lineCov">         84 : ngx_inet_set_port(struct sockaddr *sa, in_port_t port)</span></a>
 <a name="1433"><span class="lineNum">    1433 </span>            : {</a>
 <a name="1434"><span class="lineNum">    1434 </span>            :     struct sockaddr_in   *sin;</a>
 <a name="1435"><span class="lineNum">    1435 </span>            : #if (NGX_HAVE_INET6)</a>
 <a name="1436"><span class="lineNum">    1436 </span>            :     struct sockaddr_in6  *sin6;</a>
 <a name="1437"><span class="lineNum">    1437 </span>            : #endif</a>
 <a name="1438"><span class="lineNum">    1438 </span>            : </a>
-<a name="1439"><span class="lineNum">    1439 </span><span class="lineCov">         48 :     switch (sa-&gt;sa_family) {</span></a>
+<a name="1439"><span class="lineNum">    1439 </span><span class="lineCov">         84 :     switch (sa-&gt;sa_family) {</span></a>
 <a name="1440"><span class="lineNum">    1440 </span>            : </a>
 <a name="1441"><span class="lineNum">    1441 </span>            : #if (NGX_HAVE_INET6)</a>
 <a name="1442"><span class="lineNum">    1442 </span><span class="lineNoCov">          0 :     case AF_INET6:</span></a>
@@ -1512,29 +1512,29 @@
 <a name="1450"><span class="lineNum">    1450 </span><span class="lineNoCov">          0 :         break;</span></a>
 <a name="1451"><span class="lineNum">    1451 </span>            : #endif</a>
 <a name="1452"><span class="lineNum">    1452 </span>            : </a>
-<a name="1453"><span class="lineNum">    1453 </span><span class="lineCov">         48 :     default: /* AF_INET */</span></a>
-<a name="1454"><span class="lineNum">    1454 </span><span class="lineCov">         48 :         sin = (struct sockaddr_in *) sa;</span></a>
-<a name="1455"><span class="lineNum">    1455 </span><span class="lineCov">         48 :         sin-&gt;sin_port = htons(port);</span></a>
-<a name="1456"><span class="lineNum">    1456 </span><span class="lineCov">         48 :         break;</span></a>
+<a name="1453"><span class="lineNum">    1453 </span><span class="lineCov">         84 :     default: /* AF_INET */</span></a>
+<a name="1454"><span class="lineNum">    1454 </span><span class="lineCov">         84 :         sin = (struct sockaddr_in *) sa;</span></a>
+<a name="1455"><span class="lineNum">    1455 </span><span class="lineCov">         84 :         sin-&gt;sin_port = htons(port);</span></a>
+<a name="1456"><span class="lineNum">    1456 </span><span class="lineCov">         84 :         break;</span></a>
 <a name="1457"><span class="lineNum">    1457 </span>            :     }</a>
-<a name="1458"><span class="lineNum">    1458 </span><span class="lineCov">         48 : }</span></a>
+<a name="1458"><span class="lineNum">    1458 </span><span class="lineCov">         84 : }</span></a>
 <a name="1459"><span class="lineNum">    1459 </span>            : </a>
 <a name="1460"><span class="lineNum">    1460 </span>            : </a>
 <a name="1461"><span class="lineNum">    1461 </span>            : ngx_uint_t</a>
-<a name="1462"><span class="lineNum">    1462 </span><span class="lineCov">         48 : ngx_inet_wildcard(struct sockaddr *sa)</span></a>
+<a name="1462"><span class="lineNum">    1462 </span><span class="lineCov">         84 : ngx_inet_wildcard(struct sockaddr *sa)</span></a>
 <a name="1463"><span class="lineNum">    1463 </span>            : {</a>
 <a name="1464"><span class="lineNum">    1464 </span>            :     struct sockaddr_in   *sin;</a>
 <a name="1465"><span class="lineNum">    1465 </span>            : #if (NGX_HAVE_INET6)</a>
 <a name="1466"><span class="lineNum">    1466 </span>            :     struct sockaddr_in6  *sin6;</a>
 <a name="1467"><span class="lineNum">    1467 </span>            : #endif</a>
 <a name="1468"><span class="lineNum">    1468 </span>            : </a>
-<a name="1469"><span class="lineNum">    1469 </span><span class="lineCov">         48 :     switch (sa-&gt;sa_family) {</span></a>
+<a name="1469"><span class="lineNum">    1469 </span><span class="lineCov">         84 :     switch (sa-&gt;sa_family) {</span></a>
 <a name="1470"><span class="lineNum">    1470 </span>            : </a>
-<a name="1471"><span class="lineNum">    1471 </span><span class="lineCov">         48 :     case AF_INET:</span></a>
-<a name="1472"><span class="lineNum">    1472 </span><span class="lineCov">         48 :         sin = (struct sockaddr_in *) sa;</span></a>
+<a name="1471"><span class="lineNum">    1471 </span><span class="lineCov">         84 :     case AF_INET:</span></a>
+<a name="1472"><span class="lineNum">    1472 </span><span class="lineCov">         84 :         sin = (struct sockaddr_in *) sa;</span></a>
 <a name="1473"><span class="lineNum">    1473 </span>            : </a>
-<a name="1474"><span class="lineNum">    1474 </span><span class="lineCov">         48 :         if (sin-&gt;sin_addr.s_addr == INADDR_ANY) {</span></a>
-<a name="1475"><span class="lineNum">    1475 </span><span class="lineCov">         48 :             return 1;</span></a>
+<a name="1474"><span class="lineNum">    1474 </span><span class="lineCov">         84 :         if (sin-&gt;sin_addr.s_addr == INADDR_ANY) {</span></a>
+<a name="1475"><span class="lineNum">    1475 </span><span class="lineCov">         84 :             return 1;</span></a>
 <a name="1476"><span class="lineNum">    1476 </span>            :         }</a>
 <a name="1477"><span class="lineNum">    1477 </span>            : </a>
 <a name="1478"><span class="lineNum">    1478 </span><span class="lineNoCov">          0 :         break;</span></a>

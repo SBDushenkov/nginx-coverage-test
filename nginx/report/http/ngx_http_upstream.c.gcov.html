@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-22 13:10:45</td>
+            <td class="headerValue">2024-10-23 15:06:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -5662,21 +5662,21 @@
 <a name="5600"><span class="lineNum">    5600 </span>            : </a>
 <a name="5601"><span class="lineNum">    5601 </span>            : </a>
 <a name="5602"><span class="lineNum">    5602 </span>            : static ngx_int_t</a>
-<a name="5603"><span class="lineNum">    5603 </span><span class="lineCov">         48 : ngx_http_upstream_add_variables(ngx_conf_t *cf)</span></a>
+<a name="5603"><span class="lineNum">    5603 </span><span class="lineCov">         84 : ngx_http_upstream_add_variables(ngx_conf_t *cf)</span></a>
 <a name="5604"><span class="lineNum">    5604 </span>            : {</a>
 <a name="5605"><span class="lineNum">    5605 </span>            :     ngx_http_variable_t  *var, *v;</a>
 <a name="5606"><span class="lineNum">    5606 </span>            : </a>
-<a name="5607"><span class="lineNum">    5607 </span><span class="lineCov">        576 :     for (v = ngx_http_upstream_vars; v-&gt;name.len; v++) {</span></a>
-<a name="5608"><span class="lineNum">    5608 </span><span class="lineCov">        528 :         var = ngx_http_add_variable(cf, &amp;v-&gt;name, v-&gt;flags);</span></a>
-<a name="5609"><span class="lineNum">    5609 </span><span class="lineCov">        528 :         if (var == NULL) {</span></a>
+<a name="5607"><span class="lineNum">    5607 </span><span class="lineCov">       1008 :     for (v = ngx_http_upstream_vars; v-&gt;name.len; v++) {</span></a>
+<a name="5608"><span class="lineNum">    5608 </span><span class="lineCov">        924 :         var = ngx_http_add_variable(cf, &amp;v-&gt;name, v-&gt;flags);</span></a>
+<a name="5609"><span class="lineNum">    5609 </span><span class="lineCov">        924 :         if (var == NULL) {</span></a>
 <a name="5610"><span class="lineNum">    5610 </span><span class="lineNoCov">          0 :             return NGX_ERROR;</span></a>
 <a name="5611"><span class="lineNum">    5611 </span>            :         }</a>
 <a name="5612"><span class="lineNum">    5612 </span>            : </a>
-<a name="5613"><span class="lineNum">    5613 </span><span class="lineCov">        528 :         var-&gt;get_handler = v-&gt;get_handler;</span></a>
-<a name="5614"><span class="lineNum">    5614 </span><span class="lineCov">        528 :         var-&gt;data = v-&gt;data;</span></a>
+<a name="5613"><span class="lineNum">    5613 </span><span class="lineCov">        924 :         var-&gt;get_handler = v-&gt;get_handler;</span></a>
+<a name="5614"><span class="lineNum">    5614 </span><span class="lineCov">        924 :         var-&gt;data = v-&gt;data;</span></a>
 <a name="5615"><span class="lineNum">    5615 </span>            :     }</a>
 <a name="5616"><span class="lineNum">    5616 </span>            : </a>
-<a name="5617"><span class="lineNum">    5617 </span><span class="lineCov">         48 :     return NGX_OK;</span></a>
+<a name="5617"><span class="lineNum">    5617 </span><span class="lineCov">         84 :     return NGX_OK;</span></a>
 <a name="5618"><span class="lineNum">    5618 </span>            : }</a>
 <a name="5619"><span class="lineNum">    5619 </span>            : </a>
 <a name="5620"><span class="lineNum">    5620 </span>            : </a>
@@ -6812,42 +6812,42 @@
 <a name="6750"><span class="lineNum">    6750 </span>            : </a>
 <a name="6751"><span class="lineNum">    6751 </span>            : </a>
 <a name="6752"><span class="lineNum">    6752 </span>            : static void *</a>
-<a name="6753"><span class="lineNum">    6753 </span><span class="lineCov">         48 : ngx_http_upstream_create_main_conf(ngx_conf_t *cf)</span></a>
+<a name="6753"><span class="lineNum">    6753 </span><span class="lineCov">         84 : ngx_http_upstream_create_main_conf(ngx_conf_t *cf)</span></a>
 <a name="6754"><span class="lineNum">    6754 </span>            : {</a>
 <a name="6755"><span class="lineNum">    6755 </span>            :     ngx_http_upstream_main_conf_t  *umcf;</a>
 <a name="6756"><span class="lineNum">    6756 </span>            : </a>
-<a name="6757"><span class="lineNum">    6757 </span><span class="lineCov">         48 :     umcf = ngx_pcalloc(cf-&gt;pool, sizeof(ngx_http_upstream_main_conf_t));</span></a>
-<a name="6758"><span class="lineNum">    6758 </span><span class="lineCov">         48 :     if (umcf == NULL) {</span></a>
+<a name="6757"><span class="lineNum">    6757 </span><span class="lineCov">         84 :     umcf = ngx_pcalloc(cf-&gt;pool, sizeof(ngx_http_upstream_main_conf_t));</span></a>
+<a name="6758"><span class="lineNum">    6758 </span><span class="lineCov">         84 :     if (umcf == NULL) {</span></a>
 <a name="6759"><span class="lineNum">    6759 </span><span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="6760"><span class="lineNum">    6760 </span>            :     }</a>
 <a name="6761"><span class="lineNum">    6761 </span>            : </a>
-<a name="6762"><span class="lineNum">    6762 </span><span class="lineCov">         48 :     if (ngx_array_init(&amp;umcf-&gt;upstreams, cf-&gt;pool, 4,</span></a>
+<a name="6762"><span class="lineNum">    6762 </span><span class="lineCov">         84 :     if (ngx_array_init(&amp;umcf-&gt;upstreams, cf-&gt;pool, 4,</span></a>
 <a name="6763"><span class="lineNum">    6763 </span>            :                        sizeof(ngx_http_upstream_srv_conf_t *))</a>
 <a name="6764"><span class="lineNum">    6764 </span>            :         != NGX_OK)</a>
 <a name="6765"><span class="lineNum">    6765 </span>            :     {</a>
 <a name="6766"><span class="lineNum">    6766 </span><span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="6767"><span class="lineNum">    6767 </span>            :     }</a>
 <a name="6768"><span class="lineNum">    6768 </span>            : </a>
-<a name="6769"><span class="lineNum">    6769 </span><span class="lineCov">         48 :     return umcf;</span></a>
+<a name="6769"><span class="lineNum">    6769 </span><span class="lineCov">         84 :     return umcf;</span></a>
 <a name="6770"><span class="lineNum">    6770 </span>            : }</a>
 <a name="6771"><span class="lineNum">    6771 </span>            : </a>
 <a name="6772"><span class="lineNum">    6772 </span>            : </a>
 <a name="6773"><span class="lineNum">    6773 </span>            : static char *</a>
-<a name="6774"><span class="lineNum">    6774 </span><span class="lineCov">         48 : ngx_http_upstream_init_main_conf(ngx_conf_t *cf, void *conf)</span></a>
+<a name="6774"><span class="lineNum">    6774 </span><span class="lineCov">         84 : ngx_http_upstream_init_main_conf(ngx_conf_t *cf, void *conf)</span></a>
 <a name="6775"><span class="lineNum">    6775 </span>            : {</a>
-<a name="6776"><span class="lineNum">    6776 </span><span class="lineCov">         48 :     ngx_http_upstream_main_conf_t  *umcf = conf;</span></a>
+<a name="6776"><span class="lineNum">    6776 </span><span class="lineCov">         84 :     ngx_http_upstream_main_conf_t  *umcf = conf;</span></a>
 <a name="6777"><span class="lineNum">    6777 </span>            : </a>
 <a name="6778"><span class="lineNum">    6778 </span>            :     ngx_uint_t                      i;</a>
-<a name="6779"><span class="lineNum">    6779 </span><span class="lineCov">         48 :     ngx_array_t                     headers_in;</span></a>
+<a name="6779"><span class="lineNum">    6779 </span><span class="lineCov">         84 :     ngx_array_t                     headers_in;</span></a>
 <a name="6780"><span class="lineNum">    6780 </span>            :     ngx_hash_key_t                 *hk;</a>
-<a name="6781"><span class="lineNum">    6781 </span><span class="lineCov">         48 :     ngx_hash_init_t                 hash;</span></a>
+<a name="6781"><span class="lineNum">    6781 </span><span class="lineCov">         84 :     ngx_hash_init_t                 hash;</span></a>
 <a name="6782"><span class="lineNum">    6782 </span>            :     ngx_http_upstream_init_pt       init;</a>
 <a name="6783"><span class="lineNum">    6783 </span>            :     ngx_http_upstream_header_t     *header;</a>
 <a name="6784"><span class="lineNum">    6784 </span>            :     ngx_http_upstream_srv_conf_t  **uscfp;</a>
 <a name="6785"><span class="lineNum">    6785 </span>            : </a>
-<a name="6786"><span class="lineNum">    6786 </span><span class="lineCov">         48 :     uscfp = umcf-&gt;upstreams.elts;</span></a>
+<a name="6786"><span class="lineNum">    6786 </span><span class="lineCov">         84 :     uscfp = umcf-&gt;upstreams.elts;</span></a>
 <a name="6787"><span class="lineNum">    6787 </span>            : </a>
-<a name="6788"><span class="lineNum">    6788 </span><span class="lineCov">         48 :     for (i = 0; i &lt; umcf-&gt;upstreams.nelts; i++) {</span></a>
+<a name="6788"><span class="lineNum">    6788 </span><span class="lineCov">         84 :     for (i = 0; i &lt; umcf-&gt;upstreams.nelts; i++) {</span></a>
 <a name="6789"><span class="lineNum">    6789 </span>            : </a>
 <a name="6790"><span class="lineNum">    6790 </span><span class="lineNoCov">          0 :         init = uscfp[i]-&gt;peer.init_upstream ? uscfp[i]-&gt;peer.init_upstream:</span></a>
 <a name="6791"><span class="lineNum">    6791 </span>            :                                             ngx_http_upstream_init_round_robin;</a>
@@ -6860,36 +6860,36 @@
 <a name="6798"><span class="lineNum">    6798 </span>            : </a>
 <a name="6799"><span class="lineNum">    6799 </span>            :     /* upstream_headers_in_hash */</a>
 <a name="6800"><span class="lineNum">    6800 </span>            : </a>
-<a name="6801"><span class="lineNum">    6801 </span><span class="lineCov">         48 :     if (ngx_array_init(&amp;headers_in, cf-&gt;temp_pool, 32, sizeof(ngx_hash_key_t))</span></a>
+<a name="6801"><span class="lineNum">    6801 </span><span class="lineCov">         84 :     if (ngx_array_init(&amp;headers_in, cf-&gt;temp_pool, 32, sizeof(ngx_hash_key_t))</span></a>
 <a name="6802"><span class="lineNum">    6802 </span>            :         != NGX_OK)</a>
 <a name="6803"><span class="lineNum">    6803 </span>            :     {</a>
 <a name="6804"><span class="lineNum">    6804 </span><span class="lineNoCov">          0 :         return NGX_CONF_ERROR;</span></a>
 <a name="6805"><span class="lineNum">    6805 </span>            :     }</a>
 <a name="6806"><span class="lineNum">    6806 </span>            : </a>
-<a name="6807"><span class="lineNum">    6807 </span><span class="lineCov">       1344 :     for (header = ngx_http_upstream_headers_in; header-&gt;name.len; header++) {</span></a>
-<a name="6808"><span class="lineNum">    6808 </span><span class="lineCov">       1296 :         hk = ngx_array_push(&amp;headers_in);</span></a>
-<a name="6809"><span class="lineNum">    6809 </span><span class="lineCov">       1296 :         if (hk == NULL) {</span></a>
+<a name="6807"><span class="lineNum">    6807 </span><span class="lineCov">       2352 :     for (header = ngx_http_upstream_headers_in; header-&gt;name.len; header++) {</span></a>
+<a name="6808"><span class="lineNum">    6808 </span><span class="lineCov">       2268 :         hk = ngx_array_push(&amp;headers_in);</span></a>
+<a name="6809"><span class="lineNum">    6809 </span><span class="lineCov">       2268 :         if (hk == NULL) {</span></a>
 <a name="6810"><span class="lineNum">    6810 </span><span class="lineNoCov">          0 :             return NGX_CONF_ERROR;</span></a>
 <a name="6811"><span class="lineNum">    6811 </span>            :         }</a>
 <a name="6812"><span class="lineNum">    6812 </span>            : </a>
-<a name="6813"><span class="lineNum">    6813 </span><span class="lineCov">       1296 :         hk-&gt;key = header-&gt;name;</span></a>
-<a name="6814"><span class="lineNum">    6814 </span><span class="lineCov">       1296 :         hk-&gt;key_hash = ngx_hash_key_lc(header-&gt;name.data, header-&gt;name.len);</span></a>
-<a name="6815"><span class="lineNum">    6815 </span><span class="lineCov">       1296 :         hk-&gt;value = header;</span></a>
+<a name="6813"><span class="lineNum">    6813 </span><span class="lineCov">       2268 :         hk-&gt;key = header-&gt;name;</span></a>
+<a name="6814"><span class="lineNum">    6814 </span><span class="lineCov">       2268 :         hk-&gt;key_hash = ngx_hash_key_lc(header-&gt;name.data, header-&gt;name.len);</span></a>
+<a name="6815"><span class="lineNum">    6815 </span><span class="lineCov">       2268 :         hk-&gt;value = header;</span></a>
 <a name="6816"><span class="lineNum">    6816 </span>            :     }</a>
 <a name="6817"><span class="lineNum">    6817 </span>            : </a>
-<a name="6818"><span class="lineNum">    6818 </span><span class="lineCov">         48 :     hash.hash = &amp;umcf-&gt;headers_in_hash;</span></a>
-<a name="6819"><span class="lineNum">    6819 </span><span class="lineCov">         48 :     hash.key = ngx_hash_key_lc;</span></a>
-<a name="6820"><span class="lineNum">    6820 </span><span class="lineCov">         48 :     hash.max_size = 512;</span></a>
-<a name="6821"><span class="lineNum">    6821 </span><span class="lineCov">         48 :     hash.bucket_size = ngx_align(64, ngx_cacheline_size);</span></a>
-<a name="6822"><span class="lineNum">    6822 </span><span class="lineCov">         48 :     hash.name = &quot;upstream_headers_in_hash&quot;;</span></a>
-<a name="6823"><span class="lineNum">    6823 </span><span class="lineCov">         48 :     hash.pool = cf-&gt;pool;</span></a>
-<a name="6824"><span class="lineNum">    6824 </span><span class="lineCov">         48 :     hash.temp_pool = NULL;</span></a>
+<a name="6818"><span class="lineNum">    6818 </span><span class="lineCov">         84 :     hash.hash = &amp;umcf-&gt;headers_in_hash;</span></a>
+<a name="6819"><span class="lineNum">    6819 </span><span class="lineCov">         84 :     hash.key = ngx_hash_key_lc;</span></a>
+<a name="6820"><span class="lineNum">    6820 </span><span class="lineCov">         84 :     hash.max_size = 512;</span></a>
+<a name="6821"><span class="lineNum">    6821 </span><span class="lineCov">         84 :     hash.bucket_size = ngx_align(64, ngx_cacheline_size);</span></a>
+<a name="6822"><span class="lineNum">    6822 </span><span class="lineCov">         84 :     hash.name = &quot;upstream_headers_in_hash&quot;;</span></a>
+<a name="6823"><span class="lineNum">    6823 </span><span class="lineCov">         84 :     hash.pool = cf-&gt;pool;</span></a>
+<a name="6824"><span class="lineNum">    6824 </span><span class="lineCov">         84 :     hash.temp_pool = NULL;</span></a>
 <a name="6825"><span class="lineNum">    6825 </span>            : </a>
-<a name="6826"><span class="lineNum">    6826 </span><span class="lineCov">         48 :     if (ngx_hash_init(&amp;hash, headers_in.elts, headers_in.nelts) != NGX_OK) {</span></a>
+<a name="6826"><span class="lineNum">    6826 </span><span class="lineCov">         84 :     if (ngx_hash_init(&amp;hash, headers_in.elts, headers_in.nelts) != NGX_OK) {</span></a>
 <a name="6827"><span class="lineNum">    6827 </span><span class="lineNoCov">          0 :         return NGX_CONF_ERROR;</span></a>
 <a name="6828"><span class="lineNum">    6828 </span>            :     }</a>
 <a name="6829"><span class="lineNum">    6829 </span>            : </a>
-<a name="6830"><span class="lineNum">    6830 </span><span class="lineCov">         48 :     return NGX_CONF_OK;</span></a>
+<a name="6830"><span class="lineNum">    6830 </span><span class="lineCov">         84 :     return NGX_CONF_OK;</span></a>
 <a name="6831"><span class="lineNum">    6831 </span>            : }</a>
 </pre>
       </td>

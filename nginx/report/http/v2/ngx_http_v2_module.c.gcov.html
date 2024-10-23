@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-22 13:10:45</td>
+            <td class="headerValue">2024-10-23 15:06:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">8</td>
@@ -285,21 +285,21 @@
 <a name="223"><span class="lineNum">     223 </span>            : </a>
 <a name="224"><span class="lineNum">     224 </span>            : </a>
 <a name="225"><span class="lineNum">     225 </span>            : static ngx_int_t</a>
-<a name="226"><span class="lineNum">     226 </span><span class="lineCov">         48 : ngx_http_v2_add_variables(ngx_conf_t *cf)</span></a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">         84 : ngx_http_v2_add_variables(ngx_conf_t *cf)</span></a>
 <a name="227"><span class="lineNum">     227 </span>            : {</a>
 <a name="228"><span class="lineNum">     228 </span>            :     ngx_http_variable_t  *var, *v;</a>
 <a name="229"><span class="lineNum">     229 </span>            : </a>
-<a name="230"><span class="lineNum">     230 </span><span class="lineCov">         96 :     for (v = ngx_http_v2_vars; v-&gt;name.len; v++) {</span></a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">         48 :         var = ngx_http_add_variable(cf, &amp;v-&gt;name, v-&gt;flags);</span></a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">         48 :         if (var == NULL) {</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineCov">        168 :     for (v = ngx_http_v2_vars; v-&gt;name.len; v++) {</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">         84 :         var = ngx_http_add_variable(cf, &amp;v-&gt;name, v-&gt;flags);</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">         84 :         if (var == NULL) {</span></a>
 <a name="233"><span class="lineNum">     233 </span><span class="lineNoCov">          0 :             return NGX_ERROR;</span></a>
 <a name="234"><span class="lineNum">     234 </span>            :         }</a>
 <a name="235"><span class="lineNum">     235 </span>            : </a>
-<a name="236"><span class="lineNum">     236 </span><span class="lineCov">         48 :         var-&gt;get_handler = v-&gt;get_handler;</span></a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineCov">         48 :         var-&gt;data = v-&gt;data;</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineCov">         84 :         var-&gt;get_handler = v-&gt;get_handler;</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">         84 :         var-&gt;data = v-&gt;data;</span></a>
 <a name="238"><span class="lineNum">     238 </span>            :     }</a>
 <a name="239"><span class="lineNum">     239 </span>            : </a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineCov">         48 :     return NGX_OK;</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">         84 :     return NGX_OK;</span></a>
 <a name="241"><span class="lineNum">     241 </span>            : }</a>
 <a name="242"><span class="lineNum">     242 </span>            : </a>
 <a name="243"><span class="lineNum">     243 </span>            : </a>
@@ -338,110 +338,110 @@
 <a name="276"><span class="lineNum">     276 </span>            : </a>
 <a name="277"><span class="lineNum">     277 </span>            : </a>
 <a name="278"><span class="lineNum">     278 </span>            : static ngx_int_t</a>
-<a name="279"><span class="lineNum">     279 </span><span class="lineCov">         32 : ngx_http_v2_module_init(ngx_cycle_t *cycle)</span></a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineCov">         56 : ngx_http_v2_module_init(ngx_cycle_t *cycle)</span></a>
 <a name="280"><span class="lineNum">     280 </span>            : {</a>
-<a name="281"><span class="lineNum">     281 </span><span class="lineCov">         32 :     return NGX_OK;</span></a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">         56 :     return NGX_OK;</span></a>
 <a name="282"><span class="lineNum">     282 </span>            : }</a>
 <a name="283"><span class="lineNum">     283 </span>            : </a>
 <a name="284"><span class="lineNum">     284 </span>            : </a>
 <a name="285"><span class="lineNum">     285 </span>            : static void *</a>
-<a name="286"><span class="lineNum">     286 </span><span class="lineCov">         48 : ngx_http_v2_create_main_conf(ngx_conf_t *cf)</span></a>
+<a name="286"><span class="lineNum">     286 </span><span class="lineCov">         84 : ngx_http_v2_create_main_conf(ngx_conf_t *cf)</span></a>
 <a name="287"><span class="lineNum">     287 </span>            : {</a>
 <a name="288"><span class="lineNum">     288 </span>            :     ngx_http_v2_main_conf_t  *h2mcf;</a>
 <a name="289"><span class="lineNum">     289 </span>            : </a>
-<a name="290"><span class="lineNum">     290 </span><span class="lineCov">         48 :     h2mcf = ngx_pcalloc(cf-&gt;pool, sizeof(ngx_http_v2_main_conf_t));</span></a>
-<a name="291"><span class="lineNum">     291 </span><span class="lineCov">         48 :     if (h2mcf == NULL) {</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineCov">         84 :     h2mcf = ngx_pcalloc(cf-&gt;pool, sizeof(ngx_http_v2_main_conf_t));</span></a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineCov">         84 :     if (h2mcf == NULL) {</span></a>
 <a name="292"><span class="lineNum">     292 </span><span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="293"><span class="lineNum">     293 </span>            :     }</a>
 <a name="294"><span class="lineNum">     294 </span>            : </a>
-<a name="295"><span class="lineNum">     295 </span><span class="lineCov">         48 :     h2mcf-&gt;recv_buffer_size = NGX_CONF_UNSET_SIZE;</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">         84 :     h2mcf-&gt;recv_buffer_size = NGX_CONF_UNSET_SIZE;</span></a>
 <a name="296"><span class="lineNum">     296 </span>            : </a>
-<a name="297"><span class="lineNum">     297 </span><span class="lineCov">         48 :     return h2mcf;</span></a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">         84 :     return h2mcf;</span></a>
 <a name="298"><span class="lineNum">     298 </span>            : }</a>
 <a name="299"><span class="lineNum">     299 </span>            : </a>
 <a name="300"><span class="lineNum">     300 </span>            : </a>
 <a name="301"><span class="lineNum">     301 </span>            : static char *</a>
-<a name="302"><span class="lineNum">     302 </span><span class="lineCov">         48 : ngx_http_v2_init_main_conf(ngx_conf_t *cf, void *conf)</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">         84 : ngx_http_v2_init_main_conf(ngx_conf_t *cf, void *conf)</span></a>
 <a name="303"><span class="lineNum">     303 </span>            : {</a>
-<a name="304"><span class="lineNum">     304 </span><span class="lineCov">         48 :     ngx_http_v2_main_conf_t *h2mcf = conf;</span></a>
+<a name="304"><span class="lineNum">     304 </span><span class="lineCov">         84 :     ngx_http_v2_main_conf_t *h2mcf = conf;</span></a>
 <a name="305"><span class="lineNum">     305 </span>            : </a>
-<a name="306"><span class="lineNum">     306 </span><span class="lineCov">         48 :     ngx_conf_init_size_value(h2mcf-&gt;recv_buffer_size, 256 * 1024);</span></a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineCov">         84 :     ngx_conf_init_size_value(h2mcf-&gt;recv_buffer_size, 256 * 1024);</span></a>
 <a name="307"><span class="lineNum">     307 </span>            : </a>
-<a name="308"><span class="lineNum">     308 </span><span class="lineCov">         48 :     return NGX_CONF_OK;</span></a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineCov">         84 :     return NGX_CONF_OK;</span></a>
 <a name="309"><span class="lineNum">     309 </span>            : }</a>
 <a name="310"><span class="lineNum">     310 </span>            : </a>
 <a name="311"><span class="lineNum">     311 </span>            : </a>
 <a name="312"><span class="lineNum">     312 </span>            : static void *</a>
-<a name="313"><span class="lineNum">     313 </span><span class="lineCov">         96 : ngx_http_v2_create_srv_conf(ngx_conf_t *cf)</span></a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">        168 : ngx_http_v2_create_srv_conf(ngx_conf_t *cf)</span></a>
 <a name="314"><span class="lineNum">     314 </span>            : {</a>
 <a name="315"><span class="lineNum">     315 </span>            :     ngx_http_v2_srv_conf_t  *h2scf;</a>
 <a name="316"><span class="lineNum">     316 </span>            : </a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineCov">         96 :     h2scf = ngx_pcalloc(cf-&gt;pool, sizeof(ngx_http_v2_srv_conf_t));</span></a>
-<a name="318"><span class="lineNum">     318 </span><span class="lineCov">         96 :     if (h2scf == NULL) {</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">        168 :     h2scf = ngx_pcalloc(cf-&gt;pool, sizeof(ngx_http_v2_srv_conf_t));</span></a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineCov">        168 :     if (h2scf == NULL) {</span></a>
 <a name="319"><span class="lineNum">     319 </span><span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="320"><span class="lineNum">     320 </span>            :     }</a>
 <a name="321"><span class="lineNum">     321 </span>            : </a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineCov">         96 :     h2scf-&gt;enable = NGX_CONF_UNSET;</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">        168 :     h2scf-&gt;enable = NGX_CONF_UNSET;</span></a>
 <a name="323"><span class="lineNum">     323 </span>            : </a>
-<a name="324"><span class="lineNum">     324 </span><span class="lineCov">         96 :     h2scf-&gt;pool_size = NGX_CONF_UNSET_SIZE;</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineCov">        168 :     h2scf-&gt;pool_size = NGX_CONF_UNSET_SIZE;</span></a>
 <a name="325"><span class="lineNum">     325 </span>            : </a>
-<a name="326"><span class="lineNum">     326 </span><span class="lineCov">         96 :     h2scf-&gt;concurrent_streams = NGX_CONF_UNSET_UINT;</span></a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineCov">        168 :     h2scf-&gt;concurrent_streams = NGX_CONF_UNSET_UINT;</span></a>
 <a name="327"><span class="lineNum">     327 </span>            : </a>
-<a name="328"><span class="lineNum">     328 </span><span class="lineCov">         96 :     h2scf-&gt;preread_size = NGX_CONF_UNSET_SIZE;</span></a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineCov">        168 :     h2scf-&gt;preread_size = NGX_CONF_UNSET_SIZE;</span></a>
 <a name="329"><span class="lineNum">     329 </span>            : </a>
-<a name="330"><span class="lineNum">     330 </span><span class="lineCov">         96 :     h2scf-&gt;streams_index_mask = NGX_CONF_UNSET_UINT;</span></a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineCov">        168 :     h2scf-&gt;streams_index_mask = NGX_CONF_UNSET_UINT;</span></a>
 <a name="331"><span class="lineNum">     331 </span>            : </a>
-<a name="332"><span class="lineNum">     332 </span><span class="lineCov">         96 :     return h2scf;</span></a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineCov">        168 :     return h2scf;</span></a>
 <a name="333"><span class="lineNum">     333 </span>            : }</a>
 <a name="334"><span class="lineNum">     334 </span>            : </a>
 <a name="335"><span class="lineNum">     335 </span>            : </a>
 <a name="336"><span class="lineNum">     336 </span>            : static char *</a>
-<a name="337"><span class="lineNum">     337 </span><span class="lineCov">         48 : ngx_http_v2_merge_srv_conf(ngx_conf_t *cf, void *parent, void *child)</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineCov">         84 : ngx_http_v2_merge_srv_conf(ngx_conf_t *cf, void *parent, void *child)</span></a>
 <a name="338"><span class="lineNum">     338 </span>            : {</a>
-<a name="339"><span class="lineNum">     339 </span><span class="lineCov">         48 :     ngx_http_v2_srv_conf_t *prev = parent;</span></a>
-<a name="340"><span class="lineNum">     340 </span><span class="lineCov">         48 :     ngx_http_v2_srv_conf_t *conf = child;</span></a>
+<a name="339"><span class="lineNum">     339 </span><span class="lineCov">         84 :     ngx_http_v2_srv_conf_t *prev = parent;</span></a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineCov">         84 :     ngx_http_v2_srv_conf_t *conf = child;</span></a>
 <a name="341"><span class="lineNum">     341 </span>            : </a>
-<a name="342"><span class="lineNum">     342 </span><span class="lineCov">         48 :     ngx_conf_merge_value(conf-&gt;enable, prev-&gt;enable, 0);</span></a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineCov">         84 :     ngx_conf_merge_value(conf-&gt;enable, prev-&gt;enable, 0);</span></a>
 <a name="343"><span class="lineNum">     343 </span>            : </a>
-<a name="344"><span class="lineNum">     344 </span><span class="lineCov">         48 :     ngx_conf_merge_size_value(conf-&gt;pool_size, prev-&gt;pool_size, 4096);</span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">         84 :     ngx_conf_merge_size_value(conf-&gt;pool_size, prev-&gt;pool_size, 4096);</span></a>
 <a name="345"><span class="lineNum">     345 </span>            : </a>
-<a name="346"><span class="lineNum">     346 </span><span class="lineCov">         48 :     ngx_conf_merge_uint_value(conf-&gt;concurrent_streams,</span></a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineCov">         84 :     ngx_conf_merge_uint_value(conf-&gt;concurrent_streams,</span></a>
 <a name="347"><span class="lineNum">     347 </span>            :                               prev-&gt;concurrent_streams, 128);</a>
 <a name="348"><span class="lineNum">     348 </span>            : </a>
-<a name="349"><span class="lineNum">     349 </span><span class="lineCov">         48 :     ngx_conf_merge_size_value(conf-&gt;preread_size, prev-&gt;preread_size, 65536);</span></a>
+<a name="349"><span class="lineNum">     349 </span><span class="lineCov">         84 :     ngx_conf_merge_size_value(conf-&gt;preread_size, prev-&gt;preread_size, 65536);</span></a>
 <a name="350"><span class="lineNum">     350 </span>            : </a>
-<a name="351"><span class="lineNum">     351 </span><span class="lineCov">         48 :     ngx_conf_merge_uint_value(conf-&gt;streams_index_mask,</span></a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineCov">         84 :     ngx_conf_merge_uint_value(conf-&gt;streams_index_mask,</span></a>
 <a name="352"><span class="lineNum">     352 </span>            :                               prev-&gt;streams_index_mask, 32 - 1);</a>
 <a name="353"><span class="lineNum">     353 </span>            : </a>
-<a name="354"><span class="lineNum">     354 </span><span class="lineCov">         48 :     return NGX_CONF_OK;</span></a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">         84 :     return NGX_CONF_OK;</span></a>
 <a name="355"><span class="lineNum">     355 </span>            : }</a>
 <a name="356"><span class="lineNum">     356 </span>            : </a>
 <a name="357"><span class="lineNum">     357 </span>            : </a>
 <a name="358"><span class="lineNum">     358 </span>            : static void *</a>
-<a name="359"><span class="lineNum">     359 </span><span class="lineCov">        192 : ngx_http_v2_create_loc_conf(ngx_conf_t *cf)</span></a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineCov">        660 : ngx_http_v2_create_loc_conf(ngx_conf_t *cf)</span></a>
 <a name="360"><span class="lineNum">     360 </span>            : {</a>
 <a name="361"><span class="lineNum">     361 </span>            :     ngx_http_v2_loc_conf_t  *h2lcf;</a>
 <a name="362"><span class="lineNum">     362 </span>            : </a>
-<a name="363"><span class="lineNum">     363 </span><span class="lineCov">        192 :     h2lcf = ngx_pcalloc(cf-&gt;pool, sizeof(ngx_http_v2_loc_conf_t));</span></a>
-<a name="364"><span class="lineNum">     364 </span><span class="lineCov">        192 :     if (h2lcf == NULL) {</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">        660 :     h2lcf = ngx_pcalloc(cf-&gt;pool, sizeof(ngx_http_v2_loc_conf_t));</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">        660 :     if (h2lcf == NULL) {</span></a>
 <a name="365"><span class="lineNum">     365 </span><span class="lineNoCov">          0 :         return NULL;</span></a>
 <a name="366"><span class="lineNum">     366 </span>            :     }</a>
 <a name="367"><span class="lineNum">     367 </span>            : </a>
-<a name="368"><span class="lineNum">     368 </span><span class="lineCov">        192 :     h2lcf-&gt;chunk_size = NGX_CONF_UNSET_SIZE;</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">        660 :     h2lcf-&gt;chunk_size = NGX_CONF_UNSET_SIZE;</span></a>
 <a name="369"><span class="lineNum">     369 </span>            : </a>
-<a name="370"><span class="lineNum">     370 </span><span class="lineCov">        192 :     return h2lcf;</span></a>
+<a name="370"><span class="lineNum">     370 </span><span class="lineCov">        660 :     return h2lcf;</span></a>
 <a name="371"><span class="lineNum">     371 </span>            : }</a>
 <a name="372"><span class="lineNum">     372 </span>            : </a>
 <a name="373"><span class="lineNum">     373 </span>            : </a>
 <a name="374"><span class="lineNum">     374 </span>            : static char *</a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineCov">        144 : ngx_http_v2_merge_loc_conf(ngx_conf_t *cf, void *parent, void *child)</span></a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineCov">        576 : ngx_http_v2_merge_loc_conf(ngx_conf_t *cf, void *parent, void *child)</span></a>
 <a name="376"><span class="lineNum">     376 </span>            : {</a>
-<a name="377"><span class="lineNum">     377 </span><span class="lineCov">        144 :     ngx_http_v2_loc_conf_t *prev = parent;</span></a>
-<a name="378"><span class="lineNum">     378 </span><span class="lineCov">        144 :     ngx_http_v2_loc_conf_t *conf = child;</span></a>
+<a name="377"><span class="lineNum">     377 </span><span class="lineCov">        576 :     ngx_http_v2_loc_conf_t *prev = parent;</span></a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineCov">        576 :     ngx_http_v2_loc_conf_t *conf = child;</span></a>
 <a name="379"><span class="lineNum">     379 </span>            : </a>
-<a name="380"><span class="lineNum">     380 </span><span class="lineCov">        144 :     ngx_conf_merge_size_value(conf-&gt;chunk_size, prev-&gt;chunk_size, 8 * 1024);</span></a>
+<a name="380"><span class="lineNum">     380 </span><span class="lineCov">        576 :     ngx_conf_merge_size_value(conf-&gt;chunk_size, prev-&gt;chunk_size, 8 * 1024);</span></a>
 <a name="381"><span class="lineNum">     381 </span>            : </a>
-<a name="382"><span class="lineNum">     382 </span><span class="lineCov">        144 :     return NGX_CONF_OK;</span></a>
+<a name="382"><span class="lineNum">     382 </span><span class="lineCov">        576 :     return NGX_CONF_OK;</span></a>
 <a name="383"><span class="lineNum">     383 </span>            : }</a>
 <a name="384"><span class="lineNum">     384 </span>            : </a>
 <a name="385"><span class="lineNum">     385 </span>            : </a>
